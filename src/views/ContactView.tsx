@@ -225,6 +225,28 @@ export const ContactView: React.FC = () => {
             {/* Datos Directos */}
             <div className="lg:col-span-5 space-y-4">
               
+              {/* Tarjeta de Identidad Institucional Oficial */}
+              <div className="p-6 rounded-3xl bg-white border border-teal-900/10 shadow-sm flex items-center gap-4">
+                <img
+                  src="/logo.webp"
+                  alt="Logo Oficial GP Solutions"
+                  className="w-16 h-16 object-contain drop-shadow-md shrink-0"
+                  width={64}
+                  height={64}
+                />
+                <div>
+                  <h3 className="font-heading font-black text-base text-[#102547]">
+                    {COMPANY_DATA.commercialName}
+                  </h3>
+                  <p className="text-xs text-[#0D9488] font-semibold">
+                    {COMPANY_DATA.name}
+                  </p>
+                  <p className="text-[11px] text-slate-500 mt-0.5">
+                    {COMPANY_DATA.slogan} • RUC Activo
+                  </p>
+                </div>
+              </div>
+
               <div className="p-6 rounded-3xl bg-gradient-to-br from-[#102547] to-[#153760] text-white shadow-xl">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-2xl bg-[#0D9488] text-white flex items-center justify-center">

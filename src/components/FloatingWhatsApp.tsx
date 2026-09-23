@@ -9,12 +9,19 @@ export const FloatingWhatsApp: React.FC = () => {
     <div className="fixed bottom-20 lg:bottom-8 right-4 sm:right-6 z-40 flex items-end gap-2.5">
       {/* Floating Tooltip Help */}
       {showTooltip && (
-        <div className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white text-[#102547] text-xs shadow-xl border border-teal-200/80 backdrop-blur-md">
+        <div className="hidden sm:flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white text-[#102547] text-xs shadow-xl border border-teal-200/80 backdrop-blur-md">
+          <img
+            src="/favicon.png"
+            alt="GP Solutions"
+            className="w-4 h-4 object-contain shrink-0"
+            width={16}
+            height={16}
+          />
           <span className="w-2 h-2 rounded-full bg-[#0D9488] animate-ping" />
           <span>¿Consultas con el SRI o IESS? Escríbanos</span>
           <button
             onClick={() => setShowTooltip(false)}
-            className="text-slate-400 hover:text-slate-700 p-0.5 cursor-pointer"
+            className="text-slate-400 hover:text-slate-700 p-0.5 cursor-pointer ml-1"
             aria-label="Cerrar mensaje"
           >
             <X className="w-3 h-3" />

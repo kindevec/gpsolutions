@@ -32,40 +32,31 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'backdrop-blur-xl bg-[#F4F9F9]/95 border-b border-teal-900/10 shadow-[0_4px_25px_-5px_rgba(16,37,71,0.07)] py-2.5'
-          : 'bg-[#F4F9F9]/85 backdrop-blur-md border-b border-teal-900/10 py-3.5'
+          ? 'backdrop-blur-xl bg-[#F4F9F9]/95 border-b border-teal-900/10 shadow-[0_4px_25px_-5px_rgba(16,37,71,0.08)] py-2.5'
+          : 'bg-[#F4F9F9]/55 backdrop-blur-md border-b border-teal-900/5 py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* LOGO OFICIAL LIMPIO */}
+        {/* LOGO OFICIAL LIMPIO (SOLAMENTE EL LOGOTOCITO) */}
         <button
           onClick={() => onSelectTab('inicio')}
-          className="flex items-center gap-3 group focus:outline-none cursor-pointer text-left"
+          className="flex items-center focus:outline-none cursor-pointer group"
           aria-label="Ir al inicio de GP Solutions"
+          title="GP Solutions S.A.S. - Inicio"
         >
           <img
             src="/logo.webp"
             alt="Logo Oficial GP Solutions"
-            className="w-10 h-10 sm:w-11 sm:h-11 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
-            width={44}
-            height={44}
+            className="w-11 h-11 sm:w-12 sm:h-12 object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-300"
+            width={48}
+            height={48}
           />
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <span className="font-extrabold tracking-tight text-[#102547] text-base sm:text-lg leading-tight font-heading">
-                GP SOLUTIONS <span className="text-xs font-bold text-[#0D9488]">S.A.S.</span>
-              </span>
-            </div>
-            <span className="text-[11px] text-slate-500 font-medium tracking-normal">
-              {COMPANY_DATA.legacySlogan}
-            </span>
-          </div>
         </button>
 
-        {/* NAVEGACIÓN DESKTOP (5 SECCIONES OFICIALES) */}
+        {/* NAVEGACIÓN DESKTOP (5 SECCIONES OFICIALES SIN CONTENEDOR REDUNDANTE) */}
         <nav
-          className="hidden lg:flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/95 border border-teal-900/10 shadow-sm"
+          className="hidden lg:flex items-center gap-1"
           aria-label="Navegación principal de 5 secciones"
         >
           {navItems.map((item) => {
@@ -74,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
               <button
                 key={item.key}
                 onClick={() => onSelectTab(item.key)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
                   isActive
                     ? 'bg-[#0D9488] text-white shadow-sm'
                     : 'text-[#102547] hover:text-[#0D9488] hover:bg-teal-50/70'
