@@ -7,7 +7,6 @@ import {
   Receipt,
   Users,
   CheckCircle2,
-  Sparkles,
   Phone,
   FileSpreadsheet,
   Award,
@@ -43,12 +42,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             
             {/* Columna Izquierda: Mensaje y Acciones */}
             <div className="lg:col-span-7 flex flex-col items-start text-left">
-              
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-xs font-bold text-[#0D9488] mb-4 border border-teal-200 shadow-sm backdrop-blur-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#0D9488]" />
-                <span>Asesoría Contable, Tributaria & Legal Certificada</span>
-              </div>
-
               <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl font-black text-[#102547] tracking-tight leading-[1.08] mb-4">
                 Asesoría Integral{' '}
                 <span className="text-[#0D9488]">
@@ -170,10 +163,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D9488] uppercase tracking-wider mb-2">
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Nuestras Dos Divisiones Especializadas</span>
-            </div>
             <h2 className="font-heading text-3xl sm:text-5xl font-black text-[#102547] tracking-tight mb-3">
               Soluciones Integrales para su Negocio
             </h2>
@@ -189,10 +178,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#102547] text-white flex items-center justify-center mb-6 shadow-md group-hover:scale-105 transition-transform">
                   <Building2 className="w-6 h-6 text-[#00C4A7]" />
-                </div>
-
-                <div className="inline-block px-3 py-1 rounded-full bg-white text-xs font-bold text-[#0D9488] mb-3 border border-teal-200">
-                  8 Servicios Especializados
                 </div>
 
                 <h3 className="font-heading font-extrabold text-2xl text-[#102547] mb-3">
@@ -233,10 +218,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#0D9488] text-white flex items-center justify-center mb-6 shadow-md group-hover:scale-105 transition-transform">
                   <Receipt className="w-6 h-6" />
-                </div>
-
-                <div className="inline-block px-3 py-1 rounded-full bg-white text-xs font-bold text-[#0D9488] mb-3 border border-teal-200">
-                  13 Servicios Especializados
                 </div>
 
                 <h3 className="font-heading font-extrabold text-2xl text-[#102547] mb-3">
@@ -286,10 +267,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D9488] uppercase tracking-wider mb-2">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Garantía de Confianza</span>
-              </div>
               <h2 className="font-heading text-3xl sm:text-4xl font-black text-[#102547] tracking-tight mb-4">
                 Protección Jurídica y Financiera sin Sorpresas
               </h2>

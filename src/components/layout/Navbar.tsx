@@ -54,10 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
               <span className="font-extrabold tracking-tight text-[#102547] text-base sm:text-lg leading-tight font-heading">
-                GP SOLUTIONS
-              </span>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-teal-100 text-[#0D9488] border border-teal-200">
-                S.A.S.
+                GP SOLUTIONS <span className="text-xs font-bold text-[#0D9488]">S.A.S.</span>
               </span>
             </div>
             <span className="text-[11px] text-slate-500 font-medium tracking-normal">

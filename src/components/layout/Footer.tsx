@@ -39,15 +39,9 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               {COMPANY_DATA.trajectory}. Brindamos soluciones contables NIIF, tributarias ante el SRI, nómina en el IESS y societarias para empresas y personas naturales en Tumbaco, Quito y todo el Ecuador.
             </p>
 
-            <div className="flex items-center gap-3 text-xs text-slate-300">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/10">
-                <span className="w-2 h-2 rounded-full bg-[#00C4A7]" />
-                <span>Régimen RIMPE & General</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/10">
-                <span>RUC Activo</span>
-              </span>
-            </div>
+            <p className="text-xs text-slate-400 font-medium">
+              Régimen RIMPE & General • RUC Activo
+            </p>
           </div>
 
           {/* Col 2: Navigation Links (3 cols) */}

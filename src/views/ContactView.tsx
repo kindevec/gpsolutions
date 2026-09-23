@@ -8,7 +8,6 @@ import {
   Send,
   CheckCircle2,
   ChevronDown,
-  Sparkles,
 } from 'lucide-react';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
@@ -75,11 +74,6 @@ export const ContactView: React.FC = () => {
          ========================================================================= */}
       <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F9F9] via-[#EAF4F5] to-[#F4F9F9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-xs font-bold text-[#0D9488] mb-4 border border-teal-200 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#0D9488]" />
-            <span>Atención Directa & Despacho</span>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl font-black text-[#102547] tracking-tight mb-4 font-heading">
             Canales de Contacto Oficial
           </h1>

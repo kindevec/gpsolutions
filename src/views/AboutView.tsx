@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Users, CheckCircle2, Lock, Scale, Building2, MapPin, Phone, MessageCircle, Sparkles } from 'lucide-react';
+import { ShieldCheck, Award, Users, CheckCircle2, Lock, Scale, Building2, MapPin, Phone, MessageCircle } from 'lucide-react';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import type { TabKey } from '../types';
@@ -20,10 +20,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-xs font-bold text-[#0D9488] mb-4 border border-teal-200 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-[#0D9488]" />
-              <span>Solvencia Técnica & Jurídica en Ecuador</span>
-            </div>
             <h1 className="text-3xl sm:text-5xl font-black text-[#102547] tracking-tight mb-4 font-heading">
               Firma Contable y Legal en Tumbaco, Quito
             </h1>

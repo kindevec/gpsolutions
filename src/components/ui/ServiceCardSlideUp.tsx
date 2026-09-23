@@ -7,7 +7,6 @@ import {
   Building2,
   Receipt,
   Users,
-  Sparkles,
   ArrowRight,
 } from 'lucide-react';
 import { ServiceItem } from '../../types';
@@ -39,20 +38,6 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#102547]/75 via-transparent to-black/20" />
-
-        {/* Badge superior */}
-        <div className="absolute top-3 left-3">
-          <span className="text-[11px] font-bold px-3 py-1 rounded-md bg-white/95 text-[#0D9488] border border-teal-200/80 shadow-sm backdrop-blur-sm">
-            {service.badge}
-          </span>
-        </div>
-
-        {/* Categoría / Frecuencia inferior */}
-        <div className="absolute bottom-3 left-3">
-          <span className="text-[10px] text-white font-medium px-2.5 py-0.5 rounded-full bg-black/50 backdrop-blur-sm">
-            {service.frequency}
-          </span>
-        </div>
 
         {/* Indicador de Icono */}
         <div className="absolute bottom-3 right-3 w-9 h-9 rounded-xl bg-white/95 border border-teal-900/10 backdrop-blur-sm flex items-center justify-center text-[#0D9488] shadow-md group-hover:bg-[#102547] group-hover:text-white transition-colors">
@@ -117,9 +102,8 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
         >
           <div>
             <div className="flex items-center justify-between pb-3 border-b border-slate-200/80 mb-3">
-              <span className="text-[11px] font-black uppercase tracking-wider text-[#0D9488] flex items-center gap-1.5">
-                <Sparkles className="w-3 h-3" />
-                <span>Ficha Técnica • {service.badge}</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#102547]">
+                Ficha Técnica
               </span>
               <button
                 type="button"

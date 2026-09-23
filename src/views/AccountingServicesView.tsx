@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import {
   Building2,
   Search,
-  Sparkles,
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
@@ -44,11 +43,6 @@ export const AccountingServicesView: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-8">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-xs font-bold text-[#0D9488] mb-4 border border-teal-200 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#0D9488]" />
-                <span>Columna 01 del Afiche Oficial • 8 Soluciones Reales</span>
-              </div>
-
               <h1 className="text-3xl sm:text-5xl font-black text-[#102547] tracking-tight mb-4 font-heading">
                 Servicios Contables y Corporativos
               </h1>
