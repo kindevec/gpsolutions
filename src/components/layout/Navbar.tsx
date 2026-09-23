@@ -21,8 +21,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
 
   const navItems: { key: TabKey; label: string }[] = [
     { key: 'inicio', label: 'Inicio' },
-    { key: 'servicios', label: 'Servicios' },
-    { key: 'cotizador', label: 'Cotizador' },
+    { key: 'servicios-contables', label: 'Servicios Contables' },
+    { key: 'servicios-tributarios', label: 'Servicios Tributarios' },
     { key: 'nosotros', label: 'Nosotros' },
     { key: 'contacto', label: 'Contacto' },
   ];
@@ -32,13 +32,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'backdrop-blur-xl bg-[#0B192C]/95 border-b border-white/10 shadow-lg shadow-black/30 py-2.5'
-          : 'bg-[#0B192C]/80 backdrop-blur-md border-b border-white/5 py-3.5'
+          ? 'backdrop-blur-xl bg-[#F4F9F9]/95 border-b border-teal-900/10 shadow-[0_4px_25px_-5px_rgba(16,37,71,0.07)] py-2.5'
+          : 'bg-[#F4F9F9]/85 backdrop-blur-md border-b border-teal-900/10 py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
-        {/* LOGO OFICIAL LIMPIO (SIN CAJONES BLANCOS NI CONTENEDORES ARTIFICIALES) */}
+        {/* LOGO OFICIAL LIMPIO */}
         <button
           onClick={() => onSelectTab('inicio')}
           className="flex items-center gap-3 group focus:outline-none cursor-pointer text-left"
@@ -53,22 +53,22 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
           />
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold tracking-tight text-white text-base sm:text-lg leading-tight font-heading">
+              <span className="font-extrabold tracking-tight text-[#102547] text-base sm:text-lg leading-tight font-heading">
                 GP SOLUTIONS
               </span>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-[#00D26A]/15 text-[#00D26A] border border-[#00D26A]/30">
+              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-teal-100 text-[#0D9488] border border-teal-200">
                 S.A.S.
               </span>
             </div>
-            <span className="text-[11px] text-slate-400 font-medium tracking-normal">
+            <span className="text-[11px] text-slate-500 font-medium tracking-normal">
               {COMPANY_DATA.legacySlogan}
             </span>
           </div>
         </button>
 
-        {/* NAVEGACIÓN DESKTOP (5 PESTAÑAS INDEPENDIENTES) */}
+        {/* NAVEGACIÓN DESKTOP (5 SECCIONES OFICIALES) */}
         <nav
-          className="hidden md:flex items-center gap-1 lg:gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-white/10 shadow-inner backdrop-blur-sm"
+          className="hidden lg:flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/95 border border-teal-900/10 shadow-sm"
           aria-label="Navegación principal de 5 secciones"
         >
           {navItems.map((item) => {
@@ -79,8 +79,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
                 onClick={() => onSelectTab(item.key)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-[#153760] text-white shadow-sm border border-[#00C4A7]/30'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                    ? 'bg-[#0D9488] text-white shadow-sm'
+                    : 'text-[#102547] hover:text-[#0D9488] hover:bg-teal-50/70'
                 }`}
               >
                 {item.label}
@@ -93,10 +93,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
         <div className="flex items-center gap-2.5">
           <a
             href={`tel:${COMPANY_DATA.phoneFormatted1}`}
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-[#00D26A] transition-colors py-1.5 px-2.5"
-            title="Llamada telefónica inmediata"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#0D9488] transition-colors py-1.5 px-2.5"
+            title="Llamada directa"
           >
-            <Phone className="w-3.5 h-3.5 text-[#00D26A]" />
+            <Phone className="w-3.5 h-3.5 text-[#0D9488]" />
             <span className="font-mono font-medium">{COMPANY_DATA.phoneFormatted1}</span>
           </a>
 
@@ -104,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
             href={COMPANY_DATA.whatsappBaseUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-[#0B192C] bg-[#00D26A] hover:bg-[#00c060] transition-all duration-200 transform hover:-translate-y-0.5 shadow-md shadow-[#00D26A]/20 cursor-pointer min-h-[38px]"
+            className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#0D9488] hover:bg-[#0b7c72] transition-all duration-200 transform hover:-translate-y-0.5 shadow-md shadow-[#0D9488]/20 cursor-pointer min-h-[38px]"
           >
             <MessageCircle className="w-4 h-4 fill-current" />
             <span className="hidden sm:inline">Asesoría Directa</span>

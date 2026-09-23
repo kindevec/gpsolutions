@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0b192c;
-  --color-primary-dark: #07101d;
-  --color-navy-card: #10243e;
-  --color-navy-border: #1e3e62;
-  --color-accent-mint: #00d26a;
-  --color-accent-teal: #00c4a7;
-  --color-accent-cyan: #00b4d8;
-  --color-gold: #d8ac43;
+  --color-primary: #102547;
+  --color-primary-dark: #0b192c;
+  --color-teal-brand: #0d9488;
+  --color-teal-accent: #00c4a7;
+  --color-teal-light: #eaf4f5;
+  --color-teal-bg: #f4f9f9;
+  --color-gold: #d4af37;
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 }
@@ -21,12 +20,13 @@ h1, h2, h3, h4, .font-heading {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  color-scheme: light;
 }
 
 body {
   font-family: var(--font-sans);
-  color: #f1f5f9;
-  background-color: #070e17;
+  color: #102547;
+  background-color: #f4f9f9;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -37,14 +37,14 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b192c;
+  background: #f4f9f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e3e62;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00c4a7;
+  background: #0d9488;
 }
 
 /* Hide scrollbars for native app carousel feel */

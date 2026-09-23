@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Clock, ArrowUpRight, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ArrowUpRight, MessageCircle, Building2, Receipt } from 'lucide-react';
 import { COMPANY_DATA } from '../../data/company';
 import type { TabKey } from '../../types';
 
@@ -9,7 +9,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
   return (
-    <footer className="bg-slate-950 border-t border-white/10 pt-16 pb-28 md:pb-16 text-slate-300">
+    <footer className="bg-[#102547] text-white pt-16 pb-28 lg:pb-14 border-t border-teal-900/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main 4 Column Grid */}
@@ -29,61 +29,61 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
                 <span className="font-heading font-black text-xl text-white tracking-tight">
                   GP SOLUTIONS
                 </span>
-                <span className="block text-xs text-[#00D26A] font-semibold">
+                <span className="block text-xs text-[#00C4A7] font-semibold">
                   GUERRAPADILLAGPSOLUTIONS S.A.S.
                 </span>
               </div>
             </div>
 
-            <p className="text-sm text-slate-400 leading-relaxed mb-6 max-w-sm">
-              {COMPANY_DATA.trajectory}. Soluciones contables NIIF, tributarias SRI, nómina IESS y societarias para empresas y personas naturales en Tumbaco, Quito y todo el Ecuador.
+            <p className="text-sm text-slate-300 leading-relaxed mb-6 max-w-sm">
+              {COMPANY_DATA.trajectory}. Brindamos soluciones contables NIIF, tributarias ante el SRI, nómina en el IESS y societarias para empresas y personas naturales en Tumbaco, Quito y todo el Ecuador.
             </p>
 
-            <div className="flex items-center gap-3 text-xs text-slate-400">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                <span className="w-2 h-2 rounded-full bg-[#00D26A]" />
+            <div className="flex items-center gap-3 text-xs text-slate-300">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/10">
+                <span className="w-2 h-2 rounded-full bg-[#00C4A7]" />
                 <span>Régimen RIMPE & General</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/10">
                 <span>RUC Activo</span>
               </span>
             </div>
           </div>
 
-          {/* Col 2: Navigation Links (2 cols) */}
-          <div className="lg:col-span-2">
+          {/* Col 2: Navigation Links (3 cols) */}
+          <div className="lg:col-span-3">
             <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider mb-4">
-              Navegación
+              Secciones
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
                 <button
                   onClick={() => onSelectTab('inicio')}
-                  className="hover:text-[#00D26A] transition-colors cursor-pointer"
+                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
                 >
                   Inicio
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectTab('servicios')}
-                  className="hover:text-[#00D26A] transition-colors cursor-pointer"
+                  onClick={() => onSelectTab('servicios-contables')}
+                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
                 >
-                  Catálogo de Servicios
+                  Servicios Contables y Corporativos
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectTab('cotizador')}
-                  className="hover:text-[#00D26A] transition-colors cursor-pointer"
+                  onClick={() => onSelectTab('servicios-tributarios')}
+                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
                 >
-                  Cotizador Interactivo
+                  Servicios Tributarios y Laborales
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => onSelectTab('nosotros')}
-                  className="hover:text-[#00D26A] transition-colors cursor-pointer"
+                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
                 >
                   Quiénes Somos
                 </button>
@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <li>
                 <button
                   onClick={() => onSelectTab('contacto')}
-                  className="hover:text-[#00D26A] transition-colors cursor-pointer"
+                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
                 >
                   Atención y Despacho
                 </button>
@@ -99,24 +99,8 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
             </ul>
           </div>
 
-          {/* Col 3: Áreas de Práctica (2 cols) */}
-          <div className="lg:col-span-2">
-            <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider mb-4">
-              Especialidades
-            </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
-              <li>Contabilidad NIIF</li>
-              <li>Declaraciones SRI</li>
-              <li>Anexos ATS & RDEP</li>
-              <li>Nómina & Roles IESS</li>
-              <li>Constitución S.A.S.</li>
-              <li>Registro de Marcas</li>
-              <li>Devolución de IVA</li>
-            </ul>
-          </div>
-
-          {/* Col 4: Atención & Contacto Directo (3 cols) */}
-          <div className="lg:col-span-3 flex flex-col">
+          {/* Col 3: Contacto Oficial (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col">
             <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider mb-4">
               Contacto Oficial
             </h4>
@@ -125,35 +109,35 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
                 href={COMPANY_DATA.whatsappBaseUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-2.5 hover:text-[#00D26A] transition-colors group"
+                className="flex items-start gap-2.5 hover:text-[#00C4A7] transition-colors text-slate-300"
               >
-                <MessageCircle className="w-4 h-4 text-[#00D26A] shrink-0 mt-0.5" />
+                <MessageCircle className="w-4 h-4 text-[#00C4A7] shrink-0 mt-0.5" />
                 <span>WhatsApp: {COMPANY_DATA.phoneFormatted1}</span>
               </a>
 
               <a
                 href={`tel:${COMPANY_DATA.phoneFormatted2}`}
-                className="flex items-start gap-2.5 hover:text-[#00D26A] transition-colors group"
+                className="flex items-start gap-2.5 hover:text-[#00C4A7] transition-colors text-slate-300"
               >
-                <Phone className="w-4 h-4 text-[#00B4D8] shrink-0 mt-0.5" />
+                <Phone className="w-4 h-4 text-[#00C4A7] shrink-0 mt-0.5" />
                 <span>Línea 2: {COMPANY_DATA.phoneFormatted2}</span>
               </a>
 
               <a
                 href={`mailto:${COMPANY_DATA.email}`}
-                className="flex items-start gap-2.5 hover:text-[#00D26A] transition-colors group break-all"
+                className="flex items-start gap-2.5 hover:text-[#00C4A7] transition-colors text-slate-300 break-all"
               >
-                <Mail className="w-4 h-4 text-[#D8AC43] shrink-0 mt-0.5" />
+                <Mail className="w-4 h-4 text-[#00C4A7] shrink-0 mt-0.5" />
                 <span>{COMPANY_DATA.email}</span>
               </a>
 
-              <div className="flex items-start gap-2.5 text-slate-400">
-                <MapPin className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5 text-slate-300">
+                <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                 <span>{COMPANY_DATA.location}</span>
               </div>
 
-              <div className="flex items-start gap-2.5 text-slate-400">
-                <Clock className="w-4 h-4 text-slate-500 shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5 text-slate-300">
+                <Clock className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                 <span>{COMPANY_DATA.hours}</span>
               </div>
             </div>
@@ -167,12 +151,12 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
           </p>
 
           <p className="flex items-center gap-1.5 text-slate-300">
-            <span>Desarrollado con alto rendimiento por</span>
+            <span>Desarrollado por</span>
             <a
               href="https://www.kindevsas.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#00D26A] hover:underline font-semibold inline-flex items-center gap-0.5"
+              className="text-[#00C4A7] hover:underline font-semibold inline-flex items-center gap-0.5"
             >
               <span>Kindev S.A.S.</span>
               <ArrowUpRight className="w-3.5 h-3.5" />

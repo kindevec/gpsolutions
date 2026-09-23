@@ -6,15 +6,15 @@ export const FloatingWhatsApp: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(true);
 
   return (
-    <div className="fixed bottom-20 md:bottom-8 right-4 sm:right-6 z-40 flex items-end gap-2.5">
+    <div className="fixed bottom-20 lg:bottom-8 right-4 sm:right-6 z-40 flex items-end gap-2.5">
       {/* Floating Tooltip Help */}
       {showTooltip && (
-        <div className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-slate-900/95 text-white text-xs shadow-xl border border-white/10 backdrop-blur-md animate-fade-in">
-          <span className="w-2 h-2 rounded-full bg-[#00D26A] animate-ping" />
+        <div className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-white text-[#102547] text-xs shadow-xl border border-teal-200/80 backdrop-blur-md">
+          <span className="w-2 h-2 rounded-full bg-[#0D9488] animate-ping" />
           <span>¿Consultas con el SRI o IESS? Escríbanos</span>
           <button
             onClick={() => setShowTooltip(false)}
-            className="text-slate-400 hover:text-white p-0.5 cursor-pointer"
+            className="text-slate-400 hover:text-slate-700 p-0.5 cursor-pointer"
             aria-label="Cerrar mensaje"
           >
             <X className="w-3 h-3" />
@@ -27,7 +27,7 @@ export const FloatingWhatsApp: React.FC = () => {
         href={COMPANY_DATA.whatsappBaseUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#00D26A] hover:bg-[#00c060] text-[#0B192C] flex items-center justify-center shadow-lg shadow-[#00D26A]/30 transition-all duration-300 transform hover:scale-108 active:scale-95 cursor-pointer"
+        className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#0D9488] hover:bg-[#0b7c72] text-white flex items-center justify-center shadow-lg shadow-[#0D9488]/30 transition-all duration-300 transform hover:scale-108 active:scale-95 cursor-pointer"
         aria-label="Contactar a GP Solutions por WhatsApp"
       >
         <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 fill-current" />

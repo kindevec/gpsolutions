@@ -4,13 +4,19 @@ import { MobileBottomNav } from './components/layout/MobileBottomNav';
 import { Footer } from './components/layout/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { HomeView } from './views/HomeView';
-import { ServicesView } from './views/ServicesView';
-import { CalculatorView } from './views/CalculatorView';
+import { AccountingServicesView } from './views/AccountingServicesView';
+import { TaxServicesView } from './views/TaxServicesView';
 import { AboutView } from './views/AboutView';
 import { ContactView } from './views/ContactView';
 import type { TabKey } from './types';
 
-const VALID_TABS: readonly TabKey[] = ['inicio', 'servicios', 'cotizador', 'nosotros', 'contacto'];
+const VALID_TABS: readonly TabKey[] = [
+  'inicio',
+  'servicios-contables',
+  'servicios-tributarios',
+  'nosotros',
+  'contacto',
+];
 
 export const App: React.FC = () => {
   const getTabFromUrl = (): TabKey => {
@@ -29,11 +35,9 @@ export const App: React.FC = () => {
       return;
     }
 
-    // Registra la nueva vista en el historial con su hash
     window.history.pushState({ tab }, '', '#' + tab);
     setActiveTab(tab);
 
-    // Desplazamiento instantáneo al tope
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
@@ -72,26 +76,26 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-[#00D26A]/20 selection:text-[#00D26A]">
+    <div className="min-h-screen flex flex-col bg-[#F4F9F9] text-[#102547] selection:bg-teal-100 selection:text-[#0D9488]">
       {/* Top Navbar */}
       <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
 
       {/* Main Independent Views */}
       <main className="grow pb-0 overflow-x-hidden">
         {activeTab === 'inicio' && <HomeView onSelectTab={handleSelectTab} />}
-        {activeTab === 'servicios' && <ServicesView />}
-        {activeTab === 'cotizador' && <CalculatorView />}
+        {activeTab === 'servicios-contables' && <AccountingServicesView />}
+        {activeTab === 'servicios-tributarios' && <TaxServicesView />}
         {activeTab === 'nosotros' && <AboutView onSelectTab={handleSelectTab} />}
         {activeTab === 'contacto' && <ContactView />}
       </main>
 
-      {/* Persistent Floating WhatsApp */}
+      {/* Floating WhatsApp */}
       <FloatingWhatsApp />
 
       {/* Footer */}
       <Footer onSelectTab={handleSelectTab} />
 
-      {/* Ergonomic Mobile Bottom Navigation */}
+      {/* Mobile Bottom Navigation */}
       <MobileBottomNav activeTab={activeTab} onSelectTab={handleSelectTab} />
     </div>
   );

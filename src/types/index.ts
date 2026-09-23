@@ -1,4 +1,4 @@
-export type TabKey = 'inicio' | 'servicios' | 'cotizador' | 'nosotros' | 'contacto';
+export type TabKey = 'inicio' | 'servicios-contables' | 'servicios-tributarios' | 'nosotros' | 'contacto';
 
 export type ServiceCategory = 'contable' | 'tributaria' | 'laboral';
 
