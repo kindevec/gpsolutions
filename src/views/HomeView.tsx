@@ -29,35 +29,45 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
     <div className="relative bg-[#F4F8FC] text-[#102547]">
       
       {/* =========================================================================
-          1. HERO INSTITUCIONAL ONDULADO (FONDO PASTEL CELESTE METÁLICO)
+          1. HERO INSTITUCIONAL ONDULADO (FOTO CORPORATIVA + MÁSCARA ONDULADA)
          ========================================================================= */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-[#F4F8FC] via-[#EAF2FA] to-[#F4F8FC]">
+      <section className="relative pt-32 pb-24 sm:pt-36 sm:pb-28 md:pt-40 md:pb-32 overflow-hidden bg-[#102547]">
         
-        {/* Glows ambientales celeste suave */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-sky-300/20 rounded-full blur-[130px] pointer-events-none -z-10" />
-        <div className="absolute -top-10 -right-10 w-80 h-80 bg-sky-200/30 rounded-full blur-[100px] pointer-events-none -z-10" />
+        {/* Foto de Fondo con Máscara Ondulada y Overlays de Alta Legibilidad */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/heroes/hero-home.jpg"
+            alt="GP Solutions - Asesoría Contable, Tributaria y Legal en Ecuador"
+            className="w-full h-full object-cover object-center transform scale-105"
+            loading="eager"
+          />
+          {/* Overlays corporativos Kindev (Marino Profundo + Acentos Celestitos) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/96 via-[#102547]/90 to-[#0c1a30]/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1a30]/80 via-transparent to-[#102547]/90" />
+          <div className="absolute top-1/4 right-1/4 w-[600px] h-[350px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Columna Izquierda: Mensaje y Acciones */}
             <div className="lg:col-span-7 flex flex-col items-start text-left">
-              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl font-black text-[#102547] tracking-tight leading-[1.08] mb-4">
+              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.08] mb-4 drop-shadow-sm">
                 Asesoría Integral{' '}
-                <span className="text-[#0284C7]">
+                <span className="text-[#38BDF8]">
                   Contable, Tributaria y Legal
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed mb-6 max-w-2xl">
-                <strong className="text-[#102547]">«{COMPANY_DATA.slogan}»</strong>. {COMPANY_DATA.trajectory}. Brindamos soluciones seguras para blindar su empresa ante el SRI, IESS y Superintendencia de Compañías.
+              <p className="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed mb-6 max-w-2xl">
+                <strong className="text-white">«{COMPANY_DATA.slogan}»</strong>. {COMPANY_DATA.trajectory}. Brindamos soluciones seguras para blindar su empresa ante el SRI, IESS y Superintendencia de Compañías.
               </p>
 
               {/* Botones de Acción */}
               <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-8">
                 <button
                   onClick={() => onSelectTab('servicios-contables')}
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-[#102547] hover:bg-[#153760] text-white transition-all duration-200 shadow-md cursor-pointer"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 transition-all duration-200 shadow-md cursor-pointer"
                 >
                   <Building2 className="w-4 h-4 text-[#38BDF8]" />
                   <span>Servicios Contables</span>
@@ -65,7 +75,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
                 <button
                   onClick={() => onSelectTab('servicios-tributarios')}
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all duration-200 shadow-md shadow-sky-500/20 cursor-pointer"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all duration-200 shadow-lg shadow-sky-500/30 cursor-pointer"
                 >
                   <Receipt className="w-4 h-4" />
                   <span>Servicios Tributarios</span>
@@ -75,7 +85,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                   href={whatsappHeroUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-white text-[#102547] hover:bg-slate-50 border border-sky-200 transition-all cursor-pointer shadow-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-white text-[#102547] hover:bg-slate-100 transition-all cursor-pointer shadow-md"
                 >
                   <MessageCircle className="w-4 h-4 text-[#0284C7]" />
                   <span>WhatsApp Directo</span>
@@ -83,30 +93,30 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               </div>
 
               {/* Métricas de Confianza */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-sky-900/10 w-full">
+              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/15 w-full">
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#0284C7] font-heading">
+                  <div className="text-xl sm:text-2xl font-black text-[#38BDF8] font-heading">
                     +12 Años
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5 font-medium">
+                  <div className="text-xs text-slate-300 mt-0.5 font-medium">
                     Trayectoria
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#102547] font-heading">
+                  <div className="text-xl sm:text-2xl font-black text-white font-heading">
                     100%
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5 font-medium">
+                  <div className="text-xs text-slate-300 mt-0.5 font-medium">
                     Cumplimiento SRI
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#0284C7] font-heading">
+                  <div className="text-xl sm:text-2xl font-black text-[#38BDF8] font-heading">
                     0 Mora
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5 font-medium">
+                  <div className="text-xs text-slate-300 mt-0.5 font-medium">
                     IESS Patronal
                   </div>
                 </div>
@@ -116,7 +126,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
             {/* Columna Derecha: Tarjeta Institucional de Autoridad */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md p-8 rounded-3xl bg-white border border-sky-900/10 shadow-xl flex flex-col items-center text-center">
+              <div className="relative w-full max-w-md p-8 rounded-3xl bg-white/95 backdrop-blur-md border border-white/40 shadow-2xl flex flex-col items-center text-center">
                 
                 <div className="w-36 h-36 mb-4 flex items-center justify-center">
                   <img
@@ -149,8 +159,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           </div>
         </div>
 
-        {/* Separador Ondulado SVG */}
-        <div className="absolute bottom-0 left-0 right-0">
+        {/* Separador Ondulado SVG que corta la base de la imagen con la onda */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
           <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave1" />
         </div>
       </section>

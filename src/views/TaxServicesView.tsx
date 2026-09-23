@@ -40,38 +40,49 @@ export const TaxServicesView: React.FC = () => {
   }, [subFilter, searchQuery]);
 
   return (
-    <div className="pt-24 bg-[#F4F8FC] text-[#102547]">
+    <div className="bg-[#F4F8FC] text-[#102547]">
       
       {/* =========================================================================
-          1. HEADER INSTITUCIONAL ONDULADO (FONDO PASTEL CELESTE METÁLICO)
+          1. HEADER INSTITUCIONAL ONDULADO (FOTO TRIBUTARIA + MÁSCARA ONDULADA)
          ========================================================================= */}
-      <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F8FC] via-[#EAF2FA] to-[#F4F8FC]">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-sky-200/40 rounded-full blur-[140px] pointer-events-none" />
+      <section className="relative pt-32 pb-24 sm:pt-36 sm:pb-28 md:pt-40 md:pb-32 overflow-hidden bg-[#102547]">
+        {/* Foto de Fondo con Máscara Ondulada y Overlays */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/heroes/hero-tax.jpg"
+            alt="Servicios Tributarios y Laborales en GP Solutions"
+            className="w-full h-full object-cover object-center transform scale-105"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/95 via-[#102547]/88 to-[#0c1a30]/82" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1a30]/80 via-transparent to-[#102547]/90" />
+          <div className="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-8">
-              <h1 className="text-3xl sm:text-5xl font-black text-[#102547] tracking-tight mb-4 font-heading">
+              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 font-heading drop-shadow-sm">
                 Servicios Tributarios y Laborales
               </h1>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
                 Liquidación oportuna de declaraciones de IVA e Impuesto a la Renta ante el SRI, trámite de devolución de impuestos, anexos ATS/RDEP, patentes 1.5 x mil, y gestión integral de nómina, roles y obligaciones patronales en el IESS.
               </p>
 
               {/* Badges de Autoridad */}
-              <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-700">
-                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-sky-200/80 shadow-2xs">
-                  <ShieldCheck className="w-4 h-4 text-[#0284C7]" />
+              <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-white">
+                <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 shadow-sm">
+                  <ShieldCheck className="w-4 h-4 text-[#38BDF8]" />
                   <span>Servicio de Rentas Internas (SRI)</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-sky-200/80 shadow-2xs">
-                  <Users className="w-4 h-4 text-[#0284C7]" />
+                <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 shadow-sm">
+                  <Users className="w-4 h-4 text-[#38BDF8]" />
                   <span>Seguridad Social (IESS & SUT)</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-sky-200/80 shadow-2xs">
-                  <Receipt className="w-4 h-4 text-[#0284C7]" />
+                <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 shadow-sm">
+                  <Receipt className="w-4 h-4 text-[#38BDF8]" />
                   <span>Cero Multas por Glosas</span>
                 </div>
               </div>
@@ -79,7 +90,7 @@ export const TaxServicesView: React.FC = () => {
 
             {/* Buscador Rápido y Filtro de Sub-Categoría */}
             <div className="lg:col-span-4 space-y-4">
-              <div className="p-6 rounded-3xl bg-white border border-sky-900/10 shadow-lg">
+              <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-white/40 shadow-2xl">
                 <label className="text-xs font-bold text-[#102547] uppercase tracking-wider block mb-2">
                   Filtrar Especialidad
                 </label>
@@ -137,7 +148,7 @@ export const TaxServicesView: React.FC = () => {
         </div>
 
         {/* Onda Divisoria */}
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
           <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave2" />
         </div>
       </section>
