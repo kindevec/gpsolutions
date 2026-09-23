@@ -10,13 +10,13 @@ interface AboutViewProps {
 
 export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
   return (
-    <div className="pt-24 bg-[#F4F9F9] text-[#102547]">
+    <div className="pt-24 bg-[#F4F8FC] text-[#102547]">
       
       {/* =========================================================================
           1. HEADER INSTITUCIONAL ONDULADO (FONDO PASTEL METÁLICO)
          ========================================================================= */}
-      <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F9F9] via-[#EAF4F5] to-[#F4F9F9]">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-teal-200/40 rounded-full blur-[140px] pointer-events-none" />
+      <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F8FC] via-[#EAF2FA] to-[#F4F8FC]">
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-sky-200/40 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -46,7 +46,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
             
             {/* Columna Texto */}
             <div className="lg:col-span-7">
-              <span className="text-xs font-bold text-[#0D9488] uppercase tracking-wider block mb-2">
+              <span className="text-xs font-bold text-[#0284C7] uppercase tracking-wider block mb-2">
                 Trayectoria de Autoridad
               </span>
               <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#102547] tracking-tight mb-4">
@@ -62,16 +62,16 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="p-4 rounded-2xl bg-[#F4F9F9] border border-teal-100 flex items-start gap-3">
-                  <Scale className="w-5 h-5 text-[#0D9488] shrink-0 mt-0.5" />
+                <div className="p-4 rounded-2xl bg-[#F4F8FC] border border-sky-100 flex items-start gap-3">
+                  <Scale className="w-5 h-5 text-[#0284C7] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-[#102547]">Rigor Normativo</h4>
                     <p className="text-xs text-slate-500">Apego estricto a NIIF y resoluciones del SRI.</p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#F4F9F9] border border-teal-100 flex items-start gap-3">
-                  <Lock className="w-5 h-5 text-[#0D9488] shrink-0 mt-0.5" />
+                <div className="p-4 rounded-2xl bg-[#F4F8FC] border border-sky-100 flex items-start gap-3">
+                  <Lock className="w-5 h-5 text-[#0284C7] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-[#102547]">Confidencialidad</h4>
                     <p className="text-xs text-slate-500">Secreto profesional y resguardo de datos.</p>
@@ -84,7 +84,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                   href={COMPANY_DATA.whatsappBaseUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0D9488] hover:bg-[#0b7c72] text-white transition-all shadow-md shadow-[#0D9488]/20 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all shadow-md shadow-[#0284C7]/20 cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4 fill-current" />
                   <span>Contactar con el Director</span>
@@ -92,7 +92,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
                 <button
                   onClick={() => onSelectTab('contacto')}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-[#102547] bg-[#EAF4F5] hover:bg-teal-100 transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold text-[#102547] bg-[#EAF2FA] hover:bg-sky-100 transition-all cursor-pointer"
                 >
                   <span>Ver Despacho en Tumbaco</span>
                 </button>
@@ -101,7 +101,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
             {/* Columna Medallón Oficial */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="p-8 rounded-3xl bg-[#F4F9F9] border border-teal-900/10 shadow-lg text-center max-w-sm w-full">
+              <div className="p-8 rounded-3xl bg-[#F4F8FC] border border-sky-900/10 shadow-lg text-center max-w-sm w-full">
                 <div className="w-36 h-36 mx-auto mb-4">
                   <img
                     src="/logo.webp"
@@ -115,25 +115,25 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 <h3 className="font-heading font-black text-xl text-[#102547] mb-1">
                   {COMPANY_DATA.director}
                 </h3>
-                <p className="text-xs text-[#0D9488] font-bold mb-4">
+                <p className="text-xs text-[#0284C7] font-bold mb-4">
                   Representante Legal & Consultor Principal
                 </p>
 
-                <div className="space-y-2 text-xs text-slate-700 text-left pt-4 border-t border-teal-100">
+                <div className="space-y-2 text-xs text-slate-700 text-left pt-4 border-t border-sky-100">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#0D9488] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0284C7] shrink-0" />
                     <span>Especialista en Auditoría y Normas NIIF</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#0D9488] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0284C7] shrink-0" />
                     <span>Planificación Tributaria y Anexos SRI</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#0D9488] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0284C7] shrink-0" />
                     <span>Consultor en Creación de Sociedades S.A.S.</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-[#0D9488] shrink-0" />
+                    <MapPin className="w-4 h-4 text-[#0284C7] shrink-0" />
                     <span>Tumbaco, Quito - Ecuador</span>
                   </div>
                 </div>
@@ -174,9 +174,9 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
               ].map((p, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-3xl bg-[#F4F9F9] border border-teal-900/10 hover:border-[#0D9488]/40 transition-all"
+                  className="p-6 rounded-3xl bg-[#F4F8FC] border border-sky-900/10 hover:border-[#0284C7]/40 transition-all"
                 >
-                  <div className="w-8 h-8 rounded-xl bg-teal-100 text-[#0D9488] font-bold text-xs flex items-center justify-center mb-3">
+                  <div className="w-8 h-8 rounded-xl bg-sky-100 text-[#0284C7] font-bold text-xs flex items-center justify-center mb-3">
                     0{idx + 1}
                   </div>
                   <h4 className="font-heading font-bold text-base text-[#102547] mb-1.5">

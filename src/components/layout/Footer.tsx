@@ -9,7 +9,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
   return (
-    <footer className="bg-[#102547] text-white pt-16 pb-28 lg:pb-14 border-t border-teal-900/20">
+    <footer className="bg-[#102547] text-white pt-16 pb-28 lg:pb-14 border-t border-sky-900/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main 4 Column Grid */}
@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
                 <span className="font-heading font-black text-xl text-white tracking-tight">
                   GP SOLUTIONS
                 </span>
-                <span className="block text-xs text-[#00C4A7] font-semibold">
+                <span className="block text-xs text-[#38BDF8] font-semibold">
                   GUERRAPADILLAGPSOLUTIONS S.A.S.
                 </span>
               </div>
@@ -53,7 +53,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <li>
                 <button
                   onClick={() => onSelectTab('inicio')}
-                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
+                  className="hover:text-[#38BDF8] transition-colors cursor-pointer text-slate-300"
                 >
                   Inicio
                 </button>
@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <li>
                 <button
                   onClick={() => onSelectTab('servicios-contables')}
-                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
+                  className="hover:text-[#38BDF8] transition-colors cursor-pointer text-slate-300"
                 >
                   Servicios Contables y Corporativos
                 </button>
@@ -69,7 +69,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <li>
                 <button
                   onClick={() => onSelectTab('servicios-tributarios')}
-                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
+                  className="hover:text-[#38BDF8] transition-colors cursor-pointer text-slate-300"
                 >
                   Servicios Tributarios y Laborales
                 </button>
@@ -77,7 +77,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <li>
                 <button
                   onClick={() => onSelectTab('nosotros')}
-                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
+                  className="hover:text-[#38BDF8] transition-colors cursor-pointer text-slate-300"
                 >
                   Quiénes Somos
                 </button>
@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <li>
                 <button
                   onClick={() => onSelectTab('contacto')}
-                  className="hover:text-[#00C4A7] transition-colors cursor-pointer text-slate-300"
+                  className="hover:text-[#38BDF8] transition-colors cursor-pointer text-slate-300"
                 >
                   Atención y Despacho
                 </button>
@@ -103,25 +103,25 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
                 href={COMPANY_DATA.whatsappBaseUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-2.5 hover:text-[#00C4A7] transition-colors text-slate-300"
+                className="flex items-start gap-2.5 hover:text-[#38BDF8] transition-colors text-slate-300"
               >
-                <MessageCircle className="w-4 h-4 text-[#00C4A7] shrink-0 mt-0.5" />
+                <MessageCircle className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
                 <span>WhatsApp: {COMPANY_DATA.phoneFormatted1}</span>
               </a>
 
               <a
                 href={`tel:${COMPANY_DATA.phoneFormatted2}`}
-                className="flex items-start gap-2.5 hover:text-[#00C4A7] transition-colors text-slate-300"
+                className="flex items-start gap-2.5 hover:text-[#38BDF8] transition-colors text-slate-300"
               >
-                <Phone className="w-4 h-4 text-[#00C4A7] shrink-0 mt-0.5" />
+                <Phone className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
                 <span>Línea 2: {COMPANY_DATA.phoneFormatted2}</span>
               </a>
 
               <a
                 href={`mailto:${COMPANY_DATA.email}`}
-                className="flex items-start gap-2.5 hover:text-[#00C4A7] transition-colors text-slate-300 break-all"
+                className="flex items-start gap-2.5 hover:text-[#38BDF8] transition-colors text-slate-300 break-all"
               >
-                <Mail className="w-4 h-4 text-[#00C4A7] shrink-0 mt-0.5" />
+                <Mail className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
                 <span>{COMPANY_DATA.email}</span>
               </a>
 
@@ -150,7 +150,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               href="https://www.kindevsas.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#00C4A7] hover:underline font-semibold inline-flex items-center gap-0.5"
+              className="text-[#38BDF8] hover:underline font-semibold inline-flex items-center gap-0.5"
             >
               <span>Kindev S.A.S.</span>
               <ArrowUpRight className="w-3.5 h-3.5" />

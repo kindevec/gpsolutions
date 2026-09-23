@@ -40,13 +40,13 @@ export const TaxServicesView: React.FC = () => {
   }, [subFilter, searchQuery]);
 
   return (
-    <div className="pt-24 bg-[#F4F9F9] text-[#102547]">
+    <div className="pt-24 bg-[#F4F8FC] text-[#102547]">
       
       {/* =========================================================================
-          1. HEADER INSTITUCIONAL ONDULADO (FONDO PASTEL TURQUESA METÁLICO)
+          1. HEADER INSTITUCIONAL ONDULADO (FONDO PASTEL CELESTE METÁLICO)
          ========================================================================= */}
-      <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F9F9] via-[#EAF4F5] to-[#F4F9F9]">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal-200/40 rounded-full blur-[140px] pointer-events-none" />
+      <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F8FC] via-[#EAF2FA] to-[#F4F8FC]">
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-sky-200/40 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -62,16 +62,16 @@ export const TaxServicesView: React.FC = () => {
 
               {/* Badges de Autoridad */}
               <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-700">
-                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-teal-200/80 shadow-2xs">
-                  <ShieldCheck className="w-4 h-4 text-[#0D9488]" />
+                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-sky-200/80 shadow-2xs">
+                  <ShieldCheck className="w-4 h-4 text-[#0284C7]" />
                   <span>Servicio de Rentas Internas (SRI)</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-teal-200/80 shadow-2xs">
-                  <Users className="w-4 h-4 text-[#0D9488]" />
+                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-sky-200/80 shadow-2xs">
+                  <Users className="w-4 h-4 text-[#0284C7]" />
                   <span>Seguridad Social (IESS & SUT)</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-teal-200/80 shadow-2xs">
-                  <Receipt className="w-4 h-4 text-[#0D9488]" />
+                <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-sky-200/80 shadow-2xs">
+                  <Receipt className="w-4 h-4 text-[#0284C7]" />
                   <span>Cero Multas por Glosas</span>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export const TaxServicesView: React.FC = () => {
 
             {/* Buscador Rápido y Filtro de Sub-Categoría */}
             <div className="lg:col-span-4 space-y-4">
-              <div className="p-6 rounded-3xl bg-white border border-teal-900/10 shadow-lg">
+              <div className="p-6 rounded-3xl bg-white border border-sky-900/10 shadow-lg">
                 <label className="text-xs font-bold text-[#102547] uppercase tracking-wider block mb-2">
                   Filtrar Especialidad
                 </label>
@@ -90,8 +90,8 @@ export const TaxServicesView: React.FC = () => {
                     onClick={() => setSubFilter('todos')}
                     className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
                       subFilter === 'todos'
-                        ? 'bg-[#0D9488] text-white shadow-sm'
-                        : 'bg-[#F4F9F9] text-slate-700 hover:bg-slate-100 border border-teal-100'
+                        ? 'bg-[#0284C7] text-white shadow-sm'
+                        : 'bg-[#F4F8FC] text-slate-700 hover:bg-slate-100 border border-sky-100'
                     }`}
                   >
                     Todos (13)
@@ -101,8 +101,8 @@ export const TaxServicesView: React.FC = () => {
                     onClick={() => setSubFilter('tributaria')}
                     className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
                       subFilter === 'tributaria'
-                        ? 'bg-[#0D9488] text-white shadow-sm'
-                        : 'bg-[#F4F9F9] text-slate-700 hover:bg-slate-100 border border-teal-100'
+                        ? 'bg-[#0284C7] text-white shadow-sm'
+                        : 'bg-[#F4F8FC] text-slate-700 hover:bg-slate-100 border border-sky-100'
                     }`}
                   >
                     SRI (8)
@@ -112,8 +112,8 @@ export const TaxServicesView: React.FC = () => {
                     onClick={() => setSubFilter('laboral')}
                     className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
                       subFilter === 'laboral'
-                        ? 'bg-[#0D9488] text-white shadow-sm'
-                        : 'bg-[#F4F9F9] text-slate-700 hover:bg-slate-100 border border-teal-100'
+                        ? 'bg-[#0284C7] text-white shadow-sm'
+                        : 'bg-[#F4F8FC] text-slate-700 hover:bg-slate-100 border border-sky-100'
                     }`}
                   >
                     IESS (5)
@@ -127,7 +127,7 @@ export const TaxServicesView: React.FC = () => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Buscar declaración, nómina, SRI..."
-                    className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#F4F9F9] border border-teal-200 text-xs text-[#102547] placeholder-slate-400 focus:outline-none focus:border-[#0D9488] transition-colors"
+                    className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#F4F8FC] border border-sky-200 text-xs text-[#102547] placeholder-slate-400 focus:outline-none focus:border-[#0284C7] transition-colors"
                   />
                 </div>
               </div>
@@ -162,7 +162,7 @@ export const TaxServicesView: React.FC = () => {
       {/* ========================================================= */}
       {/* 3. BANNER DE CONTACTO TRIBUTARIO                           */}
       {/* ========================================================= */}
-      <section className="py-14 bg-[#EAF4F5] border-t border-teal-200/60">
+      <section className="py-14 bg-[#EAF2FA] border-t border-sky-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-heading font-extrabold text-2xl text-[#102547] mb-2">
             ¿Tiene declaraciones atrasadas o dudas sobre el cálculo de liquidaciones?
@@ -175,7 +175,7 @@ export const TaxServicesView: React.FC = () => {
             href={buildWhatsAppLink('Hola GP SOLUTIONS (+593999840649), necesito asesoría urgente para regularizar mi situación tributaria/laboral.')}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0D9488] hover:bg-[#0b7c72] text-white shadow-md shadow-[#0D9488]/20 transition-all cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white shadow-md shadow-sky-500/20 transition-all cursor-pointer"
           >
             <MessageCircle className="w-4 h-4 fill-current" />
             <span>Consultar por WhatsApp con un Especialista</span>

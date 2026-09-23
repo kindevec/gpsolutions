@@ -67,12 +67,12 @@ export const ContactView: React.FC = () => {
   ];
 
   return (
-    <div className="pt-24 bg-[#F4F9F9] text-[#102547]">
+    <div className="pt-24 bg-[#F4F8FC] text-[#102547]">
       
       {/* =========================================================================
           1. HEADER INSTITUCIONAL ONDULADO
          ========================================================================= */}
-      <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F9F9] via-[#EAF4F5] to-[#F4F9F9]">
+      <section className="relative pt-12 pb-16 md:pt-16 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F8FC] via-[#EAF2FA] to-[#F4F8FC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h1 className="text-3xl sm:text-5xl font-black text-[#102547] tracking-tight mb-4 font-heading">
             Canales de Contacto Oficial
@@ -100,7 +100,7 @@ export const ContactView: React.FC = () => {
             
             {/* Formulario */}
             <div className="lg:col-span-7">
-              <div className="p-8 rounded-3xl bg-[#F4F9F9] border border-teal-900/10 shadow-md">
+              <div className="p-8 rounded-3xl bg-[#F4F8FC] border border-sky-900/10 shadow-md">
                 <h3 className="font-heading font-extrabold text-2xl text-[#102547] mb-2">
                   Envíenos su Requerimiento
                 </h3>
@@ -109,15 +109,15 @@ export const ContactView: React.FC = () => {
                 </p>
 
                 {formSubmitted ? (
-                  <div className="p-8 rounded-2xl bg-white border border-teal-200 text-center shadow-sm">
-                    <CheckCircle2 className="w-12 h-12 text-[#0D9488] mx-auto mb-3" />
+                  <div className="p-8 rounded-2xl bg-white border border-sky-200 text-center shadow-sm">
+                    <CheckCircle2 className="w-12 h-12 text-[#0284C7] mx-auto mb-3" />
                     <h4 className="font-bold text-[#102547] text-base mb-1">¡Consulta lista para envío!</h4>
                     <p className="text-xs text-slate-600 mb-4">
                       Se ha generado el enlace de WhatsApp. Si no se abrió automáticamente, pulse el siguiente botón:
                     </p>
                     <button
                       onClick={() => setFormSubmitted(false)}
-                      className="text-xs font-bold text-[#0D9488] hover:underline"
+                      className="text-xs font-bold text-[#0284C7] hover:underline"
                     >
                       Enviar otra consulta
                     </button>
@@ -145,7 +145,7 @@ export const ContactView: React.FC = () => {
                           value={formData.nombre}
                           onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
                           placeholder="Ej. Juan Pérez"
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-teal-200 text-xs text-[#102547] focus:outline-none focus:border-[#0D9488] transition-colors"
+                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors"
                         />
                       </div>
 
@@ -159,7 +159,7 @@ export const ContactView: React.FC = () => {
                           value={formData.telefono}
                           onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
                           placeholder="Ej. 0999840649"
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-teal-200 text-xs text-[#102547] focus:outline-none focus:border-[#0D9488] transition-colors"
+                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors"
                         />
                       </div>
                     </div>
@@ -174,7 +174,7 @@ export const ContactView: React.FC = () => {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="correo@ejemplo.com"
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-teal-200 text-xs text-[#102547] focus:outline-none focus:border-[#0D9488] transition-colors"
+                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors"
                         />
                       </div>
 
@@ -185,7 +185,7 @@ export const ContactView: React.FC = () => {
                         <select
                           value={formData.servicio}
                           onChange={(e) => setFormData({ ...formData, servicio: e.target.value })}
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-teal-200 text-xs text-[#102547] focus:outline-none focus:border-[#0D9488] transition-colors"
+                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors"
                         >
                           <option value="Servicios Contables y Corporativos">Servicios Contables y Corporativos (NIIF / SuperCías)</option>
                           <option value="Servicios Tributarios SRI">Servicios Tributarios (SRI / Renta / IVA)</option>
@@ -206,13 +206,13 @@ export const ContactView: React.FC = () => {
                         value={formData.mensaje}
                         onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
                         placeholder="Describa brevemente su necesidad o si tiene declaraciones atrasadas..."
-                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-teal-200 text-xs text-[#102547] focus:outline-none focus:border-[#0D9488] transition-colors resize-none"
+                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors resize-none"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl text-xs sm:text-sm font-bold bg-[#0D9488] hover:bg-[#0b7c72] text-white shadow-md shadow-[#0D9488]/20 transition-all cursor-pointer"
+                      className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white shadow-md shadow-[#0284C7]/20 transition-all cursor-pointer"
                     >
                       <Send className="w-4 h-4" />
                       <span>Enviar a WhatsApp Oficial</span>
@@ -226,7 +226,7 @@ export const ContactView: React.FC = () => {
             <div className="lg:col-span-5 space-y-4">
               
               {/* Tarjeta de Identidad Institucional Oficial */}
-              <div className="p-6 rounded-3xl bg-white border border-teal-900/10 shadow-sm flex items-center gap-4">
+              <div className="p-6 rounded-3xl bg-white border border-sky-900/10 shadow-sm flex items-center gap-4">
                 <img
                   src="/logo.webp"
                   alt="Logo Oficial GP Solutions"
@@ -238,7 +238,7 @@ export const ContactView: React.FC = () => {
                   <h3 className="font-heading font-black text-base text-[#102547]">
                     {COMPANY_DATA.commercialName}
                   </h3>
-                  <p className="text-xs text-[#0D9488] font-semibold">
+                  <p className="text-xs text-[#0284C7] font-semibold">
                     {COMPANY_DATA.name}
                   </p>
                   <p className="text-[11px] text-slate-500 mt-0.5">
@@ -249,12 +249,12 @@ export const ContactView: React.FC = () => {
 
               <div className="p-6 rounded-3xl bg-gradient-to-br from-[#102547] to-[#153760] text-white shadow-xl">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-2xl bg-[#0D9488] text-white flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-2xl bg-[#0284C7] text-white flex items-center justify-center">
                     <MessageCircle className="w-5 h-5 fill-current" />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm">Línea Directa WhatsApp</h4>
-                    <p className="text-xs text-[#00C4A7] font-semibold">{COMPANY_DATA.phoneFormatted1}</p>
+                    <p className="text-xs text-[#38BDF8] font-semibold">{COMPANY_DATA.phoneFormatted1}</p>
                   </div>
                 </div>
                 <p className="text-xs text-slate-300 mb-4">
@@ -270,36 +270,36 @@ export const ContactView: React.FC = () => {
                 </a>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F4F9F9] border border-teal-100 flex items-start gap-3.5">
-                <Phone className="w-5 h-5 text-[#0D9488] shrink-0 mt-0.5" />
+              <div className="p-5 rounded-2xl bg-[#F4F8FC] border border-sky-100 flex items-start gap-3.5">
+                <Phone className="w-5 h-5 text-[#0284C7] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-xs font-bold text-[#102547]">Línea Telefónica Secundaria</div>
-                  <a href={`tel:${COMPANY_DATA.phoneFormatted2}`} className="text-xs text-slate-600 hover:text-[#0D9488] font-mono">
+                  <a href={`tel:${COMPANY_DATA.phoneFormatted2}`} className="text-xs text-slate-600 hover:text-[#0284C7] font-mono">
                     {COMPANY_DATA.phoneFormatted2}
                   </a>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F4F9F9] border border-teal-100 flex items-start gap-3.5">
-                <Mail className="w-5 h-5 text-[#0D9488] shrink-0 mt-0.5" />
+              <div className="p-5 rounded-2xl bg-[#F4F8FC] border border-sky-100 flex items-start gap-3.5">
+                <Mail className="w-5 h-5 text-[#0284C7] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-xs font-bold text-[#102547]">Correo Institucional</div>
-                  <a href={`mailto:${COMPANY_DATA.email}`} className="text-xs text-slate-600 hover:text-[#0D9488] break-all">
+                  <a href={`mailto:${COMPANY_DATA.email}`} className="text-xs text-slate-600 hover:text-[#0284C7] break-all">
                     {COMPANY_DATA.email}
                   </a>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F4F9F9] border border-teal-100 flex items-start gap-3.5">
-                <MapPin className="w-5 h-5 text-[#0D9488] shrink-0 mt-0.5" />
+              <div className="p-5 rounded-2xl bg-[#F4F8FC] border border-sky-100 flex items-start gap-3.5">
+                <MapPin className="w-5 h-5 text-[#0284C7] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-xs font-bold text-[#102547]">Despacho Presencial</div>
                   <p className="text-xs text-slate-600">{COMPANY_DATA.location}</p>
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#F4F9F9] border border-teal-100 flex items-start gap-3.5">
-                <Clock className="w-5 h-5 text-[#0D9488] shrink-0 mt-0.5" />
+              <div className="p-5 rounded-2xl bg-[#F4F8FC] border border-sky-100 flex items-start gap-3.5">
+                <Clock className="w-5 h-5 text-[#0284C7] shrink-0 mt-0.5" />
                 <div>
                   <div className="text-xs font-bold text-[#102547]">Horario de Atención</div>
                   <p className="text-xs text-slate-600">{COMPANY_DATA.hours}</p>
@@ -327,25 +327,25 @@ export const ContactView: React.FC = () => {
                 return (
                   <div
                     key={idx}
-                    className="rounded-2xl bg-[#F4F9F9] border border-teal-100 overflow-hidden"
+                    className="rounded-2xl bg-[#F4F8FC] border border-sky-100 overflow-hidden"
                   >
                     <button
                       type="button"
                       onClick={() => toggleFaq(idx)}
-                      className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left cursor-pointer hover:bg-teal-50/50 transition-colors"
+                      className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left cursor-pointer hover:bg-sky-50/50 transition-colors"
                     >
                       <span className="font-heading font-bold text-xs sm:text-sm text-[#102547]">
                         {faq.q}
                       </span>
                       <ChevronDown
-                        className={`w-4 h-4 text-[#0D9488] shrink-0 transition-transform duration-300 ${
+                        className={`w-4 h-4 text-[#0284C7] shrink-0 transition-transform duration-300 ${
                           isOpen ? 'rotate-180' : ''
                         }`}
                       />
                     </button>
 
                     {isOpen && (
-                      <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-teal-100/60">
+                      <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-sky-100/60">
                         {faq.a}
                       </div>
                     )}

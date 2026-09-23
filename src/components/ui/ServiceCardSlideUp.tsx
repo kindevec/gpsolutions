@@ -23,7 +23,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
 
   return (
     <article
-      className="relative overflow-hidden rounded-3xl border border-teal-900/10 bg-white hover:border-[#0D9488]/40 transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(16,37,71,0.06)] hover:shadow-xl flex flex-col justify-between group"
+      className="relative overflow-hidden rounded-3xl border border-sky-900/10 bg-white hover:border-[#0284C7]/40 transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(16,37,71,0.06)] hover:shadow-xl flex flex-col justify-between group"
     >
       {/* 1. Full-Bleed Image Stage */}
       <div
@@ -40,7 +40,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
         <div className="absolute inset-0 bg-gradient-to-t from-[#102547]/75 via-transparent to-black/20" />
 
         {/* Indicador de Icono */}
-        <div className="absolute bottom-3 right-3 w-9 h-9 rounded-xl bg-white/95 border border-teal-900/10 backdrop-blur-sm flex items-center justify-center text-[#0D9488] shadow-md group-hover:bg-[#102547] group-hover:text-white transition-colors">
+        <div className="absolute bottom-3 right-3 w-9 h-9 rounded-xl bg-white/95 border border-sky-900/10 backdrop-blur-sm flex items-center justify-center text-[#0284C7] shadow-md group-hover:bg-[#102547] group-hover:text-white transition-colors">
           {service.category === 'contable' && <Building2 className="w-4 h-4" />}
           {service.category === 'tributaria' && <Receipt className="w-4 h-4" />}
           {service.category === 'laboral' && <Users className="w-4 h-4" />}
@@ -50,7 +50,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
       {/* 2. Cuerpo de la Tarjeta */}
       <div className="p-6 flex flex-col flex-1 justify-between bg-white">
         <div>
-          <span className="text-[11px] font-bold text-[#0D9488] tracking-wider uppercase block mb-1">
+          <span className="text-[11px] font-bold text-[#0284C7] tracking-wider uppercase block mb-1">
             {service.categoryLabel}
           </span>
           <h3 className="text-lg font-bold text-[#102547] tracking-tight mb-2 line-clamp-1">
@@ -63,7 +63,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
           <div className="space-y-1.5 mb-5 pt-3 border-t border-slate-100">
             {service.deliverables.slice(0, 2).map((item, idx) => (
               <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                <Check className="w-3.5 h-3.5 text-[#0D9488] shrink-0 mt-0.5" />
+                <Check className="w-3.5 h-3.5 text-[#0284C7] shrink-0 mt-0.5" />
                 <span className="line-clamp-1">{item}</span>
               </div>
             ))}
@@ -75,7 +75,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-[#EAF4F5] text-[#0D9488] hover:bg-[#d8edef] transition-colors cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-[#EAF2FA] text-[#0284C7] hover:bg-[#d5e7f7] transition-colors cursor-pointer"
           >
             <FileText className="w-3.5 h-3.5" />
             <span>Ficha Técnica</span>
@@ -88,7 +88,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
             className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-[#102547] text-white hover:bg-[#153760] transition-colors shadow-sm"
           >
             <span>Cotizar</span>
-            <MessageCircle className="w-3.5 h-3.5 text-[#00C4A7]" />
+            <MessageCircle className="w-3.5 h-3.5 text-[#38BDF8]" />
           </a>
         </div>
       </div>
@@ -131,13 +131,13 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
               </div>
 
               <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0D9488] block mb-1">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0284C7] block mb-1">
                   Entregables Clave
                 </span>
                 <ul className="space-y-1">
                   {service.deliverables.map((d, i) => (
                     <li key={i} className="flex items-center gap-1.5 font-medium text-slate-700 text-[11px]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0D9488]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0284C7]" />
                       <span className="line-clamp-1">{d}</span>
                     </li>
                   ))}
@@ -151,7 +151,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#0D9488] hover:bg-[#0b7c72] text-white transition-all shadow-md shadow-[#0D9488]/20"
+              className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all shadow-md shadow-sky-500/20"
             >
               <MessageCircle className="w-4 h-4 fill-current" />
               <span>Consultar alcance por WhatsApp</span>

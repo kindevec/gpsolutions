@@ -32,8 +32,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'backdrop-blur-xl bg-[#F4F9F9]/95 border-b border-teal-900/10 shadow-[0_4px_25px_-5px_rgba(16,37,71,0.08)] py-2.5'
-          : 'bg-[#F4F9F9]/55 backdrop-blur-md border-b border-teal-900/5 py-3.5'
+          ? 'backdrop-blur-xl bg-[#F4F8FC]/95 border-b border-sky-900/10 shadow-[0_4px_25px_-5px_rgba(16,37,71,0.08)] py-2.5'
+          : 'bg-[#F4F8FC]/55 backdrop-blur-md border-b border-sky-900/5 py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -67,8 +67,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
                 onClick={() => onSelectTab(item.key)}
                 className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-[#0D9488] text-white shadow-sm'
-                    : 'text-[#102547] hover:text-[#0D9488] hover:bg-teal-50/70'
+                    ? 'bg-[#0284C7] text-white shadow-sm'
+                    : 'text-[#102547] hover:text-[#0284C7] hover:bg-sky-50'
                 }`}
               >
                 {item.label}
@@ -81,10 +81,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
         <div className="flex items-center gap-2.5">
           <a
             href={`tel:${COMPANY_DATA.phoneFormatted1}`}
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#0D9488] transition-colors py-1.5 px-2.5"
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#0284C7] transition-colors py-1.5 px-2.5"
             title="Llamada directa"
           >
-            <Phone className="w-3.5 h-3.5 text-[#0D9488]" />
+            <Phone className="w-3.5 h-3.5 text-[#0284C7]" />
             <span className="font-mono font-medium">{COMPANY_DATA.phoneFormatted1}</span>
           </a>
 
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
             href={COMPANY_DATA.whatsappBaseUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#0D9488] hover:bg-[#0b7c72] transition-all duration-200 transform hover:-translate-y-0.5 shadow-md shadow-[#0D9488]/20 cursor-pointer min-h-[38px]"
+            className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#0284C7] hover:bg-[#0369a1] transition-all duration-200 transform hover:-translate-y-0.5 shadow-md shadow-sky-500/20 cursor-pointer min-h-[38px]"
           >
             <MessageCircle className="w-4 h-4 fill-current" />
             <span className="hidden sm:inline">Asesoría Directa</span>

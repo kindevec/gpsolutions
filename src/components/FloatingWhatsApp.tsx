@@ -9,7 +9,7 @@ export const FloatingWhatsApp: React.FC = () => {
     <div className="fixed bottom-20 lg:bottom-8 right-4 sm:right-6 z-40 flex items-end gap-2.5">
       {/* Floating Tooltip Help */}
       {showTooltip && (
-        <div className="hidden sm:flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white text-[#102547] text-xs shadow-xl border border-teal-200/80 backdrop-blur-md">
+        <div className="hidden sm:flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white text-[#102547] text-xs shadow-xl border border-sky-200/80 backdrop-blur-md">
           <img
             src="/favicon.png"
             alt="GP Solutions"
@@ -17,7 +17,7 @@ export const FloatingWhatsApp: React.FC = () => {
             width={16}
             height={16}
           />
-          <span className="w-2 h-2 rounded-full bg-[#0D9488] animate-ping" />
+          <span className="w-2 h-2 rounded-full bg-[#0284C7] animate-ping" />
           <span>¿Consultas con el SRI o IESS? Escríbanos</span>
           <button
             onClick={() => setShowTooltip(false)}
@@ -34,7 +34,7 @@ export const FloatingWhatsApp: React.FC = () => {
         href={COMPANY_DATA.whatsappBaseUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#0D9488] hover:bg-[#0b7c72] text-white flex items-center justify-center shadow-lg shadow-[#0D9488]/30 transition-all duration-300 transform hover:scale-108 active:scale-95 cursor-pointer"
+        className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#0284C7] hover:bg-[#0369a1] text-white flex items-center justify-center shadow-lg shadow-sky-500/30 transition-all duration-300 transform hover:scale-108 active:scale-95 cursor-pointer"
         aria-label="Contactar a GP Solutions por WhatsApp"
       >
         <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 fill-current" />

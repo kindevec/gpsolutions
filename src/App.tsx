@@ -76,7 +76,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F4F9F9] text-[#102547] selection:bg-teal-100 selection:text-[#0D9488]">
+    <div className="min-h-screen flex flex-col bg-[#F4F8FC] text-[#102547] selection:bg-sky-100 selection:text-[#0284C7]">
       {/* Top Navbar */}
       <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
 

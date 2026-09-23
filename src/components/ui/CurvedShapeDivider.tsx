@@ -8,7 +8,7 @@ interface CurvedShapeDividerProps {
 }
 
 export const CurvedShapeDivider: React.FC<CurvedShapeDividerProps> = ({
-  fillColor = '#F4F9F9',
+  fillColor = '#F4F8FC',
   position = 'bottom',
   className = '',
   variant = 'wave1',
