@@ -7,11 +7,12 @@ import {
   ShieldCheck,
   CheckCircle2,
   Phone,
-  MessageCircle,
 } from 'lucide-react';
+import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { ALL_SERVICES } from '../data/services';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { ServiceCardSlideUp } from '../components/ui/ServiceCardSlideUp';
+import { StackedCards } from '../components/ui/glass-cards';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 
 type SubFilter = 'todos' | 'tributaria' | 'laboral';
@@ -20,15 +21,9 @@ export const TaxServicesView: React.FC = () => {
   const [subFilter, setSubFilter] = useState<SubFilter>('todos');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const taxAndLaborServices = useMemo(() => {
-    let list = ALL_SERVICES.filter((s) => s.category === 'tributaria' || s.category === 'laboral');
-
-    if (subFilter !== 'todos') {
-      list = list.filter((s) => s.category === subFilter);
-    }
-
+  const tributariosServices = useMemo(() => {
+    const list = ALL_SERVICES.filter((s) => s.category === 'tributaria');
     if (!searchQuery.trim()) return list;
-
     const q = searchQuery.toLowerCase();
     return list.filter(
       (s) =>
@@ -37,7 +32,20 @@ export const TaxServicesView: React.FC = () => {
         s.badge.toLowerCase().includes(q) ||
         s.deliverables.some((d) => d.toLowerCase().includes(q))
     );
-  }, [subFilter, searchQuery]);
+  }, [searchQuery]);
+
+  const laboralesServices = useMemo(() => {
+    const list = ALL_SERVICES.filter((s) => s.category === 'laboral');
+    if (!searchQuery.trim()) return list;
+    const q = searchQuery.toLowerCase();
+    return list.filter(
+      (s) =>
+        s.title.toLowerCase().includes(q) ||
+        s.description.toLowerCase().includes(q) ||
+        s.badge.toLowerCase().includes(q) ||
+        s.deliverables.some((d) => d.toLowerCase().includes(q))
+    );
+  }, [searchQuery]);
 
   return (
     <div className="bg-[#F4F8FC] text-[#102547]">
@@ -63,8 +71,15 @@ export const TaxServicesView: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-8">
-              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 font-heading drop-shadow-sm">
-                Servicios Tributarios y Laborales
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
+                <span className="text-white">Servicios </span>
+                <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
+                  Tributarios
+                </span>
+                <span className="text-white"> y </span>
+                <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-100 bg-clip-text text-transparent">
+                  Laborales
+                </span>
               </h1>
 
               <p className="text-slate-200 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
@@ -155,16 +170,112 @@ export const TaxServicesView: React.FC = () => {
 
 
       {/* ========================================================= */}
-      {/* 2. GRID DE LAS 13 TARJETAS CON CAJÓN TÉCNICO SLIDE-UP     */}
+      {/* 2. CATÁLOGO CON SEPARACIÓN TRIBUTARIA Y LABORAL            */}
       {/* ========================================================= */}
-      <section className="py-14 sm:py-20 bg-white">
+      <section className="py-10 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {taxAndLaborServices.map((service) => (
-              <ServiceCardSlideUp key={service.id} service={service} />
-            ))}
-          </div>
+          {/* SECCIÓN 1: SERVICIOS TRIBUTARIOS (SRI) */}
+          {(subFilter === 'todos' || subFilter === 'tributaria') && (
+            <div>
+              <div className="mb-8">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Receipt className="w-5 h-5 text-[#0284C7]" />
+                  <h2 className="font-heading text-2xl sm:text-3xl font-black text-[#102547] tracking-tight">
+                    Servicios Tributarios ante el SRI
+                  </h2>
+                </div>
+                <p className="text-slate-600 text-xs sm:text-sm max-w-2xl text-justify">
+                  Declaraciones de IVA e Impuesto a la Renta, retenciones, anexos ATS y recuperación técnica de tributos con 100% apego a la normativa fiscal.
+                </p>
+              </div>
+
+              {/* Vista Móvil: Glass Cards */}
+              <div className="block md:hidden">
+                <StackedCards
+                  cards={tributariosServices.map((s) => ({
+                    id: s.id,
+                    title: s.title,
+                    description: s.description,
+                    color: 'rgba(2, 132, 199, 0.85)',
+                    badge: s.badge,
+                    category: s.category,
+                    categoryLabel: s.categoryLabel,
+                    deliverables: s.deliverables,
+                    legalBasis: s.legalBasis,
+                    frequency: s.frequency,
+                    image: s.image,
+                    whatsappMessage: s.whatsappMessage,
+                  }))}
+                />
+              </div>
+
+              {/* Vista Tablet / Desktop: Grid de 3 en 3 */}
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+                {tributariosServices.map((service) => (
+                  <ServiceCardSlideUp key={service.id} service={service} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* SEPARACIÓN ENTRE SECCIÓN TRIBUTARIA Y LABORAL */}
+          {subFilter === 'todos' && tributariosServices.length > 0 && laboralesServices.length > 0 && (
+            <div className="relative my-12 sm:my-16">
+              <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                <div className="w-full border-t border-sky-100" />
+              </div>
+              <div className="relative flex justify-center">
+                <span className="bg-[#F4F8FC] px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-[#0284C7] border border-sky-200 rounded-full shadow-xs">
+                  Área Laboral y Seguridad Social
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* SECCIÓN 2: SERVICIOS LABORALES (IESS & SUT) */}
+          {(subFilter === 'todos' || subFilter === 'laboral') && (
+            <div>
+              <div className="mb-8">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Users className="w-5 h-5 text-emerald-600" />
+                  <h2 className="font-heading text-2xl sm:text-3xl font-black text-[#102547] tracking-tight">
+                    Servicios Laborales y Seguridad Social (IESS & SUT)
+                  </h2>
+                </div>
+                <p className="text-slate-600 text-xs sm:text-sm max-w-2xl text-justify">
+                  Elaboración de roles de pago, registro de contratos en plataforma SUT, liquidaciones y avisos patronales para evitar multas, glosas y mora en el IESS.
+                </p>
+              </div>
+
+              {/* Vista Móvil: Glass Cards */}
+              <div className="block md:hidden">
+                <StackedCards
+                  cards={laboralesServices.map((s) => ({
+                    id: s.id,
+                    title: s.title,
+                    description: s.description,
+                    color: 'rgba(16, 185, 129, 0.85)',
+                    badge: s.badge,
+                    category: s.category,
+                    categoryLabel: s.categoryLabel,
+                    deliverables: s.deliverables,
+                    legalBasis: s.legalBasis,
+                    frequency: s.frequency,
+                    image: s.image,
+                    whatsappMessage: s.whatsappMessage,
+                  }))}
+                />
+              </div>
+
+              {/* Vista Tablet / Desktop: Grid de 3 en 3 */}
+              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+                {laboralesServices.map((service) => (
+                  <ServiceCardSlideUp key={service.id} service={service} />
+                ))}
+              </div>
+            </div>
+          )}
 
         </div>
       </section>
@@ -188,7 +299,7 @@ export const TaxServicesView: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white shadow-md shadow-sky-500/20 transition-all cursor-pointer"
           >
-            <MessageCircle className="w-4 h-4 fill-current" />
+            <WhatsAppIcon className="w-4 h-4" />
             <span>Consultar por WhatsApp con un Especialista</span>
           </a>
         </div>

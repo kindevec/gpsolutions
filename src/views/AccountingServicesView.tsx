@@ -6,11 +6,12 @@ import {
   ShieldCheck,
   CheckCircle2,
   Phone,
-  MessageCircle,
 } from 'lucide-react';
+import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { ALL_SERVICES } from '../data/services';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { ServiceCardSlideUp } from '../components/ui/ServiceCardSlideUp';
+import { StackedCards } from '../components/ui/glass-cards';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 
 export const AccountingServicesView: React.FC = () => {
@@ -54,8 +55,15 @@ export const AccountingServicesView: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-8">
-              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 font-heading drop-shadow-sm">
-                Servicios Contables y Corporativos
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
+                <span className="text-white">Servicios </span>
+                <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
+                  Contables
+                </span>
+                <span className="text-white"> y </span>
+                <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
+                  Corporativos
+                </span>
               </h1>
 
               <p className="text-slate-200 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
@@ -114,10 +122,31 @@ export const AccountingServicesView: React.FC = () => {
       {/* =========================================================================
           2. GRID DE LAS 8 TARJETAS CON CAJÓN TÉCNICO SLIDE-UP
          ========================================================================= */}
-      <section className="py-14 sm:py-20 bg-white">
+      <section className="py-8 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Vista Móvil: Glass Cards Mimetizados con Borde Eléctrico y Cajón Técnico */}
+          <div className="block md:hidden">
+            <StackedCards
+              cards={contableServices.map((s, idx) => ({
+                id: s.id,
+                title: s.title,
+                description: s.description,
+                color: idx % 2 === 0 ? 'rgba(2, 132, 199, 0.85)' : 'rgba(56, 189, 248, 0.85)',
+                badge: s.badge,
+                category: s.category,
+                categoryLabel: s.categoryLabel,
+                deliverables: s.deliverables,
+                legalBasis: s.legalBasis,
+                frequency: s.frequency,
+                image: s.image,
+                whatsappMessage: s.whatsappMessage
+              }))}
+            />
+          </div>
+
+          {/* Vista Tablet / Desktop: Grid de 3 en 3 */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-7">
             {contableServices.map((service) => (
               <ServiceCardSlideUp key={service.id} service={service} />
             ))}
@@ -145,7 +174,7 @@ export const AccountingServicesView: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white shadow-md shadow-sky-500/20 transition-all cursor-pointer"
           >
-            <MessageCircle className="w-4 h-4 fill-current" />
+            <WhatsAppIcon className="w-4 h-4" />
             <span>Consultar con un Contador en WhatsApp</span>
           </a>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Clock, ArrowUpRight, MessageCircle, Building2, Receipt } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ArrowUpRight, Building2, Receipt } from 'lucide-react';
+import { WhatsAppIcon, FacebookIcon, InstagramIcon, LinkedInIcon } from '../ui/SocialIcons';
 import { COMPANY_DATA } from '../../data/company';
 import type { TabKey } from '../../types';
 
@@ -103,9 +104,9 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
                 href={COMPANY_DATA.whatsappBaseUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-2.5 hover:text-[#38BDF8] transition-colors text-slate-300"
+                className="flex items-start gap-2.5 hover:text-[#38BDF8] transition-colors text-slate-300 group"
               >
-                <MessageCircle className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
+                <WhatsAppIcon className="w-4 h-4 text-[#38BDF8] group-hover:scale-110 transition-transform shrink-0 mt-0.5" />
                 <span>WhatsApp: {COMPANY_DATA.phoneFormatted1}</span>
               </a>
 
@@ -133,6 +134,58 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <div className="flex items-start gap-2.5 text-slate-300">
                 <Clock className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                 <span>{COMPANY_DATA.hours}</span>
+              </div>
+            </div>
+
+            {/* Redes Sociales Oficiales */}
+            <div className="mt-5 pt-4 border-t border-white/10">
+              <span className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2.5">
+                Canales & Redes Oficiales
+              </span>
+              <div className="flex items-center gap-3.5">
+                <a
+                  href={COMPANY_DATA.socials.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp Oficial GP Solutions"
+                  className="social-icon-btn rounded-xl text-[#25D366] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(37,211,102,0.8)] inline-flex items-center justify-center p-1.5 cursor-pointer"
+                  title="WhatsApp"
+                >
+                  <WhatsAppIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                </a>
+
+                <a
+                  href={COMPANY_DATA.socials.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook GP Solutions"
+                  className="social-icon-btn rounded-xl text-[#1877F2] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(24,119,242,0.8)] inline-flex items-center justify-center p-1.5 cursor-pointer"
+                  title="Facebook"
+                >
+                  <FacebookIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                </a>
+
+                <a
+                  href={COMPANY_DATA.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram GP Solutions"
+                  className="social-icon-btn rounded-xl text-[#E4405F] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(228,64,95,0.8)] inline-flex items-center justify-center p-1.5 cursor-pointer"
+                  title="Instagram"
+                >
+                  <InstagramIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                </a>
+
+                <a
+                  href={COMPANY_DATA.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn GP Solutions"
+                  className="social-icon-btn rounded-xl text-[#0A66C2] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(10,102,194,0.8)] inline-flex items-center justify-center p-1.5 cursor-pointer"
+                  title="LinkedIn"
+                >
+                  <LinkedInIcon className="w-5 h-5 sm:w-6 sm:h-6" />
+                </a>
               </div>
             </div>
           </div>

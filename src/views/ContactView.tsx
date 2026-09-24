@@ -4,11 +4,11 @@ import {
   Mail,
   MapPin,
   Clock,
-  MessageCircle,
   Send,
   CheckCircle2,
   ChevronDown,
 } from 'lucide-react';
+import { WhatsAppIcon, FacebookIcon, InstagramIcon, LinkedInIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 
@@ -87,8 +87,14 @@ export const ContactView: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 font-heading drop-shadow-sm">
-            Canales de Contacto Oficial
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
+            <span className="text-white">Canales de </span>
+            <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
+              Contacto
+            </span>{' '}
+            <span className="bg-gradient-to-r from-amber-300 to-[#FCD34D] bg-clip-text text-transparent">
+              Oficial
+            </span>
           </h1>
 
           <p className="text-slate-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
@@ -262,8 +268,8 @@ export const ContactView: React.FC = () => {
 
               <div className="p-6 rounded-3xl bg-gradient-to-br from-[#102547] to-[#153760] text-white shadow-xl">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-2xl bg-[#0284C7] text-white flex items-center justify-center">
-                    <MessageCircle className="w-5 h-5 fill-current" />
+                  <div className="w-10 h-10 rounded-2xl bg-[#0284C7] text-white flex items-center justify-center shadow-md">
+                    <WhatsAppIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm">Línea Directa WhatsApp</h4>
@@ -279,8 +285,61 @@ export const ContactView: React.FC = () => {
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-white text-[#102547] hover:bg-slate-100 transition-all"
                 >
+                  <WhatsAppIcon className="w-4 h-4 text-[#0284C7]" />
                   <span>Chatear ahora</span>
                 </a>
+              </div>
+
+              {/* Redes Sociales Oficiales */}
+              <div className="p-5 rounded-2xl bg-[#F4F8FC] border border-sky-100">
+                <div className="text-xs font-bold text-[#102547] mb-2.5">
+                  Síganos en Redes Sociales Oficiales
+                </div>
+                <div className="flex items-center gap-3.5 pt-1">
+                  <a
+                    href={COMPANY_DATA.socials.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp Oficial GP Solutions"
+                    className="social-icon-btn rounded-xl text-[#25D366] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(37,211,102,0.8)] inline-flex items-center justify-center p-1.5 cursor-pointer"
+                    title="WhatsApp"
+                  >
+                    <WhatsAppIcon className="w-6 h-6" />
+                  </a>
+
+                  <a
+                    href={COMPANY_DATA.socials.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook GP Solutions"
+                    className="social-icon-btn rounded-xl text-[#1877F2] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(24,119,242,0.8)] inline-flex items-center justify-center p-1.5 cursor-pointer"
+                    title="Facebook"
+                  >
+                    <FacebookIcon className="w-6 h-6" />
+                  </a>
+
+                  <a
+                    href={COMPANY_DATA.socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram GP Solutions"
+                    className="social-icon-btn rounded-xl text-[#E4405F] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(228,64,95,0.8)] inline-flex items-center justify-center p-1.5 cursor-pointer"
+                    title="Instagram"
+                  >
+                    <InstagramIcon className="w-6 h-6" />
+                  </a>
+
+                  <a
+                    href={COMPANY_DATA.socials.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn GP Solutions"
+                    className="social-icon-btn rounded-xl text-[#0A66C2] transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(10,102,194,0.8)] inline-flex items-center justify-center p-1.5 cursor-pointer"
+                    title="LinkedIn"
+                  >
+                    <LinkedInIcon className="w-6 h-6" />
+                  </a>
+                </div>
               </div>
 
               <div className="p-5 rounded-2xl bg-[#F4F8FC] border border-sky-100 flex items-start gap-3.5">

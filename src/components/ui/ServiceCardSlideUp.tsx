@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   FileText,
-  MessageCircle,
   Check,
   X,
   Building2,
@@ -9,6 +8,7 @@ import {
   Users,
   ArrowRight,
 } from 'lucide-react';
+import { WhatsAppIcon } from './SocialIcons';
 import { ServiceItem } from '../../types';
 import { buildWhatsAppLink } from '../../data/company';
 
@@ -28,7 +28,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
       {/* 1. Full-Bleed Image Stage */}
       <div
         onClick={() => setIsOpen(true)}
-        className="relative w-full h-52 sm:h-56 overflow-hidden bg-slate-100 cursor-pointer rounded-t-3xl"
+        className="relative w-full h-56 sm:h-60 overflow-hidden bg-slate-100 cursor-pointer rounded-t-3xl"
         title="Pulsar para ver alcance técnico y entregables"
       >
         <img
@@ -36,6 +36,13 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
           alt={service.title}
           className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
           loading="lazy"
+          crossOrigin="anonymous"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.src.includes('hero-accounting.jpg')) {
+              target.src = '/images/heroes/hero-accounting.jpg';
+            }
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#102547]/75 via-transparent to-black/20" />
 
@@ -48,22 +55,22 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
       </div>
 
       {/* 2. Cuerpo de la Tarjeta */}
-      <div className="p-6 flex flex-col flex-1 justify-between bg-white">
+      <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between bg-white">
         <div>
-          <span className="text-[11px] font-bold text-[#0284C7] tracking-wider uppercase block mb-1">
+          <span className="text-[11px] font-bold text-[#0284C7] tracking-wider uppercase block mb-1.5">
             {service.categoryLabel}
           </span>
-          <h3 className="text-lg font-bold text-[#102547] tracking-tight mb-2 line-clamp-1">
+          <h3 className="text-xl font-bold text-[#102547] tracking-tight mb-2.5 min-h-[3.25rem] flex items-center">
             {service.title}
           </h3>
-          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-2">
+          <p className="text-slate-600 text-sm leading-relaxed mb-5 line-clamp-3">
             {service.description}
           </p>
 
-          <div className="space-y-1.5 mb-5 pt-3 border-t border-slate-100">
-            {service.deliverables.slice(0, 2).map((item, idx) => (
-              <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                <Check className="w-3.5 h-3.5 text-[#0284C7] shrink-0 mt-0.5" />
+          <div className="space-y-2 mb-6 pt-3.5 border-t border-slate-100">
+            {service.deliverables.slice(0, 3).map((item, idx) => (
+              <div key={idx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700">
+                <Check className="w-4 h-4 text-[#0284C7] shrink-0 mt-0.5" />
                 <span className="line-clamp-1">{item}</span>
               </div>
             ))}
@@ -88,7 +95,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
             className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-[#102547] text-white hover:bg-[#153760] transition-colors shadow-sm"
           >
             <span>Cotizar</span>
-            <MessageCircle className="w-3.5 h-3.5 text-[#38BDF8]" />
+            <WhatsAppIcon className="w-3.5 h-3.5 text-[#38BDF8]" />
           </a>
         </div>
       </div>
@@ -153,7 +160,7 @@ export const ServiceCardSlideUp: React.FC<ServiceCardSlideUpProps> = ({ service 
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all shadow-md shadow-sky-500/20"
             >
-              <MessageCircle className="w-4 h-4 fill-current" />
+              <WhatsAppIcon className="w-4 h-4" />
               <span>Consultar alcance por WhatsApp</span>
             </a>
 

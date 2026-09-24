@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Phone, ArrowUpRight } from 'lucide-react';
+import { Phone, ArrowUpRight } from 'lucide-react';
+import { WhatsAppIcon } from '../ui/SocialIcons';
 import { COMPANY_DATA } from '../../data/company';
 import type { TabKey } from '../../types';
 
@@ -116,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-white bg-[#0284C7] hover:bg-[#0369a1] transition-all duration-200 transform hover:-translate-y-0.5 shadow-md shadow-sky-500/20 cursor-pointer min-h-[38px]"
           >
-            <MessageCircle className="w-4 h-4 fill-current" />
+            <WhatsAppIcon className="w-4 h-4" />
             <span className="hidden sm:inline">Asesoría Directa</span>
             <span className="sm:hidden">WhatsApp</span>
             <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />

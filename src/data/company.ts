@@ -18,6 +18,12 @@ export const COMPANY_DATA = {
   domain: "gpsolutions.com.ec",
   hours: "Lunes a Viernes: 08:30 – 17:30 | Sábados: Previa cita",
   whatsappBaseUrl: "https://wa.me/593999840649",
+  socials: {
+    whatsapp: "https://wa.me/593999840649",
+    facebook: "https://facebook.com",
+    instagram: "https://instagram.com",
+    linkedin: "https://linkedin.com",
+  },
 };
 
 export function buildWhatsAppLink(serviceOrMessage: string): string {

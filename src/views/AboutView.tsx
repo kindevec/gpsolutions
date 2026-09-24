@@ -1,5 +1,6 @@
 import React from 'react';
-import { ShieldCheck, Award, Users, CheckCircle2, Lock, Scale, Building2, MapPin, Phone, MessageCircle } from 'lucide-react';
+import { ShieldCheck, Award, Users, CheckCircle2, Lock, Scale, Building2, MapPin, Phone } from 'lucide-react';
+import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import type { TabKey } from '../types';
@@ -30,9 +31,19 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-6">
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 font-heading drop-shadow-sm">
-              Firma Contable y Legal en Tumbaco, Quito
+          <div className="text-center max-w-4xl mx-auto mb-6">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
+              <span className="text-white">Firma </span>
+              <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
+                Contable
+              </span>
+              <span className="text-white"> & </span>
+              <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
+                Legal
+              </span>
+              <span className="block text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-200 mt-2">
+                en <span className="text-[#38BDF8]">Tumbaco, Quito</span> & Cobertura Nacional
+              </span>
             </h1>
             <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
               En <strong className="text-white font-bold">{COMPANY_DATA.name}</strong> proporcionamos certeza y tranquilidad tributaria a personas naturales (RIMPE y Régimen General) y a sociedades mercantiles (S.A.S., Cías. Ltda. y S.A.) en todo el Ecuador.
@@ -97,7 +108,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all shadow-md shadow-[#0284C7]/20 cursor-pointer"
                 >
-                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <WhatsAppIcon className="w-4 h-4" />
                   <span>Contactar con el Director</span>
                 </a>
 

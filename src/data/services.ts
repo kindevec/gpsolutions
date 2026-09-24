@@ -20,7 +20,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "NIIF para PYMES y Código Tributario Ecuatoriano",
     frequency: "Mensual / Cierre Anual",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+    image: "/images/servicios-contables/contabilidad-general.jpg",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito asesoría para el servicio de: Contabilidad general."
   },
   {
@@ -39,7 +39,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Resoluciones de la Superintendencia de Compañías y NIC 1",
     frequency: "Semestral / Anual",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/servicios-contables/estados-financieros.jpg",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito la elaboración de Estados Financieros para mi empresa."
   },
   {
@@ -58,7 +58,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ley de Compañías y Reglamento de Presentación de Balances",
     frequency: "Anual (Vence 30 de Abril)",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    image: "/images/servicios-contables/superintendencia-companias.jpg",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito regularizar el cumplimiento anual ante la Superintendencia de Compañías."
   },
   {
@@ -77,7 +77,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ley Orgánica para el Emprendimiento e Innovación (S.A.S.)",
     frequency: "Trámite Integral (48-72h)",
-    image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+    image: "/images/servicios-contables/constitucion-liquidacion-sas.jpg",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo constituir una empresa S.A.S. en Ecuador."
   },
   {
@@ -96,7 +96,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ley de Compañías y Código de Comercio",
     frequency: "Permanente / Por Requerimiento",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), requiero asesoría societaria para gestión de actas y nombramientos."
   },
   {
@@ -115,7 +115,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Código Orgánico de la Economía Social de los Conocimientos (Ingenios)",
     frequency: "Trámite de 4 a 6 meses",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+    image: "/images/servicios-contables/registro-marcas.jpg",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo registrar y proteger mi marca comercial ante el SENADI."
   },
   {
@@ -134,7 +134,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Código del Trabajo y Ley de Seguridad Social",
     frequency: "Quincenal / Mensual",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito información para el servicio de Manejo de Nóminas."
   },
   {
@@ -153,7 +153,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Resoluciones de actualización del SRI y MDT 2026",
     frequency: "Bajo demanda / Programas a medida",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo cotizar un taller de Capacitación Contable y Tributaria."
   },
 
@@ -176,7 +176,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ley Orgánica de Régimen Tributario Interno (LORTI)",
     frequency: "Mensual / Semestral / Anual",
-    image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito asesoría para mis declaraciones de IVA e Impuesto a la Renta."
   },
   {
@@ -195,7 +195,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Reglamento de Aplicación de la LORTI y Resoluciones SRI",
     frequency: "Mensual",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito soporte en cálculo y declaración de Retenciones en la Fuente."
   },
   {
@@ -214,7 +214,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "LORTI - Capítulo de Ingresos a Título Gratuito",
     frequency: "Por Sucesión o Donación",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito asesoría técnica para la declaración de Impuesto a las Herencias."
   },
   {
@@ -233,7 +233,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Resolución General del SRI para Declaración Patrimonial Anual",
     frequency: "Anual (Mayo)",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito elaborar mi Declaración Patrimonial anual ante el SRI."
   },
   {
@@ -252,7 +252,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ficha Técnica del SRI para Anexos XML",
     frequency: "Mensual / Anual",
-    image: "https://images.unsplash.com/photo-1618042164219-62c820f10723?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito gestionar la presentación de mis Anexos Tributarios ATS/RDEP."
   },
   {
@@ -271,7 +271,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ley Orgánica para el Fortalecimiento de la Economía Familiar",
     frequency: "Anual (Febrero)",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito apoyo para elaborar mi Anexo de Gastos Personales ante el SRI."
   },
   {
@@ -290,7 +290,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ley de Beneficios Tributarios y LORTI",
     frequency: "Mensual / Acumulado",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo tramitar la Devolución de IVA / Impuestos ante el SRI."
   },
   {
@@ -309,7 +309,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Código Orgánico de Organización Territorial (COOTAD)",
     frequency: "Anual (Mayo - Junio)",
-    image: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito la liquidación de Patente Municipal y 1.5 por mil."
   },
 
@@ -332,7 +332,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Código del Trabajo del Ecuador y Acuerdos Ministeriales",
     frequency: "Por Ingreso o Egreso de Personal",
-    image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito gestionar contratos de trabajo o actas de finiquito en SUT."
   },
   {
@@ -351,7 +351,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Art. 42 numeral 3 del Código del Trabajo",
     frequency: "Mensual",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito la emisión y control de Roles de Pago para mi nómina."
   },
   {
@@ -370,7 +370,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Código del Trabajo - Décimos y Participación de Utilidades",
     frequency: "Febrero / Marzo / Agosto / Diciembre",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito calcular y legalizar los Beneficios Sociales de mis empleados."
   },
   {
@@ -389,7 +389,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ley de Seguridad Social y Resoluciones del IESS",
     frequency: "Mensual",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito la gestión de planillas y obligaciones ante el IESS."
   },
   {
@@ -408,9 +408,9 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Reglamento de Créditos del Banco del IESS (BIESS)",
     frequency: "Por Requerimiento",
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo asesoría para la gestión de préstamos quirografarios / hipotecarios BIESS."
-  }
+  },
 ];
 
 export const CATEGORIES_CONFIG = [

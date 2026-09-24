@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MessageCircle, X } from 'lucide-react';
+import { X } from 'lucide-react';
+import { WhatsAppIcon } from './ui/SocialIcons';
 import { COMPANY_DATA } from '../data/company';
 
 export const FloatingWhatsApp: React.FC = () => {
@@ -37,7 +38,7 @@ export const FloatingWhatsApp: React.FC = () => {
         className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#0284C7] hover:bg-[#0369a1] text-white flex items-center justify-center shadow-lg shadow-sky-500/30 transition-all duration-300 transform hover:scale-108 active:scale-95 cursor-pointer"
         aria-label="Contactar a GP Solutions por WhatsApp"
       >
-        <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 fill-current" />
+        <WhatsAppIcon className="w-7 h-7 sm:w-8 sm:h-8" />
       </a>
     </div>
   );
