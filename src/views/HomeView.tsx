@@ -24,6 +24,7 @@ import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { ALL_SERVICES } from '../data/services';
 import { ServiceCardSlideUp } from '../components/ui/ServiceCardSlideUp';
+import { ServiceGlareCard } from '../components/ui/ServiceGlareCard';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import type { TabKey } from '../types';
 
@@ -33,6 +34,7 @@ interface HomeViewProps {
 
 export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [isAccountingHovered, setIsAccountingHovered] = useState(false);
   const accountingScrollRef = useRef<HTMLDivElement>(null);
   const taxScrollRef = useRef<HTMLDivElement>(null);
   const laborScrollRef = useRef<HTMLDivElement>(null);
@@ -90,10 +92,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
     <div className="relative bg-[#F4F8FC] text-[#102547]">
       
       {/* =========================================================================
-          1. HERO INSTITUCIONAL ONDULADO (FOTO CORPORATIVA + MÁSCARA ONDULADA)
+          1. HERO INSTITUCIONAL ONDULADO CON FOTO DE FONDO + 4 CÍRCULOS EN LA CURVA
          ========================================================================= */}
-      <section className="relative pt-32 pb-24 sm:pt-36 sm:pb-28 md:pt-40 md:pb-32 overflow-hidden bg-[#102547]">
-        {/* Foto de Fondo con Máscara Ondulada y Overlays de Alta Legibilidad */}
+      <section className="relative pt-28 pb-10 sm:pt-32 sm:pb-12 md:pt-36 md:pb-14 overflow-hidden bg-[#102547]">
+        {/* Foto de Fondo Panorámica con Overlays de Alta Legibilidad */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/heroes/hero-home.jpg"
@@ -101,131 +103,88 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             className="w-full h-full object-cover object-center transform scale-105"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/96 via-[#102547]/90 to-[#0c1a30]/85" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1a30]/80 via-transparent to-[#102547]/90" />
-          <div className="absolute top-1/4 right-1/4 w-[600px] h-[350px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/95 via-[#0e203c]/90 to-[#0c1a30]/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1526]/85 via-transparent to-[#0a1526]/95" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Bloque Central: Título y Párrafo Institucional Centrados */}
+          <div className="max-w-4xl mx-auto flex flex-col items-center text-center mb-6 sm:mb-8">
             
-            {/* Columna Izquierda: Mensaje y Acciones */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left">
-              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] font-black tracking-tight leading-[1.08] mb-5 drop-shadow-md">
-                <span className="text-white">Asesoría Integral </span>
-                <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
-                  Contable
-                </span>
-                <span className="text-white">, </span>
-                <span className="text-[#38BDF8]">Tributaria</span>
-                <span className="text-white"> & </span>
-                <span className="bg-gradient-to-r from-amber-300 to-[#FCD34D] bg-clip-text text-transparent font-extrabold">
-                  Legal
-                </span>
-              </h1>
+            {/* Título Principal */}
+            <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] font-black tracking-tight leading-[1.08] mb-4 text-white drop-shadow-md text-center">
+              <span>Asesoría Integral </span>
+              <span className="bg-gradient-to-r from-[#38BDF8] via-sky-300 to-white bg-clip-text text-transparent">
+                Contable
+              </span>
+              <span className="text-white">, </span>
+              <span className="text-[#38BDF8]">Tributaria</span>
+              <span className="text-white"> & </span>
+              <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-[#FCD34D] bg-clip-text text-transparent">
+                Legal
+              </span>
+            </h1>
 
-              <p className="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed mb-6 max-w-2xl text-justify">
-                <strong className="text-white">«{COMPANY_DATA.slogan}»</strong>. {COMPANY_DATA.trajectory}. Brindamos soluciones seguras para blindar su empresa ante el SRI, IESS y Superintendencia de Compañías.
-              </p>
-
-              {/* Botones de Acción Directa */}
-              <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-8">
-                <button
-                  onClick={() => onSelectTab('servicios-contables')}
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 transition-all duration-200 shadow-md cursor-pointer"
-                >
-                  <Building2 className="w-4 h-4 text-[#38BDF8]" />
-                  <span>Servicios Contables</span>
-                </button>
-
-                <button
-                  onClick={() => onSelectTab('servicios-tributarios')}
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all duration-200 shadow-lg shadow-sky-500/30 cursor-pointer"
-                >
-                  <Receipt className="w-4 h-4" />
-                  <span>Servicios Tributarios</span>
-                </button>
-
-                <a
-                  href={whatsappHeroUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-white text-[#102547] hover:bg-slate-100 transition-all cursor-pointer shadow-md"
-                >
-                  <WhatsAppIcon className="w-4 h-4 text-[#0284C7]" />
-                  <span>WhatsApp Directo</span>
-                </a>
-              </div>
-
-              {/* Métricas de Confianza */}
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/15 w-full">
-                <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#38BDF8] font-heading">
-                    +12 Años
-                  </div>
-                  <div className="text-xs text-slate-300 mt-0.5 font-medium">
-                    Trayectoria
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-xl sm:text-2xl font-black text-white font-heading">
-                    100%
-                  </div>
-                  <div className="text-xs text-slate-300 mt-0.5 font-medium">
-                    Cumplimiento SRI
-                  </div>
-                </div>
-
-                <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#38BDF8] font-heading">
-                    0 Mora
-                  </div>
-                  <div className="text-xs text-slate-300 mt-0.5 font-medium">
-                    IESS Patronal
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Columna Derecha: Tarjeta Institucional de Autoridad */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md p-8 rounded-3xl bg-white/95 backdrop-blur-md border border-white/40 shadow-2xl flex flex-col items-center text-center">
-                <div className="w-36 h-36 mb-4 flex items-center justify-center">
-                  <img
-                    src="/logo.webp"
-                    alt="Logo GP Solutions"
-                    className="w-full h-full object-contain drop-shadow-md"
-                    width={144}
-                    height={144}
-                  />
-                </div>
-
-                <h3 className="font-heading font-extrabold text-xl text-[#102547] mb-1">
-                  {COMPANY_DATA.commercialName}
-                </h3>
-                <p className="text-xs text-[#0284C7] font-semibold mb-4">
-                  {COMPANY_DATA.legacySlogan}
-                </p>
-
-                <p className="text-xs text-slate-600 leading-relaxed mb-6 text-justify">
-                  {COMPANY_DATA.subSlogan}. Asesoría presencial en Tumbaco y Quito, con cobertura digital a nivel nacional.
-                </p>
-
-                <div className="w-full pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                  <span>Director: <strong className="text-[#102547]">{COMPANY_DATA.director}</strong></span>
-                  <span className="text-[#0284C7] font-bold">RUC Activo</span>
-                </div>
-              </div>
-            </div>
+            {/* Párrafo Descriptivo Centrado */}
+            <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl text-center drop-shadow-sm">
+              <strong className="text-white">«{COMPANY_DATA.slogan}»</strong>. {COMPANY_DATA.trajectory}. Brindamos soluciones seguras para blindar su empresa ante el SRI, IESS y Superintendencia de Compañías.
+            </p>
 
           </div>
         </div>
 
-        {/* Separador Ondulado SVG */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
+        {/* Separador Ondulado SVG en la Base del Banner (detrás de los círculos) */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
           <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave1" />
+        </div>
+
+        {/* Fila Inferior: 4 Círculos Informativos que van POR DELANTE de la Curva */}
+        <div className="max-w-4xl mx-auto px-4 relative z-30 select-none">
+          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
+            
+            {/* Card Circular 1: Contabilidad & NIIF */}
+            <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-white/30 backdrop-blur-xl shadow-[0_20px_45px_rgba(0,0,0,0.65)] flex flex-col items-center justify-center text-center p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner">
+                <Building2 className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+              </div>
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+                Balances NIIF & Contabilidad
+              </h3>
+            </div>
+
+            {/* Card Circular 2: Blindaje Tributario */}
+            <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-white/30 backdrop-blur-xl shadow-[0_20px_45px_rgba(0,0,0,0.65)] flex flex-col items-center justify-center text-center p-3 sm:p-3.5 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 text-[#38BDF8] flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner">
+                <Receipt className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+              </div>
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+                Blindaje Tributario & SRI
+              </h3>
+            </div>
+
+            {/* Card Circular 3: Nómina & IESS */}
+            <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-white/30 backdrop-blur-xl shadow-[0_20px_45px_rgba(0,0,0,0.65)] flex flex-col items-center justify-center text-center p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-1">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+              </div>
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+                Nómina & Cumplimiento IESS
+              </h3>
+            </div>
+
+            {/* Card Circular 4: Constitución S.A.S. & Legal */}
+            <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-white/30 backdrop-blur-xl shadow-[0_20px_45px_rgba(0,0,0,0.65)] flex flex-col items-center justify-center text-center p-3 sm:p-3.5 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 text-[#38BDF8] flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner">
+                <Scale className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+              </div>
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+                Constitución S.A.S. & Legal
+              </h3>
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -233,61 +192,71 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           2. RESUMEN: SERVICIOS CONTABLES Y CORPORATIVOS (CARRUSEL HORIZONTAL)
          ========================================================================= */}
-      <section className="py-14 sm:py-20 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        onMouseEnter={() => setIsAccountingHovered(true)}
+        onMouseLeave={() => setIsAccountingHovered(false)}
+        className="relative pt-28 sm:pt-36 md:pt-40 pb-16 sm:pb-24 bg-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           
-          {/* Encabezado de Sección con botón simple "Ver más" y controles de flecha */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-            <div>
-              <h2 className="font-heading text-2xl sm:text-4xl font-black text-[#102547] tracking-tight">
-                Contabilidad, Balances NIIF & Creación de Empresas S.A.S.
-              </h2>
-              <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-2xl text-justify">
-                Conozca los principales servicios contables y societarios con los que blindamos el patrimonio de su negocio ante entidades de control en Ecuador.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3 self-start md:self-auto shrink-0">
-              <button
-                onClick={() => onSelectTab('servicios-contables')}
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#0284C7] hover:text-[#0369a1] transition-all group cursor-pointer"
-              >
-                <span>Ver más</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-
-              <div className="flex items-center gap-1 pl-2 border-l border-slate-200">
-                <button
-                  onClick={() => scrollCarousel(accountingScrollRef, 'left')}
-                  aria-label="Deslizar anterior"
-                  className="w-8 h-8 rounded-full border border-sky-200 bg-white hover:bg-sky-50 text-slate-700 hover:text-[#0284C7] flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => scrollCarousel(accountingScrollRef, 'right')}
-                  aria-label="Deslizar siguiente"
-                  className="w-8 h-8 rounded-full border border-sky-200 bg-white hover:bg-sky-50 text-slate-700 hover:text-[#0284C7] flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-95"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
+          {/* Encabezado de Sección */}
+          <div className="text-center mb-8 sm:mb-10 mt-6 sm:mt-8">
+            <h2 className="font-heading text-2xl sm:text-4xl font-black text-[#102547] tracking-tight">
+              Contabilidad, Balances NIIF & Creación de Empresas S.A.S.
+            </h2>
           </div>
 
-          {/* Carrusel Deslizable Horizontalmente */}
-          <div
-            ref={accountingScrollRef}
-            className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-1 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0"
-          >
-            {contableServicesList.map((service) => (
-              <div
-                key={service.id}
-                className="w-[84vw] sm:w-[350px] md:w-[380px] shrink-0 snap-start flex flex-col"
-              >
-                <ServiceCardSlideUp service={service} />
-              </div>
-            ))}
+          {/* Contenedor del Carrusel con Flechas Flotantes en Ambos Lados (Aparecen al hacer hover) */}
+          <div className="relative">
+            {/* Flecha Izquierda Flotante hacia afuera */}
+            <button
+              type="button"
+              onClick={() => scrollCarousel(accountingScrollRef, 'left')}
+              aria-label="Deslizar anterior"
+              className={`absolute left-0 sm:-left-6 md:-left-8 lg:-left-12 top-1/2 -translate-y-1/2 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#102547] text-white border-2 border-white/90 shadow-[0_12px_32px_rgba(0,0,0,0.45)] flex items-center justify-center transition-all duration-300 cursor-pointer hover:bg-[#0284C7] hover:scale-110 active:scale-95 ${
+                isAccountingHovered ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
+              }`}
+            >
+              <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.8]" />
+            </button>
+
+            {/* Carrusel Deslizable Horizontalmente con Estilo Glare Card */}
+            <div
+              ref={accountingScrollRef}
+              className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 pt-2 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0"
+            >
+              {contableServicesList.map((service) => (
+                <div
+                  key={service.id}
+                  className="w-[88vw] sm:w-[380px] md:w-[410px] shrink-0 snap-start flex flex-col"
+                >
+                  <ServiceGlareCard service={service} />
+                </div>
+              ))}
+            </div>
+
+            {/* Flecha Derecha Flotante hacia afuera */}
+            <button
+              type="button"
+              onClick={() => scrollCarousel(accountingScrollRef, 'right')}
+              aria-label="Deslizar siguiente"
+              className={`absolute right-0 sm:-right-6 md:-right-8 lg:-right-12 top-1/2 -translate-y-1/2 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#102547] text-white border-2 border-white/90 shadow-[0_12px_32px_rgba(0,0,0,0.45)] flex items-center justify-center transition-all duration-300 cursor-pointer hover:bg-[#0284C7] hover:scale-110 active:scale-95 ${
+                isAccountingHovered ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-90 pointer-events-none'
+              }`}
+            >
+              <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.8]" />
+            </button>
+          </div>
+
+          {/* Botón Ver más en el Centro debajo de las tarjetas */}
+          <div className="flex items-center justify-center mt-8 sm:mt-10">
+            <button
+              onClick={() => onSelectTab('servicios-contables')}
+              className="inline-flex items-center gap-2 text-sm sm:text-base font-bold text-[#0284C7] hover:text-[#0369a1] transition-all group/btn cursor-pointer py-2.5 px-6 rounded-full bg-sky-50/90 hover:bg-sky-100 text-[#0284C7] border border-sky-200/70 shadow-xs"
+            >
+              <span>Ver más</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+            </button>
           </div>
 
         </div>
