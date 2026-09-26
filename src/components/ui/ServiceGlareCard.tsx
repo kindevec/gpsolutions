@@ -51,17 +51,16 @@ export const ServiceGlareCard: React.FC<ServiceGlareCardProps> = ({ service }) =
         </h3>
 
         {/* Botones: Ficha Técnica + Cotizar */}
-        <div className="grid grid-cols-2 gap-3 pt-3 border-t border-white/10">
+        <div className="grid grid-cols-2 gap-3 pt-3 border-t border-white/10 items-center">
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(true);
             }}
-            className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm transition-all cursor-pointer active:scale-95 shadow-xs"
+            className="text-xs sm:text-sm font-semibold text-sky-300 hover:text-white underline-offset-4 hover:underline transition-colors cursor-pointer text-center py-2"
           >
-            <FileText className="w-4 h-4 text-sky-300" />
-            <span>Ficha Técnica</span>
+            Ficha Técnica
           </button>
 
           <a

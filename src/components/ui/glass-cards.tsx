@@ -175,14 +175,13 @@ export const GlassCard: React.FC<CardProps> = ({
           </div>
 
           {/* Botones de Acción Móviles (Ergonomía Táctil) */}
-          <div className="grid grid-cols-2 gap-2 pt-1">
+          <div className="grid grid-cols-2 gap-2 pt-1 items-center">
             <button
               type="button"
               onClick={() => setIsOpen(true)}
-              className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl font-bold text-xs bg-[#EAF2FA] text-[#0284C7] hover:bg-[#d5e7f7] active:scale-95 transition-all cursor-pointer"
+              className="text-xs font-semibold text-slate-500 hover:text-[#0284C7] underline-offset-4 hover:underline transition-colors cursor-pointer text-center py-2"
             >
-              <FileText className="w-3.5 h-3.5" />
-              <span>Ficha Técnica</span>
+              Ficha Técnica
             </button>
 
             <a
