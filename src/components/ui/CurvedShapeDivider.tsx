@@ -35,7 +35,7 @@ export const CurvedShapeDivider: React.FC<CurvedShapeDividerProps> = ({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
-        className="relative block w-full h-12 sm:h-18 md:h-24 lg:h-32"
+        className="relative block w-full h-7 xs:h-9 sm:h-14 md:h-20 lg:h-28 xl:h-32 transition-all duration-300"
       >
         <path
           d={selectedPath}

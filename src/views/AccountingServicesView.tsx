@@ -90,8 +90,14 @@ export const AccountingServicesView: React.FC = () => {
                       {/* Haz de luz perimetral sutil en dorado */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/15 via-transparent to-yellow-300/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
 
-                      {/* Título y descripción en la base: Visibles completos sin cortes */}
-                      <div className="absolute bottom-5 left-5 right-5 z-10 transition-all duration-300 opacity-100 group-hover:opacity-0 group-hover:translate-y-4 pointer-events-none">
+                      {/* Indicador táctil en pantallas móviles para descubrir entregables */}
+                      <div className="absolute top-4 left-4 z-20 lg:hidden flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/75 backdrop-blur-md border border-white/20 text-[10.5px] font-semibold text-slate-200 pointer-events-none group-data-[revealed=true]:opacity-0 transition-opacity duration-300">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                        <span>Toca para detalles</span>
+                      </div>
+
+                      {/* Título y descripción en la base: Visibles completos sin cortes, se ocultan al revelar */}
+                      <div className="absolute bottom-5 left-5 right-5 z-10 transition-all duration-300 opacity-100 group-hover:opacity-0 group-hover:translate-y-4 group-data-[revealed=true]:opacity-0 group-data-[revealed=true]:translate-y-4 pointer-events-none">
                         <h3 className="text-lg sm:text-xl font-heading font-black text-white leading-snug drop-shadow-md">
                           {service.title}
                         </h3>

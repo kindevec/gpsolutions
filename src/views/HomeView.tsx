@@ -25,11 +25,6 @@ import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { ALL_SERVICES } from '../data/services';
 import { ServiceCardSlideUp } from '../components/ui/ServiceCardSlideUp';
-import {
-  CardHoverReveal,
-  CardHoverRevealContent,
-  CardHoverRevealMain,
-} from '../components/ui/reveal-on-hover';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import type { TabKey, ServiceItem } from '../types';
 
