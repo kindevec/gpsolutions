@@ -1,44 +1,87 @@
-import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
 import { WhatsAppIcon } from './ui/SocialIcons';
 import { COMPANY_DATA } from '../data/company';
 
 export const FloatingWhatsApp: React.FC = () => {
-  const [showTooltip, setShowTooltip] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isRevealedMobile, setIsRevealedMobile] = useState(false);
+  const hideTimerRef = useRef<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Close the button if user clicks/touches outside on mobile
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsRevealedMobile(false);
+        if (hideTimerRef.current) window.clearTimeout(hideTimerRef.current);
+      }
+    };
+
+    document.addEventListener('touchstart', handleOutsideClick, { passive: true });
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('touchstart', handleOutsideClick);
+      document.removeEventListener('mousedown', handleOutsideClick);
+      if (hideTimerRef.current) window.clearTimeout(hideTimerRef.current);
+    };
+  }, []);
+
+  const handleButtonClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const isMobileView = typeof window !== 'undefined' && window.innerWidth < 768;
+
+    if (isMobileView) {
+      // On mobile when collapsed, first touch reveals the button instead of navigating
+      if (!isRevealedMobile) {
+        e.preventDefault();
+        setIsRevealedMobile(true);
+
+        // Auto-hide after 5.5 seconds if user doesn't tap it
+        if (hideTimerRef.current) window.clearTimeout(hideTimerRef.current);
+        hideTimerRef.current = window.setTimeout(() => {
+          setIsRevealedMobile(false);
+        }, 5500);
+        return;
+      }
+
+      // If already revealed and user taps it, navigate to WhatsApp
+      if (hideTimerRef.current) window.clearTimeout(hideTimerRef.current);
+    }
+  };
+
+  const isVisible = isHovered || isRevealedMobile;
 
   return (
-    <div className="fixed bottom-20 lg:bottom-8 right-4 sm:right-6 z-40 flex items-end gap-2.5">
-      {/* Floating Tooltip Help */}
-      {showTooltip && (
-        <div className="hidden sm:flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white text-[#102547] text-xs shadow-xl border border-sky-200/80 backdrop-blur-md">
-          <img
-            src="/favicon.png"
-            alt="GP Solutions"
-            className="w-4 h-4 object-contain shrink-0"
-            width={16}
-            height={16}
-          />
-          <span className="w-2 h-2 rounded-full bg-[#0284C7] animate-ping" />
-          <span>¿Consultas con el SRI o IESS? Escríbanos</span>
-          <button
-            onClick={() => setShowTooltip(false)}
-            className="text-slate-400 hover:text-slate-700 p-0.5 cursor-pointer ml-1"
-            aria-label="Cerrar mensaje"
-          >
-            <X className="w-3 h-3" />
-          </button>
-        </div>
-      )}
-
-      {/* Button */}
+    <div
+      ref={containerRef}
+      className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] md:bottom-[calc(1.75rem+env(safe-area-inset-bottom,0px))] right-0 z-50 flex items-center select-none pointer-events-auto"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Floating WhatsApp Button: Yellow / Gold branded */}
       <a
         href={COMPANY_DATA.whatsappBaseUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#0284C7] hover:bg-[#0369a1] text-white flex items-center justify-center shadow-lg shadow-sky-500/30 transition-all duration-300 transform hover:scale-108 active:scale-95 cursor-pointer"
+        id="floating-whatsapp-button"
+        onClick={handleButtonClick}
+        onFocus={() => setIsHovered(true)}
+        onBlur={() => setIsHovered(false)}
+        className={`relative group flex items-center justify-center w-11 h-11 xs:w-12 xs:h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-full bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-300 border-2 border-yellow-100 shadow-[0_6px_20px_rgba(0,0,0,0.35),0_0_20px_rgba(245,158,11,0.6)] hover:shadow-[0_10px_28px_rgba(0,0,0,0.45),0_0_26px_rgba(245,158,11,0.85)] transition-all duration-400 ease-out cursor-pointer active:scale-95 ${
+          isVisible
+            ? '-translate-x-3 sm:-translate-x-4 md:-translate-x-5 md:scale-110'
+            : 'translate-x-6 sm:translate-x-7 md:translate-x-8 md:hover:translate-x-0'
+        }`}
         aria-label="Contactar a GP Solutions por WhatsApp"
       >
-        <WhatsAppIcon className="w-7 h-7 sm:w-8 sm:h-8" />
+        {/* Ping pulse ring when at rest */}
+        <span
+          className={`absolute inset-0 rounded-full bg-amber-400 transition-opacity duration-300 pointer-events-none ${
+            isVisible ? 'opacity-0' : 'opacity-40 animate-ping'
+          }`}
+        />
+
+        {/* WhatsApp Icon */}
+        <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-7.5 md:h-7.5 text-[#0A1C24] relative z-10 shrink-0 drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)]" />
       </a>
     </div>
   );

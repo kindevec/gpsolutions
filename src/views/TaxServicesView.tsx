@@ -1,59 +1,33 @@
-import React, { useState, useMemo } from 'react';
-import {
-  Receipt,
-  Users,
-  Search,
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  Phone,
-} from 'lucide-react';
+import React, { useRef } from 'react';
+import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { ALL_SERVICES } from '../data/services';
-import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
-import { ServiceCardSlideUp } from '../components/ui/ServiceCardSlideUp';
-import { StackedCards } from '../components/ui/glass-cards';
+import { buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 
-type SubFilter = 'todos' | 'tributaria' | 'laboral';
-
 export const TaxServicesView: React.FC = () => {
-  const [subFilter, setSubFilter] = useState<SubFilter>('todos');
-  const [searchQuery, setSearchQuery] = useState('');
+  const tributariosServices = ALL_SERVICES.filter((s) => s.category === 'tributaria');
+  const laboralesServices = ALL_SERVICES.filter((s) => s.category === 'laboral');
 
-  const tributariosServices = useMemo(() => {
-    const list = ALL_SERVICES.filter((s) => s.category === 'tributaria');
-    if (!searchQuery.trim()) return list;
-    const q = searchQuery.toLowerCase();
-    return list.filter(
-      (s) =>
-        s.title.toLowerCase().includes(q) ||
-        s.description.toLowerCase().includes(q) ||
-        s.badge.toLowerCase().includes(q) ||
-        s.deliverables.some((d) => d.toLowerCase().includes(q))
-    );
-  }, [searchQuery]);
+  const taxCarouselRef = useRef<HTMLDivElement>(null);
 
-  const laboralesServices = useMemo(() => {
-    const list = ALL_SERVICES.filter((s) => s.category === 'laboral');
-    if (!searchQuery.trim()) return list;
-    const q = searchQuery.toLowerCase();
-    return list.filter(
-      (s) =>
-        s.title.toLowerCase().includes(q) ||
-        s.description.toLowerCase().includes(q) ||
-        s.badge.toLowerCase().includes(q) ||
-        s.deliverables.some((d) => d.toLowerCase().includes(q))
-    );
-  }, [searchQuery]);
+  const scrollTaxCarousel = (direction: 'left' | 'right') => {
+    if (taxCarouselRef.current) {
+      const scrollAmount = taxCarouselRef.current.clientWidth * 0.85;
+      taxCarouselRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   return (
     <div className="bg-[#F4F8FC] text-[#102547]">
       
       {/* =========================================================================
-          1. HEADER INSTITUCIONAL ONDULADO (FOTO TRIBUTARIA + MÁSCARA ONDULADA)
+          1. HEADER INSTITUCIONAL ONDULADO (TÍTULO Y TEXTO CENTRADOS)
          ========================================================================= */}
-      <section className="relative pt-32 pb-24 sm:pt-36 sm:pb-28 md:pt-40 md:pb-32 overflow-hidden bg-[#102547]">
+      <section className="relative pt-40 pb-28 sm:pt-48 sm:pb-32 md:pt-56 md:pb-36 overflow-hidden bg-[#102547]">
         {/* Foto de Fondo con Máscara Ondulada y Overlays */}
         <div className="absolute inset-0 z-0">
           <img
@@ -67,99 +41,22 @@ export const TaxServicesView: React.FC = () => {
           <div className="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <div className="lg:col-span-8">
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
-                <span className="text-white">Servicios </span>
-                <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
-                  Tributarios
-                </span>
-                <span className="text-white"> y </span>
-                <span className="bg-gradient-to-r from-emerald-300 via-teal-200 to-cyan-100 bg-clip-text text-transparent">
-                  Laborales
-                </span>
-              </h1>
+        {/* Contenido del Hero Centrado */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center mt-4 sm:mt-8">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
+            <span className="text-white">Servicios </span>
+            <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
+              Tributarios
+            </span>
+            <span className="text-white"> y </span>
+            <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-[#FCD34D] bg-clip-text text-transparent">
+              Laborales
+            </span>
+          </h1>
 
-              <p className="text-slate-200 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
-                Liquidación oportuna de declaraciones de IVA e Impuesto a la Renta ante el SRI, trámite de devolución de impuestos, anexos ATS/RDEP, patentes 1.5 x mil, y gestión integral de nómina, roles y obligaciones patronales en el IESS.
-              </p>
-
-              {/* Badges de Autoridad */}
-              <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-white">
-                <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 shadow-sm">
-                  <ShieldCheck className="w-4 h-4 text-[#38BDF8]" />
-                  <span>Servicio de Rentas Internas (SRI)</span>
-                </div>
-                <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 shadow-sm">
-                  <Users className="w-4 h-4 text-[#38BDF8]" />
-                  <span>Seguridad Social (IESS & SUT)</span>
-                </div>
-                <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 shadow-sm">
-                  <Receipt className="w-4 h-4 text-[#38BDF8]" />
-                  <span>Cero Multas por Glosas</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Buscador Rápido y Filtro de Sub-Categoría */}
-            <div className="lg:col-span-4 space-y-4">
-              <div className="p-6 rounded-3xl bg-white/95 backdrop-blur-md border border-white/40 shadow-2xl">
-                <label className="text-xs font-bold text-[#102547] uppercase tracking-wider block mb-2">
-                  Filtrar Especialidad
-                </label>
-
-                {/* Subfiltros */}
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  <button
-                    onClick={() => setSubFilter('todos')}
-                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
-                      subFilter === 'todos'
-                        ? 'bg-[#0284C7] text-white shadow-sm'
-                        : 'bg-[#F4F8FC] text-slate-700 hover:bg-slate-100 border border-sky-100'
-                    }`}
-                  >
-                    Todos (13)
-                  </button>
-
-                  <button
-                    onClick={() => setSubFilter('tributaria')}
-                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
-                      subFilter === 'tributaria'
-                        ? 'bg-[#0284C7] text-white shadow-sm'
-                        : 'bg-[#F4F8FC] text-slate-700 hover:bg-slate-100 border border-sky-100'
-                    }`}
-                  >
-                    SRI (8)
-                  </button>
-
-                  <button
-                    onClick={() => setSubFilter('laboral')}
-                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-center ${
-                      subFilter === 'laboral'
-                        ? 'bg-[#0284C7] text-white shadow-sm'
-                        : 'bg-[#F4F8FC] text-slate-700 hover:bg-slate-100 border border-sky-100'
-                    }`}
-                  >
-                    IESS (5)
-                  </button>
-                </div>
-
-                <div className="relative">
-                  <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Buscar declaración, nómina, SRI..."
-                    className="w-full pl-9 pr-4 py-2 rounded-xl bg-[#F4F8FC] border border-sky-200 text-xs text-[#102547] placeholder-slate-400 focus:outline-none focus:border-[#0284C7] transition-colors"
-                  />
-                </div>
-              </div>
-            </div>
-
-          </div>
+          <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+            Liquidación oportuna de declaraciones de IVA e Impuesto a la Renta ante el SRI, trámite de devolución de impuestos, anexos ATS/RDEP, patentes 1.5 x mil, y gestión integral de nómina, roles y obligaciones patronales en el IESS.
+          </p>
         </div>
 
         {/* Onda Divisoria */}
@@ -169,121 +66,251 @@ export const TaxServicesView: React.FC = () => {
       </section>
 
 
-      {/* ========================================================= */}
-      {/* 2. CATÁLOGO CON SEPARACIÓN TRIBUTARIA Y LABORAL            */}
-      {/* ========================================================= */}
-      <section className="py-10 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* =========================================================================
+          2. SECCIÓN 1: SERVICIOS TRIBUTARIOS (SRI) - CARRUSEL LINEAL (8 TARJETAS)
+         ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white relative overflow-hidden group/tax">
+        {/* Efectos de Iluminación Ambiental */}
+        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#0284C7]/10 rounded-full blur-[110px] pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-[#38BDF8]/10 rounded-full blur-[110px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          {/* SECCIÓN 1: SERVICIOS TRIBUTARIOS (SRI) */}
-          {(subFilter === 'todos' || subFilter === 'tributaria') && (
-            <div>
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <Receipt className="w-5 h-5 text-[#0284C7]" />
-                  <h2 className="font-heading text-2xl sm:text-3xl font-black text-[#102547] tracking-tight">
-                    Servicios Tributarios ante el SRI
-                  </h2>
-                </div>
-                <p className="text-slate-600 text-xs sm:text-sm max-w-2xl text-justify">
-                  Declaraciones de IVA e Impuesto a la Renta, retenciones, anexos ATS y recuperación técnica de tributos con 100% apego a la normativa fiscal.
-                </p>
-              </div>
+          {/* Cabecera Centrada (Sin icono) */}
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+            <h2 className="font-heading text-2xl sm:text-4xl font-black text-[#102547] tracking-tight">
+              Servicios Tributarios ante el SRI
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-2xl mx-auto leading-relaxed">
+              Declaraciones de IVA e Impuesto a la Renta, retenciones, anexos ATS y recuperación técnica de tributos con 100% de apego a la normativa fiscal.
+            </p>
+          </div>
 
-              {/* Vista Móvil: Glass Cards */}
-              <div className="block md:hidden">
-                <StackedCards
-                  cards={tributariosServices.map((s) => ({
-                    id: s.id,
-                    title: s.title,
-                    description: s.description,
-                    color: 'rgba(2, 132, 199, 0.85)',
-                    badge: s.badge,
-                    category: s.category,
-                    categoryLabel: s.categoryLabel,
-                    deliverables: s.deliverables,
-                    legalBasis: s.legalBasis,
-                    frequency: s.frequency,
-                    image: s.image,
-                    whatsappMessage: s.whatsappMessage,
-                  }))}
-                />
-              </div>
+          {/* Carrusel Deslizable de Forma Lineal con Flechas Flotantes */}
+          <div className="relative">
+            {/* Botón Flecha Izquierda Flotante (más afuera del carrusel) */}
+            <button
+              type="button"
+              onClick={() => scrollTaxCarousel('left')}
+              aria-label="Deslizar anterior"
+              className="absolute -left-4 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_8px_30px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-0 group-hover/tax:opacity-100 pointer-events-none group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+            >
+              <ChevronLeft className="w-6 h-6 stroke-[2.8]" />
+            </button>
 
-              {/* Vista Tablet / Desktop: Grid de 3 en 3 */}
-              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-                {tributariosServices.map((service) => (
-                  <ServiceCardSlideUp key={service.id} service={service} />
-                ))}
-              </div>
+            {/* Contenedor del Carrusel Lineal con las 8 Tarjetas */}
+            <div
+              ref={taxCarouselRef}
+              className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-2 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 relative z-10"
+            >
+              {tributariosServices.map((service, idx) => {
+                const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
+                const isGold = idx % 2 === 1;
+                return (
+                  <article
+                    key={service.id}
+                    className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start rounded-3xl border ${
+                      isGold
+                        ? 'border-amber-200/90 hover:border-amber-400 hover:shadow-[0_12px_40px_rgba(245,158,11,0.2)]'
+                        : 'border-slate-200/90 hover:border-[#0284C7] hover:shadow-[0_12px_40px_rgba(2,132,199,0.22)]'
+                    } bg-white hover:bg-gradient-to-b hover:from-white ${
+                      isGold ? 'hover:to-amber-50/40' : 'hover:to-sky-50/40'
+                    } hover:-translate-y-1.5 transition-all duration-500 overflow-hidden flex flex-col justify-between group/card shadow-sm`}
+                  >
+                    {/* 1. Imagen de Portada con Zoom */}
+                    <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-100 shrink-0">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover/card:scale-108 transition-transform duration-500 opacity-95 group-hover/card:opacity-100"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (!target.src.includes('hero-tax.jpg')) {
+                            target.src = '/images/heroes/hero-tax.jpg';
+                          }
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#102547]/80 via-transparent to-black/20 pointer-events-none" />
+                      
+                      {/* Luz al hover */}
+                      <div className={`absolute inset-0 ${
+                        isGold ? 'bg-gradient-to-tr from-amber-400/20 via-transparent to-yellow-300/15' : 'bg-gradient-to-tr from-[#0284C7]/20 via-transparent to-amber-400/10'
+                      } opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+                    </div>
+
+                    {/* 2. Cuerpo de la Tarjeta con Todo el Texto Completo */}
+                    <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
+                      <div>
+                        {/* Título de la tarjeta */}
+                        <h3 className={`text-base sm:text-lg font-heading font-bold text-[#102547] ${
+                          isGold ? 'group-hover/card:text-amber-600' : 'group-hover/card:text-[#0284C7]'
+                        } transition-colors duration-300 leading-snug mb-2`}>
+                          {service.title}
+                        </h3>
+
+                        {/* Descripción completa sin cortes */}
+                        <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed mb-3.5">
+                          {service.description}
+                        </p>
+
+                        {/* 2 Entregables Principales con Checkmark */}
+                        <div className="space-y-1.5 mb-4 pt-3 border-t border-slate-100">
+                          {service.deliverables.slice(0, 2).map((item, dIdx) => (
+                            <div key={dIdx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700">
+                              <Check className={`w-4 h-4 ${isGold ? 'text-amber-500' : 'text-[#0284C7]'} shrink-0 mt-0.5`} />
+                              <span className="leading-snug">{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Botón de Cotizar */}
+                      <div className={`pt-3 border-t ${isGold ? 'border-amber-200/60' : 'border-slate-100'}`}>
+                        <a
+                          href={whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm ${
+                            isGold
+                              ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-slate-950 font-black shadow-md shadow-amber-950/30 hover:shadow-[0_0_18px_rgba(245,158,11,0.5)]'
+                              : 'bg-gradient-to-r from-[#0284C7] to-[#0369a1] hover:from-[#38BDF8] hover:to-[#0284C7] text-white shadow-md hover:shadow-sky-500/30'
+                          } transition-all duration-300 active:scale-95 cursor-pointer`}
+                        >
+                          <span>Cotizar</span>
+                          <WhatsAppIcon className={`w-4 h-4 ${isGold ? 'text-slate-950' : 'text-white'}`} />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
-          )}
 
-          {/* SEPARACIÓN ENTRE SECCIÓN TRIBUTARIA Y LABORAL */}
-          {subFilter === 'todos' && tributariosServices.length > 0 && laboralesServices.length > 0 && (
-            <div className="relative my-12 sm:my-16">
-              <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                <div className="w-full border-t border-sky-100" />
-              </div>
-              <div className="relative flex justify-center">
-                <span className="bg-[#F4F8FC] px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-[#0284C7] border border-sky-200 rounded-full shadow-xs">
-                  Área Laboral y Seguridad Social
-                </span>
-              </div>
-            </div>
-          )}
-
-          {/* SECCIÓN 2: SERVICIOS LABORALES (IESS & SUT) */}
-          {(subFilter === 'todos' || subFilter === 'laboral') && (
-            <div>
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <Users className="w-5 h-5 text-emerald-600" />
-                  <h2 className="font-heading text-2xl sm:text-3xl font-black text-[#102547] tracking-tight">
-                    Servicios Laborales y Seguridad Social (IESS & SUT)
-                  </h2>
-                </div>
-                <p className="text-slate-600 text-xs sm:text-sm max-w-2xl text-justify">
-                  Elaboración de roles de pago, registro de contratos en plataforma SUT, liquidaciones y avisos patronales para evitar multas, glosas y mora en el IESS.
-                </p>
-              </div>
-
-              {/* Vista Móvil: Glass Cards */}
-              <div className="block md:hidden">
-                <StackedCards
-                  cards={laboralesServices.map((s) => ({
-                    id: s.id,
-                    title: s.title,
-                    description: s.description,
-                    color: 'rgba(16, 185, 129, 0.85)',
-                    badge: s.badge,
-                    category: s.category,
-                    categoryLabel: s.categoryLabel,
-                    deliverables: s.deliverables,
-                    legalBasis: s.legalBasis,
-                    frequency: s.frequency,
-                    image: s.image,
-                    whatsappMessage: s.whatsappMessage,
-                  }))}
-                />
-              </div>
-
-              {/* Vista Tablet / Desktop: Grid de 3 en 3 */}
-              <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-7">
-                {laboralesServices.map((service) => (
-                  <ServiceCardSlideUp key={service.id} service={service} />
-                ))}
-              </div>
-            </div>
-          )}
+            {/* Botón Flecha Derecha Flotante (más afuera del carrusel) */}
+            <button
+              type="button"
+              onClick={() => scrollTaxCarousel('right')}
+              aria-label="Deslizar siguiente"
+              className="absolute -right-4 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_8px_30px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-0 group-hover/tax:opacity-100 pointer-events-none group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+            >
+              <ChevronRight className="w-6 h-6 stroke-[2.8]" />
+            </button>
+          </div>
 
         </div>
       </section>
 
 
-      {/* ========================================================= */}
-      {/* 3. BANNER DE CONTACTO TRIBUTARIO                           */}
-      {/* ========================================================= */}
+      {/* =========================================================================
+          3. SECCIÓN 2: SERVICIOS LABORALES (IESS & SUT) - ESTILO NEON CYAN
+         ========================================================================= */}
+      <section className="py-16 sm:py-24 bg-[#081829] relative overflow-hidden text-white border-t border-cyan-900/60">
+        {/* Efectos de Iluminación de Fondo */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#0284C7]/15 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(#00e5ff_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Cabecera Centrada (Sin icono y sin etiqueta arriba) */}
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="font-heading text-2xl sm:text-4xl font-black text-white tracking-tight">
+              Servicios Laborales y Seguridad Social (IESS & SUT)
+            </h2>
+            <p className="text-cyan-100/80 text-xs sm:text-sm mt-2 max-w-2xl mx-auto leading-relaxed">
+              Elaboración de roles de pago, registro de contratos en plataforma SUT, liquidaciones y avisos patronales para evitar multas, glosas y mora en el IESS.
+            </p>
+          </div>
+
+          {/* Contenedor de Tarjetas Laborales con estilo cyan glow, información equilibrada y tarjetas inferiores centradas */}
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-7">
+            {laboralesServices.map((service, idx) => {
+              const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
+              const isGold = idx % 2 === 1;
+              return (
+                <article
+                  key={service.id}
+                  className={`w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)] max-w-sm rounded-2xl sm:rounded-3xl border-2 ${
+                    isGold
+                      ? 'border-amber-400/80 hover:border-amber-300 shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_35px_rgba(245,158,11,0.45)]'
+                      : 'border-[#00b4d8]/85 hover:border-[#00e5ff] shadow-[0_0_20px_rgba(0,180,216,0.18)] hover:shadow-[0_0_35px_rgba(0,229,255,0.45)]'
+                  } bg-gradient-to-b from-[#0e273c] via-[#091b2c] to-[#071624] p-4 sm:p-5 hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between group`}
+                >
+                  <div>
+                    {/* Imagen de Portada con marco redondeado interno */}
+                    <div className="relative w-full h-44 sm:h-48 rounded-xl sm:rounded-2xl overflow-hidden bg-[#05111d] shadow-inner">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (!target.src.includes('hero-tax.jpg')) {
+                            target.src = '/images/heroes/hero-tax.jpg';
+                          }
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#091b2c]/80 via-transparent to-transparent pointer-events-none" />
+                      
+                      {/* Efecto de luz al hover */}
+                      <div className={`absolute inset-0 ${
+                        isGold ? 'bg-amber-400/15' : 'bg-cyan-400/10'
+                      } opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
+                    </div>
+
+                    {/* Cuerpo de la Tarjeta (Título centrado en blanco, descripción y 2 entregables principales) */}
+                    <div className="pt-4 pb-1 text-center">
+                      <h3 className={`text-base sm:text-lg font-heading font-bold text-white ${
+                        isGold ? 'group-hover:text-amber-300' : 'group-hover:text-[#38BDF8]'
+                      } transition-colors duration-300 leading-snug`}>
+                        {service.title}
+                      </h3>
+                      <p className="text-cyan-100/80 text-xs sm:text-[13px] mt-2 leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    {/* 2 Entregables clave en tarjetas laborales */}
+                    <div className={`space-y-1.5 my-3 pt-3 border-t ${isGold ? 'border-amber-400/25' : 'border-cyan-500/20'} text-left`}>
+                      {service.deliverables.slice(0, 2).map((item, dIdx) => (
+                        <div key={dIdx} className="flex items-start gap-2 text-xs sm:text-[13px] text-cyan-100/90">
+                          <Check className={`w-4 h-4 ${isGold ? 'text-amber-400' : 'text-[#38BDF8]'} shrink-0 mt-0.5`} />
+                          <span className="leading-snug">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Botón de Cotizar */}
+                  <div className="pt-2">
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm ${
+                        isGold
+                          ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-slate-950 font-black shadow-md shadow-amber-950/40 hover:shadow-[0_0_20px_rgba(245,158,11,0.6)]'
+                          : 'bg-gradient-to-r from-[#0284C7] to-[#00b4d8] hover:from-[#00b4d8] hover:to-[#38BDF8] text-white shadow-md shadow-cyan-950/40 hover:shadow-[0_0_20px_rgba(0,180,216,0.6)]'
+                      } transition-all duration-300 active:scale-95 cursor-pointer`}
+                    >
+                      <span>Cotizar</span>
+                      <WhatsAppIcon className={`w-4 h-4 ${isGold ? 'text-slate-950' : 'text-white'}`} />
+                    </a>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =========================================================================
+          4. BANNER DE CONTACTO TRIBUTARIO Y LABORAL
+         ========================================================================= */}
       <section className="py-14 bg-[#EAF2FA] border-t border-sky-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-heading font-extrabold text-2xl text-[#102547] mb-2">

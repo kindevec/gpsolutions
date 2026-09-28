@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Building2, Receipt, Users, MessageSquare } from 'lucide-react';
+import { Home, Building2, Receipt, Users, Phone } from 'lucide-react';
 import type { TabKey } from '../../types';
 
 interface MobileBottomNavProps {
@@ -13,16 +13,19 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ activeTab, onS
     { key: 'servicios-contables', label: 'Contable', icon: Building2 },
     { key: 'servicios-tributarios', label: 'Tributario', icon: Receipt },
     { key: 'nosotros', label: 'Nosotros', icon: Users },
-    { key: 'contacto', label: 'Contacto', icon: MessageSquare },
+    { key: 'contacto', label: 'Contacto', icon: Phone },
   ];
 
   return (
     <nav
       id="mobile-bottom-navigation"
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-t border-sky-900/10 shadow-[0_-4px_20px_rgba(16,37,71,0.08)] px-2 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0c1a30]/95 backdrop-blur-xl border-t-2 border-amber-400/80 shadow-[0_-8px_30px_rgba(0,0,0,0.45),0_-2px_15px_rgba(245,158,11,0.25)] px-2 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]"
       aria-label="Navegación inferior móvil"
     >
-      <div className="grid grid-cols-5 gap-1 items-center max-w-md mx-auto">
+      {/* Sutil línea de brillo dorado superior */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FCD34D] to-transparent shadow-[0_0_10px_#FCD34D] pointer-events-none" />
+
+      <div className="flex items-center justify-between max-w-md mx-auto h-11 px-1">
         {items.map((item) => {
           const isActive = activeTab === item.key;
           const IconComponent = item.icon;
@@ -30,21 +33,25 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ activeTab, onS
             <button
               key={item.key}
               onClick={() => onSelectTab(item.key)}
-              className={`flex flex-col items-center justify-center py-1.5 px-1 rounded-xl transition-all duration-200 cursor-pointer ${
+              className={`flex items-center gap-1.5 py-1.5 transition-all duration-300 ease-out cursor-pointer select-none shrink-0 ${
                 isActive
-                  ? 'text-[#0284C7] font-bold bg-sky-50'
-                  : 'text-slate-500 hover:text-[#102547]'
+                  ? 'bg-gradient-to-r from-amber-400 via-amber-300 to-[#FCD34D] text-[#0a1829] font-black px-3.5 rounded-full border border-yellow-200 shadow-[0_0_22px_rgba(251,191,36,0.7),0_2px_10px_rgba(0,0,0,0.35)] scale-102'
+                  : 'text-white/80 hover:text-amber-300 p-2 rounded-full hover:bg-amber-400/15'
               }`}
+              aria-label={item.label}
             >
-              <div className="relative">
-                <IconComponent className={`w-5 h-5 ${isActive ? 'stroke-[2.4]' : 'stroke-[1.8]'}`} />
-                {isActive && (
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#0284C7]" />
-                )}
-              </div>
-              <span className="text-[10px] mt-1 tracking-tight leading-none line-clamp-1">
-                {item.label}
-              </span>
+              <IconComponent
+                className={`w-5 h-5 shrink-0 transition-colors ${
+                  isActive
+                    ? 'stroke-[2.6] text-[#0a1829]'
+                    : 'stroke-[1.9] group-hover:text-amber-300 group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]'
+                }`}
+              />
+              {isActive && (
+                <span className="text-xs sm:text-[13px] font-black text-[#0a1829] tracking-tight whitespace-nowrap animate-in fade-in slide-in-from-left-1 duration-200">
+                  {item.label}
+                </span>
+              )}
             </button>
           );
         })}
