@@ -122,7 +122,7 @@ export const ContactView: React.FC = () => {
                       <CheckCircle2 className="w-12 h-12 text-[#16A34A] mx-auto mb-3" />
                       <h4 className="font-bold text-[#102547] text-base mb-1">¡Consulta lista para envío!</h4>
                       <p className="text-xs text-slate-600 mb-4">
-                        Se ha generado el enlace directo a WhatsApp oficial con Luis Fernando Guerra Padilla.
+                        Se ha generado el enlace directo a WhatsApp oficial con {COMPANY_DATA.director}.
                       </p>
                       <button
                         onClick={() => setFormSubmitted(false)}

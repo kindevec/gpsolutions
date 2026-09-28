@@ -1,7 +1,7 @@
 export const COMPANY_DATA = {
   name: "GUERRAPADILLAGPSOLUTIONS S.A.S.",
   commercialName: "GP SOLUTIONS",
-  director: "Luis Fernando Guerra Padilla",
+  director: "Álvaro Guerra",
   slogan: "Control Integral que construye Confianza",
   subSlogan: "Soluciones contables, tributarias, laborales y legales a tu alcance",
   legacySlogan: "Seguro con nosotros",
