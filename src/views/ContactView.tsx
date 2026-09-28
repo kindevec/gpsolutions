@@ -13,6 +13,7 @@ import {
 import { WhatsAppIcon, FacebookIcon, InstagramIcon, LinkedInIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
+import { sanitizeInput } from '../utils/sanitize';
 
 export const ContactView: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -30,11 +31,18 @@ export const ContactView: React.FC = () => {
     e.preventDefault();
     if (formData.honeypot) return;
 
-    const message = `Hola GP SOLUTIONS (+593999840649), mi nombre es ${formData.nombre}${formData.empresa ? ` de la empresa ${formData.empresa}` : ''}.
-- Teléfono: ${formData.telefono}
-- Email: ${formData.email}
-- Asunto / Área: ${formData.servicio}
-- Detalle: ${formData.mensaje}`;
+    const cleanNombre = sanitizeInput(formData.nombre);
+    const cleanEmpresa = sanitizeInput(formData.empresa);
+    const cleanTelefono = sanitizeInput(formData.telefono);
+    const cleanEmail = sanitizeInput(formData.email);
+    const cleanServicio = sanitizeInput(formData.servicio);
+    const cleanMensaje = sanitizeInput(formData.mensaje);
+
+    const message = `Hola GP SOLUTIONS (+593999840649), mi nombre es ${cleanNombre}${cleanEmpresa ? ` de la empresa ${cleanEmpresa}` : ''}.
+- Teléfono: ${cleanTelefono}
+- Email: ${cleanEmail}
+- Asunto / Área: ${cleanServicio}
+- Detalle: ${cleanMensaje}`;
 
     window.open(buildWhatsAppLink(message), '_blank');
     setFormSubmitted(true);
@@ -75,13 +83,18 @@ export const ContactView: React.FC = () => {
             Coordine una cita presencial en nuestro despacho de Tumbaco o solicite una consultoría virtual inmediata para regularizar su empresa.
           </p>
         </div>
+
+        {/* Separador Ondulado que corta la base de la imagen con relleno blanco */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none translate-y-px">
+          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="organic" />
+        </div>
       </section>
 
 
       {/* =========================================================================
           2. FORMULARIO ESTILO TARJETA CHEVRON FLECHA + FONDO BLANCO
          ========================================================================= */}
-      <section className="py-12 sm:py-16 bg-white">
+      <section className="-mt-1 py-12 sm:py-16 bg-white relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Contenedor Principal con ancho normal (max-w-7xl) */}

@@ -6,7 +6,7 @@ import { CardHoverReveal, CardHoverRevealMain, CardHoverRevealContent } from '..
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 
 export const AccountingServicesView: React.FC = () => {
-  const contableServices = ALL_SERVICES.filter((s) => s.category === 'contable');
+  const contableServices = ALL_SERVICES.filter((s) => s.category === 'contable' && s.id !== 'cont-9');
 
   return (
     <div className="bg-[#F4F8FC] text-[#102547]">
@@ -45,20 +45,28 @@ export const AccountingServicesView: React.FC = () => {
             Llevamos la contabilidad bajo normativa NIIF, elaboramos balances auditables, tramitamos el cumplimiento anual en la Superintendencia de Compañías y constituimos su empresa S.A.S. de forma ágil y segura.
           </p>
         </div>
+
+        {/* Onda Divisoria */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none translate-y-px">
+          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="organic" />
+        </div>
       </section>
 
 
       {/* =========================================================================
           2. GRID DE TARJETAS ESTILO CONTABILIDAD Y BALANCES (CARD HOVER REVEAL)
          ========================================================================= */}
-      <section className="py-12 sm:py-20 bg-white relative overflow-hidden">
+      <section className="-mt-1 py-12 sm:py-20 bg-white relative z-20 overflow-hidden">
         <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-7 lg:gap-8">
             {contableServices.map((service, idx) => {
               const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
               const isGold = idx % 2 === 1;
               return (
-                <div key={service.id} className="w-full flex flex-col">
+                <div
+                  key={service.id}
+                  className="w-full md:w-[calc((100%-1.75rem)/2)] lg:w-[calc((100%-4rem)/3)] max-w-md md:max-w-none flex flex-col"
+                >
                   <CardHoverReveal className={`w-full h-[500px] sm:h-[520px] md:h-[540px] rounded-3xl overflow-hidden shadow-xl border ${
                     isGold
                       ? 'border-amber-400/40 hover:border-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.35)]'

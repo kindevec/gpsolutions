@@ -156,25 +156,6 @@ export const ALL_SERVICES: ServiceItem[] = [
     image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo cotizar un taller de Capacitación Contable y Tributaria."
   },
-  {
-    id: "cont-9",
-    number: 9,
-    title: "Auditoría interna & peritaje contable",
-    description: "Evaluación rigurosa de procesos financieros, control interno y revisión preventiva de libros contables para detectar discrepancias antes de auditorías externas o del SRI.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "Control Preventivo",
-    deliverables: [
-      "Informe diagnóstico de control interno y riesgos",
-      "Arqueos sorpresivos y conciliación de cuentas",
-      "Revisión preventiva de comprobantes y libros contables",
-      "Plan de subsanación de discrepancias financieras"
-    ],
-    legalBasis: "Normas Internacionales de Auditoría (NIA) y Código de Comercio",
-    frequency: "Semestral / Por requerimiento",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito asesoría para el servicio de Auditoría interna y peritaje contable."
-  },
 
   // =========================================================================
   // 2. SERVICIOS TRIBUTARIOS (8 OFICIALES)

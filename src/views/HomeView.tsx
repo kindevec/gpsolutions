@@ -38,7 +38,6 @@ const getServiceIcon = (id: string) => {
     case 'cont-6': return Award;
     case 'cont-7': return Clock;
     case 'cont-8': return Sparkles;
-    case 'cont-9': return Lock;
     default: return Building2;
   }
 };
@@ -135,12 +134,20 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
       <section className="relative pt-40 pb-16 sm:pt-46 sm:pb-20 md:pt-54 md:pb-24 overflow-hidden bg-[#102547]">
         {/* Foto de Fondo Panorámica con Overlays de Alta Legibilidad */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/heroes/hero-home.jpg"
-            alt="GP Solutions - Asesoría Contable, Tributaria y Legal en Ecuador"
-            className="w-full h-full object-cover object-center transform scale-105"
-            loading="eager"
-          />
+          <picture>
+            <source srcSet="/images/heroes/hero-home.avif" type="image/avif" />
+            <source srcSet="/images/heroes/hero-home.webp" type="image/webp" />
+            <img
+              src="/images/heroes/hero-home.jpg"
+              alt="GP Solutions - Asesoría Contable, Tributaria y Legal en Ecuador"
+              className="w-full h-full object-cover object-center transform scale-105"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width={1920}
+              height={1080}
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/95 via-[#0e203c]/90 to-[#0c1a30]/85" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a1526]/85 via-transparent to-[#0a1526]/95" />
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
@@ -173,9 +180,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           </div>
         </div>
 
-        {/* Fila Inferior: 4 Círculos Informativos en la base del Hero */}
-        <div className="max-w-4xl mx-auto px-4 relative z-30 select-none pb-6 sm:pb-8">
-          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-4 sm:mt-6">
+        {/* Separador Ondulado SVG en la Base del Banner (detrás de los círculos) */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none translate-y-px">
+          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave1" />
+        </div>
+
+        {/* Fila Inferior: 4 Círculos Informativos que van POR DELANTE de la Curva */}
+        <div className="max-w-4xl mx-auto px-4 relative z-30 select-none">
+          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
             
             {/* Card Circular 1: Contabilidad & NIIF */}
             <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
@@ -225,7 +237,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           2. RESUMEN: SERVICIOS CONTABLES Y CORPORATIVOS (FONDO BLANCO & DISPOSICIÓN ALTERNADA)
          ========================================================================= */}
-      <section className="pt-10 sm:pt-14 pb-8 sm:pb-10 bg-white relative overflow-hidden text-[#102547]">
+      <section className="-mt-1 pt-10 sm:pt-14 pb-8 sm:pb-10 bg-white relative z-20 overflow-hidden text-[#102547]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Encabezado Centrado */}
@@ -250,7 +262,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               type="button"
               onClick={() => scrollCarousel(accountingScrollRef, 'left')}
               aria-label="Deslizar anterior"
-              className="absolute left-1 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -left-2 xs:-left-3 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -272,7 +284,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                   'cont-6': 'Búsqueda fonética y registro oficial de marca ante el SENADI por 10 años.',
                   'cont-7': 'Cálculo mensual de roles de pago, décimos y planillas patronales del IESS.',
                   'cont-8': 'Talleres prácticos in-house en normativa tributaria SRI y facturación.',
-                  'cont-9': 'Revisión preventiva de libros contables y control interno antes de auditorías.',
                 };
 
                 const shortText = shortDescriptions[service.id] || service.description;
@@ -364,7 +375,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               type="button"
               onClick={() => scrollCarousel(accountingScrollRef, 'right')}
               aria-label="Deslizar siguiente"
-              className="absolute right-1 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -right-2 xs:-right-3 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -435,7 +446,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               type="button"
               onClick={() => scrollCarousel(corporateScrollRef, 'left')}
               aria-label="Deslizar anterior"
-              className="absolute left-1 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#102547]/85 sm:bg-white/20 hover:bg-[#102547] sm:hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate-carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -left-2 xs:-left-3 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#102547]/85 sm:bg-white/20 hover:bg-[#102547] sm:hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate-carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -459,7 +470,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                   'cont-6': 'Búsqueda fonética y registro oficial de marca ante el SENADI por 10 años.',
                   'cont-7': 'Cálculo mensual de roles de pago, décimos y planillas patronales del IESS.',
                   'cont-8': 'Talleres prácticos in-company en normativa tributaria SRI y facturación.',
-                  'cont-9': 'Revisión preventiva de libros contables y control interno antes de auditorías.',
                 };
 
                 const shortText = shortDescriptions[service.id] || service.description;
@@ -548,7 +558,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               type="button"
               onClick={() => scrollCarousel(corporateScrollRef, 'right')}
               aria-label="Deslizar siguiente"
-              className="absolute right-1 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#102547]/85 sm:bg-white/20 hover:bg-[#102547] sm:hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate-carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -right-2 xs:-right-3 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#102547]/85 sm:bg-white/20 hover:bg-[#102547] sm:hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate-carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -652,12 +662,19 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                     }`,
                   }}
                 >
-                  <img
-                    src="/images/director-3d.png"
-                    alt={COMPANY_DATA.director}
-                    className="w-full h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[600px] object-contain select-none"
-                    loading="eager"
-                  />
+                  <picture>
+                    <source srcSet="/images/director-3d.avif" type="image/avif" />
+                    <source srcSet="/images/director-3d.webp" type="image/webp" />
+                    <img
+                      src="/images/director-3d.png"
+                      alt={COMPANY_DATA.director}
+                      className="w-full h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[600px] object-contain select-none"
+                      loading="lazy"
+                      decoding="async"
+                      width={500}
+                      height={600}
+                    />
+                  </picture>
                 </div>
               </div>
 

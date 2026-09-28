@@ -17,7 +17,7 @@ export const CurvedShapeDivider: React.FC<CurvedShapeDividerProps> = ({
 
   const paths = {
     wave1: 'M0,48 C240,110 480,10 720,60 C960,110 1200,20 1440,64 L1440,120 L0,120 Z',
-    wave2: 'M0,64 C360,130 720,10 1080,75 C1240,100 1360,50 1440,70 L1440,120 L0,120 Z',
+    wave2: 'M0,64 C360,118 720,10 1080,75 C1240,100 1360,50 1440,70 L1440,120 L0,120 Z',
     organic: 'M0,32 C280,100 520,0 800,55 C1080,110 1300,25 1440,60 L1440,120 L0,120 Z',
   };
 
@@ -35,7 +35,7 @@ export const CurvedShapeDivider: React.FC<CurvedShapeDividerProps> = ({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
-        className="relative block w-full h-7 xs:h-9 sm:h-14 md:h-20 lg:h-28 xl:h-32 transition-all duration-300"
+        className="relative block w-full h-9 xs:h-11 sm:h-14 md:h-20 lg:h-28 xl:h-32 transition-all duration-300"
       >
         <path
           d={selectedPath}

@@ -13,7 +13,8 @@ export const TaxServicesView: React.FC = () => {
 
   const scrollTaxCarousel = (direction: 'left' | 'right') => {
     if (taxCarouselRef.current) {
-      const scrollAmount = taxCarouselRef.current.clientWidth * 0.85;
+      const card = (taxCarouselRef.current.querySelector('.snap-center') || taxCarouselRef.current.querySelector('.snap-start')) as HTMLElement;
+      const scrollAmount = card ? (card.offsetWidth + 24) : 480;
       taxCarouselRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth',
@@ -58,13 +59,18 @@ export const TaxServicesView: React.FC = () => {
             Liquidación oportuna de declaraciones de IVA e Impuesto a la Renta ante el SRI, trámite de devolución de impuestos, anexos ATS/RDEP, patentes 1.5 x mil, y gestión integral de nómina, roles y obligaciones patronales en el IESS.
           </p>
         </div>
+
+        {/* Onda Divisoria */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none translate-y-px">
+          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave2" />
+        </div>
       </section>
 
 
       {/* =========================================================================
           2. SECCIÓN 1: SERVICIOS TRIBUTARIOS (SRI) - CARRUSEL LINEAL (8 TARJETAS)
          ========================================================================= */}
-      <section className="py-12 sm:py-16 bg-white relative overflow-hidden group/tax">
+      <section className="-mt-1 py-12 sm:py-16 bg-white relative z-20 overflow-hidden group/tax">
         {/* Efectos de Iluminación Ambiental */}
         <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#0284C7]/10 rounded-full blur-[110px] pointer-events-none" />
         <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-[#38BDF8]/10 rounded-full blur-[110px] pointer-events-none" />
@@ -88,7 +94,7 @@ export const TaxServicesView: React.FC = () => {
               type="button"
               onClick={() => scrollTaxCarousel('left')}
               aria-label="Deslizar anterior"
-              className="absolute left-1 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/tax:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -left-2 xs:-left-3 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/tax:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -187,7 +193,7 @@ export const TaxServicesView: React.FC = () => {
               type="button"
               onClick={() => scrollTaxCarousel('right')}
               aria-label="Deslizar siguiente"
-              className="absolute right-1 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/tax:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -right-2 xs:-right-3 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/tax:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>

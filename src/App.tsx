@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { MobileBottomNav } from './components/layout/MobileBottomNav';
 import { Footer } from './components/layout/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { HomeView } from './views/HomeView';
-import { AccountingServicesView } from './views/AccountingServicesView';
-import { TaxServicesView } from './views/TaxServicesView';
-import { AboutView } from './views/AboutView';
-import { ContactView } from './views/ContactView';
 import type { TabKey } from './types';
+
+const AccountingServicesView = lazy(() =>
+  import('./views/AccountingServicesView').then((m) => ({ default: m.AccountingServicesView }))
+);
+const TaxServicesView = lazy(() =>
+  import('./views/TaxServicesView').then((m) => ({ default: m.TaxServicesView }))
+);
+const AboutView = lazy(() =>
+  import('./views/AboutView').then((m) => ({ default: m.AboutView }))
+);
+const ContactView = lazy(() =>
+  import('./views/ContactView').then((m) => ({ default: m.ContactView }))
+);
 
 const VALID_TABS: readonly TabKey[] = [
   'inicio',
@@ -83,10 +92,12 @@ export const App: React.FC = () => {
       {/* Main Independent Views */}
       <main className="grow pb-0 overflow-x-hidden">
         {activeTab === 'inicio' && <HomeView onSelectTab={handleSelectTab} />}
-        {activeTab === 'servicios-contables' && <AccountingServicesView />}
-        {activeTab === 'servicios-tributarios' && <TaxServicesView />}
-        {activeTab === 'nosotros' && <AboutView onSelectTab={handleSelectTab} />}
-        {activeTab === 'contacto' && <ContactView />}
+        <Suspense fallback={<div className="min-h-[60vh] flex items-center justify-center bg-[#F4F8FC]" />}>
+          {activeTab === 'servicios-contables' && <AccountingServicesView />}
+          {activeTab === 'servicios-tributarios' && <TaxServicesView />}
+          {activeTab === 'nosotros' && <AboutView onSelectTab={handleSelectTab} />}
+          {activeTab === 'contacto' && <ContactView />}
+        </Suspense>
       </main>
 
       {/* Floating WhatsApp */}

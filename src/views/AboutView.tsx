@@ -82,13 +82,18 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
             </p>
           </div>
         </div>
+
+        {/* Separador Ondulado SVG en la base del Hero en color azul (#071324) para transicionar sin franjas blancas */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none translate-y-px">
+          <CurvedShapeDivider fillColor="#071324" position="bottom" variant="wave1" />
+        </div>
       </section>
 
 
       {/* =========================================================================
           BLOQUE 1: CONOZCA A LA DIRECCIÓN (ESTILO MÁS DE 12 AÑOS - IDÉNTICO)
          ========================================================================= */}
-      <section className="pt-2 sm:pt-6 pb-12 sm:pb-18 bg-[#071324] relative overflow-hidden text-white border-t border-sky-900/40">
+      <section className="-mt-1 pt-2 sm:pt-6 pb-12 sm:pb-18 bg-[#071324] relative z-20 overflow-hidden text-white">
         {/* Luces y brillos ambientales acordes a la paleta del logo */}
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute top-1/2 -right-20 w-[500px] h-[500px] bg-sky-500/15 rounded-full blur-[160px] pointer-events-none" />
@@ -178,12 +183,19 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                     }`,
                   }}
                 >
-                  <img
-                    src="/images/director-3d.png"
-                    alt={COMPANY_DATA.director}
-                    className="w-full h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[600px] object-contain select-none"
-                    loading="eager"
-                  />
+                  <picture>
+                    <source srcSet="/images/director-3d.avif" type="image/avif" />
+                    <source srcSet="/images/director-3d.webp" type="image/webp" />
+                    <img
+                      src="/images/director-3d.png"
+                      alt={COMPANY_DATA.director}
+                      className="w-full h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[600px] object-contain select-none"
+                      loading="lazy"
+                      decoding="async"
+                      width={500}
+                      height={600}
+                    />
+                  </picture>
                 </div>
               </div>
 
@@ -276,13 +288,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Encabezado Centrado: Sin texto previo al título */}
-          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
             <h2 className="font-heading text-2xl sm:text-4xl font-black text-white tracking-tight">
               Construyendo Seguridad y Claridad Financiera
             </h2>
-            <p className="text-slate-300 text-xs sm:text-sm mt-3 max-w-2xl mx-auto leading-relaxed">
-              Visualizamos un ecosistema empresarial donde cada contribuyente opere con balances transparentes, optimización fiscal ética y total certidumbre ante los entes de fiscalización.
-            </p>
           </div>
 
           {/* 3 Columnas con Contenedores en Forma de Arco Superior (rounded-t-full) */}
@@ -347,84 +356,66 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 </h2>
 
                 {/* Grid 6 Soluciones sin cajas/contenedores y solo icono + título: 2 por fila en móvil */}
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-x-3 gap-y-6 sm:gap-8 md:gap-10">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-7 sm:gap-8 md:gap-10">
                   
                   {/* Ítem 1 */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
-                    <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <Building2 className="w-6 h-6 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <Building2 className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center mb-1 group-hover:text-[#0284C7] transition-colors leading-tight">
+                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
                       Contabilidad & NIIF
                     </h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-snug sm:leading-relaxed text-center max-w-[170px]">
-                      Registro contable bajo NIIF y conciliaciones bancarias al día.
-                    </p>
                   </div>
 
                   {/* Ítem 2: Acento Amarillo / Dorado */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
-                    <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <Scale className="w-6 h-6 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <Scale className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center mb-1 group-hover:text-amber-600 transition-colors leading-tight">
+                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
                       Declaraciones SRI
                     </h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-snug sm:leading-relaxed text-center max-w-[170px]">
-                      Declaraciones de IVA, Renta y retenciones sin mora.
-                    </p>
                   </div>
 
                   {/* Ítem 3 */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
-                    <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <Award className="w-6 h-6 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <Award className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center mb-1 group-hover:text-[#0284C7] transition-colors leading-tight">
+                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
                       Creación de SAS
                     </h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-snug sm:leading-relaxed text-center max-w-[170px]">
-                      Constitución 100% digital con estatutos blindados.
-                    </p>
                   </div>
 
                   {/* Ítem 4: Acento Amarillo / Dorado */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
-                    <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <Users className="w-6 h-6 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <Users className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center mb-1 group-hover:text-amber-600 transition-colors leading-tight">
+                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
                       Nóminas & IESS
                     </h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-snug sm:leading-relaxed text-center max-w-[170px]">
-                      Roles de pago, décimos y planillas patronales al día.
-                    </p>
                   </div>
 
                   {/* Ítem 5 */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
-                    <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center mb-1 group-hover:text-[#0284C7] transition-colors leading-tight">
+                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
                       Devolución IVA
                     </h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-snug sm:leading-relaxed text-center max-w-[170px]">
-                      Recuperación de saldos ante el SRI para personas y empresas.
-                    </p>
                   </div>
 
                   {/* Ítem 6: Acento Amarillo / Dorado */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
-                    <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center mb-1 group-hover:text-amber-600 transition-colors leading-tight">
+                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
                       Auditoría Interna
                     </h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-snug sm:leading-relaxed text-center max-w-[170px]">
-                      Revisión preventiva de libros y control interno societario.
-                    </p>
                   </div>
 
                 </div>
