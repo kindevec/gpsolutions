@@ -101,7 +101,7 @@ export const TaxServicesView: React.FC = () => {
             {/* Contenedor del Carrusel Lineal con las 8 Tarjetas */}
             <div
               ref={taxCarouselRef}
-              className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-2 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 relative z-10"
+              className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-2 no-scrollbar relative z-10"
             >
               {tributariosServices.map((service, idx) => {
                 const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
@@ -109,7 +109,7 @@ export const TaxServicesView: React.FC = () => {
                 return (
                   <article
                     key={service.id}
-                    className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start rounded-3xl border ${
+                    className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-center rounded-3xl border ${
                       isGold
                         ? 'border-amber-200/90 hover:border-amber-400 hover:shadow-[0_12px_40px_rgba(245,158,11,0.2)]'
                         : 'border-slate-200/90 hover:border-[#0284C7] hover:shadow-[0_12px_40px_rgba(2,132,199,0.22)]'

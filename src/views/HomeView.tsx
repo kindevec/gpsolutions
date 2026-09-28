@@ -393,7 +393,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           3. RESUMEN: SERVICIOS CONTABLES Y CORPORATIVOS (ESTILO REFERENCIA & FONDO BANNER)
          ========================================================================= */}
-      <section className="py-16 sm:py-24 md:py-28 bg-[#102547] relative overflow-hidden text-white border-t border-sky-900/60 group/corporate">
+      <section className="pt-12 sm:pt-16 pb-8 sm:pb-12 md:pt-20 md:pb-16 bg-[#102547] relative overflow-hidden text-white border-t border-sky-900/60 group/corporate">
         {/* Fondo panorámico con overlays de alta legibilidad igual al banner */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
@@ -566,7 +566,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           4. RESUMEN: QUIÉNES SOMOS / TRAYECTORIA INSTITUCIONAL
          ========================================================================= */}
-      <section className="pt-8 sm:pt-12 pb-14 sm:pb-20 bg-[#071324] relative overflow-hidden text-white">
+      <section className="pt-2 sm:pt-6 pb-12 sm:pb-18 bg-[#071324] relative overflow-hidden text-white">
         {/* Luces y brillos ambientales acordes a la paleta del logo */}
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute top-1/2 -right-20 w-[500px] h-[500px] bg-sky-500/15 rounded-full blur-[160px] pointer-events-none" />
@@ -639,7 +639,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             </div>
 
             {/* Columna Derecha: Retrato del Director con silueta natural y sin contenedor */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2 -mt-2 sm:mt-0">
               <div
                 className="relative w-full max-w-sm sm:max-w-md flex justify-center [perspective:1000px] select-none"
                 onMouseMove={handlePhotoMouseMove}

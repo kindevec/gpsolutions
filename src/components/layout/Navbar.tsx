@@ -148,17 +148,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
           </button>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => onSelectTab('contacto')}
-              className={`inline-flex items-center justify-center px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'contacto'
-                  ? 'bg-amber-400 text-[#102547] shadow-sm font-black'
-                  : 'text-amber-300 bg-white/10 hover:bg-white/20 border border-amber-400/50'
-              }`}
-            >
-              <span>Contacto</span>
-            </button>
-
             <a
               href={COMPANY_DATA.whatsappBaseUrl}
               target="_blank"
