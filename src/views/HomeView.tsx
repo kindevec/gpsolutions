@@ -183,41 +183,41 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
             
             {/* Card Circular 1: Contabilidad & NIIF */}
-            <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
-                <Building2 className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+            <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
+              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
+                <Building2 className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+              <h3 className="font-heading font-bold text-[11px] xs:text-xs sm:text-sm text-white px-2 leading-tight">
                 Balances NIIF & Contabilidad
               </h3>
             </div>
 
             {/* Card Circular 2: Blindaje Tributario */}
-            <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-sky-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-3.5 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2 shadow-[0_4px_20px_rgba(56,189,248,0.2)]">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-sky-400/20 text-[#38BDF8] flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-sky-400/30">
-                <Receipt className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+            <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-sky-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2 shadow-[0_4px_20px_rgba(56,189,248,0.2)]">
+              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-sky-400/20 text-[#38BDF8] flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-sky-400/30">
+                <Receipt className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+              <h3 className="font-heading font-bold text-[11px] xs:text-xs sm:text-sm text-white px-2 leading-tight">
                 Blindaje Tributario & SRI
               </h3>
             </div>
 
             {/* Card Circular 3: Nómina & IESS */}
-            <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-1 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
-                <Users className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+            <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-1 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
+              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
+                <Users className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+              <h3 className="font-heading font-bold text-[11px] xs:text-xs sm:text-sm text-white px-2 leading-tight">
                 Nómina & Cumplimiento IESS
               </h3>
             </div>
 
             {/* Card Circular 4: Constitución S.A.S. & Legal */}
-            <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-sky-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-3.5 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2 shadow-[0_4px_20px_rgba(56,189,248,0.2)]">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-sky-400/20 text-[#38BDF8] flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-sky-400/30">
-                <Scale className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+            <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-sky-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2 shadow-[0_4px_20px_rgba(56,189,248,0.2)]">
+              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-sky-400/20 text-[#38BDF8] flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-sky-400/30">
+                <Scale className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+              <h3 className="font-heading font-bold text-[11px] xs:text-xs sm:text-sm text-white px-2 leading-tight">
                 Constitución S.A.S. & Legal
               </h3>
             </div>
@@ -263,7 +263,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             {/* Contenedor del Carrusel: Disposición Alternada de Imagen y Contenedor */}
             <div
               ref={accountingScrollRef}
-              className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 pt-2 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 relative z-10"
+              className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-2 no-scrollbar relative z-10"
             >
               {contableServicesList.map((service, idx) => {
                 const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
@@ -311,15 +311,15 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                       : 'border-sky-400/80 group-hover:border-[#0284C7] shadow-[0_6px_25px_rgba(2,132,199,0.22)] group-hover:shadow-[0_0_35px_rgba(56,189,248,0.45)]'
                   } bg-gradient-to-b from-[#0e2440] via-[#0a1a2f] to-[#071322] p-6 min-h-[200px] sm:min-h-[220px] group-hover:-translate-y-1 transition-all duration-500 flex flex-col justify-between flex-1 text-white ${isImageTop ? 'mt-3.5' : 'mb-3.5'}`}>
                     <div>
-                      {/* Título */}
-                      <h3 className={`text-base sm:text-lg font-heading font-bold text-white ${
+                      {/* Título Centrado */}
+                      <h3 className={`text-base sm:text-lg font-heading font-bold text-white text-center ${
                         isYellowAccent ? 'group-hover:text-amber-300' : 'group-hover:text-[#38bdf8]'
                       } transition-colors duration-300 leading-snug mb-2.5`}>
                         {service.title}
                       </h3>
 
-                      {/* Poco texto descriptivo */}
-                      <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed mb-5">
+                      {/* Texto descriptivo Centrado */}
+                      <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed mb-5 text-center">
                         {shortText}
                       </p>
                     </div>
@@ -346,7 +346,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                 return (
                   <div
                     key={service.id}
-                    className="w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start flex flex-col justify-between group"
+                    className="w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-center flex flex-col justify-between group"
                   >
                     {isImageTop ? (
                       <>
@@ -410,19 +410,19 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
           
-          {/* Cabecera del Apartado */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-4">
+          {/* Cabecera del Apartado Centrada */}
+          <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12 gap-5">
             <div>
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight text-justify">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight text-center">
                 Servicios Contables y Corporativos
               </h2>
-              <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-2xl text-justify">
+              <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-2xl mx-auto text-center leading-relaxed">
                 Contabilidad general, balances NIIF, cumplimiento ante Superintendencia de Compañías, constitución de SAS, marcas y nóminas con blindaje legal.
               </p>
             </div>
 
-            {/* Botón Ver Catálogo (sin flechas al lado) */}
-            <div className="flex items-center self-start md:self-auto shrink-0">
+            {/* Botón Ver Catálogo Centrado */}
+            <div className="flex items-center justify-center shrink-0">
               <button
                 onClick={() => onSelectTab('servicios-contables')}
                 className="inline-flex items-center gap-2 py-2.5 px-6 rounded-full font-bold text-xs sm:text-sm bg-gradient-to-r from-[#0284c7] to-[#0369a1] hover:from-[#38bdf8] hover:to-[#0284c7] text-white transition-all shadow-md active:scale-95 cursor-pointer"
@@ -448,7 +448,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             {/* Contenedor del Carrusel Deslizable */}
             <div
               ref={corporateScrollRef}
-              className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-6 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 relative z-10"
+              className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-6 no-scrollbar relative z-10"
             >
               {contableServicesList.map((service, cardIdx) => {
                 const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
@@ -472,7 +472,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                 return (
                   <div
                     key={service.id}
-                    className="w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-start flex flex-col pt-3"
+                    className="w-full sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-center flex flex-col pt-3"
                   >
                     {/* Tarjeta con fondo oscuro estilizado según la paleta del proyecto */}
                     <div className={`relative bg-[#0d1e38]/95 hover:bg-[#112646] rounded-3xl overflow-visible shadow-xl ${
