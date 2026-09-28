@@ -153,7 +153,7 @@ export const ContactView: React.FC = () => {
                       autoComplete="off"
                     />
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="text-xs font-semibold text-slate-700 block mb-1">
                           Nombre completo *
@@ -164,7 +164,7 @@ export const ContactView: React.FC = () => {
                           value={formData.nombre}
                           onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
                           placeholder="Ej. Juan Pérez"
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors"
+                          className="w-full pb-2 pt-1 px-0 bg-transparent border-b-2 border-slate-300 focus:border-[#0284C7] rounded-none text-xs sm:text-sm text-[#102547] placeholder:text-slate-400 focus:outline-none transition-colors"
                         />
                       </div>
 
@@ -178,12 +178,12 @@ export const ContactView: React.FC = () => {
                           value={formData.telefono}
                           onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
                           placeholder="Ej. 0999840649"
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors"
+                          className="w-full pb-2 pt-1 px-0 bg-transparent border-b-2 border-slate-300 focus:border-[#0284C7] rounded-none text-xs sm:text-sm text-[#102547] placeholder:text-slate-400 focus:outline-none transition-colors"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="text-xs font-semibold text-slate-700 block mb-1">
                           Correo electrónico
@@ -193,7 +193,7 @@ export const ContactView: React.FC = () => {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="correo@ejemplo.com"
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors"
+                          className="w-full pb-2 pt-1 px-0 bg-transparent border-b-2 border-slate-300 focus:border-[#0284C7] rounded-none text-xs sm:text-sm text-[#102547] placeholder:text-slate-400 focus:outline-none transition-colors"
                         />
                       </div>
 
@@ -204,14 +204,14 @@ export const ContactView: React.FC = () => {
                         <select
                           value={formData.servicio}
                           onChange={(e) => setFormData({ ...formData, servicio: e.target.value })}
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors"
+                          className="w-full pb-2 pt-1 px-0 bg-transparent border-b-2 border-slate-300 focus:border-[#0284C7] rounded-none text-xs sm:text-sm text-[#102547] focus:outline-none transition-colors cursor-pointer"
                         >
-                          <option value="Servicios Contables y Corporativos">Servicios Contables y Corporativos (NIIF / SuperCías)</option>
-                          <option value="Servicios Tributarios SRI">Servicios Tributarios (SRI / Renta / IVA)</option>
-                          <option value="Servicios Laborales e IESS">Servicios Laborales (IESS / SUT / Nómina)</option>
-                          <option value="Constitución de SAS">Constitución de empresa S.A.S.</option>
-                          <option value="Devolución de IVA">Devolución de IVA / Impuestos</option>
-                          <option value="Otra consulta integral">Otra consulta integral</option>
+                          <option value="Servicios Contables y Corporativos" className="bg-white text-[#102547]">Servicios Contables y Corporativos (NIIF / SuperCías)</option>
+                          <option value="Servicios Tributarios SRI" className="bg-white text-[#102547]">Servicios Tributarios (SRI / Renta / IVA)</option>
+                          <option value="Servicios Laborales e IESS" className="bg-white text-[#102547]">Servicios Laborales (IESS / SUT / Nómina)</option>
+                          <option value="Constitución de SAS" className="bg-white text-[#102547]">Constitución de empresa S.A.S.</option>
+                          <option value="Devolución de IVA" className="bg-white text-[#102547]">Devolución de IVA / Impuestos</option>
+                          <option value="Otra consulta integral" className="bg-white text-[#102547]">Otra consulta integral</option>
                         </select>
                       </div>
                     </div>
@@ -225,7 +225,7 @@ export const ContactView: React.FC = () => {
                         value={formData.mensaje}
                         onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
                         placeholder="Describa brevemente su necesidad o si tiene declaraciones atrasadas..."
-                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-sky-200 text-xs text-[#102547] focus:outline-none focus:border-[#0284C7] transition-colors resize-none"
+                        className="w-full pb-2 pt-1 px-0 bg-transparent border-b-2 border-slate-300 focus:border-[#0284C7] rounded-none text-xs sm:text-sm text-[#102547] placeholder:text-slate-400 focus:outline-none transition-colors resize-none"
                       />
                     </div>
 

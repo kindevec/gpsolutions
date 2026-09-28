@@ -214,7 +214,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "LORTI - Capítulo de Ingresos a Título Gratuito",
     frequency: "Por Sucesión o Donación",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/servicios-tributarios/impuestos-herencias-donaciones.jpg",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito asesoría técnica para la declaración de Impuesto a las Herencias."
   },
   {
@@ -290,7 +290,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Ley de Beneficios Tributarios y LORTI",
     frequency: "Mensual / Acumulado",
-    image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80",
+    image: "/images/servicios-tributarios/devolucion-impuestos.jpg",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo tramitar la Devolución de IVA / Impuestos ante el SRI."
   },
   {
@@ -332,7 +332,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     ],
     legalBasis: "Código del Trabajo del Ecuador y Acuerdos Ministeriales",
     frequency: "Por Ingreso o Egreso de Personal",
-    image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=800&q=80",
+    image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
     whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito gestionar contratos de trabajo o actas de finiquito en SUT."
   },
   {
