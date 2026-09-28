@@ -173,14 +173,9 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           </div>
         </div>
 
-        {/* Separador Ondulado SVG en la Base del Banner (detrás de los círculos) */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
-          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave1" />
-        </div>
-
-        {/* Fila Inferior: 4 Círculos Informativos que van POR DELANTE de la Curva */}
-        <div className="max-w-4xl mx-auto px-4 relative z-30 select-none">
-          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
+        {/* Fila Inferior: 4 Círculos Informativos en la base del Hero */}
+        <div className="max-w-4xl mx-auto px-4 relative z-30 select-none pb-6 sm:pb-8">
+          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-4 sm:mt-6">
             
             {/* Card Circular 1: Contabilidad & NIIF */}
             <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
@@ -250,14 +245,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-[#38BDF8]/10 rounded-full blur-[110px] pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-sky-200/20 rounded-full blur-[130px] pointer-events-none" />
 
-            {/* Botón Anterior Flotante Translúcido (más afuera del carrusel) */}
+            {/* Botón Anterior Flotante Translúcido (accesible en móvil y desktop) */}
             <button
               type="button"
               onClick={() => scrollCarousel(accountingScrollRef, 'left')}
               aria-label="Deslizar anterior"
-              className="absolute -left-4 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_8px_32px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 pointer-events-none group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute left-1 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
-              <ChevronLeft className="w-6 h-6 stroke-[2.8]" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
 
             {/* Contenedor del Carrusel: Disposición Alternada de Imagen y Contenedor */}
@@ -364,14 +359,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               })}
             </div>
 
-            {/* Botón Siguiente Flotante Translúcido (más afuera del carrusel) */}
+            {/* Botón Siguiente Flotante Translúcido (accesible en móvil y desktop) */}
             <button
               type="button"
               onClick={() => scrollCarousel(accountingScrollRef, 'right')}
               aria-label="Deslizar siguiente"
-              className="absolute -right-4 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_8px_32px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 pointer-events-none group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute right-1 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
-              <ChevronRight className="w-6 h-6 stroke-[2.8]" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
           </div>
 
@@ -435,14 +430,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
           {/* Carrusel Horizontal de Tarjetas Estilo Referencia (Image 1) */}
           <div className="relative group/corporate-carousel">
-            {/* Botón Anterior Flotante Translúcido (posicionado más afuera del carrusel) */}
+            {/* Botón Anterior Flotante Translúcido (accesible en móvil y desktop) */}
             <button
               type="button"
               onClick={() => scrollCarousel(corporateScrollRef, 'left')}
               aria-label="Deslizar anterior"
-              className="absolute -left-4 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-0 group-hover/corporate-carousel:opacity-100 pointer-events-none group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute left-1 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#102547]/85 sm:bg-white/20 hover:bg-[#102547] sm:hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate-carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
-              <ChevronLeft className="w-6 h-6 stroke-[2.8]" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
 
             {/* Contenedor del Carrusel Deslizable */}
@@ -548,14 +543,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               })}
             </div>
 
-            {/* Botón Siguiente Flotante Translúcido (posicionado más afuera del carrusel) */}
+            {/* Botón Siguiente Flotante Translúcido (accesible en móvil y desktop) */}
             <button
               type="button"
               onClick={() => scrollCarousel(corporateScrollRef, 'right')}
               aria-label="Deslizar siguiente"
-              className="absolute -right-4 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/20 hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-0 group-hover/corporate-carousel:opacity-100 pointer-events-none group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute right-1 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#102547]/85 sm:bg-white/20 hover:bg-[#102547] sm:hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate-carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
-              <ChevronRight className="w-6 h-6 stroke-[2.8]" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
           </div>
 
@@ -594,45 +589,47 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                 Operamos desde nuestro despacho en <strong className="text-sky-300 font-semibold">Tumbaco, Quito</strong>, integrando canales digitales para asegurar un control estricto de balances, declaraciones ante el SRI y nóminas patronales sin contingencias legales.
               </p>
 
-              {/* Especialidades con Iconos Centrados */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-                <div className="flex flex-col items-center text-center">
-                  <div className="p-2.5 rounded-full bg-sky-500/15 border border-sky-400/30 text-[#38BDF8] mb-2.5 flex items-center justify-center">
+              {/* Especialidades con Iconos y Textos en una misma línea */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+                <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-sky-400/20">
+                  <div className="p-2 sm:p-2.5 rounded-full bg-sky-500/15 border border-sky-400/30 text-[#38BDF8] flex items-center justify-center shrink-0">
                     <Scale className="w-5 h-5" />
                   </div>
-                  <h4 className="text-sm sm:text-base font-bold text-white max-w-xs text-center">
+                  <h4 className="text-xs sm:text-sm font-bold text-white text-left leading-snug">
                     Especialista en Balances y Normas NIIF
                   </h4>
                 </div>
 
-                <div className="flex flex-col items-center text-center">
-                  <div className="p-2.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-[#FCD34D] mb-2.5 flex items-center justify-center">
+                <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-amber-400/20">
+                  <div className="p-2 sm:p-2.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-[#FCD34D] flex items-center justify-center shrink-0">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <h4 className="text-sm sm:text-base font-bold text-white max-w-xs text-center">
+                  <h4 className="text-xs sm:text-sm font-bold text-white text-left leading-snug">
                     Estrategia Tributaria y Defensa SRI
                   </h4>
                 </div>
               </div>
 
-              {/* Botones de Acción Centrados */}
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+              {/* Botones de Acción en una misma línea */}
+              <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-4 pt-4 w-full">
                 <button
                   onClick={() => onSelectTab('nosotros')}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all cursor-pointer shadow-lg shadow-sky-600/30 hover:shadow-sky-500/50"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all cursor-pointer shadow-lg shadow-sky-600/30 hover:shadow-sky-500/50 whitespace-nowrap"
                 >
-                  <span>Conocer más sobre GP Solutions</span>
-                  <ArrowRight className="w-4 h-4 text-[#38BDF8]" />
+                  <span className="hidden sm:inline">Conocer más sobre GP Solutions</span>
+                  <span className="sm:hidden">Conocer más</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#38BDF8] shrink-0" />
                 </button>
 
                 <a
                   href={COMPANY_DATA.whatsappBaseUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-sky-400/30 transition-all cursor-pointer backdrop-blur-sm"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-sky-400/30 transition-all cursor-pointer backdrop-blur-sm whitespace-nowrap"
                 >
-                  <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
-                  <span>Hablar con el Director</span>
+                  <WhatsAppIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#25D366] shrink-0" />
+                  <span className="hidden sm:inline">Hablar con el Director</span>
+                  <span className="sm:hidden">Hablar con Director</span>
                 </a>
               </div>
 

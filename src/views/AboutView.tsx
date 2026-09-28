@@ -82,11 +82,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
             </p>
           </div>
         </div>
-
-        {/* Separador Ondulado SVG en la base del Hero en color azul (#071324) para transicionar sin franjas blancas */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
-          <CurvedShapeDivider fillColor="#071324" position="bottom" variant="wave1" />
-        </div>
       </section>
 
 
@@ -120,45 +115,47 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 Operamos desde nuestro despacho en <strong className="text-sky-300 font-semibold">Tumbaco, Quito</strong>, integrando canales digitales para asegurar un control estricto de balances, declaraciones ante el SRI y nóminas patronales sin contingencias legales.
               </p>
 
-              {/* Especialidades con Iconos Centrados */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-                <div className="flex flex-col items-center text-center p-3">
-                  <div className="p-3 rounded-full bg-sky-500/15 border border-sky-400/30 text-[#38BDF8] mb-2.5 flex items-center justify-center">
-                    <Scale className="w-6 h-6" />
+              {/* Especialidades con Iconos y Textos en una misma línea */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+                <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-sky-400/20">
+                  <div className="p-2 sm:p-2.5 rounded-full bg-sky-500/15 border border-sky-400/30 text-[#38BDF8] flex items-center justify-center shrink-0">
+                    <Scale className="w-5 h-5" />
                   </div>
-                  <h4 className="text-sm sm:text-base font-bold text-white max-w-xs text-center">
+                  <h4 className="text-xs sm:text-sm font-bold text-white text-left leading-snug">
                     Especialista en Balances y Normas NIIF
                   </h4>
                 </div>
 
-                <div className="flex flex-col items-center text-center p-3">
-                  <div className="p-3 rounded-full bg-amber-500/15 border border-amber-400/30 text-[#FCD34D] mb-2.5 flex items-center justify-center">
-                    <ShieldCheck className="w-6 h-6" />
+                <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-amber-400/20">
+                  <div className="p-2 sm:p-2.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-[#FCD34D] flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <h4 className="text-sm sm:text-base font-bold text-white max-w-xs text-center">
+                  <h4 className="text-xs sm:text-sm font-bold text-white text-left leading-snug">
                     Estrategia Tributaria y Defensa SRI
                   </h4>
                 </div>
               </div>
 
-              {/* Botones de Acción Centrados */}
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+              {/* Botones de Acción en una misma línea */}
+              <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-4 pt-4 w-full">
                 <a
                   href={COMPANY_DATA.whatsappBaseUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all cursor-pointer shadow-lg shadow-sky-600/30 hover:shadow-sky-500/50"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all cursor-pointer shadow-lg shadow-sky-600/30 hover:shadow-sky-500/50 whitespace-nowrap"
                 >
-                  <WhatsAppIcon className="w-4 h-4 text-white" />
-                  <span>Hablar con el Director</span>
+                  <WhatsAppIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
+                  <span className="hidden sm:inline">Hablar con el Director</span>
+                  <span className="sm:hidden">Hablar con Director</span>
                 </a>
 
                 <button
                   onClick={() => onSelectTab('contacto')}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-sky-400/30 transition-all cursor-pointer backdrop-blur-sm"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-sky-400/30 transition-all cursor-pointer backdrop-blur-sm whitespace-nowrap"
                 >
-                  <span>Agendar Cita en Despacho</span>
-                  <ArrowRight className="w-4 h-4 text-[#38BDF8]" />
+                  <span className="hidden sm:inline">Agendar Cita en Despacho</span>
+                  <span className="sm:hidden">Agendar Cita</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#38BDF8] shrink-0" />
                 </button>
               </div>
 

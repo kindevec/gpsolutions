@@ -45,11 +45,6 @@ export const AccountingServicesView: React.FC = () => {
             Llevamos la contabilidad bajo normativa NIIF, elaboramos balances auditables, tramitamos el cumplimiento anual en la Superintendencia de Compañías y constituimos su empresa S.A.S. de forma ágil y segura.
           </p>
         </div>
-
-        {/* Onda Divisoria */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
-          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="organic" />
-        </div>
       </section>
 
 

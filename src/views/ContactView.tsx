@@ -75,11 +75,6 @@ export const ContactView: React.FC = () => {
             Coordine una cita presencial en nuestro despacho de Tumbaco o solicite una consultoría virtual inmediata para regularizar su empresa.
           </p>
         </div>
-
-        {/* Separador Ondulado que corta la base de la imagen con relleno blanco */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
-          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="organic" />
-        </div>
       </section>
 
 

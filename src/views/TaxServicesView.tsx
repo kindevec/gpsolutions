@@ -58,11 +58,6 @@ export const TaxServicesView: React.FC = () => {
             Liquidación oportuna de declaraciones de IVA e Impuesto a la Renta ante el SRI, trámite de devolución de impuestos, anexos ATS/RDEP, patentes 1.5 x mil, y gestión integral de nómina, roles y obligaciones patronales en el IESS.
           </p>
         </div>
-
-        {/* Onda Divisoria */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
-          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave2" />
-        </div>
       </section>
 
 
@@ -88,14 +83,14 @@ export const TaxServicesView: React.FC = () => {
 
           {/* Carrusel Deslizable de Forma Lineal con Flechas Flotantes */}
           <div className="relative">
-            {/* Botón Flecha Izquierda Flotante (más afuera del carrusel) */}
+            {/* Botón Flecha Izquierda Flotante (accesible en móvil y desktop) */}
             <button
               type="button"
               onClick={() => scrollTaxCarousel('left')}
               aria-label="Deslizar anterior"
-              className="absolute -left-4 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_8px_30px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-0 group-hover/tax:opacity-100 pointer-events-none group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute left-1 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/tax:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
-              <ChevronLeft className="w-6 h-6 stroke-[2.8]" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
 
             {/* Contenedor del Carrusel Lineal con las 8 Tarjetas */}
@@ -187,14 +182,14 @@ export const TaxServicesView: React.FC = () => {
               })}
             </div>
 
-            {/* Botón Flecha Derecha Flotante (más afuera del carrusel) */}
+            {/* Botón Flecha Derecha Flotante (accesible en móvil y desktop) */}
             <button
               type="button"
               onClick={() => scrollTaxCarousel('right')}
               aria-label="Deslizar siguiente"
-              className="absolute -right-4 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/90 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_8px_30px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-0 group-hover/tax:opacity-100 pointer-events-none group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute right-1 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/tax:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/tax:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
-              <ChevronRight className="w-6 h-6 stroke-[2.8]" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
           </div>
 
