@@ -22,26 +22,6 @@ interface AboutViewProps {
 }
 
 export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
-  // Estado para efecto de perspectiva y profundidad 3D interactiva en la foto del Director
-  const [photoTilt, setPhotoTilt] = useState({ x: 0, y: 0 });
-  const [isPhotoHovered, setIsPhotoHovered] = useState(false);
-
-  const handlePhotoMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    // Cálculo de rotación suave en 3D
-    const rotateX = -((y - centerY) / centerY) * 12;
-    const rotateY = ((x - centerX) / centerX) * 14;
-    setPhotoTilt({ x: rotateX, y: rotateY });
-  };
-
-  const handlePhotoMouseLeave = () => {
-    setIsPhotoHovered(false);
-    setPhotoTilt({ x: 0, y: 0 });
-  };
   return (
     <div className="bg-[#F4F8FC] text-[#102547]">
       
@@ -106,8 +86,8 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
             {/* Columna Izquierda: Títulos, Párrafos, Especialidades y Acciones */}
             <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
               
-              {/* Título de Trayectoria */}
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              {/* Título de Trayectoria Centrado para móvil y PC */}
+              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight text-center">
                 Más de 12 Años de Rigor Técnico y Respaldo Empresarial
               </h2>
 
@@ -166,41 +146,29 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
             </div>
 
-            {/* Columna Derecha: Retrato del Director con silueta natural y sin contenedor */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2 -mt-2 sm:mt-0">
-              <div
-                className="relative w-full max-w-sm sm:max-w-md flex justify-center [perspective:1000px] select-none"
-                onMouseMove={handlePhotoMouseMove}
-                onMouseEnter={() => setIsPhotoHovered(true)}
-                onMouseLeave={handlePhotoMouseLeave}
-              >
-                {/* Silueta natural del personaje sin contenedores, cajas ni marcos */}
-                <div
-                  className="relative transition-transform duration-200 ease-out select-none"
-                  style={{
-                    transform: `perspective(1000px) rotateX(${photoTilt.x * 0.7}deg) rotateY(${photoTilt.y * 0.7}deg) ${
-                      isPhotoHovered ? 'scale3d(1.02, 1.02, 1.02)' : 'scale3d(1, 1, 1)'
-                    }`,
-                  }}
-                >
+            {/* Columna Derecha: Retrato del Director más grande y posicionado más arriba */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-start order-1 lg:order-2 -mt-6 sm:-mt-10 lg:-mt-14">
+              <div className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[500px] flex justify-center select-none">
+                {/* Silueta natural recortada sin fondo ni contenedor (estática) */}
+                <div className="relative select-none pointer-events-none drop-shadow-[0_15px_35px_rgba(0,0,0,0.55)]">
                   <picture>
                     <source srcSet="/images/director-3d.avif" type="image/avif" />
                     <source srcSet="/images/director-3d.webp" type="image/webp" />
                     <img
                       src="/images/director-3d.png"
                       alt={COMPANY_DATA.director}
-                      className="w-full h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[600px] object-contain select-none"
+                      className="w-full h-auto max-h-[520px] sm:max-h-[600px] lg:max-h-[660px] object-contain select-none"
                       loading="lazy"
                       decoding="async"
                       width={500}
-                      height={600}
+                      height={491}
                     />
                   </picture>
                 </div>
               </div>
 
               {/* Nombre y Representante DEBAJO DE LA IMAGEN */}
-              <div className="text-center mt-4 space-y-1">
+              <div className="text-center mt-3 space-y-1">
                 <h3 className="font-heading font-black text-xl sm:text-2xl text-white tracking-tight">
                   {COMPANY_DATA.director}
                 </h3>

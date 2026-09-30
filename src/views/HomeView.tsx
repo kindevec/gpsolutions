@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import {
   ShieldCheck,
   ArrowRight,
@@ -42,38 +42,53 @@ const getServiceIcon = (id: string) => {
   }
 };
 
+const HERO_PILLARS = [
+  {
+    id: 'pillar-1',
+    title: 'Balances NIIF & Contabilidad',
+    icon: Building2,
+    colorScheme: 'gold' as const,
+  },
+  {
+    id: 'pillar-2',
+    title: 'Blindaje Tributario & SRI',
+    icon: Receipt,
+    colorScheme: 'sky' as const,
+  },
+  {
+    id: 'pillar-3',
+    title: 'Nómina & Cumplimiento IESS',
+    icon: Users,
+    colorScheme: 'gold' as const,
+  },
+  {
+    id: 'pillar-4',
+    title: 'Constitución S.A.S. & Legal',
+    icon: Scale,
+    colorScheme: 'sky' as const,
+  },
+];
+
 interface HomeViewProps {
   onSelectTab: (tab: TabKey) => void;
 }
 
 export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeHeroPill, setActiveHeroPill] = useState<number | null>(null);
 
-  // Estado para efecto de perspectiva y profundidad 3D interactiva en la foto del Director
-  const [photoTilt, setPhotoTilt] = useState({ x: 0, y: 0 });
-  const [isPhotoHovered, setIsPhotoHovered] = useState(false);
-
-  const handlePhotoMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    // Cálculo de rotación suave en 3D
-    const rotateX = -((y - centerY) / centerY) * 12;
-    const rotateY = ((x - centerX) / centerX) * 14;
-    setPhotoTilt({ x: rotateX, y: rotateY });
-  };
-
-  const handlePhotoMouseLeave = () => {
-    setIsPhotoHovered(false);
-    setPhotoTilt({ x: 0, y: 0 });
-  };
+  // Auto-ocultar el título desplegado del hero rápidamente (2.5s) para que no quede fijo
+  useEffect(() => {
+    if (activeHeroPill !== null) {
+      const timer = setTimeout(() => {
+        setActiveHeroPill(null);
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [activeHeroPill]);
 
   const accountingScrollRef = useRef<HTMLDivElement>(null);
   const corporateScrollRef = useRef<HTMLDivElement>(null);
-  const taxScrollRef = useRef<HTMLDivElement>(null);
-  const laborScrollRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
     if (ref.current) {
@@ -90,18 +105,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
   // Catálogo completo de Servicios Contables para deslizar horizontalmente
   const contableServicesList = useMemo(
     () => ALL_SERVICES.filter((s) => s.category === 'contable'),
-    []
-  );
-
-  // Servicios Tributarios para deslizar horizontalmente
-  const tributariosList = useMemo(
-    () => ALL_SERVICES.filter((s) => s.category === 'tributaria'),
-    []
-  );
-
-  // Servicios Laborales para deslizar horizontalmente
-  const laboralesList = useMemo(
-    () => ALL_SERVICES.filter((s) => s.category === 'laboral'),
     []
   );
 
@@ -185,10 +188,11 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave1" />
         </div>
 
-        {/* Fila Inferior: 4 Círculos Informativos que van POR DELANTE de la Curva */}
+        {/* Fila Inferior: En desktop 4 círculos sobre la curva / En móvil 4 iconos horizontales con texto desplegable */}
         <div className="max-w-4xl mx-auto px-4 relative z-30 select-none">
-          <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
-            
+          
+          {/* VISTA DESKTOP (sm:flex): 4 Círculos Informativos que van POR DELANTE de la Curva */}
+          <div className="hidden sm:flex items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
             {/* Card Circular 1: Contabilidad & NIIF */}
             <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
               <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
@@ -228,8 +232,69 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                 Constitución S.A.S. & Legal
               </h3>
             </div>
-
           </div>
+
+          {/* VISTA MÓVIL (sm:hidden): 4 Iconos sin contenedores en horizontal + Texto puro al seleccionar */}
+          <div className="sm:hidden flex flex-col items-center mt-2 mb-2">
+            {/* Fila de 4 Iconos limpios en horizontal (sin contenedores) */}
+            <div className="flex items-center justify-center gap-7 xs:gap-9 py-2">
+              {HERO_PILLARS.map((pillar, idx) => {
+                const IconComponent = pillar.icon;
+                const isActive = activeHeroPill === idx;
+                const isGold = pillar.colorScheme === 'gold';
+
+                return (
+                  <button
+                    key={pillar.id}
+                    type="button"
+                    onClick={() => setActiveHeroPill(isActive ? null : idx)}
+                    aria-label={pillar.title}
+                    className="relative flex flex-col items-center justify-center p-1.5 transition-all duration-300 cursor-pointer group bg-transparent border-0 outline-none"
+                  >
+                    <IconComponent
+                      className={`w-7 h-7 xs:w-8 xs:h-8 stroke-[2.2] transition-all duration-300 ${
+                        isActive
+                          ? isGold
+                            ? 'text-amber-300 drop-shadow-[0_0_16px_rgba(245,158,11,1)] scale-125 -translate-y-1 brightness-110'
+                            : 'text-sky-300 drop-shadow-[0_0_16px_rgba(56,189,248,1)] scale-125 -translate-y-1 brightness-110'
+                          : isGold
+                          ? 'text-amber-400 drop-shadow-[0_0_8px_rgba(245,158,11,0.55)] opacity-90 group-hover:opacity-100 group-hover:scale-110 group-active:scale-95'
+                          : 'text-[#38BDF8] drop-shadow-[0_0_8px_rgba(56,189,248,0.55)] opacity-90 group-hover:opacity-100 group-hover:scale-110 group-active:scale-95'
+                      }`}
+                    />
+                    
+                    {/* Punto indicador de color cuando está activo */}
+                    {isActive && (
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full mt-1.5 ${
+                          isGold ? 'bg-amber-300 shadow-[0_0_10px_#fcd34d]' : 'bg-sky-300 shadow-[0_0_10px_#7dd3fc]'
+                        } animate-pulse`}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Título Desplegable Puro (sin contenedor/caja ni textos extra), solo visible al seleccionar */}
+            {activeHeroPill !== null && (
+              <div
+                onClick={() => setActiveHeroPill(null)}
+                className="w-full max-w-sm mx-auto mt-1.5 px-2 text-center select-none transition-all duration-200 cursor-pointer animate-fadeIn"
+              >
+                <h4
+                  className={`font-heading font-black text-xs xs:text-sm tracking-tight ${
+                    HERO_PILLARS[activeHeroPill].colorScheme === 'gold'
+                      ? 'text-amber-300 drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]'
+                      : 'text-[#38BDF8] drop-shadow-[0_2px_8px_rgba(56,189,248,0.5)]'
+                  }`}
+                >
+                  {HERO_PILLARS[activeHeroPill].title}
+                </h4>
+              </div>
+            )}
+          </div>
+
         </div>
       </section>
 
@@ -237,7 +302,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           2. RESUMEN: SERVICIOS CONTABLES Y CORPORATIVOS (FONDO BLANCO & DISPOSICIÓN ALTERNADA)
          ========================================================================= */}
-      <section className="-mt-1 pt-10 sm:pt-14 pb-8 sm:pb-10 bg-white relative z-20 overflow-hidden text-[#102547]">
+      <section className="-mt-1 pt-10 sm:pt-14 pb-8 sm:pb-10 bg-white relative z-20 overflow-hidden text-[#102547] group/accounting">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Encabezado Centrado */}
@@ -251,7 +316,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           </div>
 
           {/* Carrusel Deslizable Horizontalmente con Iluminación Ambiental y Flechas */}
-          <div className="relative group/carousel">
+          <div className="relative">
             {/* Efectos de Iluminación Ambiental de Fondo */}
             <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#0284C7]/10 rounded-full blur-[110px] pointer-events-none" />
             <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-[#38BDF8]/10 rounded-full blur-[110px] pointer-events-none" />
@@ -262,7 +327,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               type="button"
               onClick={() => scrollCarousel(accountingScrollRef, 'left')}
               aria-label="Deslizar anterior"
-              className="absolute -left-2 xs:-left-3 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -left-2 xs:-left-3 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/accounting:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/accounting:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -375,7 +440,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               type="button"
               onClick={() => scrollCarousel(accountingScrollRef, 'right')}
               aria-label="Deslizar siguiente"
-              className="absolute -right-2 xs:-right-3 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -right-2 xs:-right-3 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/accounting:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/accounting:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -440,13 +505,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           </div>
 
           {/* Carrusel Horizontal de Tarjetas Estilo Referencia (Image 1) */}
-          <div className="relative group/corporate-carousel">
+          <div className="relative">
             {/* Botón Anterior Flotante Translúcido (accesible en móvil y desktop) */}
             <button
               type="button"
               onClick={() => scrollCarousel(corporateScrollRef, 'left')}
               aria-label="Deslizar anterior"
-              className="absolute -left-2 xs:-left-3 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#102547]/85 sm:bg-white/20 hover:bg-[#102547] sm:hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate-carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -left-2 xs:-left-3 sm:-left-8 md:-left-12 lg:-left-14 xl:-left-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -558,7 +623,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               type="button"
               onClick={() => scrollCarousel(corporateScrollRef, 'right')}
               aria-label="Deslizar siguiente"
-              className="absolute -right-2 xs:-right-3 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#102547]/85 sm:bg-white/20 hover:bg-[#102547] sm:hover:bg-white/40 text-white backdrop-blur-md border border-white/30 shadow-[0_4px_16px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate-carousel:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate-carousel:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
+              className="absolute -right-2 xs:-right-3 sm:-right-8 md:-right-12 lg:-right-14 xl:-right-16 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#102547] hover:text-[#0284C7] border border-slate-200 shadow-[0_4px_16px_rgba(2,132,199,0.25)] flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/corporate:opacity-100 pointer-events-auto sm:pointer-events-none sm:group-hover/corporate:pointer-events-auto hover:scale-110 active:scale-95 cursor-pointer"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.8]" />
             </button>
@@ -585,8 +650,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             {/* Columna Izquierda: Títulos, Párrafos, Especialidades y Acciones */}
             <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
               
-              {/* Título de Trayectoria */}
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              {/* Título de Trayectoria Centrado para móvil y PC */}
+              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight text-center">
                 Más de 12 Años de Rigor Técnico y Respaldo Empresarial
               </h2>
 
@@ -645,41 +710,29 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
             </div>
 
-            {/* Columna Derecha: Retrato del Director con silueta natural y sin contenedor */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2 -mt-2 sm:mt-0">
-              <div
-                className="relative w-full max-w-sm sm:max-w-md flex justify-center [perspective:1000px] select-none"
-                onMouseMove={handlePhotoMouseMove}
-                onMouseEnter={() => setIsPhotoHovered(true)}
-                onMouseLeave={handlePhotoMouseLeave}
-              >
-                {/* Silueta natural del personaje sin contenedores, cajas ni marcos */}
-                <div
-                  className="relative transition-transform duration-200 ease-out select-none"
-                  style={{
-                    transform: `perspective(1000px) rotateX(${photoTilt.x * 0.7}deg) rotateY(${photoTilt.y * 0.7}deg) ${
-                      isPhotoHovered ? 'scale3d(1.02, 1.02, 1.02)' : 'scale3d(1, 1, 1)'
-                    }`,
-                  }}
-                >
+            {/* Columna Derecha: Retrato del Director más grande y posicionado más arriba */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-start order-1 lg:order-2 -mt-6 sm:-mt-10 lg:-mt-14">
+              <div className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[500px] flex justify-center select-none">
+                {/* Silueta natural recortada sin fondo ni contenedor (estática) */}
+                <div className="relative select-none pointer-events-none drop-shadow-[0_15px_35px_rgba(0,0,0,0.55)]">
                   <picture>
                     <source srcSet="/images/director-3d.avif" type="image/avif" />
                     <source srcSet="/images/director-3d.webp" type="image/webp" />
                     <img
                       src="/images/director-3d.png"
                       alt={COMPANY_DATA.director}
-                      className="w-full h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[600px] object-contain select-none"
+                      className="w-full h-auto max-h-[520px] sm:max-h-[600px] lg:max-h-[660px] object-contain select-none"
                       loading="lazy"
                       decoding="async"
                       width={500}
-                      height={600}
+                      height={491}
                     />
                   </picture>
                 </div>
               </div>
 
               {/* Nombre y Representante DEBAJO DE LA IMAGEN */}
-              <div className="text-center mt-4 space-y-1">
+              <div className="text-center mt-3 space-y-1">
                 <h3 className="font-heading font-black text-xl sm:text-2xl text-white tracking-tight">
                   {COMPANY_DATA.director}
                 </h3>

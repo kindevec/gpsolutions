@@ -94,15 +94,15 @@ export const ContactView: React.FC = () => {
       {/* =========================================================================
           2. FORMULARIO ESTILO TARJETA CHEVRON FLECHA + FONDO BLANCO
          ========================================================================= */}
-      <section className="-mt-1 py-12 sm:py-16 bg-white relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="-mt-1 py-8 sm:py-16 bg-white relative z-20">
+        <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
           
-          {/* Contenedor Principal con ancho normal (max-w-7xl) */}
-          <div className="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden mb-12">
+          {/* Contenedor Principal: Full width en móvil sin bordes blancos laterales, redondeado en desktop */}
+          <div className="bg-white rounded-none sm:rounded-3xl shadow-none sm:shadow-xl border-y sm:border border-slate-200/80 overflow-hidden mb-8 sm:mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
               
               {/* LADO IZQUIERDO: Formulario estilo Send Us A Message */}
-              <div className="lg:col-span-7 p-6 sm:p-10 md:p-12 flex flex-col justify-between">
+              <div className="lg:col-span-7 p-5 xs:p-6 sm:p-10 md:p-12 flex flex-col justify-between">
                 <div>
                   {/* Título de Cabecera con barra suave */}
                   <div className="border-b border-slate-100 pb-4 mb-6">
@@ -364,29 +364,29 @@ export const ContactView: React.FC = () => {
 
 
           {/* =========================================================================
-              3. MAPA DE UBICACIÓN INTERACTIVO (MAX-W-7XL)
+              3. MAPA DE UBICACIÓN INTERACTIVO (FULL WIDTH EN MÓVIL)
              ========================================================================= */}
-          <div className="w-full bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden relative">
+          <div className="w-full bg-white rounded-none sm:rounded-3xl shadow-none sm:shadow-xl border-y sm:border border-slate-200/80 overflow-hidden relative">
             
             {/* Tarjeta Flotante estilo Google Maps */}
-            <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl border border-slate-200/80 max-w-xs sm:max-w-sm">
+            <div className="absolute top-3 left-3 right-3 sm:right-auto sm:top-4 sm:left-4 z-10 bg-white/95 backdrop-blur-md p-3.5 sm:p-5 rounded-2xl shadow-xl border border-slate-200/80 max-w-none sm:max-w-sm">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h4 className="font-heading font-extrabold text-sm sm:text-base text-[#102547] leading-tight">
+                  <h4 className="font-heading font-extrabold text-xs sm:text-base text-[#102547] leading-tight">
                     GP SOLUTIONS Despacho Tumbaco
                   </h4>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
+                  <p className="text-[10.5px] sm:text-[11px] text-slate-500 mt-0.5">
                     {COMPANY_DATA.location}
                   </p>
                   
-                  <div className="flex items-center gap-1.5 mt-2">
+                  <div className="flex items-center gap-1.5 mt-1.5 sm:mt-2">
                     <div className="flex items-center text-amber-400">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
                       ))}
                     </div>
-                    <span className="text-[11px] font-bold text-slate-700">5.0</span>
-                    <span className="text-[10px] text-slate-400">(Asesoría Contable)</span>
+                    <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-700">5.0</span>
+                    <span className="text-[9.5px] sm:text-[10px] text-slate-400">(Asesoría Contable)</span>
                   </div>
                 </div>
 
@@ -394,11 +394,11 @@ export const ContactView: React.FC = () => {
                   href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY_DATA.location)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl bg-[#0284C7] text-white hover:bg-[#0369a1] transition-all shadow-md shrink-0 flex flex-col items-center justify-center group"
+                  className="p-2 sm:p-2.5 rounded-xl bg-[#0284C7] text-white hover:bg-[#0369a1] transition-all shadow-md shrink-0 flex flex-col items-center justify-center group"
                   title="Cómo llegar"
                 >
-                  <Navigation className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  <span className="text-[9px] font-bold mt-0.5">Ruta</span>
+                  <Navigation className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
+                  <span className="text-[8.5px] sm:text-[9px] font-bold mt-0.5">Ruta</span>
                 </a>
               </div>
             </div>
@@ -419,7 +419,7 @@ export const ContactView: React.FC = () => {
             </div>
 
             {/* Barra Inferior Informativa */}
-            <div className="bg-[#102547] text-white px-6 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+            <div className="bg-[#102547] text-white px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
               <div className="flex items-center gap-2 text-slate-200">
                 <MapPin className="w-4 h-4 text-[#38BDF8] shrink-0" />
                 <span>Atención presencial previa cita en Tumbaco y telemática en todo el Ecuador.</span>
