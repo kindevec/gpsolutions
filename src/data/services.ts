@@ -2,420 +2,330 @@ import { ServiceItem } from '../types';
 
 export const ALL_SERVICES: ServiceItem[] = [
   // =========================================================================
-  // 1. SERVICIOS CONTABLES Y CORPORATIVOS (8 OFICIALES)
+  // 1. SEGURIDAD Y SALUD OCUPACIONAL (OFICIALES GP SOLUTIONS)
   // =========================================================================
   {
-    id: "cont-1",
+    id: "sso-1",
     number: 1,
-    title: "Contabilidad general",
-    description: "Registro cronológico y sistemático bajo normativa NIIF para PYMES y personas naturales. Conciliaciones bancarias mensuales, libros diarios, mayores y balances de comprobación listos para fiscalización.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "Normativa NIIF",
+    title: "Elaboración de matrices de riesgo y planes de emergencia",
+    description: "Identificación exhaustiva de peligros por puesto de trabajo, estructuración de matrices de riesgos laborales y diseño de planes de emergencia y contingencia conforme a normativas del MDT y Bomberos.",
+    category: "seguridad-salud",
+    categoryLabel: "Seguridad y Salud Ocupacional",
+    badge: "Normativa MDT",
     deliverables: [
-      "Libro Diario y Libro Mayor mensual",
-      "Balance de comprobación de sumas y saldos",
-      "Conciliaciones bancarias y arqueos de caja",
-      "Control de inventarios y depreciación de activos"
+      "Matrices de identificación de peligros y evaluación de riesgos por puesto",
+      "Diseño de Planes de Emergencia, Evacuación y Contingencia",
+      "Conformación y capacitación de Brigadas de Emergencia",
+      "Planificación, cronograma y ejecución de simulacros anuales"
     ],
-    legalBasis: "NIIF para PYMES y Código Tributario Ecuatoriano",
-    frequency: "Mensual / Cierre Anual",
-    image: "/images/servicios-contables/contabilidad-general.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito asesoría para el servicio de: Contabilidad general."
+    legalBasis: "Decisión 584 (Instrumento Andino de SSO), Reglamento 2393 y normativa de Bomberos",
+    frequency: "Anual / Actualización continua",
+    image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Elaboración de matrices de riesgo y planes de emergencia."
   },
   {
-    id: "cont-2",
+    id: "sso-2",
     number: 2,
-    title: "Elaboración de estados financieros",
-    description: "Estructuración técnica de Estado de Situación Financiera, Estado de Resultados Integrales, Flujo de Efectivo y Notas Explicativas auditables para bancos y accionistas.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "Auditable",
+    title: "Gestión de reglamentos y planes de prevención",
+    description: "Elaboración, revisión y legalización de Reglamentos Internos de Higiene y Seguridad ante el Ministerio del Trabajo, además de la estructuración de planes integrales de prevención de riesgos.",
+    category: "seguridad-salud",
+    categoryLabel: "Seguridad y Salud Ocupacional",
+    badge: "Legalización MDT",
     deliverables: [
-      "Balance General y Estado de Resultados",
-      "Estado de Flujos de Efectivo y Cambios en el Patrimonio",
-      "Notas explicativas a los estados financieros",
-      "Dictamen de razonabilidad contable"
+      "Elaboración y legalización del Reglamento de Higiene y Seguridad",
+      "Planes integrales de prevención de riesgos laborales",
+      "Gestión y conformación de organismos paritarios (Comités y Subcomités)",
+      "Registro y actualización documental en plataforma SUT"
     ],
-    legalBasis: "Resoluciones de la Superintendencia de Compañías y NIC 1",
-    frequency: "Semestral / Anual",
-    image: "/images/servicios-contables/estados-financieros.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito la elaboración de Estados Financieros para mi empresa."
-  },
-  {
-    id: "cont-3",
-    number: 3,
-    title: "Cumplimiento ante Superintendencia de Compañías",
-    description: "Carga y validación anual del juego completo de balances, informe de Representante Legal, informe de Comisario y nómina de socios o accionistas extranjeros.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "SuperCías",
-    deliverables: [
-      "Subida de balances en portal de la SuperCías",
-      "Informe anual de Representante Legal y Comisario",
-      "Nómina de socios/accionistas actualizada",
-      "Certificado de cumplimiento de obligaciones vigente"
-    ],
-    legalBasis: "Ley de Compañías y Reglamento de Presentación de Balances",
-    frequency: "Anual (Vence 30 de Abril)",
+    legalBasis: "Código del Trabajo, Acuerdos Ministeriales MDT y Reglamento 2393",
+    frequency: "Bianual / Permanente",
     image: "/images/servicios-contables/superintendencia-companias.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito regularizar el cumplimiento anual ante la Superintendencia de Compañías."
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría para el servicio de: Gestión de reglamentos y planes de prevención."
   },
   {
-    id: "cont-4",
+    id: "sso-3",
+    number: 3,
+    title: "Capacitaciones obligatorias en SSO",
+    description: "Programas formativos obligatorios para el personal en ergonomía, manipulación segura de productos, prevención de acoso y violencia laboral, y actuación en emergencias para fortalecer la cultura preventiva.",
+    category: "seguridad-salud",
+    categoryLabel: "Seguridad y Salud Ocupacional",
+    badge: "Cumplimiento Obligatorio",
+    deliverables: [
+      "Talleres de ergonomía laboral y manejo manual de cargas",
+      "Capacitación en manejo seguro de productos y químicos",
+      "Programas obligatorios de prevención de acoso y violencia laboral",
+      "Entrenamiento y certificación técnica para brigadistas"
+    ],
+    legalBasis: "Resoluciones MDT sobre prevención de riesgos y erradicación del acoso laboral",
+    frequency: "Semestral / Plan de capacitación anual",
+    image: "/images/servicios-contables/contabilidad-general.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito cotizar: Capacitaciones obligatorias en SSO para mi empresa."
+  },
+  {
+    id: "sso-4",
     number: 4,
-    title: "Constitución y liquidación de SAS",
-    description: "Constitución ágil 100% digital de Sociedades por Acciones Simplificadas (S.A.S.) con estatutos blindados, o procesos de disolución y liquidación abreviada sin pasivos.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "Societario",
+    title: "Cumplimiento y Acompañamiento ante el Ministerio de Trabajo",
+    description: "Acompañamiento técnico y legal permanente en el cumplimiento de obligaciones formales en SSO y preparación documental frente a inspecciones laborales y del IESS.",
+    category: "seguridad-salud",
+    categoryLabel: "Seguridad y Salud Ocupacional",
+    badge: "Inspecciones MDT",
     deliverables: [
-      "Redacción de estatutos sociales personalizados",
-      "Inscripción en Registro de Sociedades SuperCías",
-      "Apertura de RUC societario y nombramientos directivos",
-      "Libros de acciones y accionistas iniciales"
+      "Gestión y actualización de documentación obligatoria en plataforma SUT",
+      "Preparación documental preventiva para inspecciones laborales",
+      "Acompañamiento presencial ante requerimientos de autoridades",
+      "Elaboración de planes de acción para subsanar hallazgos de fiscalización"
     ],
-    legalBasis: "Ley Orgánica para el Emprendimiento e Innovación (S.A.S.)",
-    frequency: "Trámite Integral (48-72h)",
-    image: "/images/servicios-contables/constitucion-liquidacion-sas.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo constituir una empresa S.A.S. en Ecuador."
-  },
-  {
-    id: "cont-5",
-    number: 5,
-    title: "Asesoría societaria y corporativa",
-    description: "Mantenimiento preventivo del gobierno corporativo: actas de juntas generales, aumentos o cesiones de capital, reformas estatutarias y regularización de nombramientos.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "Gobierno Corporativo",
-    deliverables: [
-      "Actas de Juntas Generales Ordinarias y Extraordinarias",
-      "Inscripción de nuevos administradores y gerentes",
-      "Expedientes corporativos digitalizados",
-      "Dictámenes de viabilidad legal y patrimonial"
-    ],
-    legalBasis: "Ley de Compañías y Código de Comercio",
-    frequency: "Permanente / Por Requerimiento",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), requiero asesoría societaria para gestión de actas y nombramientos."
-  },
-  {
-    id: "cont-6",
-    number: 6,
-    title: "Registro de marcas",
-    description: "Blindaje de activos intangibles ante el SENADI: búsqueda previa fonética, clasificación de Niza, contestación de oposiciones y obtención del título de marca por 10 años.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "SENADI",
-    deliverables: [
-      "Búsqueda fonética y análisis de registrabilidad",
-      "Ingreso y seguimiento de solicitud ante el SENADI",
-      "Respuesta a observaciones u oposiciones formales",
-      "Título de Registro de Marca protegido por 10 años"
-    ],
-    legalBasis: "Código Orgánico de la Economía Social de los Conocimientos (Ingenios)",
-    frequency: "Trámite de 4 a 6 meses",
-    image: "/images/servicios-contables/registro-marcas.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo registrar y proteger mi marca comercial ante el SENADI."
-  },
-  {
-    id: "cont-7",
-    number: 7,
-    title: "Manejo de Nóminas",
-    description: "Procesamiento integral de nómina mensual: liquidación de sueldos, horas extras, descuentos de ley y emisión de comprobantes de pago digitales para colaboradores.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "Nómina Digital",
-    deliverables: [
-      "Matriz de cálculo mensual de nómina",
-      "Generación de roles individuales de pago firmados",
-      "Archivo plano para pago bancario masivo",
-      "Cruce contable con cuentas de pasivo laboral"
-    ],
-    legalBasis: "Código del Trabajo y Ley de Seguridad Social",
-    frequency: "Quincenal / Mensual",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito información para el servicio de Manejo de Nóminas."
-  },
-  {
-    id: "cont-8",
-    number: 8,
-    title: "Capacitación contable y tributaria",
-    description: "Entrenamiento in-house y talleres especializados para directivos y equipos contables en actualización tributaria del SRI, facturación electrónica y manejo de NIIF.",
-    category: "contable",
-    categoryLabel: "Contable y Corporativo",
-    badge: "Formación",
-    deliverables: [
-      "Temarios adaptados a la realidad de la empresa",
-      "Talleres prácticos con simuladores del SRI y SUT",
-      "Material didáctico y plantillas de cálculo",
-      "Certificados de participación profesional"
-    ],
-    legalBasis: "Resoluciones de actualización del SRI y MDT 2026",
-    frequency: "Bajo demanda / Programas a medida",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo cotizar un taller de Capacitación Contable y Tributaria."
+    legalBasis: "Código del Trabajo, Ley de Seguridad Social y Normativa Técnica MDT",
+    frequency: "Permanente / Por requerimiento",
+    image: "/images/servicios-contables/estados-financieros.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), requiero acompañamiento técnico para inspecciones del Ministerio del Trabajo."
   },
 
   // =========================================================================
-  // 2. SERVICIOS TRIBUTARIOS (8 OFICIALES)
+  // 2. ASESORÍA TRIBUTARIA Y CONTABLE (OFICIALES GP SOLUTIONS)
   // =========================================================================
   {
     id: "trib-1",
-    number: 9,
-    title: "Declaraciones de IVA e Impuesto a la Renta",
-    description: "Liquidación puntual de formularios 104 (IVA mensual/semestral) y 102/101 (Renta Personas Naturales y Sociedades). Optimización legal de gastos y deducciones.",
+    number: 5,
+    title: "Declaraciones de Impuestos",
+    description: "Liquidación y presentación periódica de declaraciones tributarias ante el SRI: IVA mensual/semestral, retenciones en la fuente e Impuesto a la Renta con estricta puntualidad y cero multas.",
     category: "tributaria",
-    categoryLabel: "Tributario y Fiscal",
-    badge: "SRI Oficial",
+    categoryLabel: "Asesoría Tributaria",
+    badge: "Declaraciones SRI",
     deliverables: [
-      "Cálculo de crédito tributario y factor de proporcionalidad",
-      "Generación y presentación en portal SRI en línea",
-      "Convenios de débito bancario y comprobantes de pago",
-      "Archivo digital respaldado de cada declaración"
+      "Declaraciones de IVA (Formulario 104) mensual y semestral",
+      "Liquidación de Retenciones en la Fuente (Formulario 103)",
+      "Declaración anual de Impuesto a la Renta Sociedades y Personas Naturales",
+      "Elaboración y presentación oportuna de Anexos Transaccionales (ATS)"
     ],
-    legalBasis: "Ley Orgánica de Régimen Tributario Interno (LORTI)",
+    legalBasis: "Ley de Régimen Tributario Interno (LRTI) y Código Tributario",
     frequency: "Mensual / Semestral / Anual",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito asesoría para mis declaraciones de IVA e Impuesto a la Renta."
+    image: "/images/servicios-contables/contabilidad-general.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría para el servicio de: Declaraciones de Impuestos ante el SRI."
   },
   {
     id: "trib-2",
-    number: 10,
-    title: "Retenciones en la fuente",
-    description: "Determinación rigurosa de porcentajes de retención en IVA e Impuesto a la Renta para agentes de retención y contribuyentes especiales, evitando multas e intereses.",
+    number: 6,
+    title: "Devoluciones de Impuestos",
+    description: "Gestión y patrocinio del trámite de devolución de IVA para adultos mayores, personas con discapacidad, exportadores y proyectos inmobiliarios, además de reclamos por pagos indebidos de Impuesto a la Renta.",
     category: "tributaria",
-    categoryLabel: "Tributario y Fiscal",
-    badge: "Cero Glosas",
+    categoryLabel: "Asesoría Tributaria",
+    badge: "Acreditación Directa",
     deliverables: [
-      "Aplicación de tabla de retenciones SRI actualizada",
-      "Emisión de comprobantes de retención electrónicos",
-      "Declaración mensual Formulario 103",
-      "Conciliación con libros contables de pasivos"
+      "Devolución de IVA para personas de la tercera edad y discapacidad",
+      "Devolución de IVA a exportadores y proyectos de vivienda",
+      "Reclamos administrativos por pago indebido o en exceso de Renta",
+      "Monitoreo de estado procesal hasta la acreditación bancaria efectiva"
     ],
-    legalBasis: "Reglamento de Aplicación de la LORTI y Resoluciones SRI",
-    frequency: "Mensual",
-    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito soporte en cálculo y declaración de Retenciones en la Fuente."
+    legalBasis: "Art. 73 y 74 LRTI, Resoluciones SRI y Ley del Adulto Mayor",
+    frequency: "Mensual / Por trámite puntual",
+    image: "/images/servicios-tributarios/devolucion-impuestos.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), deseo tramitar la: Devolución de Impuestos ante el SRI."
   },
   {
     id: "trib-3",
-    number: 11,
-    title: "Impuestos a las herencias, legados y donaciones",
-    description: "Liquidación técnica de masa hereditaria y donaciones ante el SRI. Asesoría en deducciones por cargas familiares y gastos de última enfermedad para reducir la base imponible.",
+    number: 7,
+    title: "Manejo integral de nómina",
+    description: "Administración técnica y confidencial de nóminas: elaboración de roles de pago individuales, cálculo de beneficios de ley (décimos, fondos de reserva), planillas de aportes al IESS y actas de finiquito.",
     category: "tributaria",
-    categoryLabel: "Tributario y Fiscal",
-    badge: "Herencias SRI",
+    categoryLabel: "Asesoría Tributaria",
+    badge: "Nómina Blindada",
     deliverables: [
-      "Inventario valorado de bienes muebles e inmuebles",
-      "Declaración y liquidación Formulario 108",
-      "Emisión del certificado de cumplimiento tributario para notarías",
-      "Acompañamiento en posesión efectiva"
+      "Emisión mensual de roles de pago y comprobantes para colaboradores",
+      "Cálculo de horas suplementarias, extraordinarias y comisiones",
+      "Liquidación y legalización de décimos, fondos de reserva y utilidades",
+      "Generación y conciliación de planillas del IESS y actas en SUT"
     ],
-    legalBasis: "LORTI - Capítulo de Ingresos a Título Gratuito",
-    frequency: "Por Sucesión o Donación",
-    image: "/images/servicios-tributarios/impuestos-herencias-donaciones.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito asesoría técnica para la declaración de Impuesto a las Herencias."
+    legalBasis: "Código del Trabajo y Ley de Seguridad Social",
+    frequency: "Quincenal / Mensual",
+    image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Manejo integral de nómina."
   },
   {
     id: "trib-4",
-    number: 12,
-    title: "Declaración Patrimonial",
-    description: "Elaboración de la declaración anual de patrimonio para personas naturales que superen el límite legal del SRI ($245,000+ individual o $490,000+ conyugal).",
+    number: 8,
+    title: "Asesoría y Planificación Tributaria",
+    description: "Análisis estratégico de operaciones corporativas para optimizar cargas impositivas dentro de la legalidad vigente, prevención de riesgos y asesoramiento permanente ante reformas fiscales.",
     category: "tributaria",
-    categoryLabel: "Tributario y Fiscal",
-    badge: "Patrimonio",
+    categoryLabel: "Asesoría Tributaria",
+    badge: "Estrategia Fiscal",
     deliverables: [
-      "Consolidación de activos (bienes raíces, vehículos, inversiones)",
-      "Detalle de pasivos bancarios e hipotecarios respaldados",
-      "Presentación en sistema SRI con calendario por noveno dígito",
-      "Blindaje contra incrementos patrimoniales no justificados"
+      "Diagnóstico tributario preventivo y auditoría de riesgos impositivos",
+      "Diseño de esquemas de planificación fiscal lícita y optimizada",
+      "Asesoría técnica continua en reformas tributarias y nuevas leyes",
+      "Acompañamiento en decisiones de inversión con implicaciones fiscales"
     ],
-    legalBasis: "Resolución General del SRI para Declaración Patrimonial Anual",
-    frequency: "Anual (Mayo)",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito elaborar mi Declaración Patrimonial anual ante el SRI."
+    legalBasis: "Código Tributario y Resoluciones del Servicio de Rentas Internas",
+    frequency: "Mensual / Permanente",
+    image: "/images/servicios-tributarios/impuestos-herencias-donaciones.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito una consultoría de: Asesoría y Planificación Tributaria."
   },
   {
     id: "trib-5",
-    number: 13,
-    title: "Anexos Tributarios",
-    description: "Validación y transmisión del Anexo Transaccional Simplificado (ATS), Anexo de Relación de Dependencia (RDEP), Anexo de Accionistas y Anexo de Dividendos sin rechazos.",
+    number: 9,
+    title: "Atención y Prevención de Contingencias Tributarias",
+    description: "Revisión y defensa técnica frente a notificaciones, diferencias y determinaciones emitidas por la administración tributaria, con patrocinio especializado en requerimientos del SRI.",
     category: "tributaria",
-    categoryLabel: "Tributario y Fiscal",
-    badge: "ATS / RDEP",
+    categoryLabel: "Asesoría Tributaria",
+    badge: "Defensa SRI",
     deliverables: [
-      "Estructuración de XML conforme esquema XSD del SRI",
-      "Depuración de errores y talones resumen validados",
-      "Carga exitosa en plataforma DIMM / SRI en línea",
-      "Comprobante oficial de recepción sin multas"
+      "Diagnósticos de cumplimiento tributario previo a auditorías",
+      "Revisión, descargo y justificación técnica de diferencias notificadas",
+      "Patrocinio y asesoría jurídica en requerimientos formales del SRI",
+      "Regularización y saneamiento integral de pasivos fiscales"
     ],
-    legalBasis: "Ficha Técnica del SRI para Anexos XML",
-    frequency: "Mensual / Anual",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito gestionar la presentación de mis Anexos Tributarios ATS/RDEP."
+    legalBasis: "Código Tributario, Código Orgánico General de Procesos y LRTI",
+    frequency: "Por evento / Requerimiento puntual",
+    image: "/images/servicios-contables/estados-financieros.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), requiero asesoría para: Atención de contingencias o requerimientos del SRI."
   },
   {
     id: "trib-6",
-    number: 14,
-    title: "Anexo de Gastos Personales",
-    description: "Revisión y consolidación de comprobantes electrónicos en rubros de alimentación, salud, educación, vivienda, vestimenta y turismo para personas bajo relación de dependencia.",
+    number: 10,
+    title: "Elaboración de Estados Financieros NIIF",
+    description: "Estructuración técnica de Estado de Situación Financiera, Estado de Resultados Integrales, Flujo de Efectivo y Notas Explicativas auditables para bancos, inversionistas y accionistas.",
     category: "tributaria",
-    categoryLabel: "Tributario y Fiscal",
-    badge: "Deducciones",
+    categoryLabel: "Asesoría Tributaria",
+    badge: "Normativa NIIF",
     deliverables: [
-      "Cruce de facturas electrónicas emitidas en portal SRI",
-      "Cálculo de rebaja por cargas familiares declaradas",
-      "Generación y presentación del Anexo de Gastos Personales",
-      "Formulario 107 para empleador"
+      "Balance General y Estado de Resultados Integrales",
+      "Estado de Flujos de Efectivo y Cambios en el Patrimonio",
+      "Notas explicativas completas a los estados financieros",
+      "Conciliación tributaria y dictamen de razonabilidad contable"
     ],
-    legalBasis: "Ley Orgánica para el Fortalecimiento de la Economía Familiar",
-    frequency: "Anual (Febrero)",
-    image: "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito apoyo para elaborar mi Anexo de Gastos Personales ante el SRI."
-  },
-  {
-    id: "trib-7",
-    number: 15,
-    title: "Devolución de impuestos",
-    description: "Recuperación de saldos a favor por concepto de IVA para Tercera Edad, Personas con Discapacidad y Exportadores, así como pagos en exceso o indebidos de Impuesto a la Renta.",
-    category: "tributaria",
-    categoryLabel: "Tributario y Fiscal",
-    badge: "Reintegro SRI",
-    deliverables: [
-      "Auditoría de facturas y armado de expedientes de devolución",
-      "Ingreso de solicitud virtual en portal del SRI",
-      "Seguimiento hasta la acreditación directa en cuenta bancaria",
-      "Resolución administrativa favorable"
-    ],
-    legalBasis: "Ley de Beneficios Tributarios y LORTI",
-    frequency: "Mensual / Acumulado",
-    image: "/images/servicios-tributarios/devolucion-impuestos.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo tramitar la Devolución de IVA / Impuestos ante el SRI."
-  },
-  {
-    id: "trib-8",
-    number: 16,
-    title: "Declaración de Patentes, 1.5 x mil",
-    description: "Cálculo y presentación ante el Municipio del Distrito Metropolitano de Quito y GADs de Pichincha para el impuesto de Patente Municipal y el 1.5 por mil sobre los activos totales.",
-    category: "tributaria",
-    categoryLabel: "Tributario y Fiscal",
-    badge: "Municipal GAD",
-    deliverables: [
-      "Determinación de base imponible deducida por pasivos corrientes",
-      "Llenado y carga en plataformas municipales metropolitanas",
-      "Obtención de título de crédito y Registro Único de Patente (RAET)",
-      "Renovación de permisos y solvencia municipal"
-    ],
-    legalBasis: "Código Orgánico de Organización Territorial (COOTAD)",
-    frequency: "Anual (Mayo - Junio)",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito la liquidación de Patente Municipal y 1.5 por mil."
+    legalBasis: "NIIF para PYMES, NIIF Completas y Resoluciones SuperCías",
+    frequency: "Semestral / Cierre Anual",
+    image: "/images/servicios-contables/estados-financieros.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito la elaboración de Estados Financieros bajo normativa NIIF."
   },
 
   // =========================================================================
-  // 3. SERVICIOS LABORALES (5 OFICIALES)
+  // 3. ASESORÍA LEGAL CORPORATIVA (OFICIALES GP SOLUTIONS)
   // =========================================================================
   {
-    id: "lab-1",
-    number: 17,
-    title: "Contratos de trabajo y actas de Finiquito",
-    description: "Elaboración e inscripción legal de contratos laborales en el sistema SUT del Ministerio del Trabajo. Liquidación exacta de actas de finiquito con cálculo de indemnizaciones.",
-    category: "laboral",
-    categoryLabel: "Laboral y Nómina",
-    badge: "MDT / SUT",
+    id: "legal-1",
+    number: 11,
+    title: "Creación y liquidación de SAS",
+    description: "Constitución rápida y digital de Sociedades por Acciones Simplificadas (S.A.S.) con estatutos blindados, además de procesos ordenados de disolución, liquidación y cancelación de compañías.",
+    category: "legal-corporativa",
+    categoryLabel: "Asesoría Legal Corporativa",
+    badge: "SuperCías & SAS",
     deliverables: [
-      "Contratos a plazo indefinido, productivos o por obra en SUT",
-      "Cálculo de liquidaciones laborales y desahucio",
-      "Generación de acta de finiquito y turno de legalización",
-      "Finiquitos sin contingencias judiciales laborales"
+      "Elaboración de estatutos a medida con cláusulas de protección patrimonial",
+      "Trámite 100% digital de constitución de SAS y obtención de RUC",
+      "Nombramientos de administradores y representantes legales",
+      "Trámites de disolución, liquidación y cancelación de compañías"
     ],
-    legalBasis: "Código del Trabajo del Ecuador y Acuerdos Ministeriales",
-    frequency: "Por Ingreso o Egreso de Personal",
+    legalBasis: "Ley de Modernización a la Ley de Compañías y Reglamento SAS",
+    frequency: "Trámite puntual / Creación ágil",
+    image: "/images/servicios-contables/constitucion-liquidacion-sas.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría para el servicio de: Creación y liquidación de SAS."
+  },
+  {
+    id: "legal-2",
+    number: 12,
+    title: "Manejo y actualización de libros societarios",
+    description: "Apertura, custodia y actualización rigurosa de Libros de Acciones y Accionistas, actas de juntas generales, aumentos o disminuciones de capital y reformas estatutarias ante la Superintendencia de Compañías.",
+    category: "legal-corporativa",
+    categoryLabel: "Asesoría Legal Corporativa",
+    badge: "Custodia Societaria",
+    deliverables: [
+      "Manejo y custodia de Libros de Acciones y Accionistas o Participaciones",
+      "Redacción formal de Actas de Juntas Generales Ordinarias y Extraordinarias",
+      "Elaboración de reformas estatutarias, cesión y transferencia de acciones",
+      "Actualización de nombramientos e inscripción en el Registro Mercantil"
+    ],
+    legalBasis: "Ley de Compañías y Resoluciones de la Superintendencia de Compañías",
+    frequency: "Mensual / Permanente",
+    image: "/images/servicios-contables/superintendencia-companias.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), requiero información para el: Manejo y actualización de libros societarios."
+  },
+  {
+    id: "legal-3",
+    number: 13,
+    title: "Registro de marcas y signos distintivos",
+    description: "Búsqueda fonética previa, viabilidad registral y tramitación integral de registro de marcas, nombres comerciales y lemas distintivos ante el SENADI para proteger la identidad comercial por 10 años.",
+    category: "legal-corporativa",
+    categoryLabel: "Asesoría Legal Corporativa",
+    badge: "SENADI 10 Años",
+    deliverables: [
+      "Búsqueda fonética y análisis previo de viabilidad de registro de marca",
+      "Solicitud formal de registro ante el SENADI y seguimiento en gaceta",
+      "Contestación técnica a oposiciones planteadas por terceros",
+      "Título oficial de concesión de marca con vigencia por 10 años"
+    ],
+    legalBasis: "Código Orgánico de la Economía Social de los Conocimientos (COESCI)",
+    frequency: "Registro por 10 años renovable",
+    image: "/images/servicios-contables/registro-marcas.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría para el: Registro de marcas y signos distintivos ante el SENADI."
+  },
+  {
+    id: "legal-4",
+    number: 14,
+    title: "Contratos y Negocios",
+    description: "Elaboración, revisión y blindaje de contratos civiles y mercantiles con clientes y proveedores, redacción de Acuerdos de Confidencialidad (NDA) y mitigación de riesgos legales contractuales.",
+    category: "legal-corporativa",
+    categoryLabel: "Asesoría Legal Corporativa",
+    badge: "Blindaje Contractual",
+    deliverables: [
+      "Elaboración y revisión de contratos civiles y mercantiles a medida",
+      "Redacción de Acuerdos de Confidencialidad (NDA) y pactos de socios",
+      "Revisión y negociación de cláusulas de penalidad y resolución",
+      "Terminación, resciliación y finiquito de vínculos contractuales"
+    ],
+    legalBasis: "Código de Comercio, Código Civil y Ley de Arbitraje y Mediación",
+    frequency: "Por contrato / Demanda",
     image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito gestionar contratos de trabajo o actas de finiquito en SUT."
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría legal para: Contratos y Negocios de mi empresa."
   },
   {
-    id: "lab-2",
-    number: 18,
-    title: "Roles de pago",
-    description: "Emisión de comprobantes mensuales individuales para el personal: detalle de ingresos gravables, horas suplementarias, aporte personal IESS y descuentos autorizados.",
-    category: "laboral",
-    categoryLabel: "Laboral y Nómina",
-    badge: "Rol Individual",
+    id: "legal-5",
+    number: 15,
+    title: "Asesoría Legal Empresarial",
+    description: "Acompañamiento jurídico permanente para resolver las contingencias de la operación diaria, análisis preventivo de riesgos, revisión de comunicaciones y emisión de opiniones jurídicas para la toma de decisiones.",
+    category: "legal-corporativa",
+    categoryLabel: "Asesoría Legal Corporativa",
+    badge: "Acompañamiento 360°",
     deliverables: [
-      "Rol general consolidado de toda la nómina",
-      "Roles individuales impresos o digitales con constancia de firma",
-      "Planilla de horas extras con registro de biométrico",
-      "Historial de pagos salariales para auditorías laborales"
+      "Elaboración y revisión de documentos jurídicos y comerciales",
+      "Revisión y respuesta técnica a comunicaciones y requerimientos legales",
+      "Análisis preventivo de contingencias y riesgos legales operativos",
+      "Acompañamiento estratégico en negociaciones comerciales clave"
     ],
-    legalBasis: "Art. 42 numeral 3 del Código del Trabajo",
-    frequency: "Mensual",
-    image: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito la emisión y control de Roles de Pago para mi nómina."
+    legalBasis: "Legislación Mercantil, Civil y Administrativa del Ecuador",
+    frequency: "Permanente / Mensual",
+    image: "/images/servicios-contables/contabilidad-general.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), deseo cotizar un plan mensual de: Asesoría Legal Empresarial."
   },
   {
-    id: "lab-3",
-    number: 19,
-    title: "Beneficios Sociales",
-    description: "Liquidación y legalización en SUT de 13er sueldo (Navideño), 14to sueldo (Escolar), fondos de reserva mensuales o acumulados en IESS, y cálculo del 15% de utilidades.",
-    category: "laboral",
-    categoryLabel: "Laboral y Nómina",
-    badge: "Décimos & Utilidades",
+    id: "legal-6",
+    number: 16,
+    title: "Asesoría Laboral Empresarial",
+    description: "Asesoramiento integral a empleadores en contratación de personal, actas de finiquito, legalización de Reglamentos Internos de Trabajo y defensa frente a inspecciones del Ministerio del Trabajo.",
+    category: "legal-corporativa",
+    categoryLabel: "Asesoría Legal Corporativa",
+    badge: "Defensa Laboral",
     deliverables: [
-      "Formularios del Ministerio del Trabajo validados en SUT",
-      "Cálculo proporcional de 13ro y 14to por periodos laborados",
-      "Repartición del 10% y 5% de utilidades por cargas familiares",
-      "Comprobante oficial de pago sin multas del MDT"
+      "Elaboración y blindaje de contratos de trabajo individuales y especiales",
+      "Asesoría técnica en desvinculaciones laborales y cálculo de finiquitos",
+      "Elaboración y legalización del Reglamento Interno de Trabajo en el MDT",
+      "Acompañamiento y defensa técnica en boletas de comparecencia e inspecciones"
     ],
-    legalBasis: "Código del Trabajo - Décimos y Participación de Utilidades",
-    frequency: "Febrero / Marzo / Agosto / Diciembre",
-    image: "https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), necesito calcular y legalizar los Beneficios Sociales de mis empleados."
-  },
-  {
-    id: "lab-4",
-    number: 20,
-    title: "Gestión de planillas y obligaciones ante el IESS",
-    description: "Administración integral del portal patronal del IESS: avisos de entrada y salida, planillas mensuales de aportes, fondos de reserva, préstamos de empleados y acuerdos de pago.",
-    category: "laboral",
-    categoryLabel: "Laboral y Nómina",
-    badge: "IESS Patronal",
-    deliverables: [
-      "Avisos de entrada en máximo 15 días posteriores al ingreso",
-      "Generación y pago puntual de comprobantes IESS antes del día 15",
-      "Reporte de novedades laborales (variación de sueldos, subsidios)",
-      "Certificado de cumplimiento patronal al día (Cero Mora)"
-    ],
-    legalBasis: "Ley de Seguridad Social y Resoluciones del IESS",
-    frequency: "Mensual",
-    image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), solicito la gestión de planillas y obligaciones ante el IESS."
-  },
-  {
-    id: "lab-5",
-    number: 21,
-    title: "Gestión de préstamos quirografarios e hipotecarios",
-    description: "Asesoramiento y trámite especializado para afiliados y empleadores en solicitudes de créditos quirografarios, novaciones y desbloqueo de cuentas ante el BIESS.",
-    category: "laboral",
-    categoryLabel: "Laboral y Nómina",
-    badge: "BIESS Crédito",
-    deliverables: [
-      "Calificación de capacidad de endeudamiento del afiliado",
-      "Subsanación de impedimentos y retenciones patronales",
-      "Gestión de cruce de fondos de reserva para amortización",
-      "Asesoría técnica en desembolso efectivo"
-    ],
-    legalBasis: "Reglamento de Créditos del Banco del IESS (BIESS)",
-    frequency: "Por Requerimiento",
-    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80",
-    whatsappMessage: "Hola GP SOLUTIONS (+593999840649), deseo asesoría para la gestión de préstamos quirografarios / hipotecarios BIESS."
-  },
+    legalBasis: "Código del Trabajo, Mandatos Constituyentes y Acuerdos MDT",
+    frequency: "Mensual / Por requerimiento",
+    image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
+    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría jurídica para el área de: Asesoría Laboral Empresarial."
+  }
 ];
 
 export const CATEGORIES_CONFIG = [
-  { key: 'todos', label: 'Todos los Servicios', count: 21 },
-  { key: 'contable', label: 'Contables y Corporativos', count: 8 },
-  { key: 'tributaria', label: 'Tributarios (SRI)', count: 8 },
-  { key: 'laboral', label: 'Laborales y Nómina (IESS)', count: 5 }
+  { key: 'todos', label: 'Todos los Servicios', count: 16 },
+  { key: 'seguridad-salud', label: 'Seguridad y Salud Ocupacional', count: 4 },
+  { key: 'tributaria', label: 'Asesoría Contable y Tributaria', count: 6 },
+  { key: 'legal-corporativa', label: 'Asesoría Legal Corporativa', count: 6 }
 ];
+
+// Los 9 servicios oficiales solicitados por el cliente para destacar en carruseles
+export const FEATURED_CAROUSEL_SERVICES = ALL_SERVICES.filter((s) =>
+  ['sso-1', 'sso-2', 'sso-3', 'trib-1', 'trib-2', 'trib-3', 'legal-1', 'legal-2', 'legal-3'].includes(s.id)
+);

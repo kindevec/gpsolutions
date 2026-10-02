@@ -23,13 +23,29 @@ import {
 } from 'lucide-react';
 import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
-import { ALL_SERVICES } from '../data/services';
+import { ALL_SERVICES, FEATURED_CAROUSEL_SERVICES } from '../data/services';
 import { ServiceCardSlideUp } from '../components/ui/ServiceCardSlideUp';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import type { TabKey, ServiceItem } from '../types';
 
 const getServiceIcon = (id: string) => {
   switch (id) {
+    case 'sso-1': return ShieldCheck;
+    case 'sso-2': return Lock;
+    case 'sso-3': return Award;
+    case 'sso-4': return CheckCircle2;
+    case 'trib-1': return Receipt;
+    case 'trib-2': return Sparkles;
+    case 'trib-3': return Clock;
+    case 'trib-4': return Scale;
+    case 'trib-5': return ShieldCheck;
+    case 'trib-6': return Receipt;
+    case 'legal-1': return Building2;
+    case 'legal-2': return Scale;
+    case 'legal-3': return Award;
+    case 'legal-4': return Scale;
+    case 'legal-5': return Building2;
+    case 'legal-6': return Users;
     case 'cont-1': return Building2;
     case 'cont-2': return Receipt;
     case 'cont-3': return ShieldCheck;
@@ -45,27 +61,21 @@ const getServiceIcon = (id: string) => {
 const HERO_PILLARS = [
   {
     id: 'pillar-1',
-    title: 'Balances NIIF & Contabilidad',
-    icon: Building2,
+    title: 'Seguridad y Salud Ocupacional',
+    icon: ShieldCheck,
     colorScheme: 'gold' as const,
   },
   {
     id: 'pillar-2',
-    title: 'Blindaje Tributario & SRI',
+    title: 'Asesoría Tributaria',
     icon: Receipt,
     colorScheme: 'sky' as const,
   },
   {
     id: 'pillar-3',
-    title: 'Nómina & Cumplimiento IESS',
-    icon: Users,
-    colorScheme: 'gold' as const,
-  },
-  {
-    id: 'pillar-4',
-    title: 'Constitución S.A.S. & Legal',
+    title: 'Asesoría Legal Corporativa',
     icon: Scale,
-    colorScheme: 'sky' as const,
+    colorScheme: 'gold' as const,
   },
 ];
 
@@ -99,12 +109,18 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
   };
 
   const whatsappHeroUrl = buildWhatsAppLink(
-    'Hola GP SOLUTIONS (+593999840649), deseo solicitar asesoría y blindaje para mi empresa en Ecuador.'
+    'Hola GP SOLUTIONS (+593 982577313), deseo solicitar asesoría y blindaje para mi empresa en Ecuador.'
   );
 
-  // Catálogo completo de Servicios Contables para deslizar horizontalmente
-  const contableServicesList = useMemo(
-    () => ALL_SERVICES.filter((s) => s.category === 'contable'),
+  // Los 9 servicios principales de las 3 áreas oficiales de GP SOLUTIONS
+  const featuredServicesList = useMemo(
+    () => (FEATURED_CAROUSEL_SERVICES.length > 0 ? FEATURED_CAROUSEL_SERVICES : ALL_SERVICES.slice(0, 9)),
+    []
+  );
+
+  // Servicios legales, societarios y de seguridad para el carrusel de respaldo
+  const corporateServicesList = useMemo(
+    () => ALL_SERVICES.filter((s) => s.category === 'legal-corporativa' || s.category === 'seguridad-salud'),
     []
   );
 
@@ -191,45 +207,35 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
         {/* Fila Inferior: En desktop 4 círculos sobre la curva / En móvil 4 iconos horizontales con texto desplegable */}
         <div className="max-w-4xl mx-auto px-4 relative z-30 select-none">
           
-          {/* VISTA DESKTOP (sm:flex): 4 Círculos Informativos que van POR DELANTE de la Curva */}
-          <div className="hidden sm:flex items-center justify-center gap-2.5 sm:gap-3.5 md:gap-4.5 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
-            {/* Card Circular 1: Contabilidad & NIIF */}
-            <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
-              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
-                <Building2 className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+          {/* VISTA DESKTOP (sm:flex): 3 Círculos Informativos Oficiales sobre la Curva */}
+          <div className="hidden sm:flex items-center justify-center gap-4 sm:gap-6 md:gap-8 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
+            {/* Card Circular 1: Seguridad y Salud Ocupacional */}
+            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-amber-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_22px_rgba(245,158,11,0.25)]">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
+                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-              <h3 className="font-heading font-bold text-[11px] xs:text-xs sm:text-sm text-white px-2 leading-tight">
-                Balances NIIF & Contabilidad
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+                Seguridad y Salud Ocupacional
               </h3>
             </div>
 
-            {/* Card Circular 2: Blindaje Tributario */}
-            <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-sky-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2 shadow-[0_4px_20px_rgba(56,189,248,0.2)]">
-              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-sky-400/20 text-[#38BDF8] flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-sky-400/30">
-                <Receipt className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+            {/* Card Circular 2: Asesoría Tributaria */}
+            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-sky-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2 shadow-[0_4px_22px_rgba(56,189,248,0.25)]">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-400/20 text-[#38BDF8] flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-sky-400/30">
+                <Receipt className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-              <h3 className="font-heading font-bold text-[11px] xs:text-xs sm:text-sm text-white px-2 leading-tight">
-                Blindaje Tributario & SRI
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+                Asesoría Tributaria
               </h3>
             </div>
 
-            {/* Card Circular 3: Nómina & IESS */}
-            <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-amber-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-1 shadow-[0_4px_20px_rgba(245,158,11,0.2)]">
-              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
-                <Users className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
+            {/* Card Circular 3: Asesoría Legal Corporativa */}
+            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-amber-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-1 shadow-[0_4px_22px_rgba(245,158,11,0.25)]">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
+                <Scale className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-              <h3 className="font-heading font-bold text-[11px] xs:text-xs sm:text-sm text-white px-2 leading-tight">
-                Nómina & Cumplimiento IESS
-              </h3>
-            </div>
-
-            {/* Card Circular 4: Constitución S.A.S. & Legal */}
-            <div className="w-32 h-32 xs:w-36 xs:h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-[#0d1d36] border-2 border-sky-400/60 backdrop-blur-xl flex flex-col items-center justify-center text-center p-2 xs:p-3 sm:p-3.5 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2 shadow-[0_4px_20px_rgba(56,189,248,0.2)]">
-              <div className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 rounded-full bg-sky-400/20 text-[#38BDF8] flex items-center justify-center mb-1 xs:mb-1.5 sm:mb-2 shadow-inner border border-sky-400/30">
-                <Scale className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
-              </div>
-              <h3 className="font-heading font-bold text-[11px] xs:text-xs sm:text-sm text-white px-2 leading-tight">
-                Constitución S.A.S. & Legal
+              <h3 className="font-heading font-bold text-xs sm:text-sm text-white px-2 leading-tight">
+                Asesoría Legal Corporativa
               </h3>
             </div>
           </div>
@@ -308,10 +314,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           {/* Encabezado Centrado */}
           <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
             <h2 className="font-heading text-2xl sm:text-4xl font-black text-[#102547] tracking-tight">
-              Contabilidad, Balances NIIF & Creación de Empresas S.A.S.
+              Seguridad y Salud, Asesoría Tributaria & Legal Corporativa
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-2xl mx-auto leading-relaxed">
-              Cumplimiento societario, asesoría integral y estructuración de estados financieros bajo normativa vigente.
+              Matrices de riesgo, reglamentos de prevención, declaraciones de impuestos, SAS y marcas SENADI con respaldo profesional en Quito.
             </p>
           </div>
 
@@ -337,18 +343,19 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               ref={accountingScrollRef}
               className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-2 no-scrollbar relative z-10"
             >
-              {contableServicesList.map((service, idx) => {
+              {featuredServicesList.map((service, idx) => {
                 const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
                 
                 const shortDescriptions: Record<string, string> = {
-                  'cont-1': 'Registro contable bajo NIIF, conciliaciones bancarias y libros mayores al día.',
-                  'cont-2': 'Balances generales y estados de resultados auditables para bancos y accionistas.',
-                  'cont-3': 'Presentación anual de balances, informes y nómina de socios en la SuperCías.',
-                  'cont-4': 'Constitución digital de SAS con estatutos blindados y liquidación societaria.',
-                  'cont-5': 'Aumentos de capital, actas de juntas generales y reformas estatutarias.',
-                  'cont-6': 'Búsqueda fonética y registro oficial de marca ante el SENADI por 10 años.',
-                  'cont-7': 'Cálculo mensual de roles de pago, décimos y planillas patronales del IESS.',
-                  'cont-8': 'Talleres prácticos in-house en normativa tributaria SRI y facturación.',
+                  'sso-1': 'Matrices de riesgo por puesto, planes de emergencia y brigadas conformadas.',
+                  'sso-2': 'Reglamentos de higiene y seguridad aprobados en SUT y comités paritarios.',
+                  'sso-3': 'Talleres certificados en ergonomía, prevención de acoso laboral y emergencias.',
+                  'trib-1': 'Declaraciones periódicas de IVA, Retenciones en la fuente y Renta sin multas.',
+                  'trib-2': 'Recuperación de IVA para tercera edad, exportadores y reclamos por pago indebido.',
+                  'trib-3': 'Roles de pago, décimos, planillas de aportes al IESS y actas de finiquito.',
+                  'legal-1': 'Constitución digital de SAS con estatutos blindados y liquidación de compañías.',
+                  'legal-2': 'Manejo de Libros de Acciones, reformas de estatutos y actas de junta general.',
+                  'legal-3': 'Búsqueda fonética y concesión oficial de marca ante el SENADI por 10 años.',
                 };
 
                 const shortText = shortDescriptions[service.id] || service.description;
@@ -485,10 +492,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12 gap-5">
             <div>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight text-center">
-                Servicios Contables y Corporativos
+                Asesoría Legal Corporativa & Seguridad Ocupacional
               </h2>
               <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-2xl mx-auto text-center leading-relaxed">
-                Contabilidad general, balances NIIF, cumplimiento ante Superintendencia de Compañías, constitución de SAS, marcas y nóminas con blindaje legal.
+                Creación de SAS, libros societarios, marcas SENADI, reglamentos y planes de emergencia con blindaje jurídico y cumplimiento ante el MDT.
               </p>
             </div>
 
@@ -521,20 +528,22 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               ref={corporateScrollRef}
               className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-6 no-scrollbar relative z-10"
             >
-              {contableServicesList.map((service, cardIdx) => {
+              {corporateServicesList.map((service, cardIdx) => {
                 const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
                 const IconComponent = getServiceIcon(service.id);
                 const isGold = cardIdx % 2 === 1;
 
                 const shortDescriptions: Record<string, string> = {
-                  'cont-1': 'Registro contable bajo NIIF, conciliaciones bancarias y declaraciones SRI sin mora.',
-                  'cont-2': 'Balances generales y estados de resultados auditables para bancos y accionistas.',
-                  'cont-3': 'Presentación anual de balances, informes y nómina de socios ante la SuperCías.',
-                  'cont-4': 'Constitución ágil de SAS con estatutos blindados y liquidación societaria legal.',
-                  'cont-5': 'Aumentos de capital, actas de juntas generales y reformas estatutarias.',
-                  'cont-6': 'Búsqueda fonética y registro oficial de marca ante el SENADI por 10 años.',
-                  'cont-7': 'Cálculo mensual de roles de pago, décimos y planillas patronales del IESS.',
-                  'cont-8': 'Talleres prácticos in-company en normativa tributaria SRI y facturación.',
+                  'legal-1': 'Constitución ágil de SAS con estatutos blindados y liquidación societaria legal.',
+                  'legal-2': 'Manejo de Libros de Acciones, reformas de estatutos y actas ante SuperCías.',
+                  'legal-3': 'Búsqueda fonética y registro oficial de marca ante el SENADI por 10 años.',
+                  'legal-4': 'Elaboración y revisión técnica de contratos mercantiles y acuerdos NDA.',
+                  'legal-5': 'Acompañamiento jurídico continuo para toma de decisiones y blindaje 360°.',
+                  'legal-6': 'Blindaje en contratación laboral, finiquitos y defensa en inspecciones MDT.',
+                  'sso-1': 'Matrices de identificación de peligros y diseño de planes de emergencia.',
+                  'sso-2': 'Reglamentos de higiene y seguridad legalizados en plataforma SUT del MDT.',
+                  'sso-3': 'Talleres certificados en ergonomía, manejo seguro y prevención de acoso.',
+                  'sso-4': 'Acompañamiento técnico y legal presencial ante inspecciones del MDT e IESS.',
                 };
 
                 const shortText = shortDescriptions[service.id] || service.description;
@@ -652,7 +661,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               
               {/* Título de Trayectoria Centrado para móvil y PC */}
               <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight text-center">
-                Más de 12 Años de Rigor Técnico y Respaldo Empresarial
+                Más de 12 Años de Excelencia Profesional y Respaldo Empresarial
               </h2>
 
               {/* Párrafos informativos completos */}
@@ -661,7 +670,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               </p>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
-                Operamos desde nuestro despacho en <strong className="text-sky-300 font-semibold">Tumbaco, Quito</strong>, integrando canales digitales para asegurar un control estricto de balances, declaraciones ante el SRI y nóminas patronales sin contingencias legales.
+                Operamos desde nuestro despacho en <strong className="text-sky-300 font-semibold">Quito</strong>, integrando canales digitales para asegurar un control estricto de balances, declaraciones ante el SRI y nóminas patronales sin contingencias legales.
               </p>
 
               {/* Especialidades con Iconos y Textos en una misma línea */}
@@ -759,7 +768,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               Respuestas Claras & Canales de Atención Directa
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm mt-2 text-justify">
-              Resolvemos sus inquietudes más comunes y ponemos a su disposición canales directos para agendar su consultoría en Tumbaco o vía digital.
+              Resolvemos sus inquietudes más comunes y ponemos a su disposición canales directos para agendar su consultoría en Quito o vía digital.
             </p>
           </div>
 
@@ -818,7 +827,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                     Despacho Presencial y Digital
                   </h3>
                   <p className="text-xs text-[#38BDF8] font-semibold mt-0.5">
-                    Atención directa en Tumbaco & Cobertura Nacional
+                    Atención directa en Quito & Cobertura Nacional
                   </p>
                   <p className="text-xs text-slate-300 mt-2 text-center leading-relaxed max-w-sm">
                     Estamos listos para revisar sus libros y balances con atención directa sin intermediarios.

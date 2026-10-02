@@ -33,7 +33,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         <div className="absolute inset-0 z-0">
           <img
             src="/images/heroes/hero-about.jpg"
-            alt="Firma Contable y Legal GP Solutions en Tumbaco, Quito"
+            alt="Firma Contable, Tributaria y Legal GP Solutions en Quito"
             className="w-full h-full object-cover object-center transform scale-105"
             loading="eager"
           />
@@ -49,21 +49,23 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
               <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
                 Contable
               </span>
-              <span className="text-white"> & </span>
+              <span className="text-white">, </span>
               <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
-                Legal
+                Tributaria
               </span>
+              <span className="text-white"> & </span>
+              <span className="text-[#38BDF8]">Legal</span>
               <span className="block text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-200 mt-2">
-                en <span className="text-[#38BDF8]">Tumbaco, Quito</span> & Cobertura Nacional
+                en <span className="text-[#38BDF8]">Quito</span> & Cobertura Nacional
               </span>
             </h1>
             <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
-              En <strong className="text-white font-bold">{COMPANY_DATA.name}</strong> proporcionamos certeza y tranquilidad tributaria a personas naturales (RIMPE y Régimen General) y a sociedades mercantiles (S.A.S., Cías. Ltda. y S.A.) en todo el Ecuador.
+              En <strong className="text-white font-bold">{COMPANY_DATA.name}</strong> proporcionamos certeza y tranquilidad integral a personas naturales (RIMPE y Régimen General) y a sociedades mercantiles (S.A.S., Cías. Ltda. y S.A.) en todo el Ecuador.
             </p>
           </div>
         </div>
 
-        {/* Separador Ondulado SVG en la base del Hero en color azul (#071324) para transicionar sin franjas blancas */}
+        {/* Separador Ondulado SVG en la base del Hero en color azul (#071324) */}
         <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none translate-y-px">
           <CurvedShapeDivider fillColor="#071324" position="bottom" variant="wave1" />
         </div>
@@ -71,111 +73,42 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
 
       {/* =========================================================================
-          BLOQUE 1: CONOZCA A LA DIRECCIÓN (ESTILO MÁS DE 12 AÑOS - IDÉNTICO)
+          BLOQUE 1: MISIÓN Y VISIÓN (ESTRUCTURA INSTITUCIONAL)
          ========================================================================= */}
-      <section className="-mt-1 pt-2 sm:pt-6 pb-12 sm:pb-18 bg-[#071324] relative z-20 overflow-hidden text-white">
-        {/* Luces y brillos ambientales acordes a la paleta del logo */}
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-1/2 -right-20 w-[500px] h-[500px] bg-sky-500/15 rounded-full blur-[160px] pointer-events-none" />
-        <div className="absolute -bottom-24 left-1/3 w-80 h-80 bg-[#0284C7]/15 rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] pointer-events-none" />
-
+      <section className="-mt-1 pt-6 pb-12 sm:pt-8 sm:pb-16 bg-[#071324] relative z-20 overflow-hidden text-white border-b border-sky-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             
-            {/* Columna Izquierda: Títulos, Párrafos, Especialidades y Acciones */}
-            <div className="lg:col-span-7 space-y-6 order-2 lg:order-1">
-              
-              {/* Título de Trayectoria Centrado para móvil y PC */}
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight text-center">
-                Más de 12 Años de Rigor Técnico y Respaldo Empresarial
-              </h2>
-
-              {/* Párrafos informativos completos */}
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
-                Bajo la dirección de <strong className="text-white font-semibold">{COMPANY_DATA.director}</strong>, GP SOLUTIONS se ha consolidado como un aliado estratégico para emprendedores, personas naturales (RIMPE y Régimen General) y sociedades mercantiles (S.A.S., Cías. Ltda. y S.A.) en todo el Ecuador.
-              </p>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
-                Operamos desde nuestro despacho en <strong className="text-sky-300 font-semibold">Tumbaco, Quito</strong>, integrando canales digitales para asegurar un control estricto de balances, declaraciones ante el SRI y nóminas patronales sin contingencias legales.
-              </p>
-
-              {/* Especialidades con Iconos y Textos en una misma línea */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
-                <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-sky-400/20">
-                  <div className="p-2 sm:p-2.5 rounded-full bg-sky-500/15 border border-sky-400/30 text-[#38BDF8] flex items-center justify-center shrink-0">
-                    <Scale className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-xs sm:text-sm font-bold text-white text-left leading-snug">
-                    Especialista en Balances y Normas NIIF
-                  </h4>
+            {/* Tarjeta Misión */}
+            <div className="p-7 sm:p-9 rounded-3xl bg-gradient-to-br from-[#0c1d37] via-[#09172c] to-[#071324] border border-sky-400/30 shadow-xl relative overflow-hidden group hover:border-[#38BDF8] transition-all duration-300">
+              <div className="flex items-center gap-3.5 mb-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#0284C7]/20 border border-sky-400/40 text-[#38BDF8] flex items-center justify-center font-black">
+                  <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
                 </div>
-
-                <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-amber-400/20">
-                  <div className="p-2 sm:p-2.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-[#FCD34D] flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-xs sm:text-sm font-bold text-white text-left leading-snug">
-                    Estrategia Tributaria y Defensa SRI
-                  </h4>
+                <div>
+                  <span className="text-[11px] font-bold text-[#38BDF8] uppercase tracking-wider block">Propósito Estratégico</span>
+                  <h3 className="font-heading font-black text-xl sm:text-2xl text-white">Misión</h3>
                 </div>
               </div>
-
-              {/* Botones de Acción en una misma línea */}
-              <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-4 pt-4 w-full">
-                <a
-                  href={COMPANY_DATA.whatsappBaseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all cursor-pointer shadow-lg shadow-sky-600/30 hover:shadow-sky-500/50 whitespace-nowrap"
-                >
-                  <WhatsAppIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
-                  <span className="hidden sm:inline">Hablar con el Director</span>
-                  <span className="sm:hidden">Hablar con Director</span>
-                </a>
-
-                <button
-                  onClick={() => onSelectTab('contacto')}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl text-[11px] sm:text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-sky-400/30 transition-all cursor-pointer backdrop-blur-sm whitespace-nowrap"
-                >
-                  <span className="hidden sm:inline">Agendar Cita en Despacho</span>
-                  <span className="sm:hidden">Agendar Cita</span>
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#38BDF8] shrink-0" />
-                </button>
-              </div>
-
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed text-justify">
+                Brindar soluciones contables, tributarias, laborales y legales corporativas de la más alta solvencia, otorgando a empresas, emprendedores y personas naturales la seguridad técnica, el cumplimiento normativo preventivo y el control necesario para maximizar su crecimiento con total tranquilidad patrimonial.
+              </p>
             </div>
 
-            {/* Columna Derecha: Retrato del Director más grande y posicionado más arriba */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-start order-1 lg:order-2 -mt-6 sm:-mt-10 lg:-mt-14">
-              <div className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[500px] flex justify-center select-none">
-                {/* Silueta natural recortada sin fondo ni contenedor (estática) */}
-                <div className="relative select-none pointer-events-none drop-shadow-[0_15px_35px_rgba(0,0,0,0.55)]">
-                  <picture>
-                    <source srcSet="/images/director-3d.avif" type="image/avif" />
-                    <source srcSet="/images/director-3d.webp" type="image/webp" />
-                    <img
-                      src="/images/director-3d.png"
-                      alt={COMPANY_DATA.director}
-                      className="w-full h-auto max-h-[520px] sm:max-h-[600px] lg:max-h-[660px] object-contain select-none"
-                      loading="lazy"
-                      decoding="async"
-                      width={500}
-                      height={491}
-                    />
-                  </picture>
+            {/* Tarjeta Visión */}
+            <div className="p-7 sm:p-9 rounded-3xl bg-gradient-to-br from-[#0c1d37] via-[#09172c] to-[#071324] border border-amber-400/30 shadow-xl relative overflow-hidden group hover:border-amber-400 transition-all duration-300">
+              <div className="flex items-center gap-3.5 mb-4">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 text-[#FCD34D] flex items-center justify-center font-black">
+                  <TrendingUp className="w-6 h-6 stroke-[2.2]" />
+                </div>
+                <div>
+                  <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">Proyección Institucional</span>
+                  <h3 className="font-heading font-black text-xl sm:text-2xl text-white">Visión</h3>
                 </div>
               </div>
-
-              {/* Nombre y Representante DEBAJO DE LA IMAGEN */}
-              <div className="text-center mt-3 space-y-1">
-                <h3 className="font-heading font-black text-xl sm:text-2xl text-white tracking-tight">
-                  {COMPANY_DATA.director}
-                </h3>
-                <p className="text-xs sm:text-sm font-bold text-[#38BDF8]">
-                  Representante Legal & Consultor Principal
-                </p>
-              </div>
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed text-justify">
+                Consolidarnos a nivel nacional como la firma referente de consultoría integral empresarial, reconocida por su excelencia operativa, innovación digital, cercanía personalizada y capacidad de blindar el desarrollo de cada uno de nuestros clientes ante las entidades de control del Ecuador.
+              </p>
             </div>
 
           </div>
@@ -184,40 +117,205 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
 
       {/* =========================================================================
-          BLOQUE 2: NUESTRA HISTORIA Y COMPROMISO (ESTILO SLIDER CARD PANORÁMICO)
+          BLOQUE 2: PERFILES DIRECTIVOS Y EQUIPO PROFESIONAL
+         ========================================================================= */}
+      <section className="py-14 sm:py-20 bg-[#071324] relative z-20 overflow-hidden text-white">
+        {/* Luces y brillos ambientales */}
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/2 -right-20 w-[500px] h-[500px] bg-sky-500/15 rounded-full blur-[160px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="text-xs sm:text-sm font-bold text-[#38BDF8] uppercase tracking-wider block mb-2">
+              Liderazgo & Solvencia Profesional
+            </span>
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+              Perfiles y Dirección de GP SOLUTIONS
+            </h2>
+            <p className="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+              Profesionales especializados al frente de las áreas contable, tributaria, laboral y legal corporativa.
+            </p>
+          </div>
+
+          <div className="space-y-16 lg:space-y-20">
+            
+            {/* PERFIL 1: ÁLVARO GUERRA - DIRECCIÓN GENERAL */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#0d1e38]/70 border border-sky-400/20 rounded-3xl p-6 sm:p-10 lg:p-12 backdrop-blur-md">
+              
+              <div className="lg:col-span-7 space-y-5 order-2 lg:order-1 text-left">
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
+                    Dirección General & Consultoría Principal
+                  </span>
+                  <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
+                    {COMPANY_DATA.director}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-bold text-[#38BDF8]">
+                    Representante Legal & Consultor Contable / Tributario
+                  </p>
+                </div>
+
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
+                  Con más de 12 años de trayectoria liderando la gestión contable, tributaria y societaria en el Ecuador, Álvaro Guerra ha posicionado a GP SOLUTIONS como un aliado estratégico fundamental para personas naturales y compañías.
+                </p>
+
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
+                  Su dirección técnica combina rigor metodológico bajo normas NIIF, estructuración preventiva ante el SRI, auditoría de balances y una constante optimización de procesos que blindan patrimonialmente a cada cliente.
+                </p>
+
+                {/* Especialidades */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-sky-400/20">
+                    <div className="p-2 rounded-full bg-sky-500/15 text-[#38BDF8]">
+                      <Scale className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold text-white">Balances NIIF & Cierre Contable</span>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-amber-400/20">
+                    <div className="p-2 rounded-full bg-amber-500/15 text-[#FCD34D]">
+                      <ShieldCheck className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-bold text-white">Defensa & Estrategia SRI</span>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href={COMPANY_DATA.whatsappBaseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all shadow-md cursor-pointer"
+                  >
+                    <WhatsAppIcon className="w-4 h-4 text-white" />
+                    <span>Contactar con Álvaro Guerra</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2">
+                <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] flex justify-center select-none">
+                  <div className="relative drop-shadow-[0_15px_35px_rgba(0,0,0,0.55)]">
+                    <picture>
+                      <source srcSet="/images/director-3d.avif" type="image/avif" />
+                      <source srcSet="/images/director-3d.webp" type="image/webp" />
+                      <img
+                        src="/images/director-3d.png"
+                        alt={COMPANY_DATA.director}
+                        className="w-full h-auto max-h-[460px] object-contain select-none"
+                        loading="lazy"
+                        width={500}
+                        height={491}
+                      />
+                    </picture>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* PERFIL 2: LUIS FERNANDO GUERRA - ASESOR LEGAL CORPORATIVO */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#0d1e38]/70 border border-emerald-400/25 rounded-3xl p-6 sm:p-10 lg:p-12 backdrop-blur-md">
+              
+              <div className="lg:col-span-5 flex flex-col items-center justify-center order-1">
+                <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] flex justify-center select-none">
+                  <div className="relative drop-shadow-[0_15px_35px_rgba(0,0,0,0.55)]">
+                    <picture>
+                      <source srcSet="/images/luis-guerra-bust.webp" type="image/webp" />
+                      <img
+                        src="/images/luis-guerra-bust.png"
+                        alt="Luis Fernando Guerra - Asesor Legal Corporativo"
+                        className="w-full h-auto max-h-[460px] object-contain select-none"
+                        loading="lazy"
+                        width={796}
+                        height={896}
+                      />
+                    </picture>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7 space-y-4 order-2 text-left">
+                <div className="space-y-1">
+                  <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest block">
+                    Área Legal & Corporativa
+                  </span>
+                  <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
+                    Luis Fernando Guerra
+                  </h3>
+                  <p className="text-xs sm:text-sm font-bold text-emerald-300">
+                    Asesor Legal Corporativo
+                  </p>
+                </div>
+
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
+                  Abogado con amplia experiencia en asesoría jurídica a empresas nacionales e internacionales, brindando acompañamiento integral en asuntos corporativos, contractuales, tributarios, regulatorios y de cumplimiento.
+                </p>
+
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                  A lo largo de su trayectoria profesional ha asesorado a compañías y organizaciones de diversos sectores, entre ellos telecomunicaciones, tecnología, servicios financieros y cobranza, seguros, salud, educación, construcción e inmobiliario, comercio y servicios, así como entidades del sector público y organizaciones internacionales.
+                </p>
+
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                  Su práctica comprende la elaboración y negociación de contratos comerciales, asesoría societaria, análisis de aspectos legales vinculados con obligaciones tributarias y operaciones empresariales, protección de datos personales, telecomunicaciones, tecnología, propiedad intelectual y cumplimiento regulatorio.
+                </p>
+
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                  Su experiencia con organizaciones de distintas industrias le permite abordar las necesidades legales desde una perspectiva empresarial, identificando riesgos y proponiendo soluciones que consideren tanto el cumplimiento normativo como la operación y los objetivos del negocio.
+                </p>
+
+                <div className="pt-2">
+                  <a
+                    href={COMPANY_DATA.whatsappBaseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white transition-all shadow-md cursor-pointer"
+                  >
+                    <WhatsAppIcon className="w-4 h-4 text-white" />
+                    <span>Contactar con Asesoría Legal</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =========================================================================
+          BLOQUE 3: NUESTRA HISTORIA Y COMPROMISO (PANORÁMICA)
          ========================================================================= */}
       <section className="py-14 sm:py-20 bg-[#F4F8FC] border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Tarjeta Panorámica Horizontal Estilo Referencia Más Ancha */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-[#0f2445] border border-sky-900/40 text-white flex flex-col md:flex-row items-stretch">
             
-            {/* Lado Izquierdo: Foto Panorámica con Esquinas Redondeadas Integradas (sin etiqueta) */}
             <div className="relative w-full md:w-1/2 min-h-[320px] md:min-h-[440px] bg-slate-900 overflow-hidden">
               <img
                 src="/images/heroes/hero-about.jpg"
-                alt="Despacho contable GP Solutions en Tumbaco, Quito"
+                alt="Despacho contable y legal GP Solutions en Quito"
                 className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f2445]/70 via-transparent to-transparent md:hidden" />
             </div>
 
-            {/* Lado Derecho: Contenedor con Contenido Institucional de Historia */}
             <div className="w-full md:w-1/2 p-7 sm:p-10 lg:p-12 flex flex-col justify-center bg-[#0f2445] text-white space-y-4">
               <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
                 Nuestra Historia y Compromiso
               </h2>
 
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed text-justify">
-                GP SOLUTIONS nació a partir de un propósito claro: democratizar el acceso a una consultoría contable, tributaria y societaria con el rigor y estándar que tradicionalmente solo disfrutaban las grandes multinacionales.
+                GP SOLUTIONS nació a partir de un propósito claro: democratizar el acceso a una consultoría contable, tributaria y societaria con la más alta excelencia que tradicionalmente solo disfrutaban las grandes multinacionales.
               </p>
 
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
-                Con más de 12 años de actividad continua desde nuestro despacho en Tumbaco, Quito, nos hemos ganado la confianza de cientos de comerciantes, profesionales y empresas en Pichincha y en todo el país. Creemos que el éxito de un negocio se cimenta en la pulcritud de sus libros y en la tranquilidad de estar 100% al día con el SRI y la Superintendencia de Compañías.
+                Con más de 12 años de actividad continua desde nuestro despacho en Quito, nos hemos ganado la confianza de cientos de comerciantes, profesionales y empresas en Pichincha y en todo el país. Creemos que el éxito de un negocio se cimenta en la pulcritud de sus libros y en la tranquilidad de estar 100% al día con el SRI y la Superintendencia de Compañías.
               </p>
 
-              {/* Botón de Contacto */}
               <div className="pt-2">
                 <a
                   href={COMPANY_DATA.whatsappBaseUrl}
@@ -284,7 +382,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 <Rocket className="w-8 h-8 stroke-[2.2]" />
               </div>
               <h3 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-[#38BDF8] transition-colors mb-3">
-                Rigor Técnico NIIF
+                Excelencia Técnica NIIF
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xs">
                 Balances auditables y declaraciones estructuradas con 100% de apego a la normativa legal, evitando multas y glosas del SRI.
@@ -404,7 +502,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                     'Enfoque preventivo y libre de sanciones del SRI',
                     'Comunicación directa sin intermediarios',
                     'Cumplimiento estricto de calendarios legales',
-                    'Atención presencial en Tumbaco y remota nacional',
+                    'Atención presencial en Quito y remota nacional',
                     'Relaciones de largo plazo con blindaje patrimonial',
                   ].map((benefit, idx) => (
                     <div key={idx} className="flex items-start gap-3">

@@ -1,6 +1,11 @@
 export type TabKey = 'inicio' | 'servicios-contables' | 'servicios-tributarios' | 'nosotros' | 'contacto';
 
-export type ServiceCategory = 'contable' | 'tributaria' | 'laboral';
+export type ServiceCategory =
+  | 'contable'
+  | 'tributaria'
+  | 'laboral'
+  | 'seguridad-salud'
+  | 'legal-corporativa';
 
 export interface ServiceItem {
   id: string;

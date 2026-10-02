@@ -38,7 +38,7 @@ export const ContactView: React.FC = () => {
     const cleanServicio = sanitizeInput(formData.servicio);
     const cleanMensaje = sanitizeInput(formData.mensaje);
 
-    const message = `Hola GP SOLUTIONS (+593999840649), mi nombre es ${cleanNombre}${cleanEmpresa ? ` de la empresa ${cleanEmpresa}` : ''}.
+    const message = `Hola GP SOLUTIONS (+593 982577313), mi nombre es ${cleanNombre}${cleanEmpresa ? ` de la empresa ${cleanEmpresa}` : ''}.
 - Teléfono: ${cleanTelefono}
 - Email: ${cleanEmail}
 - Asunto / Área: ${cleanServicio}
@@ -80,7 +80,7 @@ export const ContactView: React.FC = () => {
           </h1>
 
           <p className="text-slate-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Coordine una cita presencial en nuestro despacho de Tumbaco o solicite una consultoría virtual inmediata para regularizar su empresa.
+            Coordine una cita presencial en nuestro despacho en Quito o solicite una consultoría virtual inmediata para su empresa.
           </p>
         </div>
 
@@ -200,12 +200,12 @@ export const ContactView: React.FC = () => {
                           onChange={(e) => setFormData({ ...formData, servicio: e.target.value })}
                           className="w-full bg-[#F3F4F6] hover:bg-[#EAECEF] focus:bg-white text-slate-800 border border-slate-200/80 focus:border-[#0284C7] rounded-lg px-4 py-3 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all cursor-pointer"
                         >
-                          <option value="Servicios Contables y Corporativos">Asunto: Servicios Contables y Corporativos (NIIF / SuperCías)</option>
-                          <option value="Servicios Tributarios SRI">Asunto: Servicios Tributarios (SRI / Renta / IVA / RIMPE)</option>
-                          <option value="Servicios Laborales e IESS">Asunto: Servicios Laborales (IESS / SUT / Nómina)</option>
-                          <option value="Constitución de SAS">Asunto: Constitución de Sociedades S.A.S.</option>
-                          <option value="Devolución de IVA">Asunto: Devolución de IVA / Tercera Edad</option>
-                          <option value="Otra consulta integral">Asunto: Otra consulta o diagnóstico integral</option>
+                          <option value="Seguridad y Salud Ocupacional">Área: Seguridad y Salud Ocupacional (SSO / Prevención / Planes de Emergencia)</option>
+                          <option value="Asesoría Tributaria">Área: Asesoría Tributaria (Declaraciones / SRI / Devoluciones / Contingencias)</option>
+                          <option value="Asesoría Legal Corporativa">Área: Asesoría Legal Corporativa (Societario / Contratos / Propiedad Intelectual / Laboral)</option>
+                          <option value="Servicios Contables y Balances">Área: Servicios Contables y Balances NIIF</option>
+                          <option value="Constitución y Liquidación de SAS">Área: Constitución y Liquidación de SAS</option>
+                          <option value="Otra consulta integral">Área: Otra consulta o diagnóstico empresarial integral</option>
                         </select>
                       </div>
 
@@ -373,7 +373,7 @@ export const ContactView: React.FC = () => {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h4 className="font-heading font-extrabold text-xs sm:text-base text-[#102547] leading-tight">
-                    GP SOLUTIONS Despacho Tumbaco
+                    GP SOLUTIONS
                   </h4>
                   <p className="text-[10.5px] sm:text-[11px] text-slate-500 mt-0.5">
                     {COMPANY_DATA.location}
@@ -386,12 +386,12 @@ export const ContactView: React.FC = () => {
                       ))}
                     </div>
                     <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-700">5.0</span>
-                    <span className="text-[9.5px] sm:text-[10px] text-slate-400">(Asesoría Contable)</span>
+                    <span className="text-[9.5px] sm:text-[10px] text-slate-400">(Asesoría Integral)</span>
                   </div>
                 </div>
 
                 <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY_DATA.location)}`}
+                  href={`https://maps.google.com/?q=${encodeURIComponent("GP SOLUTIONS Quito Ecuador")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 sm:p-2.5 rounded-xl bg-[#0284C7] text-white hover:bg-[#0369a1] transition-all shadow-md shrink-0 flex flex-col items-center justify-center group"
@@ -406,8 +406,8 @@ export const ContactView: React.FC = () => {
             {/* Iframe interactivo del Mapa */}
             <div className="w-full h-[380px] sm:h-[440px] md:h-[480px] bg-slate-100 relative">
               <iframe
-                title="Ubicación GP Solutions Tumbaco Quito"
-                src="https://maps.google.com/maps?q=Tumbaco,+Quito,+Pichincha,+Ecuador&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                title="Ubicación GP SOLUTIONS Quito"
+                src="https://maps.google.com/maps?q=Quito,+Pichincha,+Ecuador&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -422,7 +422,7 @@ export const ContactView: React.FC = () => {
             <div className="bg-[#102547] text-white px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
               <div className="flex items-center gap-2 text-slate-200">
                 <MapPin className="w-4 h-4 text-[#38BDF8] shrink-0" />
-                <span>Atención presencial previa cita en Tumbaco y telemática en todo el Ecuador.</span>
+                <span>Atención presencial previa cita en Quito y telemática en todo el Ecuador.</span>
               </div>
               <a
                 href={COMPANY_DATA.whatsappBaseUrl}

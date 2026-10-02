@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { ALL_SERVICES } from '../data/services';
 import { buildWhatsAppLink } from '../data/company';
@@ -6,7 +6,16 @@ import { CardHoverReveal, CardHoverRevealMain, CardHoverRevealContent } from '..
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 
 export const AccountingServicesView: React.FC = () => {
-  const contableServices = ALL_SERVICES.filter((s) => s.category === 'contable' && s.id !== 'cont-9');
+  const [filterCategory, setFilterCategory] = useState<'todos' | 'seguridad-salud' | 'legal-corporativa'>('todos');
+
+  const displayedServices = useMemo(() => {
+    return ALL_SERVICES.filter((s) => {
+      if (filterCategory === 'todos') {
+        return s.category === 'seguridad-salud' || s.category === 'legal-corporativa';
+      }
+      return s.category === filterCategory;
+    });
+  }, [filterCategory]);
 
   return (
     <div className="bg-[#F4F8FC] text-[#102547]">
@@ -19,7 +28,7 @@ export const AccountingServicesView: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img
             src="/images/heroes/hero-accounting.jpg"
-            alt="Servicios Contables y Corporativos en GP Solutions"
+            alt="Servicios Corporativos y Seguridad Ocupacional en GP Solutions"
             className="w-full h-full object-cover object-center transform scale-105"
             loading="eager"
           />
@@ -33,16 +42,16 @@ export const AccountingServicesView: React.FC = () => {
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
             <span className="text-white">Servicios </span>
             <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
-              Contables
-            </span>
-            <span className="text-white"> y </span>
-            <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
               Corporativos
+            </span>
+            <span className="text-white"> & </span>
+            <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
+              Seguridad Ocupacional
             </span>
           </h1>
 
           <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-            Llevamos la contabilidad bajo normativa NIIF, elaboramos balances auditables, tramitamos el cumplimiento anual en la Superintendencia de Compañías y constituimos su empresa S.A.S. de forma ágil y segura.
+            Matrices de riesgo y planes de emergencia, reglamentos en SUT, capacitaciones obligatorias, constitución de SAS, custodia de libros societarios y registro de marcas SENADI.
           </p>
         </div>
 
@@ -58,8 +67,43 @@ export const AccountingServicesView: React.FC = () => {
          ========================================================================= */}
       <section className="-mt-1 py-12 sm:py-20 bg-white relative z-20 overflow-hidden">
         <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Selector de Categorías (Pills Interactivas) */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 mb-10 sm:mb-14">
+            <button
+              onClick={() => setFilterCategory('todos')}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+                filterCategory === 'todos'
+                  ? 'bg-[#102547] text-white shadow-lg shadow-blue-950/30 ring-2 ring-amber-400'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+              }`}
+            >
+              Todos los Servicios (10)
+            </button>
+            <button
+              onClick={() => setFilterCategory('seguridad-salud')}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+                filterCategory === 'seguridad-salud'
+                  ? 'bg-amber-500 text-slate-950 font-black shadow-lg shadow-amber-500/30 ring-2 ring-amber-300'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+              }`}
+            >
+              Seguridad y Salud Ocupacional (4)
+            </button>
+            <button
+              onClick={() => setFilterCategory('legal-corporativa')}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+                filterCategory === 'legal-corporativa'
+                  ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-600/30 ring-2 ring-sky-300'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+              }`}
+            >
+              Asesoría Legal Corporativa (6)
+            </button>
+          </div>
+
           <div className="flex flex-wrap justify-center gap-6 sm:gap-7 lg:gap-8">
-            {contableServices.map((service, idx) => {
+            {displayedServices.map((service, idx) => {
               const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
               const isGold = idx % 2 === 1;
               return (
@@ -167,20 +211,20 @@ export const AccountingServicesView: React.FC = () => {
       <section className="py-14 bg-[#EAF2FA] border-t border-sky-200/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="font-heading font-extrabold text-2xl text-[#102547] mb-2">
-            ¿Requiere un diagnóstico contable de su empresa?
+            ¿Requiere un diagnóstico legal corporativo o de seguridad ocupacional?
           </h3>
           <p className="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto mb-6">
-            Analizamos el estado de sus balances y su situación ante la Superintendencia de Compañías para planificar su cierre anual sin sanciones.
+            Analizamos sus estatutos societarios, marcas registradas y obligaciones de prevención de riesgos para blindar su empresa ante las autoridades.
           </p>
 
           <a
-            href={buildWhatsAppLink('Hola GP SOLUTIONS (+593999840649), solicito un diagnóstico de la situación contable de mi negocio.')}
+            href={buildWhatsAppLink('Hola GP SOLUTIONS (+593 982577313), solicito un diagnóstico legal corporativo o de seguridad ocupacional para mi empresa.')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white shadow-md shadow-sky-500/20 transition-all cursor-pointer"
           >
             <WhatsAppIcon className="w-4 h-4" />
-            <span>Consultar con un Contador en WhatsApp</span>
+            <span>Consultar con un Asesor en WhatsApp</span>
           </a>
         </div>
       </section>

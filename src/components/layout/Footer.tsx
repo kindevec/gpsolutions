@@ -39,7 +39,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
             </div>
 
             <p className="text-[12px] sm:text-[12.5px] text-slate-300 leading-relaxed font-normal max-w-sm">
-              {COMPANY_DATA.trajectory}. Asesoría contable NIIF, tributaria ante el SRI, nómina IESS y constitución societaria en Tumbaco, Quito y todo el Ecuador.
+              {COMPANY_DATA.trajectory}. Asesoría contable NIIF, tributaria ante el SRI, nómina IESS y constitución societaria en Quito y todo el Ecuador.
             </p>
           </div>
 

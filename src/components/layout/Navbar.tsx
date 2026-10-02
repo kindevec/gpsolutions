@@ -71,23 +71,23 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
             })}
           </nav>
 
-          {/* CENTRO: LOGO Y LETRAS DE MARCA */}
+          {/* CENTRO: LOGO Y LETRAS DE MARCA ALINEADO CON LOS BOTONES */}
           <button
             onClick={() => onSelectTab('inicio')}
-            className="flex flex-col items-center justify-center focus:outline-none cursor-pointer group px-5 xl:px-8 text-center"
+            className="flex items-center justify-center gap-3 focus:outline-none cursor-pointer group px-4 xl:px-8"
             aria-label="Ir al inicio de GP Solutions"
             title="GP Solutions S.A.S. - Inicio"
           >
-            <div className="relative">
+            <div className="relative shrink-0">
               <img
                 src="/logo.webp"
                 alt="Logo Oficial GP Solutions"
-                className="w-14 h-14 xl:w-16 xl:h-16 object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-300 mx-auto"
+                className="w-14 h-14 xl:w-16 xl:h-16 object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] group-hover:scale-108 transition-transform duration-300"
                 width={64}
                 height={64}
               />
             </div>
-            <span className="font-heading font-black text-base xl:text-lg tracking-tight leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] mt-1.5">
+            <span className="font-heading font-black text-lg xl:text-xl tracking-tight leading-none text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] whitespace-nowrap">
               GP SOLUTIONS
             </span>
           </button>
@@ -130,18 +130,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
         <div className="flex lg:hidden items-center justify-between">
           <button
             onClick={() => onSelectTab('inicio')}
-            className="flex items-center gap-2 focus:outline-none cursor-pointer group text-left"
+            className="flex items-center gap-2.5 focus:outline-none cursor-pointer group text-left"
             aria-label="Ir al inicio de GP Solutions"
           >
             <img
               src="/logo.webp"
               alt="Logo GP Solutions"
-              className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
-              width={40}
-              height={40}
+              className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-300"
+              width={56}
+              height={56}
             />
             <div className="flex flex-col">
-              <span className="font-heading font-black text-sm sm:text-base tracking-tight leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+              <span className="font-heading font-black text-base sm:text-lg tracking-tight leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
                 GP SOLUTIONS
               </span>
             </div>

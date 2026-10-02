@@ -7,7 +7,9 @@ import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 
 export const TaxServicesView: React.FC = () => {
   const tributariosServices = ALL_SERVICES.filter((s) => s.category === 'tributaria');
-  const laboralesServices = ALL_SERVICES.filter((s) => s.category === 'laboral');
+  const laboralesServices = ALL_SERVICES.filter(
+    (s) => ['trib-3', 'legal-6', 'sso-4', 'legal-4'].includes(s.id)
+  );
 
   const taxCarouselRef = useRef<HTMLDivElement>(null);
 
@@ -322,7 +324,7 @@ export const TaxServicesView: React.FC = () => {
           </p>
 
           <a
-            href={buildWhatsAppLink('Hola GP SOLUTIONS (+593999840649), necesito asesoría urgente para regularizar mi situación tributaria/laboral.')}
+            href={buildWhatsAppLink('Hola GP SOLUTIONS (+593 982577313), necesito asesoría urgente para regularizar mi situación tributaria o laboral.')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white shadow-md shadow-sky-500/20 transition-all cursor-pointer"
