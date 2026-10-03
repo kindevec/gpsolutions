@@ -197,12 +197,6 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             {/* COLUMNA DE TEXTOS: ALINEADOS A LA IZQUIERDA EN PC Y CENTRADOS/IZQUIERDA EN MÓVIL */}
             <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
               
-              {/* Badge superior de especialización */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs sm:text-sm font-semibold tracking-wide mb-4 backdrop-blur-md">
-                <Sparkles className="w-4 h-4 text-amber-300" />
-                <span>Especialistas Contables, Tributarios y Societarios</span>
-              </div>
-
               {/* Título Principal Alineado a la Izquierda */}
               <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[3.6rem] xl:text-[4rem] font-black tracking-tight leading-[1.08] mb-4 text-white drop-shadow-md">
                 <span>Asesoría Integral </span>
