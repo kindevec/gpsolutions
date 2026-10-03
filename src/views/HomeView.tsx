@@ -150,7 +150,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           1. HERO INSTITUCIONAL ONDULADO CON FOTO DE FONDO + 4 CÍRCULOS EN LA CURVA
          ========================================================================= */}
-      <section className="relative pt-40 pb-16 sm:pt-46 sm:pb-20 md:pt-54 md:pb-24 overflow-hidden bg-[#102547]">
+      <section className="relative pt-24 sm:pt-28 md:pt-48 lg:pt-52 pb-16 sm:pb-20 md:pb-24 overflow-hidden bg-[#102547]">
         {/* Foto de Fondo Panorámica con Overlays de Alta Legibilidad */}
         <div className="absolute inset-0 z-0">
           <picture>
@@ -175,7 +175,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* OPCIÓN 2: Layout Dividido (Textos alineados a la izquierda + Logo Gigante Circular a la derecha en PC / Logo circular arriba y textos abajo en móvil) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-2 sm:mt-6 mb-8 sm:mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center mt-0 sm:mt-2 md:mt-4 mb-8 sm:mb-12">
             
             {/* EN MÓVIL: LOGO PURO GIGANTE CON FILO BRILLANTE SUTIL */}
             <div className="flex lg:hidden justify-center items-center">
