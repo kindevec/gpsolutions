@@ -177,20 +177,17 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           {/* OPCIÓN 2: Layout Dividido (Textos alineados a la izquierda + Logo Gigante Circular a la derecha en PC / Logo circular arriba y textos abajo en móvil) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-2 sm:mt-6 mb-8 sm:mb-12">
             
-            {/* EN MÓVIL: CÍRCULO GRANDE CON LOGO GIGANTE PRIMERO EN LA PARTE SUPERIOR */}
+            {/* EN MÓVIL: LOGO PURO GIGANTE CON FILO BRILLANTE SUTIL */}
             <div className="flex lg:hidden justify-center items-center">
-              <div className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-gradient-to-tr from-[#0a182e]/90 via-[#0e2243]/80 to-[#1e3a6a]/70 p-1.5 border-2 border-amber-400/80 shadow-[0_0_40px_rgba(245,158,11,0.35)] flex items-center justify-center backdrop-blur-md">
-                <div className="w-full h-full rounded-full bg-[#081528]/90 flex items-center justify-center p-4 overflow-hidden relative group">
-                  <div className="absolute inset-0 bg-radial from-amber-400/10 via-transparent to-transparent pointer-events-none" />
-                  <img
-                    src="/logo.webp"
-                    alt="Logo Oficial GP Solutions"
-                    className="w-full h-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.8)]"
-                    width={220}
-                    height={220}
-                    loading="eager"
-                  />
-                </div>
+              <div className="relative w-52 h-52 sm:w-64 sm:h-64 flex items-center justify-center">
+                <img
+                  src="/logo.webp"
+                  alt="Logo Oficial GP Solutions"
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_24px_rgba(245,158,11,0.5)] drop-shadow-[0_8px_32px_rgba(0,0,0,0.85)]"
+                  width={256}
+                  height={256}
+                  loading="eager"
+                />
               </div>
             </div>
 
@@ -232,22 +229,17 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
             </div>
 
-            {/* EN PC: CÍRCULO GIGANTE DEL LOGO A LA DERECHA (Ocupando todo el espacio de la columna derecha) */}
+            {/* EN PC: LOGO PURO GIGANTE A LA DERECHA CON FILO BRILLANTE RADIANTE */}
             <div className="hidden lg:flex lg:col-span-5 justify-center xl:justify-end items-center">
-              <div className="relative w-80 h-80 xl:w-96 xl:h-96 rounded-full bg-gradient-to-tr from-[#0a182e]/95 via-[#0e2347]/90 to-[#1d3a68]/80 p-2 border-4 border-amber-400/80 shadow-[0_0_60px_rgba(245,158,11,0.35)] flex items-center justify-center backdrop-blur-xl group hover:border-amber-300 transition-all duration-500">
-                {/* Halo pulsante sutil */}
-                <div className="absolute inset-0 rounded-full bg-radial from-amber-400/20 via-sky-400/10 to-transparent blur-xl pointer-events-none" />
-                
-                <div className="w-full h-full rounded-full bg-[#081528]/95 flex items-center justify-center p-8 overflow-hidden relative shadow-inner border border-white/10">
-                  <img
-                    src="/logo.webp"
-                    alt="Logo Oficial GP Solutions"
-                    className="w-full h-full object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.9)] transform group-hover:scale-105 transition-transform duration-500"
-                    width={384}
-                    height={384}
-                    loading="eager"
-                  />
-                </div>
+              <div className="relative w-88 h-88 xl:w-[440px] xl:h-[440px] flex items-center justify-center group">
+                <img
+                  src="/logo.webp"
+                  alt="Logo Oficial GP Solutions"
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(245,158,11,0.55)] drop-shadow-[0_0_80px_rgba(56,189,248,0.25)] drop-shadow-[0_12px_40px_rgba(0,0,0,0.9)] transform group-hover:scale-105 transition-transform duration-500"
+                  width={440}
+                  height={440}
+                  loading="eager"
+                />
               </div>
             </div>
 
