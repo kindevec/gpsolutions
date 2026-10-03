@@ -174,27 +174,88 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          {/* Bloque Central: Título y Párrafo Institucional Centrados */}
-          <div className="max-w-4xl mx-auto flex flex-col items-center text-center mt-4 sm:mt-7 mb-8 sm:mb-12">
+          {/* OPCIÓN 2: Layout Dividido (Textos alineados a la izquierda + Logo Gigante Circular a la derecha en PC / Logo circular arriba y textos abajo en móvil) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mt-2 sm:mt-6 mb-8 sm:mb-12">
             
-            {/* Título Principal */}
-            <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] font-black tracking-tight leading-[1.08] mb-4 text-white drop-shadow-md text-center">
-              <span>Asesoría Integral </span>
-              <span className="bg-gradient-to-r from-[#38BDF8] via-sky-300 to-white bg-clip-text text-transparent">
-                Contable
-              </span>
-              <span className="text-white">, </span>
-              <span className="text-[#38BDF8]">Tributaria</span>
-              <span className="text-white"> & </span>
-              <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-[#FCD34D] bg-clip-text text-transparent">
-                Legal
-              </span>
-            </h1>
+            {/* EN MÓVIL: CÍRCULO GRANDE CON LOGO GIGANTE PRIMERO EN LA PARTE SUPERIOR */}
+            <div className="flex lg:hidden justify-center items-center">
+              <div className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-gradient-to-tr from-[#0a182e]/90 via-[#0e2243]/80 to-[#1e3a6a]/70 p-1.5 border-2 border-amber-400/80 shadow-[0_0_40px_rgba(245,158,11,0.35)] flex items-center justify-center backdrop-blur-md">
+                <div className="w-full h-full rounded-full bg-[#081528]/90 flex items-center justify-center p-4 overflow-hidden relative group">
+                  <div className="absolute inset-0 bg-radial from-amber-400/10 via-transparent to-transparent pointer-events-none" />
+                  <img
+                    src="/logo.webp"
+                    alt="Logo Oficial GP Solutions"
+                    className="w-full h-full object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.8)]"
+                    width={220}
+                    height={220}
+                    loading="eager"
+                  />
+                </div>
+              </div>
+            </div>
 
-            {/* Párrafo Descriptivo Centrado */}
-            <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl text-center drop-shadow-sm">
-              <strong className="text-white">«{COMPANY_DATA.slogan}»</strong>. {COMPANY_DATA.trajectory}. Brindamos soluciones seguras para blindar su empresa ante el SRI, IESS y Superintendencia de Compañías.
-            </p>
+            {/* COLUMNA DE TEXTOS: ALINEADOS A LA IZQUIERDA EN PC Y CENTRADOS/IZQUIERDA EN MÓVIL */}
+            <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+              
+              {/* Badge superior de especialización */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs sm:text-sm font-semibold tracking-wide mb-4 backdrop-blur-md">
+                <Sparkles className="w-4 h-4 text-amber-300" />
+                <span>Especialistas Contables, Tributarios y Societarios</span>
+              </div>
+
+              {/* Título Principal Alineado a la Izquierda */}
+              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[3.6rem] xl:text-[4rem] font-black tracking-tight leading-[1.08] mb-4 text-white drop-shadow-md">
+                <span>Asesoría Integral </span>
+                <span className="bg-gradient-to-r from-[#38BDF8] via-sky-300 to-white bg-clip-text text-transparent">
+                  Contable
+                </span>
+                <span className="text-white">, </span>
+                <span className="text-[#38BDF8]">Tributaria</span>
+                <span className="text-white"> & </span>
+                <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-[#FCD34D] bg-clip-text text-transparent">
+                  Legal
+                </span>
+              </h1>
+
+              {/* Párrafo Descriptivo Alineado a la Izquierda */}
+              <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl drop-shadow-sm mb-6">
+                <strong className="text-white">«{COMPANY_DATA.slogan}»</strong>. {COMPANY_DATA.trajectory}. Brindamos soluciones seguras para blindar su empresa ante el SRI, IESS y Superintendencia de Compañías.
+              </p>
+
+              {/* Botón de acción directa al lado izquierdo */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                <a
+                  href={whatsappHeroUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base font-bold text-white bg-gradient-to-r from-[#0284C7] to-[#0369a1] hover:from-[#0369a1] hover:to-[#0284C7] border border-amber-400/60 shadow-lg shadow-sky-500/25 transition-all transform hover:-translate-y-0.5"
+                >
+                  <WhatsAppIcon className="w-5 h-5 text-white" />
+                  <span>Solicitar Asesoría Inmediata</span>
+                  <ArrowRight className="w-4 h-4 text-amber-300" />
+                </a>
+              </div>
+
+            </div>
+
+            {/* EN PC: CÍRCULO GIGANTE DEL LOGO A LA DERECHA (Ocupando todo el espacio de la columna derecha) */}
+            <div className="hidden lg:flex lg:col-span-5 justify-center xl:justify-end items-center">
+              <div className="relative w-80 h-80 xl:w-96 xl:h-96 rounded-full bg-gradient-to-tr from-[#0a182e]/95 via-[#0e2347]/90 to-[#1d3a68]/80 p-2 border-4 border-amber-400/80 shadow-[0_0_60px_rgba(245,158,11,0.35)] flex items-center justify-center backdrop-blur-xl group hover:border-amber-300 transition-all duration-500">
+                {/* Halo pulsante sutil */}
+                <div className="absolute inset-0 rounded-full bg-radial from-amber-400/20 via-sky-400/10 to-transparent blur-xl pointer-events-none" />
+                
+                <div className="w-full h-full rounded-full bg-[#081528]/95 flex items-center justify-center p-8 overflow-hidden relative shadow-inner border border-white/10">
+                  <img
+                    src="/logo.webp"
+                    alt="Logo Oficial GP Solutions"
+                    className="w-full h-full object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.9)] transform group-hover:scale-105 transition-transform duration-500"
+                    width={384}
+                    height={384}
+                    loading="eager"
+                  />
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
