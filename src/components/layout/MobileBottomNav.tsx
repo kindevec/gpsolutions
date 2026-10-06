@@ -10,9 +10,9 @@ interface MobileBottomNavProps {
 export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ activeTab, onSelectTab }) => {
   const items: { key: TabKey; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { key: 'inicio', label: 'Inicio', icon: Home },
-    { key: 'servicios-contables', label: 'Contable', icon: Building2 },
-    { key: 'servicios-tributarios', label: 'Tributario', icon: Receipt },
     { key: 'nosotros', label: 'Nosotros', icon: Users },
+    { key: 'servicios-contables', label: 'Servicios Corporativos', icon: Building2 },
+    { key: 'servicios-tributarios', label: 'Servicios Tributarios', icon: Receipt },
     { key: 'contacto', label: 'Contacto', icon: Phone },
   ];
 

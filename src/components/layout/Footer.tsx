@@ -60,11 +60,20 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               </li>
               <li>
                 <button
+                  onClick={() => onSelectTab('nosotros')}
+                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
+                >
+                  <span className="text-amber-400 text-[10px]">✦</span>
+                  <span>Nosotros</span>
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => onSelectTab('servicios-contables')}
                   className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
                 >
                   <span className="text-amber-400 text-[10px]">✦</span>
-                  <span>Servicios Contables</span>
+                  <span>Servicios Corporativos</span>
                 </button>
               </li>
               <li>
@@ -78,20 +87,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               </li>
               <li>
                 <button
-                  onClick={() => onSelectTab('nosotros')}
-                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
-                >
-                  <span className="text-amber-400 text-[10px]">✦</span>
-                  <span>Quiénes Somos</span>
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => onSelectTab('contacto')}
                   className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
                 >
                   <span className="text-amber-400 text-[10px]">✦</span>
-                  <span>Atención y Despacho</span>
+                  <span>Contacto</span>
                 </button>
               </li>
             </ul>

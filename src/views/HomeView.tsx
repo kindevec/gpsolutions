@@ -151,70 +151,82 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           1. HERO INSTITUCIONAL ONDULADO CON FOTO DE FONDO + 4 CÍRCULOS EN LA CURVA
          ========================================================================= */}
       <section className="relative pt-24 sm:pt-28 md:pt-48 lg:pt-52 pb-16 sm:pb-20 md:pb-24 overflow-hidden bg-[#102547]">
-        {/* Foto de Fondo Panorámica con Overlays de Alta Legibilidad */}
-        <div className="absolute inset-0 z-0">
-          <picture>
-            <source srcSet="/images/heroes/hero-home.avif" type="image/avif" />
-            <source srcSet="/images/heroes/hero-home.webp" type="image/webp" />
-            <img
-              src="/images/heroes/hero-home.jpg"
-              alt="GP Solutions - Asesoría Contable, Tributaria y Legal en Ecuador"
-              className="w-full h-full object-cover object-center transform scale-105"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              width={1920}
-              height={1080}
-            />
-          </picture>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/95 via-[#0e203c]/90 to-[#0c1a30]/85" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1526]/85 via-transparent to-[#0a1526]/95" />
+        {/* Foto de Fondo Panorámica con Edificios a la izquierda y Logo Oficial a la derecha */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          {/* LADO IZQUIERDO: Foto de edificios que se desvanece suavemente hacia el centro */}
+          <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 overflow-hidden [mask-image:linear-gradient(to_right,black_60%,transparent_100%)]">
+            <picture>
+              <source srcSet="/images/heroes/hero-home.avif" type="image/avif" />
+              <source srcSet="/images/heroes/hero-home.webp" type="image/webp" />
+              <img
+                src="/images/heroes/hero-home.jpg"
+                alt="GP Solutions - Asesoría Contable, Tributaria y Legal en Ecuador"
+                className="w-full h-full object-cover object-left lg:object-center transform scale-105"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width={1920}
+                height={1080}
+              />
+            </picture>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/95 via-[#0e203c]/90 to-[#102547]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0a1526]/85 via-transparent to-[#0a1526]/95" />
+          </div>
+
+          {/* Luz y resplandor ambiental central */}
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
+
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          {/* OPCIÓN 2: Layout Dividido (Textos alineados a la izquierda + Logo Gigante Circular a la derecha en PC / Logo circular arriba y textos abajo en móvil) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center mt-0 sm:mt-2 md:mt-4 mb-8 sm:mb-12">
+          <div className="relative mt-0 sm:mt-2 md:mt-4 mb-8 sm:mb-12">
             
-            {/* EN MÓVIL: LOGO PURO GIGANTE CON FILO BRILLANTE SUTIL */}
-            <div className="flex lg:hidden justify-center items-center">
-              <div className="relative w-52 h-52 sm:w-64 sm:h-64 flex items-center justify-center">
+            {/* EN DESKTOP (lg:flex): Logo en la capa de fondo detrás de las letras en el ala derecha */}
+            <div className="hidden lg:flex absolute right-0 top-[52%] -translate-y-1/2 translate-x-28 sm:translate-x-36 md:translate-x-48 lg:translate-x-56 xl:translate-x-64 w-[300px] sm:w-[390px] md:w-[480px] lg:w-[560px] xl:w-[620px] aspect-square -z-10 pointer-events-none select-none items-center justify-center">
+              {/* Anillo perimetral con cambio de color sincronizado solo en el borde */}
+              <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] logo-ring-cycle pointer-events-none z-10" />
+
+              <picture>
+                <source srcSet="/logo.avif" type="image/avif" />
+                <source srcSet="/logo.webp" type="image/webp" />
                 <img
-                  src="/logo.webp"
-                  alt="Logo Oficial GP Solutions"
-                  className="w-full h-full object-contain filter drop-shadow-[0_0_24px_rgba(245,158,11,0.5)] drop-shadow-[0_8px_32px_rgba(0,0,0,0.85)]"
-                  width={256}
-                  height={256}
+                  src="/logo.png"
+                  alt="Logo GP Solutions de fondo detrás de las letras"
+                  className="w-full h-full object-contain opacity-65 sm:opacity-70 lg:opacity-75 logo-border-glow-cycle"
+                  width={620}
+                  height={620}
                   loading="eager"
                 />
-              </div>
+              </picture>
             </div>
 
-            {/* COLUMNA DE TEXTOS: ALINEADOS A LA IZQUIERDA EN PC Y CENTRADOS/IZQUIERDA EN MÓVIL */}
-            <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* COLUMNA EN SU LUGAR ORIGINAL A LA IZQUIERDA CON TEXTO CENTRADO */}
+            <div className="relative z-10 max-w-2xl lg:max-w-3xl flex flex-col items-center lg:items-start">
               
-              {/* Título Principal Alineado a la Izquierda */}
-              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[3.6rem] xl:text-[4rem] font-black tracking-tight leading-[1.08] mb-4 text-white drop-shadow-md">
-                <span>Asesoría Integral </span>
-                <span className="bg-gradient-to-r from-[#38BDF8] via-sky-300 to-white bg-clip-text text-transparent">
-                  Contable
+              {/* Título Principal Centrado dentro de su columna */}
+              <h1 className="w-full font-heading text-2xl sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.25rem] font-black tracking-tight leading-[1.12] mb-4 text-white drop-shadow-md text-center">
+                <span>ASESORÍA EN </span>
+                <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
+                  SEGURIDAD Y SALUD OCUPACIONAL
                 </span>
                 <span className="text-white">, </span>
-                <span className="text-[#38BDF8]">Tributaria</span>
-                <span className="text-white"> & </span>
-                <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-[#FCD34D] bg-clip-text text-transparent">
-                  Legal
+                <span className="bg-gradient-to-r from-[#38BDF8] via-sky-300 to-white bg-clip-text text-transparent">
+                  TRIBUTARIA
+                </span>
+                <span className="text-white"> Y </span>
+                <span className="bg-gradient-to-r from-emerald-300 to-teal-200 bg-clip-text text-transparent">
+                  LEGAL
                 </span>
               </h1>
 
-              {/* Párrafo Descriptivo Alineado a la Izquierda */}
-              <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl drop-shadow-sm mb-6">
-                <strong className="text-white">«{COMPANY_DATA.slogan}»</strong>. {COMPANY_DATA.trajectory}. Brindamos soluciones seguras para blindar su empresa ante el SRI, IESS y Superintendencia de Compañías.
+              {/* Párrafo Descriptivo Bien Justificado sin cortes de palabras */}
+              <p className="w-full text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl text-justify [text-align:justify] [text-justify:inter-word] [hyphens:none] drop-shadow-sm mb-6">
+                <strong className="text-white">«Control Integral que construye Confianza»</strong>. Más de 12 años brindando asesoría en S.S.O., tributaria, laboral y legal a empresas y emprendedores. Brindamos soluciones seguras para blindar su empresa ante el Ministerio de Trabajo, SRI, IESS y Superintendencia de Compañías, etc.
               </p>
 
-              {/* Botón de acción directa al lado izquierdo */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              {/* Botón de acción directa centrado */}
+              <div className="w-full flex flex-wrap items-center justify-center gap-4">
                 <a
                   href={whatsappHeroUrl}
                   target="_blank"
@@ -227,20 +239,27 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                 </a>
               </div>
 
-            </div>
+              {/* EN MÓVIL (lg:hidden): Logo más grande posicionado después del botón de solicitar */}
+              <div className="flex lg:hidden justify-center items-center mt-7 sm:mt-9 w-full">
+                <div className="relative w-60 h-60 xs:w-72 xs:h-72 sm:w-80 sm:h-80 flex items-center justify-center">
+                  {/* Anillo perimetral con cambio de color sincronizado solo en el borde */}
+                  <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] logo-ring-cycle pointer-events-none z-10" />
 
-            {/* EN PC: LOGO PURO GIGANTE A LA DERECHA CON FILO BRILLANTE RADIANTE */}
-            <div className="hidden lg:flex lg:col-span-5 justify-center xl:justify-end items-center">
-              <div className="relative w-88 h-88 xl:w-[440px] xl:h-[440px] flex items-center justify-center group">
-                <img
-                  src="/logo.webp"
-                  alt="Logo Oficial GP Solutions"
-                  className="w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(245,158,11,0.55)] drop-shadow-[0_0_80px_rgba(56,189,248,0.25)] drop-shadow-[0_12px_40px_rgba(0,0,0,0.9)] transform group-hover:scale-105 transition-transform duration-500"
-                  width={440}
-                  height={440}
-                  loading="eager"
-                />
+                  <picture>
+                    <source srcSet="/logo.avif" type="image/avif" />
+                    <source srcSet="/logo.webp" type="image/webp" />
+                    <img
+                      src="/logo.png"
+                      alt="Logo Oficial GP Solutions"
+                      className="w-full h-full object-contain opacity-95 logo-border-glow-cycle"
+                      width={320}
+                      height={320}
+                      loading="eager"
+                    />
+                  </picture>
+                </div>
               </div>
+
             </div>
 
           </div>
@@ -255,7 +274,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
         <div className="max-w-4xl mx-auto px-4 relative z-30 select-none">
           
           {/* VISTA DESKTOP (sm:flex): 3 Círculos Informativos Oficiales sobre la Curva */}
-          <div className="hidden sm:flex items-center justify-center gap-4 sm:gap-6 md:gap-8 mt-2 sm:mt-4 md:mt-6 translate-y-6 sm:translate-y-8 md:translate-y-10">
+          <div className="hidden sm:flex items-center justify-center gap-4 sm:gap-6 md:gap-8 mt-4 sm:mt-6 md:mt-8 translate-y-8 sm:translate-y-10 md:translate-y-12">
             {/* Card Circular 1: Seguridad y Salud Ocupacional */}
             <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-amber-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_22px_rgba(245,158,11,0.25)]">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
@@ -287,8 +306,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             </div>
           </div>
 
-          {/* VISTA MÓVIL (sm:hidden): 4 Iconos sin contenedores en horizontal + Texto puro al seleccionar */}
-          <div className="sm:hidden flex flex-col items-center mt-2 mb-2">
+          {/* VISTA MÓVIL (sm:hidden): 3 Iconos posicionados más abajo con holgura */}
+          <div className="sm:hidden flex flex-col items-center mt-8 xs:mt-10 mb-4 translate-y-4 xs:translate-y-6">
             {/* Fila de 4 Iconos limpios en horizontal (sin contenedores) */}
             <div className="flex items-center justify-center gap-7 xs:gap-9 py-2">
               {HERO_PILLARS.map((pillar, idx) => {

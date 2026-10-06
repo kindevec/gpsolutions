@@ -11,6 +11,11 @@ import {
   ArrowRight,
   Play,
   Check,
+  HardHat,
+  FileCheck,
+  FileText,
+  BadgePercent,
+  BookOpen,
 } from 'lucide-react';
 import { WhatsAppIcon, LinkedInIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
@@ -86,7 +91,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                   <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-bold text-[#38BDF8] uppercase tracking-wider block">Propósito Estratégico</span>
                   <h3 className="font-heading font-black text-xl sm:text-2xl text-white">Misión</h3>
                 </div>
               </div>
@@ -102,7 +106,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                   <TrendingUp className="w-6 h-6 stroke-[2.2]" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">Proyección Institucional</span>
                   <h3 className="font-heading font-black text-xl sm:text-2xl text-white">Visión</h3>
                 </div>
               </div>
@@ -127,9 +130,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-xs sm:text-sm font-bold text-[#38BDF8] uppercase tracking-wider block mb-2">
-              Liderazgo & Solvencia Profesional
-            </span>
             <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               Perfiles y Dirección de GP SOLUTIONS
             </h2>
@@ -138,24 +138,63 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
             </p>
           </div>
 
-          <div className="space-y-16 lg:space-y-20">
+          <div className="space-y-16 lg:space-y-24">
             
             {/* PERFIL 1: ÁLVARO GUERRA - DIRECCIÓN GENERAL */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#0d1e38]/70 border border-sky-400/20 rounded-3xl p-6 sm:p-10 lg:p-12 backdrop-blur-md">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
               
-              <div className="lg:col-span-7 space-y-5 order-2 lg:order-1 text-left">
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
+              <div className="lg:col-span-5 flex flex-col items-center justify-center order-1">
+                {/* Contenedor tipo marco ejecutivo para anclar el retrato y evitar que quede flotando */}
+                <div className="relative w-full max-w-[270px] xs:max-w-[300px] sm:max-w-[330px] rounded-3xl overflow-hidden bg-gradient-to-b from-[#132849]/90 via-[#0e1f38]/95 to-[#081324] border border-sky-400/30 shadow-[0_16px_36px_rgba(0,0,0,0.6)] pt-5 px-3 flex flex-col items-center justify-end select-none">
+                  {/* Resplandor ambiental de fondo */}
+                  <div className="absolute top-4 w-40 h-40 bg-sky-400/20 rounded-full blur-2xl pointer-events-none" />
+                  
+                  <div className="relative z-10 w-full flex justify-center">
+                    <picture>
+                      <source srcSet="/images/director-3d.avif" type="image/avif" />
+                      <source srcSet="/images/director-3d.webp" type="image/webp" />
+                      <img
+                        src="/images/director-3d.png"
+                        alt={COMPANY_DATA.director}
+                        className="w-full h-auto max-h-[360px] sm:max-h-[400px] object-contain select-none block drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]"
+                        loading="lazy"
+                        width={500}
+                        height={491}
+                      />
+                    </picture>
+                  </div>
+
+                  {/* Fusión suave en la base inferior del corte del busto */}
+                  <div className="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-[#081324] to-transparent pointer-events-none z-20" />
+                </div>
+
+                {/* Título, nombre y cargo debajo de la imagen */}
+                <div
+                  style={{ textAlign: 'center' }}
+                  className="mt-5 sm:mt-6 space-y-1.5 w-full flex flex-col items-center justify-center text-center"
+                >
+                  <span
+                    style={{ textAlign: 'center' }}
+                    className="text-xs font-bold text-[#38BDF8] uppercase tracking-widest block text-center w-full"
+                  >
                     Dirección General & Consultoría Principal
                   </span>
-                  <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
+                  <h3
+                    style={{ textAlign: 'center' }}
+                    className="font-heading font-black text-xl sm:text-2xl lg:text-3xl text-white tracking-tight text-center w-full"
+                  >
                     {COMPANY_DATA.director}
                   </h3>
-                  <p className="text-xs sm:text-sm font-bold text-[#38BDF8]">
+                  <p
+                    style={{ textAlign: 'center' }}
+                    className="text-xs sm:text-sm font-bold text-[#38BDF8] text-center w-full m-0"
+                  >
                     Representante Legal & Consultor Contable / Tributario
                   </p>
                 </div>
+              </div>
 
+              <div className="lg:col-span-7 space-y-4 order-2 text-left">
                 <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
                   Con más de 12 años de trayectoria liderando la gestión contable, tributaria y societaria en el Ecuador, Álvaro Guerra ha posicionado a GP SOLUTIONS como un aliado estratégico fundamental para personas naturales y compañías.
                 </p>
@@ -164,23 +203,15 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                   Su dirección técnica combina rigor metodológico bajo normas NIIF, estructuración preventiva ante el SRI, auditoría de balances y una constante optimización de procesos que blindan patrimonialmente a cada cliente.
                 </p>
 
-                {/* Especialidades */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-sky-400/20">
-                    <div className="p-2 rounded-full bg-sky-500/15 text-[#38BDF8]">
-                      <Scale className="w-5 h-5" />
-                    </div>
-                    <span className="text-xs sm:text-sm font-bold text-white">Balances NIIF & Cierre Contable</span>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-amber-400/20">
-                    <div className="p-2 rounded-full bg-amber-500/15 text-[#FCD34D]">
-                      <ShieldCheck className="w-5 h-5" />
-                    </div>
-                    <span className="text-xs sm:text-sm font-bold text-white">Defensa & Estrategia SRI</span>
-                  </div>
-                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                  Especialista en planificación fiscal integral, auditorías preventivas y cumplimiento ante la Superintendencia de Compañías, IESS y Ministerio del Trabajo, asesora a accionistas y directores en la toma de decisiones contables de alto impacto.
+                </p>
 
-                <div className="pt-2">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                  Su gestión garantiza solvencia financiera, optimización tributaria legítima y un acompañamiento continuo que protege el patrimonio empresarial frente a revisiones o requerimientos de las entidades de control.
+                </p>
+
+                <div className="pt-2 flex justify-center">
                   <a
                     href={COMPANY_DATA.whatsappBaseUrl}
                     target="_blank"
@@ -193,60 +224,65 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 </div>
               </div>
 
-              <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2">
-                <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] flex justify-center select-none">
-                  <div className="relative drop-shadow-[0_15px_35px_rgba(0,0,0,0.55)]">
-                    <picture>
-                      <source srcSet="/images/director-3d.avif" type="image/avif" />
-                      <source srcSet="/images/director-3d.webp" type="image/webp" />
-                      <img
-                        src="/images/director-3d.png"
-                        alt={COMPANY_DATA.director}
-                        className="w-full h-auto max-h-[460px] object-contain select-none"
-                        loading="lazy"
-                        width={500}
-                        height={491}
-                      />
-                    </picture>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
+            {/* Separador sutil entre perfiles */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-sky-500/20 to-transparent" />
+
             {/* PERFIL 2: LUIS FERNANDO GUERRA - ASESOR LEGAL CORPORATIVO */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#0d1e38]/70 border border-emerald-400/25 rounded-3xl p-6 sm:p-10 lg:p-12 backdrop-blur-md">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
               
               <div className="lg:col-span-5 flex flex-col items-center justify-center order-1">
-                <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] flex justify-center select-none">
-                  <div className="relative drop-shadow-[0_15px_35px_rgba(0,0,0,0.55)]">
+                {/* Contenedor tipo marco ejecutivo para anclar el retrato y evitar que quede flotando */}
+                <div className="relative w-full max-w-[270px] xs:max-w-[300px] sm:max-w-[330px] rounded-3xl overflow-hidden bg-gradient-to-b from-[#102d33]/90 via-[#0c2227]/95 to-[#081324] border border-emerald-400/30 shadow-[0_16px_36px_rgba(0,0,0,0.6)] pt-5 px-3 flex flex-col items-center justify-end select-none">
+                  {/* Resplandor ambiental de fondo */}
+                  <div className="absolute top-4 w-40 h-40 bg-emerald-400/20 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="relative z-10 w-full flex justify-center">
                     <picture>
                       <source srcSet="/images/luis-guerra-bust.webp" type="image/webp" />
                       <img
                         src="/images/luis-guerra-bust.png"
                         alt="Luis Fernando Guerra - Asesor Legal Corporativo"
-                        className="w-full h-auto max-h-[460px] object-contain select-none"
+                        className="w-full h-auto max-h-[360px] sm:max-h-[400px] object-contain select-none block drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]"
                         loading="lazy"
                         width={796}
                         height={896}
                       />
                     </picture>
                   </div>
+
+                  {/* Fusión suave en la base inferior del corte del busto */}
+                  <div className="absolute bottom-0 inset-x-0 h-6 bg-gradient-to-t from-[#081324] to-transparent pointer-events-none z-20" />
+                </div>
+
+                {/* Título, nombre y cargo debajo de la imagen */}
+                <div
+                  style={{ textAlign: 'center' }}
+                  className="mt-5 sm:mt-6 space-y-1.5 w-full flex flex-col items-center justify-center text-center"
+                >
+                  <span
+                    style={{ textAlign: 'center' }}
+                    className="text-xs font-bold text-emerald-400 uppercase tracking-widest block text-center w-full"
+                  >
+                    Área Legal & Corporativa
+                  </span>
+                  <h3
+                    style={{ textAlign: 'center' }}
+                    className="font-heading font-black text-xl sm:text-2xl lg:text-3xl text-white tracking-tight text-center w-full"
+                  >
+                    Luis Fernando Guerra
+                  </h3>
+                  <p
+                    style={{ textAlign: 'center' }}
+                    className="text-xs sm:text-sm font-bold text-emerald-300 text-center w-full m-0"
+                  >
+                    Asesor Legal Corporativo
+                  </p>
                 </div>
               </div>
 
               <div className="lg:col-span-7 space-y-4 order-2 text-left">
-                <div className="space-y-1">
-                  <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest block">
-                    Área Legal & Corporativa
-                  </span>
-                  <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white">
-                    Luis Fernando Guerra
-                  </h3>
-                  <p className="text-xs sm:text-sm font-bold text-emerald-300">
-                    Asesor Legal Corporativo
-                  </p>
-                </div>
 
                 <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
                   Abogado con amplia experiencia en asesoría jurídica a empresas nacionales e internacionales, brindando acompañamiento integral en asuntos corporativos, contractuales, tributarios, regulatorios y de cumplimiento.
@@ -264,7 +300,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                   Su experiencia con organizaciones de distintas industrias le permite abordar las necesidades legales desde una perspectiva empresarial, identificando riesgos y proponiendo soluciones que consideren tanto el cumplimiento normativo como la operación y los objetivos del negocio.
                 </p>
 
-                <div className="pt-2">
+                <div className="pt-2 flex justify-center">
                   <a
                     href={COMPANY_DATA.whatsappBaseUrl}
                     target="_blank"
@@ -304,7 +340,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
             </div>
 
             <div className="w-full md:w-1/2 p-7 sm:p-10 lg:p-12 flex flex-col justify-center bg-[#0f2445] text-white space-y-4">
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight text-center">
                 Nuestra Historia y Compromiso
               </h2>
 
@@ -316,7 +352,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 Con más de 12 años de actividad continua desde nuestro despacho en Quito, nos hemos ganado la confianza de cientos de comerciantes, profesionales y empresas en Pichincha y en todo el país. Creemos que el éxito de un negocio se cimenta en la pulcritud de sus libros y en la tranquilidad de estar 100% al día con el SRI y la Superintendencia de Compañías.
               </p>
 
-              <div className="pt-2">
+              <div className="pt-2 flex justify-center">
                 <a
                   href={COMPANY_DATA.whatsappBaseUrl}
                   target="_blank"
@@ -414,73 +450,103 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
             
-            {/* Columna Izquierda: Grid de 6 Soluciones sin contenedores/cajas, centrados */}
+            {/* Columna Izquierda: Grid de 9 Soluciones sin contenedores/cajas, centrados */}
             <div className="lg:col-span-8 flex flex-col justify-between">
               <div>
                 <h2 className="font-heading text-2xl sm:text-4xl font-black text-[#102547] tracking-tight mb-8 sm:mb-10 text-center">
                   Soluciones que Respaldan su Crecimiento
                 </h2>
 
-                {/* Grid 6 Soluciones sin cajas/contenedores y solo icono + título: 2 por fila en móvil */}
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-7 sm:gap-8 md:gap-10">
+                {/* Grid 9 Soluciones sin cajas/contenedores y solo icono + título: 2 por fila en móvil, 3 en pantallas medianas */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-7 sm:gap-6 md:gap-8">
                   
-                  {/* Ítem 1 */}
+                  {/* Ítem 1: SSO */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <Building2 className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+                      <HardHat className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
-                      Contabilidad & NIIF
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
+                      Elaboración de matrices de riesgo y planes de emergencia
                     </h4>
                   </div>
 
-                  {/* Ítem 2: Acento Amarillo / Dorado */}
+                  {/* Ítem 2: SSO */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <Scale className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+                      <FileCheck className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
-                      Declaraciones SRI
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
+                      Gestión de reglamentos y planes de prevención
                     </h4>
                   </div>
 
-                  {/* Ítem 3 */}
+                  {/* Ítem 3: SSO */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <Award className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+                      <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
-                      Creación de SAS
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
+                      Capacitaciones obligatorias en SSO
                     </h4>
                   </div>
 
-                  {/* Ítem 4: Acento Amarillo / Dorado */}
+                  {/* Ítem 4: Tributaria */}
+                  <div className="flex flex-col items-center text-center group cursor-default px-1">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <FileText className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    </div>
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
+                      Declaraciones de Impuestos
+                    </h4>
+                  </div>
+
+                  {/* Ítem 5: Tributaria */}
+                  <div className="flex flex-col items-center text-center group cursor-default px-1">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <BadgePercent className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    </div>
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
+                      Devoluciones de Impuestos
+                    </h4>
+                  </div>
+
+                  {/* Ítem 6: Tributaria / Laboral */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
                       <Users className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
-                      Nóminas & IESS
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
+                      Manejo integral de nómina
                     </h4>
                   </div>
 
-                  {/* Ítem 5 */}
+                  {/* Ítem 7: Legal */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+                      <Building2 className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
-                      Devolución IVA
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
+                      Creación y liquidación de SAS
                     </h4>
                   </div>
 
-                  {/* Ítem 6: Acento Amarillo / Dorado */}
+                  {/* Ítem 8: Legal */}
                   <div className="flex flex-col items-center text-center group cursor-default px-1">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-100/90 text-amber-600 border border-amber-300/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
-                      <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+                      <BookOpen className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
                     </div>
-                    <h4 className="font-heading font-bold text-xs sm:text-base md:text-lg text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
-                      Auditoría Interna
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-amber-600 transition-colors leading-tight">
+                      Manejo y actualización de libros societarios
+                    </h4>
+                  </div>
+
+                  {/* Ítem 9: Legal */}
+                  <div className="flex flex-col items-center text-center group cursor-default px-1">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-100/90 text-[#0284C7] border border-sky-200/60 flex items-center justify-center mb-2.5 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm">
+                      <Award className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2]" />
+                    </div>
+                    <h4 className="font-heading font-bold text-xs sm:text-sm md:text-base text-[#102547] text-center group-hover:text-[#0284C7] transition-colors leading-tight">
+                      Registro de marcas y signos distintivos
                     </h4>
                   </div>
 

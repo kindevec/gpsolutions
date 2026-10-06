@@ -4,6 +4,40 @@ import { ALL_SERVICES } from '../data/services';
 import { buildWhatsAppLink } from '../data/company';
 import { CardHoverReveal, CardHoverRevealMain, CardHoverRevealContent } from '../components/ui/reveal-on-hover';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
+import FocusPullCarousel, { Slide } from '../components/ui/focus-pull-carousel';
+
+const CORPORATE_CAROUSEL_SLIDES: Slide[] = [
+  {
+    image: '/images/servicios-contables/constitucion-liquidacion-sas.webp',
+    title: 'Constitución & Transformación S.A.S.',
+    caption: 'Estructuración societaria integral y blindaje patrimonial empresarial en Ecuador.',
+  },
+  {
+    image: '/images/servicios-contables/superintendencia-companias.webp',
+    title: 'Superintendencia de Compañías',
+    caption: 'Cumplimiento normativo, balances auditados y actas de juntas de accionistas.',
+  },
+  {
+    image: '/images/servicios-contables/registro-marcas.webp',
+    title: 'Registro de Marcas & Propiedad Intelectual',
+    caption: 'Protección integral de signos distintivos, marcas y patentes ante el SENADI.',
+  },
+  {
+    image: '/images/servicios-laborales/contratos-trabajo-finiquito.webp',
+    title: 'Seguridad y Salud Ocupacional (S.S.O.)',
+    caption: 'Planes de prevención, reglamentos internos y cumplimiento ante el Ministerio de Trabajo.',
+  },
+  {
+    image: '/images/servicios-contables/estados-financieros.webp',
+    title: 'Balances NIIF & Diagnóstico Financiero',
+    caption: 'Presentación fidedigna de estados financieros para directores, bancos e inversionistas.',
+  },
+  {
+    image: '/images/servicios-contables/contabilidad-general.webp',
+    title: 'Gobierno Corporativo & Auditoría Interna',
+    caption: 'Supervisión contable periódica y control de riesgos operativos para socios y accionistas.',
+  },
+];
 
 export const AccountingServicesView: React.FC = () => {
   const [filterCategory, setFilterCategory] = useState<'todos' | 'seguridad-salud' | 'legal-corporativa'>('todos');
@@ -206,27 +240,25 @@ export const AccountingServicesView: React.FC = () => {
 
 
       {/* =========================================================================
-          3. BANNER DE ASESORÍA PERSONALIZADA
+          3. CARRUSEL ENFOCADO: SERVICIOS CORPORATIVOS
          ========================================================================= */}
-      <section className="py-14 bg-[#EAF2FA] border-t border-sky-200/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="font-heading font-extrabold text-2xl text-[#102547] mb-2">
-            ¿Requiere un diagnóstico legal corporativo o de seguridad ocupacional?
-          </h3>
-          <p className="text-slate-600 text-xs sm:text-sm max-w-xl mx-auto mb-6">
-            Analizamos sus estatutos societarios, marcas registradas y obligaciones de prevención de riesgos para blindar su empresa ante las autoridades.
-          </p>
-
-          <a
-            href={buildWhatsAppLink('Hola GP SOLUTIONS (+593 982577313), solicito un diagnóstico legal corporativo o de seguridad ocupacional para mi empresa.')}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white shadow-md shadow-sky-500/20 transition-all cursor-pointer"
-          >
-            <WhatsAppIcon className="w-4 h-4" />
-            <span>Consultar con un Asesor en WhatsApp</span>
-          </a>
+      <section className="py-16 bg-[#081324] text-white overflow-hidden border-t border-sky-900/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+          <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Especialidades Corporativas GP SOLUTIONS
+          </h2>
         </div>
+
+        <FocusPullCarousel
+          height="480px"
+          cardWidth="min(max(60vw, 290px), 760px)"
+          aspect="16 / 10"
+          blur={6}
+          autoplay={5000}
+          background="transparent"
+          ink="#ffffff"
+          slides={CORPORATE_CAROUSEL_SLIDES}
+        />
       </section>
 
     </div>

@@ -21,7 +21,7 @@ h1, h2, h3, h4, .font-heading {
 p {
   text-align: justify;
   text-justify: inter-word;
-  hyphens: auto;
+  hyphens: none;
 }
 
 html {
@@ -103,5 +103,49 @@ body {
   100% {
     left: 200%;
   }
+}
+
+/* Efecto de cambio de color exclusivo para el borde del Logo en el Hero */
+@keyframes logo-border-glow-cycle {
+  0%, 100% {
+    filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.65)) drop-shadow(0 0 32px rgba(245, 158, 11, 0.35));
+  }
+  33% {
+    filter: drop-shadow(0 0 16px rgba(16, 185, 129, 0.65)) drop-shadow(0 0 32px rgba(16, 185, 129, 0.35));
+  }
+  66% {
+    filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 32px rgba(56, 189, 248, 0.35));
+  }
+}
+
+@keyframes logo-ring-cycle {
+  0%, 100% {
+    border-color: rgba(245, 158, 11, 0.85);
+    box-shadow: 
+      0 0 14px rgba(245, 158, 11, 0.5),
+      inset 0 0 14px rgba(245, 158, 11, 0.35);
+  }
+  33% {
+    border-color: rgba(16, 185, 129, 0.85);
+    box-shadow: 
+      0 0 14px rgba(16, 185, 129, 0.5),
+      inset 0 0 14px rgba(16, 185, 129, 0.35);
+  }
+  66% {
+    border-color: rgba(56, 189, 248, 0.9);
+    box-shadow: 
+      0 0 14px rgba(56, 189, 248, 0.5),
+      inset 0 0 14px rgba(56, 189, 248, 0.35);
+  }
+}
+
+.logo-border-glow-cycle {
+  animation: logo-border-glow-cycle 8s ease-in-out infinite;
+  will-change: filter;
+}
+
+.logo-ring-cycle {
+  animation: logo-ring-cycle 8s ease-in-out infinite;
+  will-change: border-color, box-shadow;
 }
 

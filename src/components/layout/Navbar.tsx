@@ -23,9 +23,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
   // Secciones de navegación en orden secuencial
   const navItems: { key: TabKey; label: string; action: () => void }[] = [
     { key: 'inicio', label: 'Inicio', action: () => onSelectTab('inicio') },
-    { key: 'servicios-contables', label: 'Servicios Contables', action: () => onSelectTab('servicios-contables') },
-    { key: 'servicios-tributarios', label: 'Servicios Tributarios', action: () => onSelectTab('servicios-tributarios') },
     { key: 'nosotros', label: 'Nosotros', action: () => onSelectTab('nosotros') },
+    { key: 'servicios-contables', label: 'Servicios Corporativos', action: () => onSelectTab('servicios-contables') },
+    { key: 'servicios-tributarios', label: 'Servicios Tributarios', action: () => onSelectTab('servicios-tributarios') },
     { key: 'contacto', label: 'Contacto', action: () => onSelectTab('contacto') },
   ];
 

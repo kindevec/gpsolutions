@@ -6,9 +6,6 @@ import {
   Clock,
   Send,
   CheckCircle2,
-  Navigation,
-  ExternalLink,
-  Star,
 } from 'lucide-react';
 import { WhatsAppIcon, FacebookIcon, InstagramIcon, LinkedInIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
@@ -361,82 +358,6 @@ export const ContactView: React.FC = () => {
 
             </div>
           </div>
-
-
-          {/* =========================================================================
-              3. MAPA DE UBICACIÓN INTERACTIVO (FULL WIDTH EN MÓVIL)
-             ========================================================================= */}
-          <div className="w-full bg-white rounded-none sm:rounded-3xl shadow-none sm:shadow-xl border-y sm:border border-slate-200/80 overflow-hidden relative">
-            
-            {/* Tarjeta Flotante estilo Google Maps */}
-            <div className="absolute top-3 left-3 right-3 sm:right-auto sm:top-4 sm:left-4 z-10 bg-white/95 backdrop-blur-md p-3.5 sm:p-5 rounded-2xl shadow-xl border border-slate-200/80 max-w-none sm:max-w-sm">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h4 className="font-heading font-extrabold text-xs sm:text-base text-[#102547] leading-tight">
-                    GP SOLUTIONS
-                  </h4>
-                  <p className="text-[10.5px] sm:text-[11px] text-slate-500 mt-0.5">
-                    {COMPANY_DATA.location}
-                  </p>
-                  
-                  <div className="flex items-center gap-1.5 mt-1.5 sm:mt-2">
-                    <div className="flex items-center text-amber-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
-                      ))}
-                    </div>
-                    <span className="text-[10.5px] sm:text-[11px] font-bold text-slate-700">5.0</span>
-                    <span className="text-[9.5px] sm:text-[10px] text-slate-400">(Asesoría Integral)</span>
-                  </div>
-                </div>
-
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent("GP SOLUTIONS Quito Ecuador")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 sm:p-2.5 rounded-xl bg-[#0284C7] text-white hover:bg-[#0369a1] transition-all shadow-md shrink-0 flex flex-col items-center justify-center group"
-                  title="Cómo llegar"
-                >
-                  <Navigation className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
-                  <span className="text-[8.5px] sm:text-[9px] font-bold mt-0.5">Ruta</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Iframe interactivo del Mapa */}
-            <div className="w-full h-[380px] sm:h-[440px] md:h-[480px] bg-slate-100 relative">
-              <iframe
-                title="Ubicación GP SOLUTIONS Quito"
-                src="https://maps.google.com/maps?q=Quito,+Pichincha,+Ecuador&t=&z=14&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full grayscale-[10%] contrast-[1.05]"
-              />
-            </div>
-
-            {/* Barra Inferior Informativa */}
-            <div className="bg-[#102547] text-white px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-              <div className="flex items-center gap-2 text-slate-200">
-                <MapPin className="w-4 h-4 text-[#38BDF8] shrink-0" />
-                <span>Atención presencial previa cita en Quito y telemática en todo el Ecuador.</span>
-              </div>
-              <a
-                href={COMPANY_DATA.whatsappBaseUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-amber-300 hover:text-white font-bold transition-colors"
-              >
-                <span>Agendar visita técnica</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            </div>
-
-          </div>
-
         </div>
       </section>
 
