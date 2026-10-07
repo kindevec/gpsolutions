@@ -39,6 +39,9 @@ export type FocusPullCarouselProps = {
   /** Page colours: background and ink. Defaults follow the theme tokens. */
   background?: string
   ink?: string
+  showCaption?: boolean
+  showCount?: boolean
+  showBar?: boolean
   onChange?: (index: number) => void
   className?: string
   style?: React.CSSProperties
@@ -48,12 +51,11 @@ export type FocusPullCarouselProps = {
 // #region logic
 /** How out of focus a card is, from its offset to the centre in card widths. */
 export function focusOf(d: number, blur: number) {
-  const a = Math.min(Math.abs(d), 1)
   return {
-    scale: 1 - 0.14 * a,
-    blur: Math.min(Math.abs(d), 2) * blur,
-    opacity: 1 - 0.5 * a,
-    saturate: 1 - 0.45 * a,
+    scale: 1,
+    blur: blur > 0 ? Math.min(Math.abs(d), 2) * blur : 0,
+    opacity: 1,
+    saturate: 1,
   }
 }
 
@@ -220,13 +222,13 @@ function useSlideImages(slides: Slide[]): string[] {
 }
 
 const FP_CSS = [
-  ".fp-root{position:relative;width:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3.5vh,36px);overflow:hidden;background:var(--fp-bg);color:var(--fp-ink);outline:none}",
+  ".fp-root{--fp-gap:24px;--fp-w:calc((100vw - 2 * var(--fp-gap)) / 3);position:relative;width:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3.5vh,36px);overflow:hidden;background:var(--fp-bg);color:var(--fp-ink);outline:none}",
   ".fp-root:focus-visible{box-shadow:inset 0 0 0 2px var(--fp-ink)}",
-  ".fp-track{display:flex;align-items:center;gap:clamp(12px,2vw,28px);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding-inline:calc(50% - var(--fp-w) / 2);scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y}",
+  ".fp-track{display:flex;align-items:center;gap:var(--fp-gap,24px);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding-inline:calc(50% - var(--fp-w) / 2);scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y;width:100%}",
   ".fp-track::-webkit-scrollbar{display:none}",
   ".fp-track[data-drag='1']{scroll-snap-type:none;cursor:grabbing}",
-  ".fp-card{flex:0 0 var(--fp-w);aspect-ratio:var(--fp-aspect);max-height:calc(var(--fp-h) * .68);scroll-snap-align:center;position:relative;border:0;padding:0;margin:0;background:transparent;cursor:inherit;will-change:transform,filter;transform-origin:center}",
-  ".fp-card img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;border-radius:var(--fp-radius);pointer-events:none}",
+  ".fp-card{flex:0 0 var(--fp-w);width:var(--fp-w);min-width:var(--fp-w);max-width:var(--fp-w);aspect-ratio:var(--fp-aspect);max-height:calc(var(--fp-h) * .84);scroll-snap-align:center;position:relative;border:0;padding:0;margin:0;background:transparent;cursor:inherit;will-change:transform,filter;transform-origin:center;border-radius:var(--fp-radius);overflow:hidden}",
+  ".fp-card img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;border-radius:inherit;pointer-events:none}",
   ".fp-meta{display:flex;justify-content:space-between;align-items:end;gap:16px;padding-inline:clamp(20px,4vw,56px)}",
   ".fp-cap{min-height:2.6em;overflow:hidden;padding-bottom:.2em}",
   ".fp-cap>*{display:block;animation:fp-in .7s cubic-bezier(.2,.8,.2,1) both}",
@@ -242,19 +244,23 @@ const FP_CSS = [
   ".fp-bar>i{position:absolute;inset:0 auto 0 0;width:100%;background:var(--fp-ink);transform-origin:left;transform:scaleX(var(--fp-p,0))}",
   ".fp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}",
   "@keyframes fp-in{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}",
-  "@media (max-width:640px){.fp-meta{grid-template-columns:1fr auto}.fp-count{display:none}}",
+  "@media (min-width:640px){.fp-card{aspect-ratio:4/3;max-height:calc(var(--fp-h) * .84)}}",
+  "@media (max-width:639px){.fp-root{--fp-gap:16px;--fp-w:100%}.fp-card{aspect-ratio:16/10;max-height:300px}.fp-meta{justify-content:center!important;text-align:center!important;padding-inline:16px!important}.fp-cap{width:100%!important;text-align:center!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important}.fp-title{text-align:center!important;width:100%!important;display:block!important}.fp-sub{text-align:center!important;width:100%!important;display:block!important}.fp-count{display:none}}",
   "@media (prefers-reduced-motion:reduce){.fp-cap>*{animation:none}.fp-track{scroll-behavior:auto}}",
 ].join("\n")
 
 export default function FocusPullCarousel({
   slides = DEFAULT_SLIDES,
-  height = "100svh",
-  cardWidth = "min(max(64vw, 290px), 920px)",
-  aspect = "3 / 2",
-  blur = 7,
+  height = "auto",
+  cardWidth,
+  aspect = "16 / 10",
+  blur = 0,
   autoplay = 5000,
   background = "var(--color-background, #f4f1ea)",
   ink = "var(--color-foreground, #161513)",
+  showCaption = true,
+  showCount = true,
+  showBar = true,
   onChange,
   className,
   style,
@@ -262,11 +268,13 @@ export default function FocusPullCarousel({
 }: FocusPullCarouselProps) {
   const n = slides.length
   const srcs = useSlideImages(slides)
+  const allSlides = React.useMemo(() => (n > 1 ? [...slides, ...slides, ...slides] : slides), [slides, n])
+  const allSrcs = React.useMemo(() => (n > 1 ? [...srcs, ...srcs, ...srcs] : srcs), [srcs, n])
   const [active, setActive] = React.useState(0)
   const rootRef = React.useRef(null as HTMLDivElement | null)
   const trackRef = React.useRef(null as HTMLDivElement | null)
   const barRef = React.useRef(null as HTMLDivElement | null)
-  const activeRef = React.useRef(0)
+  const activeRef = React.useRef(n > 1 ? n : 0)
   const lastTouch = React.useRef(0)
   const blurRef = React.useRef(blur)
   blurRef.current = blur
@@ -286,39 +294,120 @@ export default function FocusPullCarousel({
     cards.forEach((c, i) => {
       const f = focusOf((centers[i] - mid) / w, reduce ? 0 : blurRef.current)
       c.style.transform = "scale(" + f.scale.toFixed(4) + ")"
-      c.style.filter = f.blur > 0.05 ? "blur(" + f.blur.toFixed(2) + "px) saturate(" + f.saturate.toFixed(3) + ")" : "none"
-      c.style.opacity = f.opacity.toFixed(3)
+      c.style.filter = f.blur > 0.05 ? "blur(" + f.blur.toFixed(2) + "px)" : "none"
+      c.style.opacity = "1"
     })
-    const max = track.scrollWidth - track.clientWidth
-    barRef.current?.style.setProperty("--fp-p", max > 0 ? (track.scrollLeft / max).toFixed(4) : "0")
     const near = nearestIndex(centers, mid)
-    if (near !== activeRef.current) {
-      activeRef.current = near
-      setActive(near)
+    activeRef.current = near
+    const realIdx = n > 0 ? near % n : 0
+    setActive((prev) => (prev !== realIdx ? realIdx : prev))
+  }, [n])
+
+  // Normalization: seamlessly shift the viewport by 1 cycle when settling in cloned groups
+  const normalize = React.useCallback(() => {
+    const track = trackRef.current
+    if (!track || n < 2) return
+    const cards = Array.from(track.children) as HTMLElement[]
+    if (cards.length < 3 * n) return
+
+    const cycleWidth = cards[n].offsetLeft - cards[0].offsetLeft
+    if (cycleWidth <= 0) return
+
+    const current = activeRef.current
+    if (current >= 2 * n) {
+      track.style.scrollSnapType = "none"
+      track.scrollLeft -= cycleWidth
+      void track.offsetWidth
+      track.style.scrollSnapType = "x mandatory"
+      activeRef.current = current - n
+      paint()
+    } else if (current < n) {
+      track.style.scrollSnapType = "none"
+      track.scrollLeft += cycleWidth
+      void track.offsetWidth
+      track.style.scrollSnapType = "x mandatory"
+      activeRef.current = current + n
+      paint()
+    }
+  }, [n, paint])
+
+  const updateDimensions = React.useCallback(() => {
+    const track = trackRef.current
+    if (!track) return
+    const isDesktop = window.innerWidth >= 640
+    const gap = isDesktop ? 24 : 16
+    track.style.setProperty("--fp-gap", gap + "px")
+
+    if (isDesktop) {
+      const trackWidth = track.clientWidth
+      if (trackWidth > 0) {
+        const cardW = Math.floor((trackWidth - 2 * gap) / 3)
+        track.style.setProperty("--fp-w", cardW + "px")
+      }
+    } else {
+      track.style.setProperty("--fp-w", "100%")
     }
   }, [])
+
+  // Initial centering to the middle set of cards
+  React.useEffect(() => {
+    const track = trackRef.current
+    if (!track || n < 2) return
+    const setup = () => {
+      updateDimensions()
+      const cards = Array.from(track.children) as HTMLElement[]
+      if (cards.length >= 3 * n && cards[n]) {
+        const midTarget = cards[n].offsetLeft + cards[n].offsetWidth / 2 - track.clientWidth / 2
+        track.scrollLeft = midTarget
+        activeRef.current = n
+        paint()
+      }
+    }
+    setup()
+    const tid = setTimeout(setup, 60)
+    return () => clearTimeout(tid)
+  }, [n, paint, updateDimensions])
 
   React.useEffect(() => {
     const track = trackRef.current
     if (!track) return
     let raf = 0
+    let scrollTimer: ReturnType<typeof setTimeout>
     const onScroll = () => {
       if (!raf)
         raf = requestAnimationFrame(() => {
           raf = 0
           paint()
         })
+      clearTimeout(scrollTimer)
+      scrollTimer = setTimeout(() => {
+        normalize()
+      }, 140)
+    }
+    const onScrollEnd = () => {
+      clearTimeout(scrollTimer)
+      normalize()
+    }
+    const onResize = () => {
+      updateDimensions()
+      onScroll()
     }
     track.addEventListener("scroll", onScroll, { passive: true })
-    const ro = new ResizeObserver(onScroll)
+    track.addEventListener("scrollend", onScrollEnd)
+    window.addEventListener("resize", onResize)
+    const ro = new ResizeObserver(onResize)
     ro.observe(track)
+    updateDimensions()
     paint()
     return () => {
       cancelAnimationFrame(raf)
+      clearTimeout(scrollTimer)
       track.removeEventListener("scroll", onScroll)
+      track.removeEventListener("scrollend", onScrollEnd)
+      window.removeEventListener("resize", onResize)
       ro.disconnect()
     }
-  }, [paint, n])
+  }, [paint, normalize, n, updateDimensions])
 
   React.useEffect(() => {
     onChange?.(active)
@@ -329,15 +418,21 @@ export default function FocusPullCarousel({
     const card = track?.children[i] as HTMLElement | undefined
     if (!track || !card) return
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    track.scrollTo({ left: card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2, behavior: smooth && !reduce ? "smooth" : "auto" })
+    track.scrollTo({
+      left: card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2,
+      behavior: smooth && !reduce ? "smooth" : "auto",
+    })
   }, [])
 
-  const step = (dir: number) => {
+  const step = React.useCallback((dir: number) => {
     lastTouch.current = performance.now()
-    scrollToIndex(wrap(activeRef.current + dir, n))
-  }
+    const track = trackRef.current
+    if (!track || n < 2) return
+    const next = activeRef.current + dir
+    scrollToIndex(next, true)
+  }, [n, scrollToIndex])
 
-  // Autoplay: waits for a quiet moment, and only while on screen.
+  // Autoplay: waits for a quiet moment, continuously advances forward
   React.useEffect(() => {
     if (!autoplay || n < 2) return
     const root = rootRef.current
@@ -346,13 +441,13 @@ export default function FocusPullCarousel({
     if (root) io.observe(root)
     const t = window.setInterval(() => {
       if (!seen || document.hidden || performance.now() - lastTouch.current < autoplay) return
-      scrollToIndex(wrap(activeRef.current + 1, n))
+      step(1)
     }, autoplay)
     return () => {
       window.clearInterval(t)
       io.disconnect()
     }
-  }, [autoplay, n, scrollToIndex])
+  }, [autoplay, n, step])
 
   // Mouse drag; touch and trackpads scroll natively.
   const drag = React.useRef(null as null | { x: number; left: number; moved: boolean })
@@ -402,15 +497,15 @@ export default function FocusPullCarousel({
       ref={rootRef}
       className={["fp-root", className].filter(Boolean).join(" ")}
       style={{
-        height,
-        ["--fp-h" as string]: typeof height === "number" ? height + "px" : height,
-        ["--fp-w" as string]: cardWidth,
+        ...(height && height !== "auto" ? { height } : {}),
+        ...(typeof height === "number" ? { ["--fp-h" as string]: height + "px" } : height !== "auto" ? { ["--fp-h" as string]: height } : {}),
+        ...(cardWidth ? { ["--fp-w" as string]: cardWidth } : {}),
         ["--fp-aspect" as string]: aspect,
         ["--fp-bg" as string]: background,
         ["--fp-ink" as string]: ink,
         ["--fp-muted" as string]: "color-mix(in srgb, var(--fp-ink) 55%, transparent)",
         ["--fp-line" as string]: "color-mix(in srgb, var(--fp-ink) 18%, transparent)",
-        ["--fp-radius" as string]: "2px",
+        ["--fp-radius" as string]: "10px",
         ...style,
       }}
       role="region"
@@ -443,17 +538,17 @@ export default function FocusPullCarousel({
           onPointerCancel={onUp}
           onWheel={() => (lastTouch.current = performance.now())}
         >
-          {slides.map((sl, i) => (
+          {allSlides.map((sl, i) => (
             <button
               key={i}
               type="button"
               className="fp-card"
               tabIndex={-1}
-              aria-label={"Show " + (sl.title || "slide " + (i + 1))}
-              aria-current={i === active ? "true" : undefined}
+              aria-label={"Show " + (sl.title || "slide " + ((i % n) + 1))}
+              aria-current={i % n === active ? "true" : undefined}
               onClick={onClickCard(i)}
             >
-              {srcs[i] ? <img src={srcs[i]} alt={sl.alt || sl.title || ""} draggable={false} /> : null}
+              {allSrcs[i] ? <img src={allSrcs[i]} alt={sl.alt || sl.title || ""} draggable={false} /> : null}
             </button>
           ))}
         </div>
@@ -470,17 +565,21 @@ export default function FocusPullCarousel({
       </div>
 
       <div className="fp-meta">
-        <div className="fp-cap" key={active} aria-hidden="true">
+        <div className="fp-cap" key={active} aria-hidden="true" style={{ minHeight: showCaption ? undefined : "auto" }}>
           {s.title ? <span className="fp-title">{s.title}</span> : null}
-          {s.caption ? <span className="fp-sub">{s.caption}</span> : null}
+          {showCaption && s.caption ? <span className="fp-sub">{s.caption}</span> : null}
         </div>
-        <div className="fp-count" aria-hidden="true">
-          <b>{pad2(active + 1)}</b> / {pad2(n)}
+        {showCount && (
+          <div className="fp-count" aria-hidden="true">
+            <b>{pad2(active + 1)}</b> / {pad2(n)}
+          </div>
+        )}
+      </div>
+      {showBar && (
+        <div ref={barRef} className="fp-bar" aria-hidden="true">
+          <i />
         </div>
-      </div>
-      <div ref={barRef} className="fp-bar" aria-hidden="true">
-        <i />
-      </div>
+      )}
       <div className="fp-sr" aria-live="polite">
         {"Slide " + (active + 1) + " of " + n + (s.title ? ": " + s.title : "")}
       </div>

@@ -8,34 +8,172 @@ import FocusPullCarousel, { Slide } from '../components/ui/focus-pull-carousel';
 
 const CORPORATE_CAROUSEL_SLIDES: Slide[] = [
   {
-    image: '/images/servicios-contables/constitucion-liquidacion-sas.webp',
-    title: 'Constitución & Transformación S.A.S.',
-    caption: 'Estructuración societaria integral y blindaje patrimonial empresarial en Ecuador.',
+    image: '/images/servicios-corporativos/seminario-en-seguridad.jpg',
+    title: 'Seminarios Especializados en Seguridad Laboral',
+    caption: 'Formación continua y cultura de prevención laboral.',
+    alt: 'Seminario en seguridad y salud ocupacional GP Solutions',
   },
   {
-    image: '/images/servicios-contables/superintendencia-companias.webp',
-    title: 'Superintendencia de Compañías',
-    caption: 'Cumplimiento normativo, balances auditados y actas de juntas de accionistas.',
-  },
-  {
-    image: '/images/servicios-contables/registro-marcas.webp',
-    title: 'Registro de Marcas & Propiedad Intelectual',
-    caption: 'Protección integral de signos distintivos, marcas y patentes ante el SENADI.',
-  },
-  {
-    image: '/images/servicios-laborales/contratos-trabajo-finiquito.webp',
+    image: '/images/servicios-corporativos/seguridad-salud-ocupacional-simulacro.jpg',
     title: 'Seguridad y Salud Ocupacional (S.S.O.)',
-    caption: 'Planes de prevención, reglamentos internos y cumplimiento ante el Ministerio de Trabajo.',
+    caption: 'Simulacros y control de emergencias en campo.',
+    alt: 'Entrenamiento de brigadas y simulacro contra incendios GP Solutions',
   },
   {
-    image: '/images/servicios-contables/estados-financieros.webp',
-    title: 'Balances NIIF & Diagnóstico Financiero',
-    caption: 'Presentación fidedigna de estados financieros para directores, bancos e inversionistas.',
+    image: '/images/servicios-corporativos/asesoria-consultoria-personalizada.jpg',
+    title: 'Consultoría y Asesoría Técnica Personalizada',
+    caption: 'Diagnóstico integral y acompañamiento societario.',
+    alt: 'Mesa de trabajo y asesoría personalizada GP Solutions',
   },
   {
-    image: '/images/servicios-contables/contabilidad-general.webp',
-    title: 'Gobierno Corporativo & Auditoría Interna',
-    caption: 'Supervisión contable periódica y control de riesgos operativos para socios y accionistas.',
+    image: '/images/servicios-corporativos/reunion-instituciones-receptoras.jpg',
+    title: 'Reuniones de Cooperación & Articulación Institucional',
+    caption: 'Mesas de trabajo y alianzas estratégicas.',
+    alt: 'Reunión de instituciones receptoras y articulación institucional GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/conferencias-corporativas.jpg',
+    title: 'Conferencias & Asesoría Institucional',
+    caption: 'Ponencias magistrales y resolución normativa.',
+    alt: 'Conferencias corporativas y asesoría institucional GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/alianzas-estrategicas-cooperacion.jpg',
+    title: 'Alianzas Estratégicas & Cooperación Internacional',
+    caption: 'Gestión técnica y proyectos multilaterales.',
+    alt: 'Alianzas estratégicas y delegación internacional GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/seminarios-capacitaciones-masivas.jpg',
+    title: 'Capacitaciones Obligatorias & Seminarios',
+    caption: 'Talleres formativos para equipos de trabajo.',
+    alt: 'Seminarios masivos y capacitaciones laborales GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/simulacros-prevencion-campo.jpg',
+    title: 'Simulacros de Evacuación & Prevención en Campo',
+    caption: 'Protocolos de repliegue y zonas seguras.',
+    alt: 'Simulacros y dinámicas de prevención en campo GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/capacitacion-rcp-primeros-auxilios.jpg',
+    title: 'Primeros Auxilios & Reanimación Cardiopulmonar (RCP)',
+    caption: 'Soporte vital básico ante emergencias laborales.',
+    alt: 'Capacitación en RCP y primeros auxilios GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/entrenamiento-practico-brigadas-rcp.jpg',
+    title: 'Entrenamiento Práctico de Brigadas de Emergencia',
+    caption: 'Prácticas vivenciales con maniquíes clínicos.',
+    alt: 'Prácticas de primeros auxilios y brigadas de emergencia GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/equipamiento-emergencia-protocolos.jpg',
+    title: 'Equipamiento de Emergencia & Protocolos de Prevención',
+    caption: 'Botiquines normativos y kits de supervivencia.',
+    alt: 'Equipamiento y kits de emergencia ocupacional GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/jornadas-capacitacion-talleres-tecnicos.jpg',
+    title: 'Jornadas de Formación Técnica Empresarial',
+    caption: 'Capacitación interactiva para mandos y directivos.',
+    alt: 'Jornadas de capacitación empresarial GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/asesoria-virtual-comites-interinstitucionales.jpg',
+    title: 'Comités Interinstitucionales & Asesoría Virtual',
+    caption: 'Mesas técnicas remotas a nivel nacional.',
+    alt: 'Comités virtuales y asesoría técnica a distancia GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/entrenamiento-rescate-camilla-rigida.jpg',
+    title: 'Brigadas de Rescate & Camilla Espinal Rígida',
+    caption: 'Inmovilización y transporte seguro de heridos.',
+    alt: 'Entrenamiento de brigada con camilla rígida espinal GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/simulacro-primeros-auxilios-oficina.jpg',
+    title: 'Simulacros de Evacuación en Espacios de Oficina',
+    caption: 'Ejercicios prácticos in situ para el personal.',
+    alt: 'Simulacro de primeros auxilios y evacuación en oficina GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/ponencias-magistrales-internacionales.jpg',
+    title: 'Ponencias & Representación Internacional',
+    caption: 'Exposiciones en foros de cooperación técnica.',
+    alt: 'Ponencia institucional internacional GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/comision-institucional-diplomatica.jpg',
+    title: 'Relaciones Diplomáticas & Seguridad Intersectorial',
+    caption: 'Coordinación con organismos y autoridades.',
+    alt: 'Delegación institucional y diplomática GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/ceremonia-protocolo-institucional.jpg',
+    title: 'Protocolo Oficial & Apertura Institucional',
+    caption: 'Actos solemnes y acuerdos institucionales.',
+    alt: 'Protocolo oficial y apertura institucional GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/brigada-contra-incendios-terraza.jpg',
+    title: 'Brigada Contra Incendios & Equipos de Primera Respuesta',
+    caption: 'Control de conatos y uso de extintores.',
+    alt: 'Brigada contra incendios y uso de extintores GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/capacitacion-recursos-humanos-reglamento.jpg',
+    title: 'Recursos Humanos & Reglamento Interno de Trabajo',
+    caption: 'Socialización normativa y cumplimiento laboral.',
+    alt: 'Capacitación de recursos humanos y reglamento interno GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/gestion-riesgos-desastres-naturales.jpg',
+    title: 'Gestión del Riesgo de Desastres Naturales',
+    caption: 'Resiliencia y continuidad ante contingencias.',
+    alt: 'Gestión de riesgos y desastres naturales GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/conferencia-planes-contingencia.jpg',
+    title: 'Planes de Contingencia & Continuidad Operativa',
+    caption: 'Estrategias de respuesta ante eventos mayores.',
+    alt: 'Conferencia de planes de contingencia empresarial GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/coordinacion-policial-seguridad-integral.jpg',
+    title: 'Seguridad Integral & Coordinación Interinstitucional',
+    caption: 'Articulación con autoridades de seguridad pública.',
+    alt: 'Coordinación con policía nacional y seguridad integral GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/practica-extincion-fuego-terraza.jpg',
+    title: 'Práctica Vivencial de Extinción & Control de Fuego',
+    caption: 'Descarga técnica con extintores portátiles.',
+    alt: 'Práctica vivencial de extinción de incendios en terraza GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/capacitacion-dinamica-empresarial.jpg',
+    title: 'Capacitación Dinámica & Metodologías Activas',
+    caption: 'Metodología ágil y participativa para empresas.',
+    alt: 'Capacitación dinámica y participativa empresarial GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/simulacro-evacuacion-guiada-campo.jpg',
+    title: 'Rutas de Evacuación & Simulacros Guiados',
+    caption: 'Desalojo ordenado y rutas libres de peligro.',
+    alt: 'Simulacro de evacuación guiada en campo GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/mesas-dialogo-ejecutivo-estrategico.jpg',
+    title: 'Mesas de Diálogo Ejecutivo & Planificación Estratégica',
+    caption: 'Gobernanza corporativa y toma de decisiones.',
+    alt: 'Mesa de diálogo y planificación ejecutiva GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/gestion-institucional-corporativa.jpg',
+    title: 'Gestión Institucional & Gobierno Corporativo',
+    caption: 'Representación técnica ante gremios y entidades.',
+    alt: 'Encuentro institucional y gobierno corporativo GP Solutions',
   },
 ];
 
@@ -242,21 +380,22 @@ export const AccountingServicesView: React.FC = () => {
       {/* =========================================================================
           3. CARRUSEL ENFOCADO: SERVICIOS CORPORATIVOS
          ========================================================================= */}
-      <section className="py-16 bg-[#081324] text-white overflow-hidden border-t border-sky-900/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
-          <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Especialidades Corporativas GP SOLUTIONS
+      <section className="py-12 sm:py-16 bg-[#081324] text-white overflow-hidden border-t border-sky-900/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8 text-center">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+            Nuestra Experiencia en Terreno
           </h2>
         </div>
 
         <FocusPullCarousel
-          height="480px"
-          cardWidth="min(max(60vw, 290px), 760px)"
-          aspect="16 / 10"
-          blur={6}
+          height="560px"
+          blur={0}
           autoplay={5000}
           background="transparent"
           ink="#ffffff"
+          showCaption={true}
+          showCount={false}
+          showBar={false}
           slides={CORPORATE_CAROUSEL_SLIDES}
         />
       </section>
