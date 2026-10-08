@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
           {/* LADO IZQUIERDO: LOGO Y MARCA */}
           <button
             onClick={() => onSelectTab('inicio')}
-            className="flex items-center gap-2 lg:gap-2.5 xl:gap-3.5 focus:outline-none cursor-pointer group text-left shrink-0 mr-0 xl:mr-4 lg:ml-8 xl:ml-10 2xl:ml-0 transition-all duration-300"
+            className="flex items-center gap-2 lg:gap-2.5 xl:gap-3.5 focus:outline-none cursor-pointer group text-left shrink-0 mr-0 xl:mr-4 lg:ml-16 xl:ml-24 2xl:ml-0 transition-all duration-300"
             aria-label="Ir al inicio de GP Solutions"
             title="GP Solutions S.A.S. - Inicio"
           >
