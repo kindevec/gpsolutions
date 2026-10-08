@@ -25,7 +25,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ activeTab, onS
       {/* Sutil línea de brillo dorado superior */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#FCD34D] to-transparent shadow-[0_0_10px_#FCD34D] pointer-events-none" />
 
-      <div className="flex items-center justify-between max-w-md mx-auto h-11 px-1">
+      <div className="flex items-center justify-between max-w-md sm:max-w-lg md:max-w-xl mx-auto h-11 sm:h-12 px-2 sm:px-4">
         {items.map((item) => {
           const isActive = activeTab === item.key;
           const IconComponent = item.icon;

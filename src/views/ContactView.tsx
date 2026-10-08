@@ -243,9 +243,9 @@ export const ContactView: React.FC = () => {
                     <img
                       src="/logo.webp"
                       alt="Logo Oficial GP Solutions"
-                      className="w-14 h-14 object-contain drop-shadow-md shrink-0 bg-white/10 p-1.5 rounded-2xl border border-white/20"
-                      width={56}
-                      height={56}
+                      className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-md shrink-0 bg-white/10 p-1.5 sm:p-2 rounded-2xl border border-white/20 transition-transform duration-300 hover:scale-105"
+                      width={64}
+                      height={64}
                     />
                     <div>
                       <h3 className="font-heading font-black text-lg text-white leading-tight">

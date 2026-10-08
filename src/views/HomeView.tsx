@@ -150,7 +150,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           1. HERO INSTITUCIONAL ONDULADO CON FOTO DE FONDO + 4 CÍRCULOS EN LA CURVA
          ========================================================================= */}
-      <section className="relative pt-24 sm:pt-28 md:pt-48 lg:pt-52 pb-16 sm:pb-20 md:pb-24 overflow-hidden bg-[#102547]">
+      <section className="relative pt-24 sm:pt-28 md:pt-36 lg:pt-44 xl:pt-52 pb-16 sm:pb-20 md:pb-24 overflow-hidden bg-[#102547]">
         {/* Foto de Fondo Panorámica con Edificios a la izquierda y Logo Oficial a la derecha */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           {/* LADO IZQUIERDO: Foto de edificios que se desvanece suavemente hacia el centro */}
@@ -178,34 +178,34 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 xl:px-8 relative z-10">
           
           <div className="relative mt-0 sm:mt-2 md:mt-4 mb-8 sm:mb-12">
             
-            {/* EN DESKTOP (lg:flex): Logo en la capa de fondo detrás de las letras en el ala derecha */}
-            <div className="hidden lg:flex absolute right-0 top-[52%] -translate-y-1/2 translate-x-28 sm:translate-x-36 md:translate-x-48 lg:translate-x-56 xl:translate-x-64 w-[300px] sm:w-[390px] md:w-[480px] lg:w-[560px] xl:w-[620px] aspect-square -z-10 pointer-events-none select-none items-center justify-center">
+            {/* EN DESKTOP Y LAPTOPS (lg:flex): Logo en el ala derecha adaptado armónicamente sin recortarse */}
+            <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 lg:translate-x-0 xl:translate-x-4 2xl:translate-x-8 w-[340px] lg:w-[380px] xl:w-[480px] 2xl:w-[580px] aspect-square -z-10 pointer-events-none select-none items-center justify-center transition-all duration-300">
               {/* Anillo perimetral con cambio de color sincronizado solo en el borde */}
-              <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] logo-ring-cycle pointer-events-none z-10" />
+              <div className="absolute inset-0 rounded-full border-2 lg:border-[2.5px] xl:border-[3px] logo-ring-cycle pointer-events-none z-10" />
 
               <picture>
                 <source srcSet="/logo.avif" type="image/avif" />
                 <source srcSet="/logo.webp" type="image/webp" />
                 <img
                   src="/logo.png"
-                  alt="Logo GP Solutions de fondo detrás de las letras"
-                  className="w-full h-full object-contain opacity-65 sm:opacity-70 lg:opacity-75 logo-border-glow-cycle"
-                  width={620}
-                  height={620}
+                  alt="Logo Oficial GP Solutions"
+                  className="w-full h-full object-contain opacity-85 lg:opacity-92 xl:opacity-98 logo-border-glow-cycle drop-shadow-[0_12px_36px_rgba(0,0,0,0.55)]"
+                  width={580}
+                  height={580}
                   loading="eager"
                 />
               </picture>
             </div>
 
             {/* COLUMNA EN SU LUGAR ORIGINAL A LA IZQUIERDA CON TEXTO CENTRADO */}
-            <div className="relative z-10 max-w-2xl lg:max-w-3xl flex flex-col items-center lg:items-start">
+            <div className="relative z-10 max-w-2xl lg:max-w-[55%] xl:max-w-3xl flex flex-col items-center lg:items-start">
               
               {/* Título Principal Centrado dentro de su columna */}
-              <h1 className="w-full font-heading text-2xl sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.25rem] font-black tracking-tight leading-[1.12] mb-4 text-white drop-shadow-md text-center">
+              <h1 className="w-full font-heading text-2xl sm:text-4xl md:text-5xl lg:text-[2.65rem] xl:text-[3.25rem] font-black tracking-tight leading-[1.12] mb-4 text-white drop-shadow-md text-center">
                 <span>ASESORÍA EN </span>
                 <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
                   SEGURIDAD Y SALUD OCUPACIONAL
@@ -239,11 +239,11 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                 </a>
               </div>
 
-              {/* EN MÓVIL (lg:hidden): Logo más grande posicionado después del botón de solicitar */}
-              <div className="flex lg:hidden justify-center items-center mt-7 sm:mt-9 w-full">
-                <div className="relative w-60 h-60 xs:w-72 xs:h-72 sm:w-80 sm:h-80 flex items-center justify-center">
+              {/* EN MÓVIL Y TABLET (lg:hidden): Logo adaptado con proporciones ideales para tablets */}
+              <div className="flex lg:hidden justify-center items-center mt-7 sm:mt-9 md:mt-10 w-full">
+                <div className="relative w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-center justify-center">
                   {/* Anillo perimetral con cambio de color sincronizado solo en el borde */}
-                  <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] logo-ring-cycle pointer-events-none z-10" />
+                  <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] md:border-[3px] logo-ring-cycle pointer-events-none z-10" />
 
                   <picture>
                     <source srcSet="/logo.avif" type="image/avif" />
@@ -251,7 +251,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                     <img
                       src="/logo.png"
                       alt="Logo Oficial GP Solutions"
-                      className="w-full h-full object-contain opacity-95 logo-border-glow-cycle"
+                      className="w-full h-full object-contain opacity-95 logo-border-glow-cycle drop-shadow-[0_8px_30px_rgba(0,0,0,0.55)]"
                       width={320}
                       height={320}
                       loading="eager"

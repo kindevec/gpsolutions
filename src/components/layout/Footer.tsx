@@ -20,19 +20,19 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
           
           {/* Columna 1: Identidad y Razón Social */}
           <div className="lg:col-span-4 flex flex-col gap-2.5 sm:gap-3 text-left">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 sm:gap-3.5">
               <img
                 src="/logo.webp"
                 alt="GP Solutions Logo"
-                className="w-11 h-11 sm:w-12 sm:h-12 object-contain drop-shadow-md shrink-0"
-                width={48}
-                height={48}
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain drop-shadow-md shrink-0 transition-transform duration-300 hover:scale-105"
+                width={64}
+                height={64}
               />
               <div>
-                <span className="font-heading font-black text-lg sm:text-xl text-white tracking-tight leading-none block">
+                <span className="font-heading font-black text-lg sm:text-xl md:text-2xl text-white tracking-tight leading-none block">
                   GP SOLUTIONS
                 </span>
-                <span className="block text-[11px] sm:text-xs text-[#38BDF8] font-semibold tracking-wide mt-0.5">
+                <span className="block text-[11px] sm:text-xs text-[#38BDF8] font-semibold tracking-wide mt-0.5 sm:mt-1">
                   GUERRAPADILLAGPSOLUTIONS S.A.S.
                 </span>
               </div>

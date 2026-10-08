@@ -244,8 +244,9 @@ const FP_CSS = [
   ".fp-bar>i{position:absolute;inset:0 auto 0 0;width:100%;background:var(--fp-ink);transform-origin:left;transform:scaleX(var(--fp-p,0))}",
   ".fp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}",
   "@keyframes fp-in{from{transform:translateY(100%);opacity:0}to{transform:none;opacity:1}}",
-  "@media (min-width:640px){.fp-card{aspect-ratio:4/3;max-height:calc(var(--fp-h) * .84)}}",
-  "@media (max-width:639px){.fp-root{--fp-gap:16px;--fp-w:100%}.fp-card{aspect-ratio:16/10;max-height:300px}.fp-meta{justify-content:center!important;text-align:center!important;padding-inline:16px!important}.fp-cap{width:100%!important;text-align:center!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important}.fp-title{text-align:center!important;width:100%!important;display:block!important}.fp-sub{text-align:center!important;width:100%!important;display:block!important}.fp-count{display:none}}",
+  "@media (min-width:1100px){.fp-card{aspect-ratio:16/10;max-height:calc(var(--fp-h) * .84)}}",
+  "@media (min-width:640px) and (max-width:1099px){.fp-card{aspect-ratio:16/10;max-height:420px}.fp-meta{padding-inline:28px}}",
+  "@media (max-width:639px){.fp-root{--fp-gap:16px;--fp-w:90%}.fp-card{aspect-ratio:16/10;max-height:320px}.fp-meta{justify-content:center!important;text-align:center!important;padding-inline:16px!important}.fp-cap{width:100%!important;text-align:center!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important}.fp-title{text-align:center!important;width:100%!important;display:block!important}.fp-sub{text-align:center!important;width:100%!important;display:block!important}.fp-count{display:none}}",
   "@media (prefers-reduced-motion:reduce){.fp-cap>*{animation:none}.fp-track{scroll-behavior:auto}}",
 ].join("\n")
 
@@ -334,18 +335,21 @@ export default function FocusPullCarousel({
   const updateDimensions = React.useCallback(() => {
     const track = trackRef.current
     if (!track) return
-    const isDesktop = window.innerWidth >= 640
-    const gap = isDesktop ? 24 : 16
-    track.style.setProperty("--fp-gap", gap + "px")
+    const width = window.innerWidth
 
-    if (isDesktop) {
-      const trackWidth = track.clientWidth
-      if (trackWidth > 0) {
-        const cardW = Math.floor((trackWidth - 2 * gap) / 3)
-        track.style.setProperty("--fp-w", cardW + "px")
-      }
+    if (width < 640) {
+      track.style.setProperty("--fp-gap", "16px")
+      track.style.setProperty("--fp-w", "90%")
+    } else if (width < 1100) {
+      track.style.setProperty("--fp-gap", "20px")
+      const trackWidth = track.clientWidth || width
+      const cardW = Math.min(Math.max(Math.floor(trackWidth * 0.65), 480), 580)
+      track.style.setProperty("--fp-w", cardW + "px")
     } else {
-      track.style.setProperty("--fp-w", "100%")
+      track.style.setProperty("--fp-gap", "24px")
+      const trackWidth = track.clientWidth || width
+      const cardW = Math.floor((trackWidth - 2 * 24) / 3)
+      track.style.setProperty("--fp-w", cardW + "px")
     }
   }, [])
 
