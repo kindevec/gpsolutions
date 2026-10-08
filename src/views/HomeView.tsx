@@ -183,7 +183,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           <div className="relative mt-0 sm:mt-2 md:mt-4 mb-8 sm:mb-12">
             
             {/* EN DESKTOP Y LAPTOPS (lg:flex): Logo en el ala derecha adaptado armónicamente sin recortarse */}
-            <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 lg:translate-x-10 xl:translate-x-16 2xl:translate-x-8 w-[340px] lg:w-[380px] xl:w-[480px] 2xl:w-[580px] aspect-square -z-10 pointer-events-none select-none items-center justify-center transition-all duration-300">
+            <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 lg:translate-x-32 xl:translate-x-44 2xl:translate-x-8 w-[340px] lg:w-[380px] xl:w-[480px] 2xl:w-[580px] aspect-square -z-10 pointer-events-none select-none items-center justify-center transition-all duration-300">
               {/* Anillo perimetral con cambio de color sincronizado solo en el borde */}
               <div className="absolute inset-0 rounded-full border-2 lg:border-[2.5px] xl:border-[3px] logo-ring-cycle pointer-events-none z-10" />
 
