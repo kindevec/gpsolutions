@@ -182,68 +182,71 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           
           <div className="relative mt-0 sm:mt-2 md:mt-4 mb-8 sm:mb-12">
             
-            {/* EN DESKTOP Y LAPTOPS (lg:flex): Logo en el ala derecha adaptado armónicamente sin recortarse */}
-            <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 lg:translate-x-36 xl:translate-x-52 2xl:translate-x-64 w-[340px] lg:w-[360px] xl:w-[440px] 2xl:w-[480px] aspect-square -z-10 pointer-events-none select-none items-center justify-center transition-all duration-300">
-              {/* Anillo perimetral con cambio de color sincronizado solo en el borde */}
-              <div className="absolute inset-0 rounded-full border-2 lg:border-[2.5px] xl:border-[3px] logo-ring-cycle pointer-events-none z-10" />
+            <div className="grid lg:grid-cols-[1.18fr_0.82fr] xl:grid-cols-[1.2fr_0.8fr] items-center gap-8 lg:gap-10 xl:gap-14 w-full">
+              {/* COLUMNA IZQUIERDA: CONTENIDO DE TEXTO */}
+              <div className="relative z-10 w-full flex flex-col items-center lg:items-start text-center lg:text-left">
+                {/* Título Principal */}
+                <h1 className="w-full font-heading text-2xl sm:text-4xl md:text-5xl lg:text-[2.35rem] xl:text-[3rem] font-black tracking-tight leading-[1.14] mb-4 text-white drop-shadow-md text-center lg:text-left">
+                  <span>ASESORÍA EN </span>
+                  <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
+                    SEGURIDAD Y SALUD OCUPACIONAL
+                  </span>
+                  <span className="text-white">, </span>
+                  <span className="bg-gradient-to-r from-[#38BDF8] via-sky-300 to-white bg-clip-text text-transparent">
+                    TRIBUTARIA
+                  </span>
+                  <span className="text-white"> Y </span>
+                  <span className="bg-gradient-to-r from-emerald-300 to-teal-200 bg-clip-text text-transparent">
+                    LEGAL
+                  </span>
+                </h1>
 
-              <picture>
-                <source srcSet="/logo.avif" type="image/avif" />
-                <source srcSet="/logo.webp" type="image/webp" />
-                <img
-                  src="/logo.png"
-                  alt="Logo Oficial GP Solutions"
-                  className="w-full h-full object-contain opacity-85 lg:opacity-92 xl:opacity-98 logo-border-glow-cycle drop-shadow-[0_12px_36px_rgba(0,0,0,0.55)]"
-                  width={480}
-                  height={480}
-                  loading="eager"
-                />
-              </picture>
-            </div>
+                {/* Párrafo Descriptivo */}
+                <p className="w-full text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed text-justify [text-align:justify] [text-justify:inter-word] [hyphens:none] drop-shadow-sm mb-6 max-w-2xl">
+                  <strong className="text-white">«Control Integral que construye Confianza»</strong>. Más de 12 años brindando asesoría en S.S.O., tributaria, laboral y legal a empresas y emprendedores. Brindamos soluciones seguras para blindar su empresa ante el Ministerio de Trabajo, SRI, IESS y Superintendencia de Compañías, etc.
+                </p>
 
-            {/* COLUMNA EN SU LUGAR ORIGINAL A LA IZQUIERDA CON TEXTO CENTRADO */}
-            <div className="relative z-10 max-w-2xl lg:max-w-[50%] xl:max-w-[54%] 2xl:max-w-[56%] flex flex-col items-center lg:items-start">
-              
-              {/* Título Principal Centrado dentro de su columna */}
-              <h1 className="w-full font-heading text-2xl sm:text-4xl md:text-5xl lg:text-[2.65rem] xl:text-[3.25rem] font-black tracking-tight leading-[1.12] mb-4 text-white drop-shadow-md text-center">
-                <span>ASESORÍA EN </span>
-                <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
-                  SEGURIDAD Y SALUD OCUPACIONAL
-                </span>
-                <span className="text-white">, </span>
-                <span className="bg-gradient-to-r from-[#38BDF8] via-sky-300 to-white bg-clip-text text-transparent">
-                  TRIBUTARIA
-                </span>
-                <span className="text-white"> Y </span>
-                <span className="bg-gradient-to-r from-emerald-300 to-teal-200 bg-clip-text text-transparent">
-                  LEGAL
-                </span>
-              </h1>
+                {/* Botón de acción directa */}
+                <div className="w-full flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                  <a
+                    href={whatsappHeroUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base font-bold text-white bg-gradient-to-r from-[#0284C7] to-[#0369a1] hover:from-[#0369a1] hover:to-[#0284C7] border border-amber-400/60 shadow-lg shadow-sky-500/25 transition-all transform hover:-translate-y-0.5"
+                  >
+                    <WhatsAppIcon className="w-5 h-5 text-white" />
+                    <span>Solicitar Asesoría Inmediata</span>
+                    <ArrowRight className="w-4 h-4 text-amber-300" />
+                  </a>
+                </div>
 
-              {/* Párrafo Descriptivo Bien Justificado sin cortes de palabras */}
-              <p className="w-full text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl text-justify [text-align:justify] [text-justify:inter-word] [hyphens:none] drop-shadow-sm mb-6">
-                <strong className="text-white">«Control Integral que construye Confianza»</strong>. Más de 12 años brindando asesoría en S.S.O., tributaria, laboral y legal a empresas y emprendedores. Brindamos soluciones seguras para blindar su empresa ante el Ministerio de Trabajo, SRI, IESS y Superintendencia de Compañías, etc.
-              </p>
+                {/* EN MÓVIL Y TABLET (lg:hidden): Logo centrado con proporciones armónicas */}
+                <div className="flex lg:hidden justify-center items-center mt-7 sm:mt-9 md:mt-11 w-full">
+                  <div className="relative w-52 h-52 xs:w-60 xs:h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 aspect-square flex items-center justify-center">
+                    {/* Anillo perimetral con cambio de color sincronizado solo en el borde */}
+                    <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] md:border-[3px] logo-ring-cycle pointer-events-none z-10" />
 
-              {/* Botón de acción directa centrado */}
-              <div className="w-full flex flex-wrap items-center justify-center gap-4">
-                <a
-                  href={whatsappHeroUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm sm:text-base font-bold text-white bg-gradient-to-r from-[#0284C7] to-[#0369a1] hover:from-[#0369a1] hover:to-[#0284C7] border border-amber-400/60 shadow-lg shadow-sky-500/25 transition-all transform hover:-translate-y-0.5"
-                >
-                  <WhatsAppIcon className="w-5 h-5 text-white" />
-                  <span>Solicitar Asesoría Inmediata</span>
-                  <ArrowRight className="w-4 h-4 text-amber-300" />
-                </a>
+                    <picture>
+                      <source srcSet="/logo.avif" type="image/avif" />
+                      <source srcSet="/logo.webp" type="image/webp" />
+                      <img
+                        src="/logo.png"
+                        alt="Logo Oficial GP Solutions"
+                        className="w-full h-full object-contain opacity-95 logo-border-glow-cycle drop-shadow-[0_8px_30px_rgba(0,0,0,0.55)]"
+                        width={320}
+                        height={320}
+                        loading="eager"
+                      />
+                    </picture>
+                  </div>
+                </div>
               </div>
 
-              {/* EN MÓVIL Y TABLET (lg:hidden): Logo adaptado con proporciones ideales para tablets */}
-              <div className="flex lg:hidden justify-center items-center mt-7 sm:mt-9 md:mt-10 w-full">
-                <div className="relative w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-center justify-center">
+              {/* COLUMNA DERECHA: LOGO EN DESKTOP Y LAPTOPS (lg:flex) */}
+              <div className="hidden lg:flex items-center justify-center lg:justify-end xl:justify-center w-full">
+                <div className="relative w-[300px] lg:w-[330px] xl:w-[410px] 2xl:w-[470px] aspect-square flex items-center justify-center select-none pointer-events-none transition-all duration-300">
                   {/* Anillo perimetral con cambio de color sincronizado solo en el borde */}
-                  <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] md:border-[3px] logo-ring-cycle pointer-events-none z-10" />
+                  <div className="absolute inset-0 rounded-full border-2 lg:border-[2.5px] xl:border-[3px] logo-ring-cycle pointer-events-none z-10" />
 
                   <picture>
                     <source srcSet="/logo.avif" type="image/avif" />
@@ -251,15 +254,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                     <img
                       src="/logo.png"
                       alt="Logo Oficial GP Solutions"
-                      className="w-full h-full object-contain opacity-95 logo-border-glow-cycle drop-shadow-[0_8px_30px_rgba(0,0,0,0.55)]"
-                      width={320}
-                      height={320}
+                      className="w-full h-full object-contain opacity-90 lg:opacity-95 xl:opacity-100 logo-border-glow-cycle drop-shadow-[0_12px_36px_rgba(0,0,0,0.55)]"
+                      width={470}
+                      height={470}
                       loading="eager"
                     />
                   </picture>
                 </div>
               </div>
-
             </div>
 
           </div>
