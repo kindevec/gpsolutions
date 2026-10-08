@@ -8,6 +8,24 @@ import FocusPullCarousel, { Slide } from '../components/ui/focus-pull-carousel';
 
 const CORPORATE_CAROUSEL_SLIDES: Slide[] = [
   {
+    image: '/images/servicios-corporativos/simulacro-primeros-auxilios-oficina.jpg',
+    title: 'Simulacro de Primeros Auxilios en Oficina',
+    caption: 'Prácticas vivenciales de inmovilización y respuesta inmediata con camilla rígida.',
+    alt: 'Simulacro de primeros auxilios y camilla rígida en oficina GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/capacitacion-recursos-humanos-reglamento-interno.jpg',
+    title: 'Recursos Humanos & Reglamento Interno de Trabajo',
+    caption: 'Asesoría legal laboral y socialización presencial de normativas internas.',
+    alt: 'Capacitación en reglamento interno de trabajo y recursos humanos GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/entrenamiento-rescate-camilla-rigida.jpg',
+    title: 'Entrenamiento Táctico de Brigadas & Rescate',
+    caption: 'Simulacro de rescate en campo, traslado seguro y fijación espinal de lesionados.',
+    alt: 'Entrenamiento de brigada en rescate con camilla rígida GP Solutions',
+  },
+  {
     image: '/images/servicios-corporativos/brigada-primeros-auxilios-camilla.jpg',
     title: 'Entrenamiento de Brigadas & Primeros Auxilios',
     caption: 'Prácticas de inmovilización en camilla rígida y protocolos de respuesta.',
@@ -30,12 +48,6 @@ const CORPORATE_CAROUSEL_SLIDES: Slide[] = [
     title: 'Conferencias & Cooperación Institucional',
     caption: 'Articulación técnica con organismos multilaterales y gobierno corporativo.',
     alt: 'Conferencia de cooperación institucional y gobernanza GP Solutions',
-  },
-  {
-    image: '/images/servicios-corporativos/capacitacion-recursos-humanos-reglamento-interno.jpg',
-    title: 'Recursos Humanos & Reglamento Interno de Trabajo',
-    caption: 'Asesoría legal laboral y socialización normativa para el personal.',
-    alt: 'Capacitación en reglamento interno de trabajo y recursos humanos GP Solutions',
   },
   {
     image: '/images/servicios-corporativos/seminario-tecnico-institucional.jpg',

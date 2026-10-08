@@ -60,12 +60,9 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
               </span>
               <span className="text-white"> & </span>
               <span className="text-[#38BDF8]">Legal</span>
-              <span className="block text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-200 mt-2">
-                en <span className="text-[#38BDF8]">Quito</span> & Cobertura Nacional
-              </span>
             </h1>
             <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
-              En <strong className="text-white font-bold">{COMPANY_DATA.name}</strong> proporcionamos certeza y tranquilidad integral a personas naturales (RIMPE y Régimen General) y a sociedades mercantiles (S.A.S., Cías. Ltda. y S.A.) en todo el Ecuador.
+              En <strong className="text-white font-bold">{COMPANY_DATA.name}</strong> proporcionamos certeza y tranquilidad integral a personas naturales (RIMPE y Régimen General) y a sociedades mercantiles (S.A.S., Cías. Ltda. y S.A.) en Quito y con cobertura nacional.
             </p>
           </div>
         </div>
@@ -80,7 +77,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           BLOQUE 1: MISIÓN Y VISIÓN (ESTRUCTURA INSTITUCIONAL)
          ========================================================================= */}
-      <section className="-mt-1 pt-6 pb-12 sm:pt-8 sm:pb-16 bg-[#071324] relative z-20 overflow-hidden text-white border-b border-sky-900/40">
+      <section className="-mt-1 pt-14 sm:pt-20 md:pt-24 pb-14 sm:pb-20 bg-[#071324] relative z-20 overflow-hidden text-white border-b border-sky-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             

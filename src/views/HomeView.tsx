@@ -278,7 +278,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           {/* VISTA DESKTOP (sm:flex): 3 Círculos Informativos Oficiales sobre la Curva */}
           <div className="hidden sm:flex items-center justify-center gap-4 sm:gap-6 md:gap-8 mt-4 sm:mt-6 md:mt-8 translate-y-8 sm:translate-y-10 md:translate-y-12">
             {/* Card Circular 1: Seguridad y Salud Ocupacional */}
-            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-amber-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-2 shadow-[0_4px_22px_rgba(245,158,11,0.25)]">
+            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-amber-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none shadow-[0_4px_22px_rgba(245,158,11,0.25)]">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
                 <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
@@ -288,7 +288,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             </div>
 
             {/* Card Circular 2: Asesoría Tributaria */}
-            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-sky-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none transform translate-y-1 sm:translate-y-2 shadow-[0_4px_22px_rgba(56,189,248,0.25)]">
+            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-sky-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none shadow-[0_4px_22px_rgba(56,189,248,0.25)]">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-sky-400/20 text-[#38BDF8] flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-sky-400/30">
                 <Receipt className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
@@ -298,7 +298,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             </div>
 
             {/* Card Circular 3: Asesoría Legal Corporativa */}
-            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-amber-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none transform -translate-y-1 sm:-translate-y-1 shadow-[0_4px_22px_rgba(245,158,11,0.25)]">
+            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 rounded-full bg-[#0d1d36] border-2 border-amber-400/70 backdrop-blur-xl flex flex-col items-center justify-center text-center p-3 sm:p-4 cursor-default pointer-events-none shadow-[0_4px_22px_rgba(245,158,11,0.25)]">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-400/20 text-amber-300 flex items-center justify-center mb-1.5 sm:mb-2 shadow-inner border border-amber-400/30">
                 <Scale className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
