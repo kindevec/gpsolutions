@@ -1,0 +1,358 @@
+import React, { useState, useMemo } from 'react';
+import { WhatsAppIcon } from '../components/ui/SocialIcons';
+import { ALL_SERVICES } from '../data/services';
+import { buildWhatsAppLink } from '../data/company';
+import { CardHoverReveal, CardHoverRevealMain, CardHoverRevealContent } from '../components/ui/reveal-on-hover';
+import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
+import FocusPullCarousel, { Slide } from '../components/ui/focus-pull-carousel';
+
+const CORPORATE_CAROUSEL_SLIDES: Slide[] = [
+  {
+    image: '/images/servicios-corporativos/simulacro-primeros-auxilios-oficina.jpg',
+    title: 'Simulacro de Primeros Auxilios en Oficina',
+    caption: 'Prácticas vivenciales de inmovilización y respuesta inmediata con camilla rígida.',
+    alt: 'Simulacro de primeros auxilios y camilla rígida en oficina GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/capacitacion-recursos-humanos-reglamento-interno.jpg',
+    title: 'Recursos Humanos & Reglamento Interno de Trabajo',
+    caption: 'Asesoría legal laboral y socialización presencial de normativas internas.',
+    alt: 'Capacitación en reglamento interno de trabajo y recursos humanos GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/entrenamiento-rescate-camilla-rigida.jpg',
+    title: 'Entrenamiento Táctico de Brigadas & Rescate',
+    caption: 'Simulacro de rescate en campo, traslado seguro y fijación espinal de lesionados.',
+    alt: 'Entrenamiento de brigada en rescate con camilla rígida GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/brigada-primeros-auxilios-camilla.jpg',
+    title: 'Entrenamiento de Brigadas & Primeros Auxilios',
+    caption: 'Prácticas de inmovilización en camilla rígida y protocolos de respuesta.',
+    alt: 'Entrenamiento de brigada de primeros auxilios y camilla rígida GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/practica-inmovilizacion-camilla-rigida.jpg',
+    title: 'Protocolos de Evacuación & Camilla Rígida',
+    caption: 'Práctica vivencial de brigadas en estabilización y traslado de pacientes.',
+    alt: 'Práctica de inmovilización y traslado en camilla rígida GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/ponencia-magistral-koica-ecuador.jpg',
+    title: 'Ponencias Magistrales & Representación Técnica',
+    caption: 'Exposiciones institucionales y consultoría técnica de alto nivel.',
+    alt: 'Ponencia magistral y representación institucional GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/conferencia-cooperacion-internacional.jpg',
+    title: 'Conferencias & Cooperación Institucional',
+    caption: 'Articulación técnica con organismos multilaterales y gobierno corporativo.',
+    alt: 'Conferencia de cooperación institucional y gobernanza GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/seminario-tecnico-institucional.jpg',
+    title: 'Seminarios & Capacitaciones Especializadas',
+    caption: 'Formación continua y exposiciones directivas para organizaciones.',
+    alt: 'Seminario técnico y capacitación empresarial GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/pausa-activa-ergonomia-oficina.jpg',
+    title: 'Pausas Activas & Ergonomía Laboral',
+    caption: 'Dinámicas preventivas de salud ocupacional y bienestar en oficina.',
+    alt: 'Pausas activas y salud ocupacional en oficina GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/estiramiento-ergonomia-salud-ocupacional.jpg',
+    title: 'Salud Ocupacional & Compensación Postural',
+    caption: 'Ejercicios guiados de elongación y prevención de fatiga osteomuscular.',
+    alt: 'Ejercicios de estiramiento y ergonomía laboral GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/capacitacion-seguridad-operativa.jpg',
+    title: 'Protocolos de Seguridad & Prevención de Riesgos',
+    caption: 'Capacitación integral en medidas de resguardo y seguridad operativa.',
+    alt: 'Capacitación en normas de seguridad y prevención GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/entrega-certificados-capacitacion.jpg',
+    title: 'Certificación & Acreditación de Competencias',
+    caption: 'Entrega de certificados oficiales a participantes en jornadas técnicas.',
+    alt: 'Entrega de certificados de participación en capacitación GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/simulacro-evacuacion-campo-brigadas.jpg',
+    title: 'Simulacros de Evacuación & Respuesta en Campo',
+    caption: 'Coordinación táctica de brigadas y ejercicios prácticos de primeros auxilios.',
+    alt: 'Simulacro de evacuación en campo y brigadas de emergencia GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/seguridad-institucional-koica-seminario.jpg',
+    title: 'Seminarios de Seguridad Institucional & Corporativa',
+    caption: 'Jornadas formativas en resguardo y protocolos preventivos para organismos.',
+    alt: 'Seminario de seguridad institucional KOICA GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/capacitacion-rcp-soporte-vital-basico.jpg',
+    title: 'Soporte Vital Básico & Práctica con Maniquí Clínico',
+    caption: 'Capacitación práctica en reanimación cardiopulmonar (RCP) para brigadistas.',
+    alt: 'Capacitación en RCP y soporte vital con maniquí clínico GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/pausa-activa-bandas-elasticas-ergonomia.jpg',
+    title: 'Pausas Activas & Ejercicios con Bandas Elásticas',
+    caption: 'Dinámicas con bandas elásticas para fortalecimiento y prevención ergonómica.',
+    alt: 'Pausas activas con bandas elásticas en oficina GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/taller-normativa-laboral-equipo-corporativo.jpg',
+    title: 'Talleres de Cumplimiento Normativo & Socialización',
+    caption: 'Sesiones interactivas de asesoría laboral y clima organizacional en equipo.',
+    alt: 'Taller de cumplimiento normativo y reglamento interno GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/entrenamiento-brigada-contra-incendios-extintor.jpg',
+    title: 'Brigadas Contra Incendios & Uso de Extintores',
+    caption: 'Práctica vivencial de control y extinción de amagos de fuego en campo.',
+    alt: 'Práctica de extinción de incendios con extintor portátil GP Solutions',
+  },
+  {
+    image: '/images/servicios-corporativos/taller-induccion-seguridad-integral.jpg',
+    title: 'Instrucción Técnica & Formación Continua',
+    caption: 'Sesiones formativas de prevención de riesgos y seguridad ocupacional.',
+    alt: 'Taller de instrucción técnica y seguridad integral GP Solutions',
+  },
+];
+
+
+export const AccountingServicesView: React.FC = () => {
+  const [filterCategory, setFilterCategory] = useState<'todos' | 'seguridad-salud' | 'legal-corporativa'>('todos');
+
+  const displayedServices = useMemo(() => {
+    return ALL_SERVICES.filter((s) => {
+      if (filterCategory === 'todos') {
+        return s.category === 'seguridad-salud' || s.category === 'legal-corporativa';
+      }
+      return s.category === filterCategory;
+    });
+  }, [filterCategory]);
+
+  return (
+    <div className="bg-[#F4F8FC] text-[#102547]">
+      
+      {/* =========================================================================
+          1. HEADER INSTITUCIONAL ONDULADO (TÍTULO Y TEXTO CENTRADOS)
+         ========================================================================= */}
+      <section className="relative pt-40 pb-28 sm:pt-48 sm:pb-32 md:pt-56 md:pb-36 overflow-hidden bg-[#102547]">
+        {/* Foto de Fondo con Máscara Ondulada y Overlays */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/heroes/hero-accounting.jpg"
+            alt="Servicios Corporativos y Seguridad Ocupacional en GP Solutions"
+            className="w-full h-full object-cover object-center transform scale-105"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/95 via-[#102547]/88 to-[#0c1a30]/82" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1a30]/80 via-transparent to-[#102547]/90" />
+          <div className="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
+        </div>
+
+        {/* Contenido del Hero Centrado */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center mt-4 sm:mt-8">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
+            <span className="text-white">Servicios </span>
+            <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
+              Corporativos
+            </span>
+            <span className="text-white"> & </span>
+            <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
+              Seguridad Ocupacional
+            </span>
+          </h1>
+
+          <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+            Matrices de riesgo y planes de emergencia, reglamentos en SUT, capacitaciones obligatorias, constitución de SAS, custodia de libros societarios y registro de marcas SENADI.
+          </p>
+        </div>
+
+        {/* Onda Divisoria */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none translate-y-px">
+          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="organic" />
+        </div>
+      </section>
+
+
+      {/* =========================================================================
+          2. GRID DE TARJETAS ESTILO CONTABILIDAD Y BALANCES (CARD HOVER REVEAL)
+         ========================================================================= */}
+      <section className="-mt-1 py-12 sm:py-20 bg-white relative z-20 overflow-hidden">
+        <div className="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          {/* Selector de Categorías (Pills Interactivas) */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 mb-10 sm:mb-14">
+            <button
+              onClick={() => setFilterCategory('todos')}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+                filterCategory === 'todos'
+                  ? 'bg-[#102547] text-white shadow-lg shadow-blue-950/30 ring-2 ring-amber-400'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+              }`}
+            >
+              Todos los Servicios (10)
+            </button>
+            <button
+              onClick={() => setFilterCategory('seguridad-salud')}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+                filterCategory === 'seguridad-salud'
+                  ? 'bg-amber-500 text-slate-950 font-black shadow-lg shadow-amber-500/30 ring-2 ring-amber-300'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+              }`}
+            >
+              Seguridad y Salud Ocupacional (4)
+            </button>
+            <button
+              onClick={() => setFilterCategory('legal-corporativa')}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
+                filterCategory === 'legal-corporativa'
+                  ? 'bg-[#0284C7] text-white shadow-lg shadow-sky-600/30 ring-2 ring-sky-300'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+              }`}
+            >
+              Asesoría Legal Corporativa (6)
+            </button>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-7 lg:gap-8">
+            {displayedServices.map((service, idx) => {
+              const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
+              const isGold = idx % 2 === 1;
+              return (
+                <div
+                  key={service.id}
+                  className="w-full md:w-[calc((100%-1.75rem)/2)] lg:w-[calc((100%-4rem)/3)] max-w-md md:max-w-none flex flex-col"
+                >
+                  <CardHoverReveal className={`w-full h-[500px] sm:h-[520px] md:h-[540px] rounded-3xl overflow-hidden shadow-xl border ${
+                    isGold
+                      ? 'border-amber-400/40 hover:border-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.35)]'
+                      : 'border-slate-700/60 hover:border-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.25)]'
+                  } bg-slate-900 relative group transition-all duration-500 hover:-translate-y-1.5`}>
+                    
+                    {/* Portada Principal con Imagen Nítida sin tintes azules */}
+                    <CardHoverRevealMain className="size-full">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="size-full object-cover group-hover:scale-108 transition-transform duration-500 opacity-100"
+                        loading="lazy"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (!target.src.includes('hero-accounting.jpg')) {
+                            target.src = '/images/heroes/hero-accounting.jpg';
+                          }
+                        }}
+                      />
+                      {/* Degradado oscuro neutro inferior para máxima legibilidad del texto sin teñir la foto de azul */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
+
+                      {/* Haz de luz perimetral sutil en dorado */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/15 via-transparent to-yellow-300/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+
+                      {/* Indicador táctil en pantallas móviles para descubrir entregables */}
+                      <div className="absolute top-4 left-4 z-20 lg:hidden flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/75 backdrop-blur-md border border-white/20 text-[10.5px] font-semibold text-slate-200 pointer-events-none group-data-[revealed=true]:opacity-0 transition-opacity duration-300">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                        <span>Toca para detalles</span>
+                      </div>
+
+                      {/* Título y descripción en la base: Visibles completos sin cortes, se ocultan al revelar */}
+                      <div className="absolute bottom-5 left-5 right-5 z-10 transition-all duration-300 opacity-100 group-hover:opacity-0 group-hover:translate-y-4 group-data-[revealed=true]:opacity-0 group-data-[revealed=true]:translate-y-4 pointer-events-none">
+                        <h3 className="text-lg sm:text-xl font-heading font-black text-white leading-snug drop-shadow-md">
+                          {service.title}
+                        </h3>
+                        <p className="text-xs sm:text-[13px] text-slate-200 mt-2 leading-relaxed drop-shadow-sm">
+                          {service.description}
+                        </p>
+                      </div>
+                    </CardHoverRevealMain>
+
+                    {/* Contenido desplegable en Hover: Solo se muestra este cuadro al pasar el mouse */}
+                    <CardHoverRevealContent className={`space-y-3.5 rounded-2xl bg-gradient-to-b from-[#091426]/95 via-[#0c1e38]/95 to-[#091426]/98 backdrop-blur-2xl border ${
+                      isGold ? 'border-amber-400/50 shadow-[0_10px_35px_rgba(245,158,11,0.25)]' : 'border-sky-400/40 shadow-[0_10px_35px_rgba(2,132,199,0.3)]'
+                    } p-5 sm:p-6 text-white`}>
+                      <div className="space-y-2">
+                        <span className={`text-[11px] sm:text-xs font-bold ${isGold ? 'text-amber-300' : 'text-[#38BDF8]'} uppercase tracking-wider block`}>
+                          Entregables destacados:
+                        </span>
+                        <div className="space-y-2">
+                          {service.deliverables.slice(0, 4).map((item, dIdx) => (
+                            <div key={dIdx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-200">
+                              <span className={`w-1.5 h-1.5 rounded-full ${isGold ? 'bg-amber-400 shadow-[0_0_8px_#f59e0b]' : 'bg-[#38BDF8] shadow-[0_0_8px_#38BDF8]'} mt-1.5 shrink-0`} />
+                              <span className="leading-snug">{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {service.legalBasis && (
+                        <div className="pt-2 border-t border-white/10 text-[11px] text-slate-300 flex items-start gap-1.5">
+                          <span className="font-bold text-[#FCD34D] shrink-0">Base legal:</span>
+                          <span className="leading-tight">{service.legalBasis}</span>
+                        </div>
+                      )}
+
+                      <div className="pt-2 border-t border-white/10">
+                        <a
+                          href={whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold text-xs sm:text-sm ${
+                            isGold
+                              ? 'bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-slate-950 font-black shadow-md shadow-amber-950/40 hover:shadow-[0_0_20px_rgba(245,158,11,0.6)]'
+                              : 'bg-gradient-to-r from-[#0284C7] via-[#0369a1] to-[#102547] hover:from-[#38BDF8] hover:via-[#0284C7] hover:to-[#0369a1] text-white shadow-md hover:shadow-[0_0_20px_rgba(56,189,248,0.5)]'
+                          } transition-all duration-300 active:scale-95`}
+                        >
+                          <span>Cotizar</span>
+                          <WhatsAppIcon className={`w-4 h-4 ${isGold ? 'text-slate-950' : 'text-white'}`} />
+                        </a>
+                      </div>
+                    </CardHoverRevealContent>
+
+                  </CardHoverReveal>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+
+      {/* =========================================================================
+          3. CARRUSEL ENFOCADO: SERVICIOS CORPORATIVOS
+         ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-[#081324] text-white overflow-hidden border-t border-sky-900/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8 text-center">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+            Nuestra Experiencia en Imágenes
+          </h2>
+        </div>
+
+        {CORPORATE_CAROUSEL_SLIDES.length > 0 ? (
+          <FocusPullCarousel
+            height="clamp(400px, 52vw, 560px)"
+            blur={0}
+            autoplay={5000}
+            background="transparent"
+            ink="#ffffff"
+            showCaption={true}
+            showCount={false}
+            showBar={false}
+            slides={CORPORATE_CAROUSEL_SLIDES}
+          />
+        ) : (
+          <div className="max-w-md mx-auto py-12 px-6 text-center text-slate-400 border border-dashed border-slate-700/80 rounded-2xl bg-slate-900/40">
+            <p className="text-sm font-medium">Imágenes anteriores removidas. Esperando nuevas fotografías para el carrusel.</p>
+          </div>
+        )}
+      </section>
+
+    </div>
+  );
+};
