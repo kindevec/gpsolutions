@@ -20,8 +20,8 @@ export const COMPANY_DATA = {
   whatsappBaseUrl: "https://wa.me/593982577313",
   socials: {
     whatsapp: "https://wa.me/593982577313",
-    facebook: "#",
-    instagram: "#",
+    facebook: "https://www.facebook.com/profile.php?id=61595158340101",
+    instagram: "https://www.instagram.com/gpso_lutions/",
     linkedin: "#",
   },
 };
