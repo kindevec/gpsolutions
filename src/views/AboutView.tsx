@@ -16,6 +16,8 @@ import {
   FileText,
   BadgePercent,
   BookOpen,
+  Lock,
+  Handshake,
 } from 'lucide-react';
 import { WhatsAppIcon, LinkedInIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
@@ -168,92 +170,219 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
           </div>
 
-          {/* Valores Corporativos */}
-          <div className="mt-12 sm:mt-16 pt-10 sm:pt-14 border-t border-sky-900/50">
-            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-              <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1.5">
-                Cultura y Principios de Acción
-              </span>
-              <h3 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
-                Valores Corporativos
-              </h3>
+          {/* =========================================================================
+              VALORES CORPORATIVOS - DISEÑO ARQUITECTÓNICO CON MÁSCARAS
+             ========================================================================= */}
+          <div className="mt-14 sm:mt-20 pt-12 sm:pt-16 border-t border-sky-900/60 relative">
+            
+            {/* Máscara de Luz y Textura Institucional Radial de Fondo */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-gradient-to-r from-[#0284C7]/20 via-amber-400/15 to-[#0369a1]/20 rounded-full blur-[140px]" />
+              <img
+                src="/images/reunion-estrategica-equipo.jpg"
+                alt="Textura de fondo valores corporativos"
+                className="w-full h-full object-cover opacity-15 mix-blend-luminosity scale-110"
+              />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {/* Cabecera con Insignia Enmascarada */}
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 relative z-10">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400/15 via-sky-400/10 to-amber-400/15 border border-amber-400/35 backdrop-blur-md mb-3 shadow-[0_0_20px_rgba(245,158,11,0.25)]">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#f59e0b]" />
+                <span className="text-[11px] sm:text-xs font-bold text-amber-300 uppercase tracking-widest font-heading">
+                  Cultura y Principios de Acción
+                </span>
+              </div>
+              <h3 className="font-heading font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight drop-shadow-md">
+                Valores Corporativos
+              </h3>
+              <p className="text-slate-300 text-xs sm:text-sm md:text-base mt-2.5 max-w-2xl mx-auto leading-relaxed">
+                Directrices fundamentales de integridad técnica, blindaje preventivo y confidencialidad que guían cada actuación de nuestra firma en el Ecuador.
+              </p>
+            </div>
+
+            {/* Grid 2 + 3 con Máscaras de Diseño y Marca de Agua Numérica */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-7 relative z-10">
               
-              {/* Valor 1 */}
-              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-sky-400/25 hover:border-sky-300 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-sky-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
-                    <Scale className="w-5 h-5" />
-                  </div>
-                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
-                    Ética y Transparencia
-                  </h4>
+              {/* Valor 1: Ética y Transparencia (Destacado Fila 1 - lg:col-span-3) */}
+              <div className="lg:col-span-3 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/95 via-[#09172c]/98 to-[#071324] border border-sky-400/35 hover:border-[#38BDF8] p-7 sm:p-9 transition-all duration-500 hover:shadow-[0_16px_40px_rgba(56,189,248,0.25)] group flex flex-col justify-between">
+                {/* Máscara Fotográfica Interna en la esquina superior derecha */}
+                <div className="absolute top-0 right-0 w-3/5 h-4/5 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_40%,transparent_80%)] opacity-20 group-hover:opacity-35 transition-opacity duration-500">
+                  <img
+                    src="/images/reunion-directorio.jpg"
+                    alt="Ética y Transparencia"
+                    className="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-sky-900/30 mix-blend-color" />
                 </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Manejo íntegro de la información financiera, legal y de salud ocupacional de cada organización.
-                </p>
+
+                {/* Número de Agua Tipográfico Enmascarado */}
+                <span className="absolute top-1 right-5 font-heading font-black text-7xl sm:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-sky-400/25 via-sky-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
+                  01
+                </span>
+
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0284C7]/30 to-[#0369a1]/20 border border-sky-400/40 text-[#38BDF8] flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
+                      <Scale className="w-6 h-6 stroke-[2.2]" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold text-sky-400 uppercase tracking-widest block">Principio Rector</span>
+                      <h4 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-[#38BDF8] transition-colors">
+                        Ética y Transparencia
+                      </h4>
+                    </div>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl text-left sm:text-justify antialiased">
+                    Manejo íntegro de la información financiera, legal y de salud ocupacional de cada organización.
+                  </p>
+                </div>
+
+                {/* Línea de acento inferior enmascarada */}
+                <div className="relative z-10 mt-6 pt-4 border-t border-sky-900/40 flex items-center gap-2">
+                  <span className="h-1 w-8 rounded-full bg-gradient-to-r from-[#38BDF8] to-transparent" />
+                  <span className="text-[11px] text-sky-300 font-semibold tracking-wide">Rigor profesional irrenunciable</span>
+                </div>
               </div>
 
-              {/* Valor 2 */}
-              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-amber-400/25 hover:border-amber-300 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
-                    Prevención y Rigor
-                  </h4>
+              {/* Valor 2: Prevención y Rigor (Destacado Fila 1 - lg:col-span-3) */}
+              <div className="lg:col-span-3 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/95 via-[#09172c]/98 to-[#071324] border border-amber-400/35 hover:border-amber-400 p-7 sm:p-9 transition-all duration-500 hover:shadow-[0_16px_40px_rgba(245,158,11,0.25)] group flex flex-col justify-between">
+                {/* Máscara Fotográfica Interna */}
+                <div className="absolute top-0 right-0 w-3/5 h-4/5 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_40%,transparent_80%)] opacity-20 group-hover:opacity-35 transition-opacity duration-500">
+                  <img
+                    src="/images/inicio-tributaria-legal/devoluciones-contingencias-home.jpg"
+                    alt="Prevención y Rigor"
+                    className="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-amber-900/30 mix-blend-color" />
                 </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Anticipación a riesgos laborales, fiscales y jurídicos antes de que se conviertan en contingencias.
-                </p>
+
+                {/* Número de Agua Tipográfico Enmascarado */}
+                <span className="absolute top-1 right-5 font-heading font-black text-7xl sm:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-amber-400/25 via-amber-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
+                  02
+                </span>
+
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/30 to-amber-600/20 border border-amber-400/40 text-[#FCD34D] flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
+                      <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block">Metodología Preventiva</span>
+                      <h4 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-amber-300 transition-colors">
+                        Prevención y Rigor
+                      </h4>
+                    </div>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl text-left sm:text-justify antialiased">
+                    Anticipación a riesgos laborales, fiscales y jurídicos antes de que se conviertan en contingencias.
+                  </p>
+                </div>
+
+                {/* Línea de acento inferior enmascarada */}
+                <div className="relative z-10 mt-6 pt-4 border-t border-amber-900/40 flex items-center gap-2">
+                  <span className="h-1 w-8 rounded-full bg-gradient-to-r from-amber-400 to-transparent" />
+                  <span className="text-[11px] text-amber-300 font-semibold tracking-wide">Blindaje técnico integral</span>
+                </div>
               </div>
 
-              {/* Valor 3 */}
-              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-sky-400/25 hover:border-sky-300 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-sky-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-5 h-5" />
+              {/* Valor 3: Confidencialidad (Fila 2 - lg:col-span-2) */}
+              <div className="lg:col-span-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/90 via-[#09172c]/95 to-[#071324] border border-emerald-400/30 hover:border-emerald-400 p-6 sm:p-7 transition-all duration-400 hover:shadow-[0_12px_32px_rgba(16,185,129,0.2)] group flex flex-col justify-between">
+                {/* Máscara Fotográfica Interna */}
+                <div className="absolute top-0 right-0 w-1/2 h-3/4 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_35%,transparent_75%)] opacity-15 group-hover:opacity-30 transition-opacity duration-500">
+                  <img
+                    src="/images/inicio-tributaria-legal/libros-societarios-home.jpg"
+                    alt="Confidencialidad"
+                    className="w-full h-full object-cover filter grayscale contrast-125"
+                  />
+                </div>
+
+                <span className="absolute top-1 right-4 font-heading font-black text-6xl text-transparent bg-clip-text bg-gradient-to-b from-emerald-400/25 via-emerald-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
+                  03
+                </span>
+
+                <div className="relative z-10">
+                  <div className="w-11 h-11 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                    <Lock className="w-5 h-5 stroke-[2.2]" />
                   </div>
-                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
+                  <h4 className="font-heading font-bold text-lg text-white group-hover:text-emerald-300 transition-colors mb-2">
                     Confidencialidad
                   </h4>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Protección absoluta de los datos sensibles de la empresa y sus colaboradores.
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Protección absoluta de los datos sensibles de la empresa y sus colaboradores.
-                </p>
+
+                <div className="relative z-10 mt-5 pt-3.5 border-t border-emerald-900/40 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="text-[10px] text-emerald-300 font-semibold uppercase tracking-wider">Custodia blindada</span>
+                </div>
               </div>
 
-              {/* Valor 4 */}
-              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-amber-400/25 hover:border-amber-300 transition-all duration-300">
-                <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
-                    <Users className="w-5 h-5" />
+              {/* Valor 4: Enfoque Multidisciplinario (Fila 2 - lg:col-span-2) */}
+              <div className="lg:col-span-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/90 via-[#09172c]/95 to-[#071324] border border-sky-400/30 hover:border-[#38BDF8] p-6 sm:p-7 transition-all duration-400 hover:shadow-[0_12px_32px_rgba(56,189,248,0.2)] group flex flex-col justify-between">
+                {/* Máscara Fotográfica Interna */}
+                <div className="absolute top-0 right-0 w-1/2 h-3/4 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_35%,transparent_75%)] opacity-15 group-hover:opacity-30 transition-opacity duration-500">
+                  <img
+                    src="/images/reunion-estrategica-equipo.jpg"
+                    alt="Enfoque Multidisciplinario"
+                    className="w-full h-full object-cover filter grayscale contrast-125"
+                  />
+                </div>
+
+                <span className="absolute top-1 right-4 font-heading font-black text-6xl text-transparent bg-clip-text bg-gradient-to-b from-sky-400/25 via-sky-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
+                  04
+                </span>
+
+                <div className="relative z-10">
+                  <div className="w-11 h-11 rounded-2xl bg-sky-500/20 border border-sky-400/40 text-[#38BDF8] flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                    <Users className="w-5 h-5 stroke-[2.2]" />
                   </div>
-                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
+                  <h4 className="font-heading font-bold text-lg text-white group-hover:text-[#38BDF8] transition-colors mb-2">
                     Enfoque Multidisciplinario
                   </h4>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Trabajo articulado entre áreas de seguridad, tributaria, contable y corporativa.
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Trabajo articulado entre áreas de seguridad, tributaria, contable y corporativa.
-                </p>
+
+                <div className="relative z-10 mt-5 pt-3.5 border-t border-sky-900/40 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                  <span className="text-[10px] text-sky-300 font-semibold uppercase tracking-wider">Sinergia técnica 360°</span>
+                </div>
               </div>
 
-              {/* Valor 5 */}
-              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-sky-400/25 hover:border-sky-300 transition-all duration-300 sm:col-span-2 lg:col-span-1">
-                <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-sky-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
-                    <Award className="w-5 h-5" />
+              {/* Valor 5: Compromiso con el Cliente (Fila 2 - lg:col-span-2) */}
+              <div className="lg:col-span-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/90 via-[#09172c]/95 to-[#071324] border border-amber-400/30 hover:border-amber-400 p-6 sm:p-7 transition-all duration-400 hover:shadow-[0_12px_32px_rgba(245,158,11,0.2)] group flex flex-col justify-between">
+                {/* Máscara Fotográfica Interna */}
+                <div className="absolute top-0 right-0 w-1/2 h-3/4 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_35%,transparent_75%)] opacity-15 group-hover:opacity-30 transition-opacity duration-500">
+                  <img
+                    src="/images/reunion-acuerdo-equipo.jpg"
+                    alt="Compromiso con el Cliente"
+                    className="w-full h-full object-cover filter grayscale contrast-125"
+                  />
+                </div>
+
+                <span className="absolute top-1 right-4 font-heading font-black text-6xl text-transparent bg-clip-text bg-gradient-to-b from-amber-400/25 via-amber-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
+                  05
+                </span>
+
+                <div className="relative z-10">
+                  <div className="w-11 h-11 rounded-2xl bg-amber-500/20 border border-amber-400/40 text-[#FCD34D] flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                    <Handshake className="w-5 h-5 stroke-[2.2]" />
                   </div>
-                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
+                  <h4 className="font-heading font-bold text-lg text-white group-hover:text-amber-300 transition-colors mb-2">
                     Compromiso con el Cliente
                   </h4>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Trato personalizado orientado a resultados medibles y sostenibilidad de negocio.
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Trato personalizado orientado a resultados medibles y sostenibilidad de negocio.
-                </p>
+
+                <div className="relative z-10 mt-5 pt-3.5 border-t border-amber-900/40 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  <span className="text-[10px] text-amber-300 font-semibold uppercase tracking-wider">Cercanía y solvencia</span>
+                </div>
               </div>
 
             </div>
