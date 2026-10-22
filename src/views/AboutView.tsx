@@ -216,16 +216,11 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 </span>
 
                 <div className="relative z-10">
-                  <div className="flex items-center gap-3.5 mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0284C7]/30 to-[#0369a1]/20 border border-sky-400/40 text-[#38BDF8] flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
-                      <Scale className="w-6 h-6 stroke-[2.2]" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-bold text-sky-400 uppercase tracking-widest block">Principio Rector</span>
-                      <h4 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-[#38BDF8] transition-colors">
-                        Ética y Transparencia
-                      </h4>
-                    </div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Scale className="w-6 h-6 sm:w-7 sm:h-7 text-[#38BDF8] stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(56,189,248,0.4)]" />
+                    <h4 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
+                      Ética y Transparencia
+                    </h4>
                   </div>
                   <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl text-left sm:text-justify antialiased">
                     Manejo íntegro de la información financiera, legal y de salud ocupacional de cada organización.
@@ -257,16 +252,11 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 </span>
 
                 <div className="relative z-10">
-                  <div className="flex items-center gap-3.5 mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/30 to-amber-600/20 border border-amber-400/40 text-[#FCD34D] flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300">
-                      <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block">Metodología Preventiva</span>
-                      <h4 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-amber-300 transition-colors">
-                        Prevención y Rigor
-                      </h4>
-                    </div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <ShieldCheck className="w-6 h-6 sm:w-7 sm:h-7 text-[#FCD34D] stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(252,211,77,0.4)]" />
+                    <h4 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-amber-300 transition-colors leading-tight">
+                      Prevención y Rigor
+                    </h4>
                   </div>
                   <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl text-left sm:text-justify antialiased">
                     Anticipación a riesgos laborales, fiscales y jurídicos antes de que se conviertan en contingencias.
@@ -296,12 +286,12 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 </span>
 
                 <div className="relative z-10">
-                  <div className="w-11 h-11 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                    <Lock className="w-5 h-5 stroke-[2.2]" />
+                  <div className="flex items-center gap-3 mb-3">
+                    <Lock className="w-6 h-6 text-emerald-400 stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(52,211,153,0.4)]" />
+                    <h4 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-emerald-300 transition-colors leading-tight">
+                      Confidencialidad
+                    </h4>
                   </div>
-                  <h4 className="font-heading font-bold text-lg text-white group-hover:text-emerald-300 transition-colors mb-2">
-                    Confidencialidad
-                  </h4>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                     Protección absoluta de los datos sensibles de la empresa y sus colaboradores.
                   </p>
@@ -329,12 +319,12 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 </span>
 
                 <div className="relative z-10">
-                  <div className="w-11 h-11 rounded-2xl bg-sky-500/20 border border-sky-400/40 text-[#38BDF8] flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                    <Users className="w-5 h-5 stroke-[2.2]" />
+                  <div className="flex items-center gap-3 mb-3">
+                    <Users className="w-6 h-6 text-[#38BDF8] stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(56,189,248,0.4)]" />
+                    <h4 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
+                      Enfoque Multidisciplinario
+                    </h4>
                   </div>
-                  <h4 className="font-heading font-bold text-lg text-white group-hover:text-[#38BDF8] transition-colors mb-2">
-                    Enfoque Multidisciplinario
-                  </h4>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                     Trabajo articulado entre áreas de seguridad, tributaria, contable y corporativa.
                   </p>
@@ -362,12 +352,12 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                 </span>
 
                 <div className="relative z-10">
-                  <div className="w-11 h-11 rounded-2xl bg-amber-500/20 border border-amber-400/40 text-[#FCD34D] flex items-center justify-center shrink-0 mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                    <Handshake className="w-5 h-5 stroke-[2.2]" />
+                  <div className="flex items-center gap-3 mb-3">
+                    <Handshake className="w-6 h-6 text-[#FCD34D] stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(252,211,77,0.4)]" />
+                    <h4 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-amber-300 transition-colors leading-tight">
+                      Compromiso con el Cliente
+                    </h4>
                   </div>
-                  <h4 className="font-heading font-bold text-lg text-white group-hover:text-amber-300 transition-colors mb-2">
-                    Compromiso con el Cliente
-                  </h4>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                     Trato personalizado orientado a resultados medibles y sostenibilidad de negocio.
                   </p>
