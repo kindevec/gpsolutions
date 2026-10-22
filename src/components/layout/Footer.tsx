@@ -172,29 +172,36 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
                 </span>
               </div>
 
-              {/* Teléfonos de contacto en la misma línea separados por un guion */}
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-md bg-white/10 text-[#38BDF8] flex items-center justify-center shrink-0">
+              {/* Teléfonos de contacto claramente diferenciados */}
+              <div className="flex items-start gap-2 pt-0.5">
+                <div className="w-6 h-6 rounded-md bg-white/10 text-[#38BDF8] flex items-center justify-center shrink-0 mt-0.5">
                   <Phone className="w-3.5 h-3.5" />
                 </div>
-                <div className="flex items-center gap-2 font-semibold flex-wrap">
-                  <a
-                    href={COMPANY_DATA.whatsappBaseUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#38BDF8] transition-colors cursor-pointer"
-                    title="WhatsApp"
-                  >
-                    {COMPANY_DATA.phoneFormatted1}
-                  </a>
-                  <span className="text-slate-400 font-normal">-</span>
-                  <a
-                    href={`tel:${COMPANY_DATA.phoneFormatted2}`}
-                    className="hover:text-[#38BDF8] transition-colors cursor-pointer"
-                    title="Llamar Línea 2"
-                  >
-                    {COMPANY_DATA.phoneFormatted2}
-                  </a>
+                <div className="space-y-1 font-medium text-[11px] sm:text-xs">
+                  <div>
+                    <span className="text-slate-400 block text-[10px]">SSO & Tributaria:</span>
+                    <a
+                      href="https://wa.me/593982577313"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#38BDF8] text-white font-semibold transition-colors cursor-pointer"
+                      title="Contacto Álvaro Guerra"
+                    >
+                      {COMPANY_DATA.phoneFormatted2}
+                    </a>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px]">Legal & WhatsApp General:</span>
+                    <a
+                      href={COMPANY_DATA.whatsappBaseUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#38BDF8] text-white font-semibold transition-colors cursor-pointer"
+                      title="Contacto Luis Guerra / Oficina"
+                    >
+                      {COMPANY_DATA.phoneFormatted1}
+                    </a>
+                  </div>
                 </div>
               </div>
 

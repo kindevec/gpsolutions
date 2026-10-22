@@ -89,7 +89,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Constitución digital de compañías S.A.S., reformas de estatutos, aumentos de capital y cumplimiento ante la Superintendencia de Compañías.',
     image: '/images/inicio-tributaria-legal/asesoria-corporativa-boardroom.png',
     icon: Building2,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito asesoría para: Constitución de Compañías y Asesoría Societaria.',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 997650599), solicito asesoría para: Constitución de Compañías y Asesoría Societaria.',
   },
   {
     id: 'legal-2',
@@ -97,7 +97,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Manejo y actualización de libros societarios, cambios de administradores, nombramientos y representación legal empresarial.',
     image: '/images/inicio-tributaria-legal/libros-societarios-home.jpg',
     icon: Scale,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para: Manejo y Actualización de Libros Societarios.',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 997650599), solicito información para: Manejo y Actualización de Libros Societarios.',
   },
   {
     id: 'legal-3',
@@ -105,7 +105,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Elaboración y revisión de contratos de trabajo y mercantiles, actas de finiquito, trámites ante el IESS y reglamentos internos.',
     image: '/images/inicio-tributaria-legal/laboral-contratos-home.jpg',
     icon: Users,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito asesoría para: Asesoría Laboral Empresarial y Contratos.',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 997650599), solicito asesoría para: Asesoría Laboral Empresarial y Contratos.',
   },
 ];
 
@@ -205,7 +205,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
   };
 
   const whatsappHeroUrl = buildWhatsAppLink(
-    'Hola GP SOLUTIONS (+593 982577313), deseo solicitar asesoría y blindaje para mi empresa en Ecuador.'
+    'Hola GP SOLUTIONS (+593 997650599), deseo solicitar asesoría y blindaje para mi empresa en Ecuador.',
+    'general'
   );
 
   // Los 9 servicios principales de las 3 áreas oficiales de GP SOLUTIONS
@@ -679,7 +680,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-6 no-scrollbar relative z-10"
             >
               {TRIB_LEGAL_CAROUSEL_SERVICES.map((service, cardIdx) => {
-                const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
+                const whatsappUrl = buildWhatsAppLink(
+                  service.whatsappMessage,
+                  service.id.startsWith('legal') ? 'luis' : 'alvaro'
+                );
                 const IconComponent = service.icon;
                 const isGold = cardIdx % 2 === 1;
 

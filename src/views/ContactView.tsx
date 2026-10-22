@@ -35,13 +35,17 @@ export const ContactView: React.FC = () => {
     const cleanServicio = sanitizeInput(formData.servicio);
     const cleanMensaje = sanitizeInput(formData.mensaje);
 
-    const message = `Hola GP SOLUTIONS (+593 982577313), mi nombre es ${cleanNombre}${cleanEmpresa ? ` de la empresa ${cleanEmpresa}` : ''}.
+    const isLegal = formData.servicio === 'Asesoría Legal Corporativa' || formData.servicio === 'Constitución y Liquidación de SAS';
+    const target = isLegal ? 'luis' : (formData.servicio === 'Otra consulta integral' ? 'general' : 'alvaro');
+    const phoneFormatted = (target === 'alvaro') ? COMPANY_DATA.phoneFormatted2 : COMPANY_DATA.phoneFormatted1;
+
+    const message = `Hola GP SOLUTIONS (${phoneFormatted}), mi nombre es ${cleanNombre}${cleanEmpresa ? ` de la empresa ${cleanEmpresa}` : ''}.
 - Teléfono: ${cleanTelefono}
 - Email: ${cleanEmail}
 - Asunto / Área: ${cleanServicio}
 - Detalle: ${cleanMensaje}`;
 
-    window.open(buildWhatsAppLink(message), '_blank');
+    window.open(buildWhatsAppLink(message, target), '_blank');
     setFormSubmitted(true);
   };
 
@@ -273,14 +277,20 @@ export const ContactView: React.FC = () => {
 
                     <div className="flex items-start gap-3">
                       <Phone className="w-4 h-4 text-[#38BDF8] shrink-0 mt-1" />
-                      <div>
-                        <span className="text-slate-300 block text-xs">Líneas Directas:</span>
-                        <a href={`tel:${COMPANY_DATA.phoneFormatted1}`} className="text-white font-bold hover:text-[#38BDF8] block">
-                          {COMPANY_DATA.phoneFormatted1}
-                        </a>
-                        <a href={`tel:${COMPANY_DATA.phoneFormatted2}`} className="text-slate-300 hover:text-white block text-xs mt-0.5">
-                          {COMPANY_DATA.phoneFormatted2}
-                        </a>
+                      <div className="space-y-2">
+                        <span className="text-slate-300 block text-xs">Líneas Telefónicas Directas:</span>
+                        <div>
+                          <span className="text-[11px] text-amber-300 font-semibold block">Seguridad, Salud Ocupacional & Asesoría Tributaria:</span>
+                          <a href={`tel:${COMPANY_DATA.phoneFormatted2}`} className="text-white font-bold hover:text-[#38BDF8] block text-xs sm:text-sm">
+                            {COMPANY_DATA.phoneFormatted2} (Álvaro Guerra)
+                          </a>
+                        </div>
+                        <div>
+                          <span className="text-[11px] text-sky-300 font-semibold block">Asesoría Legal y Corporativa / Contacto General:</span>
+                          <a href={`tel:${COMPANY_DATA.phoneFormatted1}`} className="text-white font-bold hover:text-[#38BDF8] block text-xs sm:text-sm">
+                            {COMPANY_DATA.phoneFormatted1} (Luis Guerra / Oficina)
+                          </a>
+                        </div>
                       </div>
                     </div>
 

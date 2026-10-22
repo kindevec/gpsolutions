@@ -79,21 +79,28 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-4xl mx-auto mt-4 sm:mt-8 mb-8 sm:mb-10">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 font-heading drop-shadow-md leading-[1.12]">
-              <span className="text-white">Firma </span>
-              <span className="bg-gradient-to-r from-[#38BDF8] via-[#7dd3fc] to-white bg-clip-text text-transparent">
-                Contable
-              </span>
-              <span className="text-white">, </span>
-              <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
-                Tributaria
-              </span>
-              <span className="text-white"> & </span>
-              <span className="text-[#38BDF8]">Legal</span>
+          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mt-2 sm:mt-6 mb-6 sm:mb-8">
+            {/* Logo Oficial GP Solutions Centrado */}
+            <div className="relative w-44 h-44 xs:w-52 xs:h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 aspect-square flex items-center justify-center mb-4 sm:mb-6">
+              <div className="absolute inset-0 rounded-full border-2 sm:border-3 logo-ring-cycle pointer-events-none z-10" />
+              <picture>
+                <source srcSet="/logo.avif" type="image/avif" />
+                <source srcSet="/logo.webp" type="image/webp" />
+                <img
+                  src="/logo.png"
+                  alt="Logo Oficial GP Solutions"
+                  className="w-full h-full object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.7)]"
+                  width={288}
+                  height={288}
+                  loading="eager"
+                />
+              </picture>
+            </div>
+            <h1 className="font-heading font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight drop-shadow-md">
+              GP SOLUTIONS S.A.S.
             </h1>
-            <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
-              En <strong className="text-white font-bold">{COMPANY_DATA.name}</strong> proporcionamos certeza y tranquilidad integral a personas naturales (RIMPE y Régimen General) y a sociedades mercantiles (S.A.S., Cías. Ltda. y S.A.) en Quito y con cobertura nacional.
+            <p className="text-xs sm:text-sm md:text-base text-[#38BDF8] font-bold uppercase tracking-widest mt-2">
+              Seguridad y Salud Ocupacional • Asesoría Contable • Tributaria • Legal y Financiera
             </p>
           </div>
         </div>
@@ -106,43 +113,145 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
 
       {/* =========================================================================
-          BLOQUE 1: MISIÓN Y VISIÓN (ESTRUCTURA INSTITUCIONAL)
+          BLOQUE 1: MISIÓN, VISIÓN Y VALORES CORPORATIVOS
          ========================================================================= */}
       <section className="-mt-1 pt-14 sm:pt-20 md:pt-24 pb-14 sm:pb-20 bg-[#071324] relative z-20 overflow-hidden text-white border-b border-sky-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          
+          {/* Misión y Visión con tipografía de alto contraste y legibilidad */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
             
             {/* Tarjeta Misión */}
-            <div className="p-7 sm:p-9 rounded-3xl bg-gradient-to-br from-[#0c1d37] via-[#09172c] to-[#071324] border border-sky-400/30 shadow-xl relative overflow-hidden group hover:border-[#38BDF8] transition-all duration-300">
-              <div className="flex items-center gap-3.5 mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#0284C7]/20 border border-sky-400/40 text-[#38BDF8] flex items-center justify-center font-black">
-                  <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
+            <div className="p-8 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-[#0c1d37] via-[#09172c] to-[#071324] border border-sky-400/40 shadow-2xl relative overflow-hidden group hover:border-[#38BDF8] transition-all duration-300 flex flex-col justify-between">
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-sky-400/10 rounded-full blur-[70px] pointer-events-none" />
+              <div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-[#0284C7]/25 border border-sky-400/50 text-[#38BDF8] flex items-center justify-center font-black shadow-lg">
+                    <ShieldCheck className="w-7 h-7 stroke-[2.2]" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-sky-400 uppercase tracking-widest block">Propósito Institucional</span>
+                    <h3 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white">Misión</h3>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-heading font-black text-xl sm:text-2xl text-white">Misión</h3>
-                </div>
+                <p className="text-slate-100 text-sm sm:text-base lg:text-[17px] leading-relaxed lg:leading-[1.8] font-normal text-left sm:text-justify antialiased">
+                  "En GP Solutions brindamos soluciones integrales en seguridad y salud ocupacional, asesoría contable, legal y financiera, optimizando la gestión estratégica y el cumplimiento normativo de nuestros clientes. Protegemos el talento humano, blindamos la estructura legal y maximizamos la salud financiera de las organizaciones a través de un equipo multidisciplinario altamente calificado, garantizando su tranquilidad operativa y su crecimiento sostenible."
+                </p>
               </div>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed text-justify">
-                Brindar soluciones contables, tributarias, laborales y legales corporativas de la más alta solvencia, otorgando a empresas, emprendedores y personas naturales la seguridad técnica, el cumplimiento normativo preventivo y el control necesario para maximizar su crecimiento con total tranquilidad patrimonial.
-              </p>
             </div>
 
             {/* Tarjeta Visión */}
-            <div className="p-7 sm:p-9 rounded-3xl bg-gradient-to-br from-[#0c1d37] via-[#09172c] to-[#071324] border border-amber-400/30 shadow-xl relative overflow-hidden group hover:border-amber-400 transition-all duration-300">
-              <div className="flex items-center gap-3.5 mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-400/40 text-[#FCD34D] flex items-center justify-center font-black">
-                  <TrendingUp className="w-6 h-6 stroke-[2.2]" />
+            <div className="p-8 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-[#0c1d37] via-[#09172c] to-[#071324] border border-amber-400/40 shadow-2xl relative overflow-hidden group hover:border-amber-400 transition-all duration-300 flex flex-col justify-between">
+              <div className="absolute -top-12 -right-12 w-48 h-48 bg-amber-400/10 rounded-full blur-[70px] pointer-events-none" />
+              <div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-500/25 border border-amber-400/50 text-[#FCD34D] flex items-center justify-center font-black shadow-lg">
+                    <TrendingUp className="w-7 h-7 stroke-[2.2]" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-amber-400 uppercase tracking-widest block">Proyección Estratégica</span>
+                    <h3 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white">Visión</h3>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-heading font-black text-xl sm:text-2xl text-white">Visión</h3>
-                </div>
+                <p className="text-slate-100 text-sm sm:text-base lg:text-[17px] leading-relaxed lg:leading-[1.8] font-normal text-left sm:text-justify antialiased">
+                  "Consolidarnos como la firma aliada líder en asesoría multidisciplinaria, siendo reconocidos por nuestra innovación, ética y excelencia en la gestión del riesgo laboral, legal y financiero. Proyectamos expandir nuestra cobertura a nivel nacional, transformando la complejidad regulatoria en ventajas competitivas y seguridad patrimonial para nuestros socios estratégicos."
+                </p>
               </div>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed text-justify">
-                Consolidarnos a nivel nacional como la firma referente de consultoría integral empresarial, reconocida por su excelencia operativa, innovación digital, cercanía personalizada y capacidad de blindar el desarrollo de cada uno de nuestros clientes ante las entidades de control del Ecuador.
-              </p>
             </div>
 
           </div>
+
+          {/* Valores Corporativos */}
+          <div className="mt-12 sm:mt-16 pt-10 sm:pt-14 border-t border-sky-900/50">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+              <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1.5">
+                Cultura y Principios de Acción
+              </span>
+              <h3 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
+                Valores Corporativos
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              
+              {/* Valor 1 */}
+              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-sky-400/25 hover:border-sky-300 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-sky-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
+                    <Scale className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
+                    Ética y Transparencia
+                  </h4>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Manejo íntegro de la información financiera, legal y de salud ocupacional de cada organización.
+                </p>
+              </div>
+
+              {/* Valor 2 */}
+              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-amber-400/25 hover:border-amber-300 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
+                    Prevención y Rigor
+                  </h4>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Anticipación a riesgos laborales, fiscales y jurídicos antes de que se conviertan en contingencias.
+                </p>
+              </div>
+
+              {/* Valor 3 */}
+              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-sky-400/25 hover:border-sky-300 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-sky-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
+                    <CheckCircle2 className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
+                    Confidencialidad
+                  </h4>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Protección absoluta de los datos sensibles de la empresa y sus colaboradores.
+                </p>
+              </div>
+
+              {/* Valor 4 */}
+              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-amber-400/25 hover:border-amber-300 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
+                    Enfoque Multidisciplinario
+                  </h4>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Trabajo articulado entre áreas de seguridad, tributaria, contable y corporativa.
+                </p>
+              </div>
+
+              {/* Valor 5 */}
+              <div className="p-6 rounded-2xl bg-[#09172c]/90 border border-sky-400/25 hover:border-sky-300 transition-all duration-300 sm:col-span-2 lg:col-span-1">
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-sky-500/20 text-[#38BDF8] flex items-center justify-center shrink-0">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <h4 className="font-heading font-bold text-base sm:text-lg text-white">
+                    Compromiso con el Cliente
+                  </h4>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  Trato personalizado orientado a resultados medibles y sostenibilidad de negocio.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -241,13 +350,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
                 <div className="pt-2 flex justify-center">
                   <a
-                    href={COMPANY_DATA.whatsappBaseUrl}
+                    href={buildWhatsAppLink("Hola Álvaro Guerra (+593 982577313), solicito consultoría directa en Seguridad, Salud Ocupacional o Asesoría Tributaria.", "alvaro")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all shadow-md cursor-pointer"
                   >
                     <WhatsAppIcon className="w-4 h-4 text-white" />
-                    <span>Contactar con Álvaro Guerra</span>
+                    <span>Contactar con Álvaro Guerra (+593 982577313)</span>
                   </a>
                 </div>
               </div>
@@ -330,13 +439,13 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
                 <div className="pt-2 flex justify-center">
                   <a
-                    href={COMPANY_DATA.whatsappBaseUrl}
+                    href={buildWhatsAppLink("Hola Luis Fernando Guerra (+593 997650599), solicito consultoría en Asesoría Legal Corporativa.", "luis")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white transition-all shadow-md cursor-pointer"
                   >
                     <WhatsAppIcon className="w-4 h-4 text-white" />
-                    <span>Contactar con Asesoría Legal</span>
+                    <span>Contactar con Asesoría Legal (+593 997650599)</span>
                   </a>
                 </div>
               </div>
