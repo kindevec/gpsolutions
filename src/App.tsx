@@ -110,9 +110,15 @@ export const App: React.FC = () => {
         {activeTab === 'inicio' && <HomeView onSelectTab={handleSelectTab} />}
         <Suspense fallback={<div className="min-h-[60vh] flex items-center justify-center bg-[#F4F8FC]" />}>
           {activeTab === 'nosotros' && <AboutView onSelectTab={handleSelectTab} />}
-          {(activeTab === 'seguridad-salud' || activeTab === 'servicios-contables') && <OccupationalHealthView />}
-          {(activeTab === 'asesoria-tributaria' || activeTab === 'servicios-tributarios') && <TaxAdvisoryView />}
-          {activeTab === 'asesoria-legal' && <CorporateLegalView />}
+          {(activeTab === 'seguridad-salud' || activeTab === 'servicios-contables') && (
+            <OccupationalHealthView onSelectTab={handleSelectTab} />
+          )}
+          {(activeTab === 'asesoria-tributaria' || activeTab === 'servicios-tributarios') && (
+            <TaxAdvisoryView onSelectTab={handleSelectTab} />
+          )}
+          {activeTab === 'asesoria-legal' && (
+            <CorporateLegalView onSelectTab={handleSelectTab} />
+          )}
           {activeTab === 'contacto' && <ContactView />}
         </Suspense>
       </main>

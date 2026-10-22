@@ -58,6 +58,102 @@ const getServiceIcon = (id: string) => {
   }
 };
 
+const TRIB_LEGAL_CAROUSEL_SERVICES = [
+  {
+    id: 'trib-1',
+    title: 'Cumplimiento y Declaraciones Tributarias',
+    shortText: 'Declaraciones de impuestos periódicas, elaboración y presentación de anexos tributarios y atención de deberes formales ante el SRI.',
+    image: '/images/inicio-tributaria-legal/declaraciones-tributarias-home.jpg',
+    icon: Receipt,
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Cumplimiento y Declaraciones Tributarias.',
+  },
+  {
+    id: 'trib-2',
+    title: 'Asesoría y Planificación Tributaria',
+    shortText: 'Asesoría tributaria permanente, planificación fiscal estratégica y acompañamiento técnico en decisiones con efectos fiscales.',
+    image: '/images/inicio-tributaria-legal/planificacion-tributaria-home.jpg',
+    icon: Sparkles,
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Asesoría y Planificación Tributaria.',
+  },
+  {
+    id: 'trib-3',
+    title: 'Devoluciones y Contingencias Tributarias',
+    shortText: 'Gestión y trámite de devoluciones de impuestos, diagnósticos de cumplimiento y patrocinio especializado ante requerimientos del SRI.',
+    image: '/images/inicio-tributaria-legal/devoluciones-contingencias-home.jpg',
+    icon: Clock,
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito cotizar: Devoluciones de Impuestos y Prevención de Contingencias Tributarias.',
+  },
+  {
+    id: 'legal-1',
+    title: 'Asesoría Corporativa y Societaria',
+    shortText: 'Constitución digital de compañías S.A.S., reformas de estatutos, aumentos de capital y cumplimiento ante la Superintendencia de Compañías.',
+    image: '/images/inicio-tributaria-legal/asesoria-corporativa-boardroom.png',
+    icon: Building2,
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito asesoría para: Constitución de Compañías y Asesoría Societaria.',
+  },
+  {
+    id: 'legal-2',
+    title: 'Manejo de Libros Societarios y Actas',
+    shortText: 'Manejo y actualización de libros societarios, cambios de administradores, nombramientos y representación legal empresarial.',
+    image: '/images/inicio-tributaria-legal/libros-societarios-home.jpg',
+    icon: Scale,
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para: Manejo y Actualización de Libros Societarios.',
+  },
+  {
+    id: 'legal-3',
+    title: 'Asesoría Laboral Empresarial y Contratos',
+    shortText: 'Elaboración y revisión de contratos de trabajo y mercantiles, actas de finiquito, trámites ante el IESS y reglamentos internos.',
+    image: '/images/inicio-tributaria-legal/laboral-contratos-home.jpg',
+    icon: Users,
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito asesoría para: Asesoría Laboral Empresarial y Contratos.',
+  },
+];
+
+const SSO_HOME_CAROUSEL_SERVICES = [
+  {
+    id: 'sso-1',
+    title: 'Gestión Integral del Riesgo Laboral',
+    shortText: 'Acompañamos a su empresa en la implementación y mantenimiento de su gestión de SSO, matrices de riesgo y planes de prevención.',
+    image: '/images/sso-home/gestion-riesgo-laboral.jpg',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Gestión Integral del Riesgo Laboral.',
+  },
+  {
+    id: 'sso-2',
+    title: 'Planes de Emergencia y Evacuación',
+    shortText: 'Elaboración de planes de evacuación, contra incendios, manejo de emergencias y continuidad de operaciones para su personal.',
+    image: '/images/sso-home/planes-emergencia.jpg',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Planes de Emergencia y Evacuación.',
+  },
+  {
+    id: 'sso-3',
+    title: 'Capacitaciones Obligatorias en SSO',
+    shortText: 'Talleres formativos certificados en ergonomía laboral, manejo de productos, prevención de acoso laboral y brigadas.',
+    image: '/images/sso-home/capacitaciones-sso.jpg',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito cotizar: Capacitaciones Obligatorias en SSO para mi empresa.',
+  },
+  {
+    id: 'sso-4',
+    title: 'Reglamentos Internos y Comités',
+    shortText: 'Elaboración y legalización de reglamentos de higiene y seguridad en el SUT y conformación de organismos paritarios.',
+    image: '/images/sso-home/reglamentos-higiene.jpg',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito asesoría para: Elaboración de Reglamentos Internos de Higiene y Seguridad ante el Ministerio del Trabajo.',
+  },
+  {
+    id: 'sso-5',
+    title: 'Cumplimiento y Acompañamiento MDT',
+    shortText: 'Gestión documental, registros ante el Ministerio del Trabajo y preparación técnica para inspecciones laborales y requerimientos.',
+    image: '/images/sso-home/cumplimiento-inspecciones-mdt.jpg',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito acompañamiento técnico para inspecciones del Ministerio del Trabajo.',
+  },
+  {
+    id: 'sso-6',
+    title: 'Matrices de Peligros y Evaluación',
+    shortText: 'Identificación técnica de factores de riesgo por puesto de trabajo, planes de acción para subsanar hallazgos y control preventivo.',
+    image: '/images/sso-home/matrices-evaluacion-riesgos.jpg',
+    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito asesoría para: Matrices de identificación de peligros y evaluación de riesgos.',
+  },
+];
+
 const HERO_PILLARS = [
   {
     id: 'pillar-1',
@@ -382,10 +478,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           {/* Encabezado Centrado */}
           <div className="text-center max-w-4xl mx-auto mb-6 sm:mb-8">
             <h2 className="font-heading text-2xl sm:text-4xl font-black text-[#102547] tracking-tight">
-              Seguridad y Salud Ocupacional, Asesoría Tributaria, Asesoría Legal Corporativa
+              Seguridad y Salud Ocupacional
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-2xl mx-auto leading-relaxed">
-              Matrices de riesgo, reglamentos en el SUT, declaraciones tributarias ante el SRI, constitución de S.A.S. y blindaje de marcas SENADI con respaldo profesional y cobertura nacional.
+              Brindamos asesoría integral en Seguridad y Salud en el Trabajo, orientada a prevenir riesgos laborales, proteger a los trabajadores y facilitar el cumplimiento de las obligaciones aplicables a cada organización.
             </p>
           </div>
 
@@ -411,22 +507,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               ref={accountingScrollRef}
               className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-2 no-scrollbar relative z-10"
             >
-              {featuredServicesList.map((service, idx) => {
+              {SSO_HOME_CAROUSEL_SERVICES.map((service, idx) => {
                 const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
-                
-                const shortDescriptions: Record<string, string> = {
-                  'sso-1': 'Matrices de riesgo por puesto, planes de emergencia y brigadas conformadas.',
-                  'sso-2': 'Reglamentos de higiene y seguridad aprobados en el SUT y comités paritarios.',
-                  'sso-3': 'Talleres certificados en ergonomía, prevención de acoso laboral y emergencias.',
-                  'trib-1': 'Declaraciones periódicas de IVA, Retenciones en la fuente y Renta sin multas.',
-                  'trib-2': 'Recuperación de IVA para tercera edad, exportadores y reclamos por pago indebido.',
-                  'trib-3': 'Roles de pago, décimos, planillas de aportes al IESS y actas de finiquito.',
-                  'legal-1': 'Constitución digital de SAS con estatutos blindados y liquidación de compañías.',
-                  'legal-2': 'Manejo de Libros de Acciones, reformas de estatutos y actas de junta general.',
-                  'legal-3': 'Búsqueda fonética y concesión oficial de marca ante el SENADI por 10 años.',
-                };
-
-                const shortText = shortDescriptions[service.id] || service.description;
                 const isImageTop = idx % 2 === 0;
 
                 const imageBlock = (
@@ -438,8 +520,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                       loading="lazy"
                       onError={(e) => {
                         const target = e.currentTarget;
-                        if (!target.src.includes('hero-accounting.jpg')) {
-                          target.src = '/images/heroes/hero-accounting.jpg';
+                        if (!target.src.includes('gestion-riesgo-laboral.jpg')) {
+                          target.src = '/images/sso-home/gestion-riesgo-laboral.jpg';
                         }
                       }}
                     />
@@ -466,7 +548,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
                       {/* Texto descriptivo Centrado */}
                       <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed mb-5 text-center">
-                        {shortText}
+                        {service.shortText}
                       </p>
                     </div>
 
@@ -560,20 +642,20 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12 gap-5">
             <div>
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight text-center">
-                Asesoría Legal Corporativa & Seguridad Ocupacional
+                Asesoría Tributaria & Asesoría Legal Corporativa
               </h2>
               <p className="text-slate-300 text-xs sm:text-sm mt-2 max-w-2xl mx-auto text-center leading-relaxed">
-                Creación de SAS, libros societarios, marcas SENADI, reglamentos y planes de emergencia con blindaje jurídico y cumplimiento ante el MDT.
+                Cumplimiento tributario ante el SRI, planificación fiscal, constitución de compañías S.A.S., contratos comerciales y blindaje corporativo integral.
               </p>
             </div>
 
             {/* Botón Ver Catálogo Centrado */}
             <div className="flex items-center justify-center shrink-0">
               <button
-                onClick={() => onSelectTab('asesoria-legal')}
+                onClick={() => onSelectTab('asesoria-tributaria')}
                 className="inline-flex items-center gap-2 py-2.5 px-6 rounded-full font-bold text-xs sm:text-sm bg-gradient-to-r from-[#0284c7] to-[#0369a1] hover:from-[#38bdf8] hover:to-[#0284c7] text-white transition-all shadow-md active:scale-95 cursor-pointer"
               >
-                <span>Ver catálogo</span>
+                <span>Ver más</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -596,25 +678,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
               ref={corporateScrollRef}
               className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 pt-6 no-scrollbar relative z-10"
             >
-              {corporateServicesList.map((service, cardIdx) => {
+              {TRIB_LEGAL_CAROUSEL_SERVICES.map((service, cardIdx) => {
                 const whatsappUrl = buildWhatsAppLink(service.whatsappMessage);
-                const IconComponent = getServiceIcon(service.id);
+                const IconComponent = service.icon;
                 const isGold = cardIdx % 2 === 1;
-
-                const shortDescriptions: Record<string, string> = {
-                  'legal-1': 'Constitución ágil de SAS con estatutos blindados y liquidación societaria legal.',
-                  'legal-2': 'Manejo de Libros de Acciones, reformas de estatutos y actas ante SuperCías.',
-                  'legal-3': 'Búsqueda fonética y registro oficial de marca ante el SENADI por 10 años.',
-                  'legal-4': 'Elaboración y revisión técnica de contratos mercantiles y acuerdos NDA.',
-                  'legal-5': 'Acompañamiento jurídico continuo para toma de decisiones y blindaje 360°.',
-                  'legal-6': 'Blindaje en contratación laboral, finiquitos y defensa en inspecciones MDT.',
-                  'sso-1': 'Matrices de identificación de peligros y diseño de planes de emergencia.',
-                  'sso-2': 'Reglamentos de higiene y seguridad legalizados en plataforma SUT del MDT.',
-                  'sso-3': 'Talleres certificados en ergonomía, manejo seguro y prevención de acoso.',
-                  'sso-4': 'Acompañamiento técnico y legal presencial ante inspecciones del MDT e IESS.',
-                };
-
-                const shortText = shortDescriptions[service.id] || service.description;
 
                 return (
                   <div
@@ -646,8 +713,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                           loading="lazy"
                           onError={(e) => {
                             const target = e.currentTarget;
-                            if (!target.src.includes('hero-accounting.jpg')) {
-                              target.src = '/images/heroes/hero-accounting.jpg';
+                            if (!target.src.includes('declaraciones-tributarias.jpg')) {
+                              target.src = '/images/inicio-tributaria-legal/declaraciones-tributarias-home.jpg';
                             }
                           }}
                         />
@@ -667,7 +734,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
 
                           {/* Descripción Centrada */}
                           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed text-center group-hover/card:text-slate-200 transition-colors">
-                            {shortText}
+                            {service.shortText}
                           </p>
                         </div>
 
@@ -684,7 +751,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                             } transition-all duration-300 active:scale-95 group/btn`}
                           >
                             <span>Cotizar</span>
-                            <WhatsAppIcon className={`w-4 h-4 ${isGold ? 'text-slate-950' : 'text-white'}`} />
+                            <WhatsAppIcon className={`w-4 h-4 ${isGold ? 'text-slate-950' : 'text-white'} stroke-[2.2]`} />
                           </a>
                         </div>
                       </div>
