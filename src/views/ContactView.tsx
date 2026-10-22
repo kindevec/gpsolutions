@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Phone,
   Mail,
@@ -6,23 +6,121 @@ import {
   Clock,
   Send,
   CheckCircle2,
+  ChevronDown,
+  Check,
+  ShieldCheck,
+  Receipt,
+  Scale,
+  FileSpreadsheet,
+  Building2,
+  HelpCircle,
 } from 'lucide-react';
 import { WhatsAppIcon, FacebookIcon, InstagramIcon, LinkedInIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import { sanitizeInput } from '../utils/sanitize';
 
+interface ServiceOptionItem {
+  value: string;
+  label: string;
+  detail: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+}
+
+const SERVICE_OPTIONS: ServiceOptionItem[] = [
+  {
+    value: 'Seguridad y Salud Ocupacional',
+    label: 'Seguridad y Salud Ocupacional',
+    detail: 'SSO, Prevención de Riesgos, Reglamentos y Planes de Emergencia',
+    icon: ShieldCheck,
+    color: 'text-[#0284C7]',
+    bgColor: 'bg-sky-50',
+    borderColor: 'border-sky-200/60',
+  },
+  {
+    value: 'Asesoría Tributaria',
+    label: 'Asesoría Tributaria',
+    detail: 'Declaraciones periódicas, SRI, Devoluciones y Planificación Fiscal',
+    icon: Receipt,
+    color: 'text-amber-600',
+    bgColor: 'bg-amber-50',
+    borderColor: 'border-amber-200/60',
+  },
+  {
+    value: 'Asesoría Legal Corporativa',
+    label: 'Asesoría Legal Corporativa',
+    detail: 'Derecho Societario, Contratos, Propiedad Intelectual y Asesoría Laboral',
+    icon: Scale,
+    color: 'text-emerald-600',
+    bgColor: 'bg-emerald-50',
+    borderColor: 'border-emerald-200/60',
+  },
+  {
+    value: 'Servicios Contables y Balances',
+    label: 'Servicios Contables y Balances NIIF',
+    detail: 'Auditoría contable, estructuración de libros y balances para control',
+    icon: FileSpreadsheet,
+    color: 'text-sky-700',
+    bgColor: 'bg-sky-50',
+    borderColor: 'border-sky-200/60',
+  },
+  {
+    value: 'Constitución y Liquidación de SAS',
+    label: 'Constitución y Liquidación de SAS',
+    detail: 'Estructuración digital, reformas estatutarias y nombramientos',
+    icon: Building2,
+    color: 'text-indigo-600',
+    bgColor: 'bg-indigo-50',
+    borderColor: 'border-indigo-200/60',
+  },
+  {
+    value: 'Otra consulta integral',
+    label: 'Otra consulta integral',
+    detail: 'Diagnóstico empresarial multidisciplinario personalizado',
+    icon: HelpCircle,
+    color: 'text-slate-600',
+    bgColor: 'bg-slate-50',
+    borderColor: 'border-slate-200/60',
+  },
+];
+
 export const ContactView: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const selectRef = useRef<HTMLDivElement>(null);
+
   const [formData, setFormData] = useState({
     empresa: '',
     nombre: '',
     email: '',
     telefono: '',
-    servicio: 'Servicios Contables y Corporativos',
+    servicio: 'Seguridad y Salud Ocupacional',
     mensaje: '',
     honeypot: '',
   });
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (selectRef.current && !selectRef.current.contains(e.target as Node)) {
+        setIsSelectOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsSelectOpen(false);
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside, { passive: true });
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -194,20 +292,100 @@ export const ContactView: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Fila 3: Asunto / Área de Interés */}
-                      <div>
-                        <select
-                          value={formData.servicio}
-                          onChange={(e) => setFormData({ ...formData, servicio: e.target.value })}
-                          className="w-full bg-[#F3F4F6] hover:bg-[#EAECEF] focus:bg-white text-slate-800 border border-slate-200/80 focus:border-[#0284C7] rounded-lg px-4 py-3 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 transition-all cursor-pointer"
+                      {/* Fila 3: Menú Desplegable de Área de Interés (Diseño Premium Kindev) */}
+                      <div ref={selectRef} className="relative">
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
+                          Área o Servicio de Interés *
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => setIsSelectOpen((prev) => !prev)}
+                          className={`w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-slate-800 border rounded-xl px-4 py-3 text-xs sm:text-sm flex items-center justify-between transition-all duration-200 cursor-pointer text-left shadow-sm ${
+                            isSelectOpen
+                              ? 'border-[#0284C7] ring-2 ring-sky-500/20 bg-white shadow-md'
+                              : 'border-slate-200/90 hover:border-slate-300'
+                          }`}
+                          aria-haspopup="listbox"
+                          aria-expanded={isSelectOpen}
                         >
-                          <option value="Seguridad y Salud Ocupacional">Área: Seguridad y Salud Ocupacional (SSO / Prevención / Planes de Emergencia)</option>
-                          <option value="Asesoría Tributaria">Área: Asesoría Tributaria (Declaraciones / SRI / Devoluciones / Contingencias)</option>
-                          <option value="Asesoría Legal Corporativa">Área: Asesoría Legal Corporativa (Societario / Contratos / Propiedad Intelectual / Laboral)</option>
-                          <option value="Servicios Contables y Balances">Área: Servicios Contables y Balances NIIF</option>
-                          <option value="Constitución y Liquidación de SAS">Área: Constitución y Liquidación de SAS</option>
-                          <option value="Otra consulta integral">Área: Otra consulta o diagnóstico empresarial integral</option>
-                        </select>
+                          {(() => {
+                            const current = SERVICE_OPTIONS.find((s) => s.value === formData.servicio) || SERVICE_OPTIONS[0];
+                            const IconComp = current.icon;
+                            return (
+                              <div className="flex items-center gap-3 min-w-0 pr-2">
+                                <div className={`w-8 h-8 rounded-lg ${current.bgColor} ${current.color} border ${current.borderColor} flex items-center justify-center shrink-0`}>
+                                  <IconComp className="w-4 h-4" />
+                                </div>
+                                <div className="truncate">
+                                  <span className="font-bold text-slate-900 block truncate leading-tight">
+                                    {current.label}
+                                  </span>
+                                  <span className="text-[11px] text-slate-500 block truncate mt-0.5 font-normal">
+                                    {current.detail}
+                                  </span>
+                                </div>
+                              </div>
+                            );
+                          })()}
+                          <ChevronDown
+                            className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
+                              isSelectOpen ? 'rotate-180 text-[#0284C7]' : ''
+                            }`}
+                          />
+                        </button>
+
+                        {/* Menú desplegable flotante con elevación y microinteracciones */}
+                        {isSelectOpen && (
+                          <div
+                            role="listbox"
+                            className="absolute left-0 right-0 top-full mt-2 z-50 bg-white/98 backdrop-blur-xl rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-slate-200/90 p-1.5 space-y-1 animate-in fade-in zoom-in-95 duration-150 max-h-[340px] overflow-y-auto"
+                          >
+                            {SERVICE_OPTIONS.map((opt) => {
+                              const isCurrent = opt.value === formData.servicio;
+                              const OptionIcon = opt.icon;
+                              return (
+                                <button
+                                  key={opt.value}
+                                  type="button"
+                                  role="option"
+                                  aria-selected={isCurrent}
+                                  onClick={() => {
+                                    setFormData({ ...formData, servicio: opt.value });
+                                    setIsSelectOpen(false);
+                                  }}
+                                  className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center justify-between transition-all duration-150 cursor-pointer ${
+                                    isCurrent
+                                      ? 'bg-sky-50/90 text-[#0284C7] border border-sky-200/80 shadow-xs'
+                                      : 'hover:bg-slate-100/80 text-slate-700'
+                                  }`}
+                                >
+                                  <div className="flex items-center gap-3 min-w-0 pr-2">
+                                    <div
+                                      className={`w-8 h-8 rounded-lg ${opt.bgColor} ${opt.color} border ${opt.borderColor} flex items-center justify-center shrink-0`}
+                                    >
+                                      <OptionIcon className="w-4 h-4" />
+                                    </div>
+                                    <div className="truncate">
+                                      <span
+                                        className={`block text-xs sm:text-sm leading-tight truncate ${
+                                          isCurrent ? 'font-bold text-[#0284C7]' : 'font-semibold text-slate-800'
+                                        }`}
+                                      >
+                                        {opt.label}
+                                      </span>
+                                      <span className="text-[11px] text-slate-400 block truncate mt-0.5">
+                                        {opt.detail}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  {isCurrent && (
+                                    <Check className="w-4 h-4 text-[#0284C7] shrink-0 ml-2 stroke-[2.5]" />
+                                  )}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
                       </div>
 
                       {/* Fila 4: Detalle del Mensaje */}
