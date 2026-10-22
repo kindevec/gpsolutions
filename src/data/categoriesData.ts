@@ -217,7 +217,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Elaboración y revisión de reglamentos internos de trabajo.',
           'Acompañamiento frente a requerimientos e inspecciones laborales.',
         ],
-        image: '/images/inicio-tributaria-legal/laboral-contratos-home.jpg',
+        image: '/images/legal-seccion/asesoria-laboral-empresarial.png',
         authorityBadge: 'MDT & IESS',
       },
     ],
