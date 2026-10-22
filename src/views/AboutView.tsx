@@ -106,9 +106,9 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
               GP SOLUTIONS S.A.S.
             </h1>
 
-            {/* Letras en una sola línea en vista de PC */}
+            {/* Servicios principales en una sola línea en vista de PC */}
             <p className="text-xs sm:text-sm lg:text-[14px] xl:text-[15px] text-[#38BDF8] font-bold uppercase tracking-wider xl:tracking-widest mt-2 lg:whitespace-nowrap leading-relaxed drop-shadow-sm">
-              Seguridad y Salud Ocupacional • Asesoría Contable • Tributaria • Legal y Financiera
+              Seguridad y Salud Ocupacional • Asesoría Tributaria • Asesoría Legal Corporativa
             </p>
 
           </div>
