@@ -139,7 +139,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
     shortTitle: 'Asesoría Legal',
     generalDescription:
       'Brindamos asesoría legal a empresas y emprendedores durante las distintas etapas de sus negocios, desde su constitución y organización societaria hasta sus relaciones contractuales y protección de activos intangibles.',
-    heroImage: '/images/heroes/hero-legal.jpg',
+    heroImage: '/images/heroes/hero-legal-acuerdo.png',
     heroBadge: 'Blindaje Jurídico Societario & Contractual',
     subsections: [
       {
