@@ -164,10 +164,10 @@ export const OccupationalHealthView: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          2. PILARES Y SUBSECCIONES DETALLADAS
+          2. PILARES Y SUBSECCIONES (SIN CONTENEDOR GRANDE - FILAS LIMPIAS)
          ========================================================================= */}
       <section className="-mt-1 py-14 sm:py-20 bg-white relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 divide-y divide-slate-200/80">
           {data.subsections.map((sub, idx) => {
             const isReverse = idx % 2 === 1;
             const whatsappMsg = `Hola GP Solutions (+593 982577313), deseo cotizar el área de: Seguridad y Salud Ocupacional - ${sub.title}.`;
@@ -177,77 +177,76 @@ export const OccupationalHealthView: React.FC = () => {
               <div
                 key={sub.id}
                 id={sub.id}
-                className="scroll-mt-28 rounded-3xl bg-gradient-to-b from-slate-50 to-white border border-slate-200/90 shadow-[0_10px_35px_rgba(16,37,71,0.06)] overflow-hidden transition-all duration-300 hover:shadow-[0_15px_45px_rgba(2,132,199,0.12)]"
+                className={`scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-10 sm:py-16 first:pt-0 ${
+                  isReverse ? 'lg:grid-flow-dense' : ''
+                }`}
               >
-                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-10 lg:p-12 ${isReverse ? 'lg:grid-flow-dense' : ''}`}>
-                  
-                  {/* Bloque Imagen: Limpia sin etiquetas ni títulos */}
-                  <div className={`lg:col-span-5 relative group ${isReverse ? 'lg:col-start-8' : ''}`}>
-                    <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3] bg-slate-900 shadow-xl border-2 border-slate-200/80 group-hover:border-amber-400/80 transition-colors duration-500">
-                      <img
-                        src={sub.image}
-                        alt={sub.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        loading="lazy"
-                        onError={(e) => {
-                          const target = e.currentTarget;
-                          if (!target.src.includes('hero-accounting.jpg')) {
-                            target.src = '/images/heroes/hero-accounting.jpg';
-                          }
-                        }}
-                      />
-                    </div>
+                {/* Bloque Imagen: Limpia sin etiquetas ni títulos */}
+                <div className={`lg:col-span-5 relative group ${isReverse ? 'lg:col-start-8' : ''}`}>
+                  <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3] bg-slate-900 shadow-xl border-2 border-slate-200/80 group-hover:border-amber-400/80 transition-colors duration-500">
+                    <img
+                      src={sub.image}
+                      alt={sub.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (!target.src.includes('hero-accounting.jpg')) {
+                          target.src = '/images/heroes/hero-accounting.jpg';
+                        }
+                      }}
+                    />
                   </div>
-
-                  {/* Bloque Contenido: Título limpio sin números */}
-                  <div className={`lg:col-span-7 flex flex-col justify-center space-y-5 ${isReverse ? 'lg:col-start-1' : ''}`}>
-                    <h2 className="text-2xl sm:text-3xl font-heading font-black text-[#102547] tracking-tight">
-                      {sub.title}
-                    </h2>
-
-                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                      {sub.description}
-                    </p>
-
-                    {/* Lista de Servicios */}
-                    <div className="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-5 sm:p-6 space-y-3">
-                      <h3 className="text-xs font-black uppercase text-[#0284C7] tracking-wider flex items-center gap-2">
-                        <span>Servicios incluidos en esta área:</span>
-                      </h3>
-                      <ul className="grid grid-cols-1 sm:grid-cols-1 gap-2.5">
-                        {sub.services.map((srv, sIdx) => (
-                          <li key={sIdx} className="flex items-start gap-3 text-slate-800 text-xs sm:text-sm">
-                            <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 shrink-0 mt-0.5" />
-                            <span className="font-medium leading-snug">{srv}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Botones de Acción */}
-                    <div className="flex flex-wrap items-center gap-3 pt-2">
-                      <a
-                        href={whatsappUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2.5 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-[#0284C7] via-[#0369a1] to-[#102547] hover:from-[#38BDF8] hover:via-[#0284C7] hover:to-[#0369a1] text-white shadow-md hover:shadow-sky-500/25 transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer"
-                      >
-                        <WhatsAppIcon className="w-4 h-4 text-white" />
-                        <span>Cotizar {sub.title}</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </a>
-
-                      <a
-                        href="tel:+593982577313"
-                        className="inline-flex items-center gap-2 py-3 px-4 rounded-xl font-semibold text-xs sm:text-sm text-slate-700 hover:text-[#0284C7] bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200"
-                      >
-                        <PhoneCall className="w-4 h-4" />
-                        <span>Llamar a un asesor</span>
-                      </a>
-                    </div>
-                  </div>
-
                 </div>
+
+                {/* Bloque Contenido: Título limpio y sin contenedor grande */}
+                <div className={`lg:col-span-7 flex flex-col justify-center space-y-5 ${isReverse ? 'lg:col-start-1' : ''}`}>
+                  <h2 className="text-2xl sm:text-3xl font-heading font-black text-[#102547] tracking-tight">
+                    {sub.title}
+                  </h2>
+
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    {sub.description}
+                  </p>
+
+                  {/* Lista de Servicios */}
+                  <div className="space-y-3 pt-1">
+                    <h3 className="text-xs font-black uppercase text-[#0284C7] tracking-wider flex items-center gap-2">
+                      <span>Servicios incluidos en esta área:</span>
+                    </h3>
+                    <ul className="grid grid-cols-1 gap-2.5">
+                      {sub.services.map((srv, sIdx) => (
+                        <li key={sIdx} className="flex items-start gap-3 text-slate-800 text-xs sm:text-sm">
+                          <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 shrink-0 mt-0.5" />
+                          <span className="font-medium leading-snug">{srv}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Botones de Acción: En la misma línea */}
+                  <div className="flex items-center gap-3 pt-2 flex-nowrap overflow-x-auto no-scrollbar">
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 py-3 px-5 sm:px-6 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-[#0284C7] via-[#0369a1] to-[#102547] hover:from-[#38BDF8] hover:via-[#0284C7] hover:to-[#0369a1] text-white shadow-md hover:shadow-sky-500/25 transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
+                    >
+                      <WhatsAppIcon className="w-4 h-4 text-white" />
+                      <span>Cotizar</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+
+                    <a
+                      href="tel:+593982577313"
+                      className="inline-flex items-center justify-center gap-2 py-3 px-4 sm:px-5 rounded-xl font-semibold text-xs sm:text-sm text-slate-700 hover:text-[#0284C7] bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200 whitespace-nowrap shrink-0"
+                    >
+                      <PhoneCall className="w-4 h-4" />
+                      <span>Llamar a un asesor</span>
+                    </a>
+                  </div>
+                </div>
+
               </div>
             );
           })}
