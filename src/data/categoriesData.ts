@@ -25,7 +25,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
     shortTitle: 'Seguridad y Salud',
     generalDescription:
       'Brindamos asesoría integral en Seguridad y Salud en el Trabajo, orientada a prevenir riesgos laborales, proteger a los trabajadores y facilitar el cumplimiento de las obligaciones aplicables a cada organización.',
-    heroImage: '/images/heroes/hero-sso.jpg',
+    heroImage: '/images/heroes/hero-sso-equipo.png',
     heroBadge: 'Gestión Laboral & Prevención Integral',
     subsections: [
       {
