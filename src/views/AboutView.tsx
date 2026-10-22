@@ -18,6 +18,8 @@ import {
   BookOpen,
   Lock,
   Handshake,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import { WhatsAppIcon, LinkedInIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
@@ -53,6 +55,8 @@ interface AboutViewProps {
 
 export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
   const [historySlide, setHistorySlide] = useState(0);
+  const [showMoreAlvaro, setShowMoreAlvaro] = useState(false);
+  const [showMoreLuis, setShowMoreLuis] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -456,17 +460,32 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                   Con más de 12 años de trayectoria liderando la gestión contable, tributaria y societaria en el Ecuador, Álvaro Guerra ha posicionado a GP SOLUTIONS como un aliado estratégico fundamental para personas naturales y compañías.
                 </p>
 
-                <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
-                  Su dirección técnica combina rigor metodológico bajo normas NIIF, estructuración preventiva ante el SRI, auditoría de balances y una constante optimización de procesos que blindan patrimonialmente a cada cliente.
-                </p>
+                {/* En móvil se comprime; en desktop siempre visible */}
+                <div className={showMoreAlvaro ? "space-y-4 transition-all duration-300" : "hidden lg:block lg:space-y-4"}>
+                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
+                    Su dirección técnica combina rigor metodológico bajo normas NIIF, estructuración preventiva ante el SRI, auditoría de balances y una constante optimización de procesos que blindan patrimonialmente a cada cliente.
+                  </p>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
-                  Especialista en planificación fiscal integral, auditorías preventivas y cumplimiento ante la Superintendencia de Compañías, IESS y Ministerio del Trabajo, asesora a accionistas y directores en la toma de decisiones contables de alto impacto.
-                </p>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                    Especialista en planificación fiscal integral, auditorías preventivas y cumplimiento ante la Superintendencia de Compañías, IESS y Ministerio del Trabajo, asesora a accionistas y directores en la toma de decisiones contables de alto impacto.
+                  </p>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
-                  Su gestión garantiza solvencia financiera, optimización tributaria legítima y un acompañamiento continuo que protege el patrimonio empresarial frente a revisiones o requerimientos de las entidades de control.
-                </p>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                    Su gestión garantiza solvencia financiera, optimización tributaria legítima y un acompañamiento continuo que protege el patrimonio empresarial frente a revisiones o requerimientos de las entidades de control.
+                  </p>
+                </div>
+
+                {/* Botón Ver Más / Ver Menos exclusivo para móviles */}
+                <div className="lg:hidden flex justify-center pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setShowMoreAlvaro(!showMoreAlvaro)}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#38BDF8] hover:text-sky-300 py-1.5 px-3 rounded-lg bg-sky-950/50 border border-sky-500/30 transition-all cursor-pointer shadow-sm active:scale-95"
+                  >
+                    <span>{showMoreAlvaro ? 'Ver menos' : 'Ver más'}</span>
+                    {showMoreAlvaro ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
 
                 <div className="pt-2 flex justify-center">
                   <a
@@ -540,22 +559,36 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
               </div>
 
               <div className="lg:col-span-7 space-y-4 order-2 text-left">
-
                 <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
                   Abogado con amplia experiencia en asesoría jurídica a empresas nacionales e internacionales, brindando acompañamiento integral en asuntos corporativos, contractuales, tributarios, regulatorios y de cumplimiento.
                 </p>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
-                  A lo largo de su trayectoria profesional ha asesorado a compañías y organizaciones de diversos sectores, entre ellos telecomunicaciones, tecnología, servicios financieros y cobranza, seguros, salud, educación, construcción e inmobiliario, comercio y servicios, así como entidades del sector público y organizaciones internacionales.
-                </p>
+                {/* En móvil se comprime; en desktop siempre visible */}
+                <div className={showMoreLuis ? "space-y-4 transition-all duration-300" : "hidden lg:block lg:space-y-4"}>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                    A lo largo de su trayectoria profesional ha asesorado a compañías y organizaciones de diversos sectores, entre ellos telecomunicaciones, tecnología, servicios financieros y cobranza, seguros, salud, educación, construcción e inmobiliario, comercio y servicios, así como entidades del sector público y organizaciones internacionales.
+                  </p>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
-                  Su práctica comprende la elaboración y negociación de contratos comerciales, asesoría societaria, análisis de aspectos legales vinculados con obligaciones tributarias y operaciones empresariales, protección de datos personales, telecomunicaciones, tecnología, propiedad intelectual y cumplimiento regulatorio.
-                </p>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                    Su práctica comprende la elaboración y negociación de contratos comerciales, asesoría societaria, análisis de aspectos legales vinculados con obligaciones tributarias y operaciones empresariales, protección de datos personales, telecomunicaciones, tecnología, propiedad intelectual y cumplimiento regulatorio.
+                  </p>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
-                  Su experiencia con organizaciones de distintas industrias le permite abordar las necesidades legales desde una perspectiva empresarial, identificando riesgos y proponiendo soluciones que consideren tanto el cumplimiento normativo como la operación y los objetivos del negocio.
-                </p>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
+                    Su experiencia con organizaciones de distintas industrias le permite abordar las necesidades legales desde una perspectiva empresarial, identificando riesgos y proponiendo soluciones que consideren tanto el cumplimiento normativo como la operación y los objetivos del negocio.
+                  </p>
+                </div>
+
+                {/* Botón Ver Más / Ver Menos exclusivo para móviles */}
+                <div className="lg:hidden flex justify-center pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setShowMoreLuis(!showMoreLuis)}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 py-1.5 px-3 rounded-lg bg-emerald-950/50 border border-emerald-500/30 transition-all cursor-pointer shadow-sm active:scale-95"
+                  >
+                    <span>{showMoreLuis ? 'Ver menos' : 'Ver más'}</span>
+                    {showMoreLuis ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
 
                 <div className="pt-2 flex justify-center">
                   <a
