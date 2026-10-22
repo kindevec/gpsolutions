@@ -197,11 +197,11 @@ export const ContactView: React.FC = () => {
         <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
           
           {/* Contenedor Principal: Full width en móvil sin bordes blancos laterales, redondeado en desktop */}
-          <div className="bg-white rounded-none sm:rounded-3xl shadow-none sm:shadow-xl border-y sm:border border-slate-200/80 overflow-hidden mb-8 sm:mb-12">
+          <div className="bg-white rounded-none sm:rounded-3xl shadow-none sm:shadow-xl border-y sm:border border-slate-200/80 overflow-visible mb-8 sm:mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
               
               {/* LADO IZQUIERDO: Formulario estilo Send Us A Message */}
-              <div className="lg:col-span-7 p-5 xs:p-6 sm:p-10 md:p-12 flex flex-col justify-between">
+              <div className="lg:col-span-7 p-5 xs:p-6 sm:p-10 md:p-12 flex flex-col justify-between rounded-t-none sm:rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl">
                 <div>
                   {/* Título de Cabecera con barra suave */}
                   <div className="border-b border-slate-100 pb-4 mb-6">
@@ -293,14 +293,14 @@ export const ContactView: React.FC = () => {
                       </div>
 
                       {/* Fila 3: Menú Desplegable de Área de Interés (Diseño Premium Kindev) */}
-                      <div ref={selectRef} className="relative">
+                      <div ref={selectRef} className="relative z-40">
                         <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">
                           Área o Servicio de Interés *
                         </label>
                         <button
                           type="button"
                           onClick={() => setIsSelectOpen((prev) => !prev)}
-                          className={`w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-slate-800 border rounded-xl px-4 py-3 text-xs sm:text-sm flex items-center justify-between transition-all duration-200 cursor-pointer text-left shadow-sm ${
+                          className={`w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-slate-800 border rounded-xl px-4 py-3.5 text-xs sm:text-sm flex items-center justify-between transition-all duration-200 cursor-pointer text-left shadow-sm ${
                             isSelectOpen
                               ? 'border-[#0284C7] ring-2 ring-sky-500/20 bg-white shadow-md'
                               : 'border-slate-200/90 hover:border-slate-300'
@@ -312,15 +312,15 @@ export const ContactView: React.FC = () => {
                             const current = SERVICE_OPTIONS.find((s) => s.value === formData.servicio) || SERVICE_OPTIONS[0];
                             const IconComp = current.icon;
                             return (
-                              <div className="flex items-center gap-3 min-w-0 pr-2">
+                              <div className="flex items-center gap-3 min-w-0 pr-2 flex-1">
                                 <div className={`w-8 h-8 rounded-lg ${current.bgColor} ${current.color} border ${current.borderColor} flex items-center justify-center shrink-0`}>
                                   <IconComp className="w-4 h-4" />
                                 </div>
-                                <div className="truncate">
-                                  <span className="font-bold text-slate-900 block truncate leading-tight">
+                                <div className="min-w-0 flex-1">
+                                  <span className="font-bold text-slate-900 block truncate leading-snug">
                                     {current.label}
                                   </span>
-                                  <span className="text-[11px] text-slate-500 block truncate mt-0.5 font-normal">
+                                  <span className="text-[11px] sm:text-xs text-slate-500 block truncate mt-0.5 pb-0.5 leading-normal font-normal">
                                     {current.detail}
                                   </span>
                                 </div>
@@ -338,52 +338,55 @@ export const ContactView: React.FC = () => {
                         {isSelectOpen && (
                           <div
                             role="listbox"
-                            className="absolute left-0 right-0 top-full mt-2 z-50 bg-white/98 backdrop-blur-xl rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.18)] border border-slate-200/90 p-1.5 space-y-1 animate-in fade-in zoom-in-95 duration-150 max-h-[340px] overflow-y-auto"
+                            className="absolute left-0 right-0 top-full mt-2 z-50 bg-white/98 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.22)] border border-slate-200/90 p-2 animate-in fade-in zoom-in-95 duration-150 max-h-[300px] sm:max-h-[340px] overflow-y-auto overscroll-contain touch-pan-y"
+                            style={{ WebkitOverflowScrolling: 'touch' }}
                           >
-                            {SERVICE_OPTIONS.map((opt) => {
-                              const isCurrent = opt.value === formData.servicio;
-                              const OptionIcon = opt.icon;
-                              return (
-                                <button
-                                  key={opt.value}
-                                  type="button"
-                                  role="option"
-                                  aria-selected={isCurrent}
-                                  onClick={() => {
-                                    setFormData({ ...formData, servicio: opt.value });
-                                    setIsSelectOpen(false);
-                                  }}
-                                  className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center justify-between transition-all duration-150 cursor-pointer ${
-                                    isCurrent
-                                      ? 'bg-sky-50/90 text-[#0284C7] border border-sky-200/80 shadow-xs'
-                                      : 'hover:bg-slate-100/80 text-slate-700'
-                                  }`}
-                                >
-                                  <div className="flex items-center gap-3 min-w-0 pr-2">
-                                    <div
-                                      className={`w-8 h-8 rounded-lg ${opt.bgColor} ${opt.color} border ${opt.borderColor} flex items-center justify-center shrink-0`}
-                                    >
-                                      <OptionIcon className="w-4 h-4" />
-                                    </div>
-                                    <div className="truncate">
-                                      <span
-                                        className={`block text-xs sm:text-sm leading-tight truncate ${
-                                          isCurrent ? 'font-bold text-[#0284C7]' : 'font-semibold text-slate-800'
-                                        }`}
+                            <div className="space-y-1 pb-1">
+                              {SERVICE_OPTIONS.map((opt) => {
+                                const isCurrent = opt.value === formData.servicio;
+                                const OptionIcon = opt.icon;
+                                return (
+                                  <button
+                                    key={opt.value}
+                                    type="button"
+                                    role="option"
+                                    aria-selected={isCurrent}
+                                    onClick={() => {
+                                      setFormData({ ...formData, servicio: opt.value });
+                                      setIsSelectOpen(false);
+                                    }}
+                                    className={`w-full text-left px-3.5 py-2.5 rounded-xl flex items-center justify-between transition-all duration-150 cursor-pointer ${
+                                      isCurrent
+                                        ? 'bg-sky-50 text-[#0284C7] border border-sky-200/80 shadow-xs'
+                                        : 'hover:bg-slate-100/80 text-slate-700'
+                                    }`}
+                                  >
+                                    <div className="flex items-center gap-3 min-w-0 pr-2 flex-1">
+                                      <div
+                                        className={`w-8 h-8 rounded-lg ${opt.bgColor} ${opt.color} border ${opt.borderColor} flex items-center justify-center shrink-0`}
                                       >
-                                        {opt.label}
-                                      </span>
-                                      <span className="text-[11px] text-slate-400 block truncate mt-0.5">
-                                        {opt.detail}
-                                      </span>
+                                        <OptionIcon className="w-4 h-4" />
+                                      </div>
+                                      <div className="min-w-0 flex-1">
+                                        <span
+                                          className={`block text-xs sm:text-sm leading-snug truncate ${
+                                            isCurrent ? 'font-bold text-[#0284C7]' : 'font-semibold text-slate-800'
+                                          }`}
+                                        >
+                                          {opt.label}
+                                        </span>
+                                        <span className="text-[11px] sm:text-xs text-slate-500 block truncate mt-0.5 pb-0.5 leading-normal">
+                                          {opt.detail}
+                                        </span>
+                                      </div>
                                     </div>
-                                  </div>
-                                  {isCurrent && (
-                                    <Check className="w-4 h-4 text-[#0284C7] shrink-0 ml-2 stroke-[2.5]" />
-                                  )}
-                                </button>
-                              );
-                            })}
+                                    {isCurrent && (
+                                      <Check className="w-4 h-4 text-[#0284C7] shrink-0 ml-2 stroke-[2.5]" />
+                                    )}
+                                  </button>
+                                );
+                              })}
+                            </div>
                           </div>
                         )}
                       </div>
@@ -416,7 +419,7 @@ export const ContactView: React.FC = () => {
               </div>
 
               {/* LADO DERECHO: Chevron Flecha Oscuro con Información de Contacto */}
-              <div className="lg:col-span-5 bg-gradient-to-br from-[#0a172c] via-[#102547] to-[#153760] text-white p-8 sm:p-10 lg:pl-16 relative flex flex-col justify-center [clip-path:none] lg:[clip-path:polygon(42px_0,100%_0,100%_100%,42px_100%,0_50%)]">
+              <div className="lg:col-span-5 bg-gradient-to-br from-[#0a172c] via-[#102547] to-[#153760] text-white p-8 sm:p-10 lg:pl-16 relative flex flex-col justify-center rounded-b-none sm:rounded-b-3xl lg:rounded-bl-none lg:rounded-r-3xl [clip-path:none] lg:[clip-path:polygon(42px_0,100%_0,100%_100%,42px_100%,0_50%)]">
                 
                 <div className="space-y-6">
                   
