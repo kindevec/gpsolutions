@@ -128,7 +128,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Revisión de diferencias y observaciones.',
           'Asesoría y patrocinio en requerimientos de administraciones tributarias.',
         ],
-        image: '/images/inicio-tributaria-legal/devoluciones-contingencias-home.jpg',
+        image: '/images/tributaria-seccion/atencion-prevencion-contingencias.jpg',
         authorityBadge: 'Defensa & Saneamiento Fiscal',
       },
     ],
