@@ -185,14 +185,8 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
               />
             </div>
 
-            {/* Cabecera con Insignia Enmascarada */}
+            {/* Cabecera Centrada de Valores */}
             <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 relative z-10">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400/15 via-sky-400/10 to-amber-400/15 border border-amber-400/35 backdrop-blur-md mb-3 shadow-[0_0_20px_rgba(245,158,11,0.25)]">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#f59e0b]" />
-                <span className="text-[11px] sm:text-xs font-bold text-amber-300 uppercase tracking-widest font-heading">
-                  Cultura y Principios de Acción
-                </span>
-              </div>
               <h3 className="font-heading font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight drop-shadow-md">
                 Valores Corporativos
               </h3>
