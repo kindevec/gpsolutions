@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, ChevronDown, Menu, X, ShieldCheck, Receipt, Scale } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { WhatsAppIcon } from '../ui/SocialIcons';
 import { COMPANY_DATA } from '../../data/company';
 import type { TabKey } from '../../types';
@@ -21,13 +21,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lista de items de navegación con las 3 categorías de servicios solicitadas
+  // Lista de items de navegación con texto limpio (sin iconos)
   const navItems: {
     key: TabKey;
     label: string;
     shortLabel: string;
-    isService?: boolean;
-    icon?: React.ComponentType<{ className?: string }>;
   }[] = [
     { key: 'inicio', label: 'Inicio', shortLabel: 'Inicio' },
     { key: 'nosotros', label: 'Nosotros', shortLabel: 'Nosotros' },
@@ -35,22 +33,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
       key: 'seguridad-salud',
       label: 'Seguridad y Salud Ocupacional',
       shortLabel: 'Seguridad y Salud',
-      isService: true,
-      icon: ShieldCheck,
     },
     {
       key: 'asesoria-tributaria',
       label: 'Asesoría Tributaria',
       shortLabel: 'Asesoría Tributaria',
-      isService: true,
-      icon: Receipt,
     },
     {
       key: 'asesoria-legal',
       label: 'Asesoría Legal Corporativa',
       shortLabel: 'Asesoría Legal',
-      isService: true,
-      icon: Scale,
     },
     { key: 'contacto', label: 'Contacto', shortLabel: 'Contacto' },
   ];
@@ -111,15 +103,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
                   <button
                     key={item.key}
                     onClick={() => handleNavClick(item.key)}
-                    className={`px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-lg xl:rounded-xl text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                    className={`px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-lg xl:rounded-xl text-xs xl:text-sm font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${
                       isActive
                         ? 'bg-[#0284C7] text-white shadow-md font-bold ring-2 ring-amber-400/80 shadow-amber-400/20'
                         : 'text-white/90 hover:text-amber-300 hover:bg-white/10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]'
                     }`}
                   >
-                    {item.isService && item.icon && (
-                      <item.icon className={`w-3.5 h-3.5 xl:w-4 xl:h-4 ${isActive ? 'text-amber-300' : 'text-sky-300'}`} />
-                    )}
                     <span className="hidden xl:inline">{item.label}</span>
                     <span className="inline xl:hidden">{item.shortLabel}</span>
                   </button>
@@ -208,14 +197,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
                       : 'text-white/90 hover:bg-white/10 hover:text-amber-300'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    {item.icon ? (
-                      <item.icon className={`w-4 h-4 ${isActive ? 'text-amber-300' : 'text-sky-300'}`} />
-                    ) : (
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                    )}
-                    <span>{item.label}</span>
-                  </div>
+                  <span>{item.label}</span>
                   {isActive && <span className="text-[10px] uppercase font-black text-amber-300">Activo</span>}
                 </button>
               );

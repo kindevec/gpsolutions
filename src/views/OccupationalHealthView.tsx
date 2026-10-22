@@ -4,7 +4,7 @@ import { buildWhatsAppLink } from '../data/company';
 import { CATEGORIES_DATA } from '../data/categoriesData';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import FocusPullCarousel, { Slide } from '../components/ui/focus-pull-carousel';
-import { CheckCircle2, ShieldCheck, ArrowRight, PhoneCall, Sparkles } from 'lucide-react';
+import { CheckCircle2, ArrowRight, PhoneCall } from 'lucide-react';
 
 const SSO_CAROUSEL_SLIDES: Slide[] = [
   {
@@ -146,11 +146,6 @@ export const OccupationalHealthView: React.FC = () => {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center mt-4 sm:mt-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-bold uppercase tracking-wider mb-5">
-            <ShieldCheck className="w-4 h-4 text-amber-400" />
-            <span>{data.heroBadge}</span>
-          </div>
-
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-5 font-heading drop-shadow-md leading-[1.12]">
             <span className="text-white">Seguridad y Salud </span>
             <span className="bg-gradient-to-r from-amber-300 via-amber-200 to-yellow-100 bg-clip-text text-transparent">
@@ -158,15 +153,9 @@ export const OccupationalHealthView: React.FC = () => {
             </span>
           </h1>
 
-          <div className="bg-[#0b172a]/70 backdrop-blur-md border border-sky-400/30 rounded-2xl p-5 sm:p-7 max-w-3xl mx-auto shadow-xl">
-            <h2 className="text-xs sm:text-sm uppercase font-extrabold text-[#38BDF8] tracking-widest mb-2 flex items-center justify-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Descripción General</span>
-            </h2>
-            <p className="text-slate-100 text-sm sm:text-base leading-relaxed">
-              {data.generalDescription}
-            </p>
-          </div>
+          <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+            {data.generalDescription}
+          </p>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none translate-y-px">
@@ -192,7 +181,7 @@ export const OccupationalHealthView: React.FC = () => {
               >
                 <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-10 lg:p-12 ${isReverse ? 'lg:grid-flow-dense' : ''}`}>
                   
-                  {/* Bloque Imagen */}
+                  {/* Bloque Imagen: Limpia sin etiquetas ni títulos */}
                   <div className={`lg:col-span-5 relative group ${isReverse ? 'lg:col-start-8' : ''}`}>
                     <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden aspect-[4/3] bg-slate-900 shadow-xl border-2 border-slate-200/80 group-hover:border-amber-400/80 transition-colors duration-500">
                       <img
@@ -207,32 +196,14 @@ export const OccupationalHealthView: React.FC = () => {
                           }
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#081528]/85 via-black/20 to-transparent" />
-                      
-                      {/* Badge Flotante */}
-                      {sub.authorityBadge && (
-                        <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-amber-400/50 text-[11px] font-black text-amber-300 shadow-md">
-                          {sub.authorityBadge}
-                        </div>
-                      )}
-
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <span className="text-white/80 text-xs font-semibold block">Área Especializada #{sub.number}</span>
-                        <span className="text-white font-heading font-black text-base sm:text-lg leading-snug">{sub.title}</span>
-                      </div>
                     </div>
                   </div>
 
-                  {/* Bloque Contenido */}
+                  {/* Bloque Contenido: Título limpio sin números */}
                   <div className={`lg:col-span-7 flex flex-col justify-center space-y-5 ${isReverse ? 'lg:col-start-1' : ''}`}>
-                    <div className="flex items-center gap-3">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-2xl bg-[#0284C7] text-white font-black text-lg shadow-md shadow-sky-600/30">
-                        0{sub.number}
-                      </span>
-                      <h2 className="text-2xl sm:text-3xl font-heading font-black text-[#102547] tracking-tight">
-                        {sub.title}
-                      </h2>
-                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-heading font-black text-[#102547] tracking-tight">
+                      {sub.title}
+                    </h2>
 
                     <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                       {sub.description}
