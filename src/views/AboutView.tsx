@@ -64,7 +64,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
       {/* =========================================================================
           1. HEADER INSTITUCIONAL ONDULADO
          ========================================================================= */}
-      <section className="relative pt-36 pb-16 sm:pt-44 sm:pb-20 md:pt-48 md:pb-24 overflow-hidden bg-[#102547]">
+      <section className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-14 sm:pb-16 md:pb-20 overflow-hidden bg-[#102547]">
         {/* Foto de Fondo con Máscara Ondulada y Overlays */}
         <div className="absolute inset-0 z-0">
           <img
@@ -79,29 +79,36 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mt-2 sm:mt-6 mb-6 sm:mb-8">
-            {/* Logo Oficial GP Solutions Centrado */}
-            <div className="relative w-44 h-44 xs:w-52 xs:h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 aspect-square flex items-center justify-center mb-4 sm:mb-6">
-              <div className="absolute inset-0 rounded-full border-2 sm:border-3 logo-ring-cycle pointer-events-none z-10" />
+          <div className="flex flex-col items-center justify-center text-center max-w-5xl xl:max-w-6xl mx-auto mt-0 sm:mt-2 mb-4 sm:mb-6">
+            
+            {/* Logo Oficial GP Solutions Centrado (Mismo diseño, animaciones y proporciones que Inicio) */}
+            <div className="relative w-56 h-56 xs:w-64 xs:h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[360px] lg:h-[360px] xl:w-[410px] xl:h-[410px] aspect-square flex items-center justify-center select-none pointer-events-none transition-all duration-300">
+              {/* Anillo perimetral sincronizado idéntico al Inicio */}
+              <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] lg:border-[3px] logo-ring-cycle pointer-events-none z-10" />
+
               <picture>
                 <source srcSet="/logo.avif" type="image/avif" />
                 <source srcSet="/logo.webp" type="image/webp" />
                 <img
                   src="/logo.png"
                   alt="Logo Oficial GP Solutions"
-                  className="w-full h-full object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.7)]"
-                  width={288}
-                  height={288}
+                  className="w-full h-full object-contain opacity-95 logo-border-glow-cycle drop-shadow-[0_12px_36px_rgba(0,0,0,0.55)]"
+                  width={410}
+                  height={410}
                   loading="eager"
                 />
               </picture>
             </div>
-            <h1 className="font-heading font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight drop-shadow-md">
+
+            <h1 className="font-heading font-black text-2xl sm:text-4xl md:text-5xl text-white tracking-tight drop-shadow-md mt-4 sm:mt-5">
               GP SOLUTIONS S.A.S.
             </h1>
-            <p className="text-xs sm:text-sm md:text-base text-[#38BDF8] font-bold uppercase tracking-widest mt-2">
+
+            {/* Letras en una sola línea en vista de PC */}
+            <p className="text-xs sm:text-sm lg:text-[14px] xl:text-[15px] text-[#38BDF8] font-bold uppercase tracking-wider xl:tracking-widest mt-2 lg:whitespace-nowrap leading-relaxed drop-shadow-sm">
               Seguridad y Salud Ocupacional • Asesoría Contable • Tributaria • Legal y Financiera
             </p>
+
           </div>
         </div>
 
