@@ -4,7 +4,12 @@ import { buildWhatsAppLink } from '../data/company';
 import { CATEGORIES_DATA } from '../data/categoriesData';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import FocusPullCarousel, { Slide } from '../components/ui/focus-pull-carousel';
-import { CheckCircle2, ArrowRight, PhoneCall } from 'lucide-react';
+import { CheckCircle2, ArrowRight, CalendarCheck } from 'lucide-react';
+import type { TabKey } from '../types';
+
+interface OccupationalHealthViewProps {
+  onSelectTab?: (tab: TabKey) => void;
+}
 
 const SSO_CAROUSEL_SLIDES: Slide[] = [
   {
@@ -123,7 +128,7 @@ const SSO_CAROUSEL_SLIDES: Slide[] = [
   },
 ];
 
-export const OccupationalHealthView: React.FC = () => {
+export const OccupationalHealthView: React.FC<OccupationalHealthViewProps> = () => {
   const data = CATEGORIES_DATA['seguridad-salud'];
 
   return (
@@ -170,8 +175,12 @@ export const OccupationalHealthView: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 divide-y divide-slate-200/80">
           {data.subsections.map((sub, idx) => {
             const isReverse = idx % 2 === 1;
-            const whatsappMsg = `Hola GP Solutions (+593 982577313), deseo cotizar el área de: Seguridad y Salud Ocupacional - ${sub.title}.`;
-            const whatsappUrl = buildWhatsAppLink(whatsappMsg);
+            const whatsappQuoteUrl = buildWhatsAppLink(
+              `Hola GP Solutions (+593 982577313), deseo cotizar el área de: Seguridad y Salud Ocupacional - ${sub.title}.`
+            );
+            const whatsappMeetingUrl = buildWhatsAppLink(
+              `Hola GP Solutions (+593 982577313), deseo agendar una reunión o asesoría técnica para: Seguridad y Salud Ocupacional - ${sub.title}.`
+            );
 
             return (
               <div
@@ -224,10 +233,10 @@ export const OccupationalHealthView: React.FC = () => {
                     </ul>
                   </div>
 
-                  {/* Botones de Acción: En la misma línea */}
-                  <div className="flex items-center gap-3 pt-2 flex-nowrap overflow-x-auto no-scrollbar">
+                  {/* Botones de Acción: Centrados en la misma línea */}
+                  <div className="flex items-center justify-center gap-3 pt-4 flex-wrap sm:flex-nowrap">
                     <a
-                      href={whatsappUrl}
+                      href={whatsappQuoteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 py-3 px-5 sm:px-6 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-[#0284C7] via-[#0369a1] to-[#102547] hover:from-[#38BDF8] hover:via-[#0284C7] hover:to-[#0369a1] text-white shadow-md hover:shadow-sky-500/25 transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
@@ -238,11 +247,13 @@ export const OccupationalHealthView: React.FC = () => {
                     </a>
 
                     <a
-                      href="tel:+593982577313"
-                      className="inline-flex items-center justify-center gap-2 py-3 px-4 sm:px-5 rounded-xl font-semibold text-xs sm:text-sm text-slate-700 hover:text-[#0284C7] bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200 whitespace-nowrap shrink-0"
+                      href={whatsappMeetingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 py-3 px-4 sm:px-5 rounded-xl font-semibold text-xs sm:text-sm text-slate-700 hover:text-[#0284C7] bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200 whitespace-nowrap shrink-0 cursor-pointer"
                     >
-                      <PhoneCall className="w-4 h-4" />
-                      <span>Llamar a un asesor</span>
+                      <CalendarCheck className="w-4 h-4 text-[#0284C7]" />
+                      <span>Agendar Asesoría</span>
                     </a>
                   </div>
                 </div>
@@ -258,9 +269,6 @@ export const OccupationalHealthView: React.FC = () => {
          ========================================================================= */}
       <section className="py-14 sm:py-20 bg-[#081324] text-white overflow-hidden border-t border-sky-900/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-3">
-            <span>Fotografías Oficiales</span>
-          </div>
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Nuestra Experiencia en Imágenes
           </h2>

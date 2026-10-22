@@ -17,12 +17,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ activeTab, onS
     activeTab === 'servicios-contables' ||
     activeTab === 'servicios-tributarios';
 
-  const getActiveServiceLabel = () => {
-    if (activeTab === 'seguridad-salud' || activeTab === 'servicios-contables') return 'SSO';
-    if (activeTab === 'asesoria-tributaria' || activeTab === 'servicios-tributarios') return 'Tributaria';
-    if (activeTab === 'asesoria-legal') return 'Legal';
-    return 'Servicios';
-  };
+  const getActiveServiceLabel = () => 'Servicios';
 
   const serviceCategories: {
     key: TabKey;
@@ -105,16 +100,11 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ activeTab, onS
                         : 'bg-white/5 hover:bg-white/10 border-white/10 text-white/90'
                     }`}
                   >
-                    <div className="flex items-start gap-3">
-                      <div className={`p-2.5 rounded-xl shrink-0 mt-0.5 ${isSelected ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-white/10 text-sky-300'}`}>
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2.5 rounded-xl shrink-0 ${isSelected ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-white/10 text-sky-300'}`}>
                         <Icon className="w-5 h-5" />
                       </div>
-                      <div className="space-y-0.5">
-                        <div className="flex items-center gap-2">
-                          <span className="font-heading font-bold text-sm text-white">{cat.title}</span>
-                        </div>
-                        <p className="text-[11.5px] text-slate-300 leading-tight">{cat.description}</p>
-                      </div>
+                      <span className="font-heading font-bold text-sm text-white">{cat.title}</span>
                     </div>
                     <ChevronRight className={`w-5 h-5 shrink-0 ${isSelected ? 'text-amber-300' : 'text-slate-400'}`} />
                   </button>

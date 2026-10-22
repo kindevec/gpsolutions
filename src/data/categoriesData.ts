@@ -41,7 +41,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Gestión de organismos paritarios',
           'Elaboración de Informe de Cumplimiento de Gestión al Ministerio de Trabajo',
         ],
-        image: '/images/servicios-corporativos/gestion-riesgos-desastres-naturales.jpg',
+        image: '/images/sso-seccion/gestion-riesgo-laboral.jpg',
         authorityBadge: 'MDT & SUT',
       },
       {
@@ -56,7 +56,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Elaboración de Políticas de Prevención de Riesgos en el trabajo.',
           'Elaboración de Informes de morbilidad.',
         ],
-        image: '/images/servicios-corporativos/simulacro-primeros-auxilios-oficina.jpg',
+        image: '/images/sso-seccion/planes-emergencia-capacitacion.jpg',
         authorityBadge: 'Bomberos & MDT',
       },
       {
@@ -72,7 +72,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Acompañamiento frente a requerimientos de autoridades.',
           'Elaboración de planes de acción para subsanar hallazgos.',
         ],
-        image: '/images/servicios-corporativos/seminario-tecnico-institucional.jpg',
+        image: '/images/sso-seccion/cumplimiento-acompanamiento.png',
         authorityBadge: 'Inspecciones Laborales',
       },
     ],
@@ -98,7 +98,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Devoluciones de impuestos',
           'Cumplimiento de obligaciones Tributarias',
         ],
-        image: '/images/servicios-tributarios/devolucion-impuestos.jpg',
+        image: '/images/tributaria-seccion/cumplimiento-tributario.png',
         authorityBadge: 'Servicio de Rentas Internas (SRI)',
       },
       {
@@ -113,7 +113,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Elaboración de Estados Financieros',
           'Acompañamiento en decisiones empresariales con efectos fiscales.',
         ],
-        image: '/images/servicios-tributarios/impuestos-herencias-donaciones.jpg',
+        image: '/images/tributaria-seccion/planificacion-tributaria.jpg',
         authorityBadge: 'Planificación & NIIF',
       },
       {
@@ -127,7 +127,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Revisión de diferencias y observaciones.',
           'Asesoría y patrocinio en requerimientos de administraciones tributarias.',
         ],
-        image: '/images/servicios-contables/estados-financieros.jpg',
+        image: '/images/tributaria-seccion/prevencion-contingencias.jpg',
         authorityBadge: 'Defensa & Saneamiento Fiscal',
       },
     ],
@@ -154,7 +154,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Cambios de administradores y representantes legales.',
           'Cumplimiento de obligaciones ante la Superintendencia de Compañías.',
         ],
-        image: '/images/servicios-contables/constitucion-liquidacion-sas.jpg',
+        image: '/images/legal-seccion/asesoria-societaria-sas.jpg',
         authorityBadge: 'Superintendencia de Compañías',
       },
       {
@@ -169,7 +169,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Revisión y negociación de cláusulas contractuales.',
           'Terminación y modificación de contratos.',
         ],
-        image: '/images/servicios-laborales/contratos-trabajo-finiquito.jpg',
+        image: '/images/legal-seccion/contratos-negocios.png',
         authorityBadge: 'Blindaje Mercantil',
       },
       {
@@ -185,7 +185,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Acompañamiento en negociaciones comerciales.',
           'Asesoría en decisiones corporativas.',
         ],
-        image: '/images/servicios-contables/contabilidad-general.jpg',
+        image: '/images/legal-seccion/asesoria-legal-empresarial.png',
         authorityBadge: 'Consultoría Corporativa',
       },
       {
@@ -200,7 +200,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Asesoría para la protección de signos distintivos.',
           'Contestación y seguimiento de actuaciones administrativas relacionadas con marcas.',
         ],
-        image: '/images/servicios-contables/registro-marcas.jpg',
+        image: '/images/legal-seccion/propiedad-intelectual.png',
         authorityBadge: 'SENADI Marcas 10 Años',
       },
       {
@@ -216,7 +216,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Elaboración y revisión de reglamentos internos de trabajo.',
           'Acompañamiento frente a requerimientos e inspecciones laborales.',
         ],
-        image: '/images/servicios-corporativos/capacitacion-recursos-humanos-reglamento-interno.jpg',
+        image: '/images/legal-seccion/asesoria-laboral-empresarial.jpg',
         authorityBadge: 'MDT & IESS',
       },
     ],

@@ -3,9 +3,14 @@ import { WhatsAppIcon } from '../components/ui/SocialIcons';
 import { buildWhatsAppLink } from '../data/company';
 import { CATEGORIES_DATA } from '../data/categoriesData';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
-import { CheckCircle2, ArrowRight, PhoneCall } from 'lucide-react';
+import { CheckCircle2, ArrowRight, CalendarCheck } from 'lucide-react';
+import type { TabKey } from '../types';
 
-export const TaxAdvisoryView: React.FC = () => {
+interface TaxAdvisoryViewProps {
+  onSelectTab?: (tab: TabKey) => void;
+}
+
+export const TaxAdvisoryView: React.FC<TaxAdvisoryViewProps> = () => {
   const data = CATEGORIES_DATA['asesoria-tributaria'];
 
   return (
@@ -52,8 +57,12 @@ export const TaxAdvisoryView: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 divide-y divide-slate-200/80">
           {data.subsections.map((sub, idx) => {
             const isReverse = idx % 2 === 1;
-            const whatsappMsg = `Hola GP Solutions (+593 982577313), deseo cotizar el área de: Asesoría Tributaria - ${sub.title}.`;
-            const whatsappUrl = buildWhatsAppLink(whatsappMsg);
+            const whatsappQuoteUrl = buildWhatsAppLink(
+              `Hola GP Solutions (+593 982577313), deseo cotizar el área de: Asesoría Tributaria - ${sub.title}.`
+            );
+            const whatsappMeetingUrl = buildWhatsAppLink(
+              `Hola GP Solutions (+593 982577313), deseo agendar una reunión o asesoría técnica para: Asesoría Tributaria - ${sub.title}.`
+            );
 
             return (
               <div
@@ -106,10 +115,10 @@ export const TaxAdvisoryView: React.FC = () => {
                     </ul>
                   </div>
 
-                  {/* Botones de Acción: En la misma línea e iguales a los demás */}
-                  <div className="flex items-center gap-3 pt-2 flex-nowrap overflow-x-auto no-scrollbar">
+                  {/* Botones de Acción: Centrados en la misma línea */}
+                  <div className="flex items-center justify-center gap-3 pt-4 flex-wrap sm:flex-nowrap">
                     <a
-                      href={whatsappUrl}
+                      href={whatsappQuoteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 py-3 px-5 sm:px-6 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-[#0284C7] via-[#0369a1] to-[#102547] hover:from-[#38BDF8] hover:via-[#0284C7] hover:to-[#0369a1] text-white shadow-md hover:shadow-sky-500/25 transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
@@ -120,11 +129,13 @@ export const TaxAdvisoryView: React.FC = () => {
                     </a>
 
                     <a
-                      href="tel:+593982577313"
-                      className="inline-flex items-center justify-center gap-2 py-3 px-4 sm:px-5 rounded-xl font-semibold text-xs sm:text-sm text-slate-700 hover:text-[#0284C7] bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200 whitespace-nowrap shrink-0"
+                      href={whatsappMeetingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 py-3 px-4 sm:px-5 rounded-xl font-semibold text-xs sm:text-sm text-slate-700 hover:text-[#0284C7] bg-slate-100 hover:bg-slate-200 transition-all border border-slate-200 whitespace-nowrap shrink-0 cursor-pointer"
                     >
-                      <PhoneCall className="w-4 h-4" />
-                      <span>Llamar a un asesor</span>
+                      <CalendarCheck className="w-4 h-4 text-[#0284C7]" />
+                      <span>Agendar Asesoría</span>
                     </a>
                   </div>
                 </div>
@@ -135,28 +146,7 @@ export const TaxAdvisoryView: React.FC = () => {
         </div>
       </section>
 
-      {/* Banner de Contacto Tributario Rápido */}
-      <section className="py-12 bg-gradient-to-r from-[#0c1a30] via-[#102547] to-[#0c1a30] text-white border-t border-sky-900/40">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <h3 className="text-xl sm:text-2xl font-heading font-black">
-            ¿Necesitas asesoría tributaria urgente o tienes un requerimiento del SRI?
-          </h3>
-          <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto">
-            Atendemos requerimientos, devoluciones de impuestos y planificación fiscal con confidencialidad y rigor profesional.
-          </p>
-          <div className="pt-2">
-            <a
-              href={buildWhatsAppLink("Hola GP Solutions (+593 982577313), requiero atención tributaria para mi negocio.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-black text-sm bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 hover:bg-amber-300 shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95"
-            >
-              <WhatsAppIcon className="w-4 h-4 text-slate-950" />
-              <span>Contactar por WhatsApp</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      
     </div>
   );
 };
