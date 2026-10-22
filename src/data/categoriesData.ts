@@ -114,7 +114,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Elaboración y revisión de Estados Financieros con impacto fiscal bajo NIIF.',
           'Acompañamiento continuo en decisiones financieras y presupuestarias de la empresa.',
         ],
-        image: '/images/tributaria-seccion/planificacion-tributaria.jpg',
+        image: '/images/tributaria-seccion/planificacion-tributaria-estrategica.png',
         authorityBadge: 'Planificación Fiscal & NIIF',
       },
       {
