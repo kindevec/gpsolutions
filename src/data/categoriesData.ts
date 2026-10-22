@@ -72,7 +72,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Acompañamiento frente a requerimientos de autoridades.',
           'Elaboración de planes de acción para subsanar hallazgos.',
         ],
-        image: '/images/sso-home/cumplimiento-inspecciones-mdt.jpg',
+        image: '/images/sso-seccion/cumplimiento-normativo-inspecciones.png',
         authorityBadge: 'Inspecciones Laborales',
       },
     ],
