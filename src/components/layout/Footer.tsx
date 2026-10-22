@@ -39,11 +39,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
             </div>
 
             <p className="text-[12px] sm:text-[12.5px] text-slate-300 leading-relaxed font-normal max-w-sm">
-              {COMPANY_DATA.trajectory}. Asesoría contable NIIF, tributaria ante el SRI, nómina IESS y constitución societaria en Quito y todo el Ecuador.
+              {COMPANY_DATA.trajectory}. Asesoría integral en Seguridad y Salud en el Trabajo, Asesoría Tributaria ante el SRI y Asesoría Legal Corporativa en Quito y todo el Ecuador.
             </p>
           </div>
 
-          {/* Columna 2: Secciones alineadas a la izquierda (oculta en móvil por solicitud previa) */}
+          {/* Columna 2: Secciones alineadas a la izquierda */}
           <div className="lg:col-span-3 hidden md:flex flex-col items-start space-y-2 text-left">
             <h4 className="font-heading font-bold text-xs sm:text-sm text-white uppercase tracking-wider text-left w-full">
               Secciones
@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <li>
                 <button
                   onClick={() => onSelectTab('inicio')}
-                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
+                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer text-left"
                 >
                   <span className="text-amber-400 text-[10px]">✦</span>
                   <span>Inicio</span>
@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <li>
                 <button
                   onClick={() => onSelectTab('nosotros')}
-                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
+                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer text-left"
                 >
                   <span className="text-amber-400 text-[10px]">✦</span>
                   <span>Nosotros</span>
@@ -69,26 +69,35 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               </li>
               <li>
                 <button
-                  onClick={() => onSelectTab('servicios-contables')}
-                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
+                  onClick={() => onSelectTab('seguridad-salud')}
+                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer text-left"
                 >
                   <span className="text-amber-400 text-[10px]">✦</span>
-                  <span>Servicios Corporativos</span>
+                  <span>Seguridad y Salud Ocupacional</span>
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectTab('servicios-tributarios')}
-                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
+                  onClick={() => onSelectTab('asesoria-tributaria')}
+                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer text-left"
                 >
                   <span className="text-amber-400 text-[10px]">✦</span>
-                  <span>Servicios Tributarios</span>
+                  <span>Asesoría Tributaria</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onSelectTab('asesoria-legal')}
+                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer text-left"
+                >
+                  <span className="text-amber-400 text-[10px]">✦</span>
+                  <span>Asesoría Legal Corporativa</span>
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => onSelectTab('contacto')}
-                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer"
+                  className="hover:text-[#38BDF8] hover:translate-x-0.5 transition-all duration-200 inline-flex items-center gap-1.5 cursor-pointer text-left"
                 >
                   <span className="text-amber-400 text-[10px]">✦</span>
                   <span>Contacto</span>

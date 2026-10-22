@@ -134,7 +134,7 @@ export const ALL_SERVICES: ServiceItem[] = [
       "Emisión mensual de roles de pago y comprobantes para colaboradores",
       "Cálculo de horas suplementarias, extraordinarias y comisiones",
       "Liquidación y legalización de décimos, fondos de reserva y utilidades",
-      "Generación y conciliación de planillas del IESS y actas en SUT"
+      "Generación y conciliación de planillas del IESS y actas en el SUT"
     ],
     legalBasis: "Código del Trabajo y Ley de Seguridad Social",
     frequency: "Quincenal / Mensual",

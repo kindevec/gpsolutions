@@ -170,7 +170,7 @@ export const AccountingServicesView: React.FC = () => {
           </h1>
 
           <p className="text-slate-200 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-            Matrices de riesgo y planes de emergencia, reglamentos en SUT, capacitaciones obligatorias, constitución de SAS, custodia de libros societarios y registro de marcas SENADI.
+            Matrices de riesgo y planes de emergencia, reglamentos en el SUT, capacitaciones obligatorias, constitución de SAS, custodia de libros societarios y registro de marcas SENADI.
           </p>
         </div>
 

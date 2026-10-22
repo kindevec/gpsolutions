@@ -6,11 +6,14 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { HomeView } from './views/HomeView';
 import type { TabKey } from './types';
 
-const AccountingServicesView = lazy(() =>
-  import('./views/AccountingServicesView').then((m) => ({ default: m.AccountingServicesView }))
+const OccupationalHealthView = lazy(() =>
+  import('./views/OccupationalHealthView').then((m) => ({ default: m.OccupationalHealthView }))
 );
-const TaxServicesView = lazy(() =>
-  import('./views/TaxServicesView').then((m) => ({ default: m.TaxServicesView }))
+const TaxAdvisoryView = lazy(() =>
+  import('./views/TaxAdvisoryView').then((m) => ({ default: m.TaxAdvisoryView }))
+);
+const CorporateLegalView = lazy(() =>
+  import('./views/CorporateLegalView').then((m) => ({ default: m.CorporateLegalView }))
 );
 const AboutView = lazy(() =>
   import('./views/AboutView').then((m) => ({ default: m.AboutView }))
@@ -21,15 +24,20 @@ const ContactView = lazy(() =>
 
 const VALID_TABS: readonly TabKey[] = [
   'inicio',
+  'nosotros',
+  'seguridad-salud',
+  'asesoria-tributaria',
+  'asesoria-legal',
+  'contacto',
   'servicios-contables',
   'servicios-tributarios',
-  'nosotros',
-  'contacto',
 ];
 
 export const App: React.FC = () => {
   const getTabFromUrl = (): TabKey => {
     const hash = window.location.hash.replace(/^#/, '').toLowerCase();
+    if (hash === 'servicios-contables') return 'seguridad-salud';
+    if (hash === 'servicios-tributarios') return 'asesoria-tributaria';
     if ((VALID_TABS as readonly string[]).includes(hash)) {
       return hash as TabKey;
     }
@@ -39,13 +47,21 @@ export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabKey>(getTabFromUrl);
 
   const handleSelectTab = (tab: TabKey) => {
-    if (activeTab === tab) {
+    // Normalizar si viniera de algún enlace antiguo
+    const normalizedTab: TabKey =
+      tab === 'servicios-contables'
+        ? 'seguridad-salud'
+        : tab === 'servicios-tributarios'
+        ? 'asesoria-tributaria'
+        : tab;
+
+    if (activeTab === normalizedTab) {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
       return;
     }
 
-    window.history.pushState({ tab }, '', '#' + tab);
-    setActiveTab(tab);
+    window.history.pushState({ tab: normalizedTab }, '', '#' + normalizedTab);
+    setActiveTab(normalizedTab);
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
@@ -93,9 +109,10 @@ export const App: React.FC = () => {
       <main className="grow pb-0 overflow-x-hidden">
         {activeTab === 'inicio' && <HomeView onSelectTab={handleSelectTab} />}
         <Suspense fallback={<div className="min-h-[60vh] flex items-center justify-center bg-[#F4F8FC]" />}>
-          {activeTab === 'servicios-contables' && <AccountingServicesView />}
-          {activeTab === 'servicios-tributarios' && <TaxServicesView />}
           {activeTab === 'nosotros' && <AboutView onSelectTab={handleSelectTab} />}
+          {(activeTab === 'seguridad-salud' || activeTab === 'servicios-contables') && <OccupationalHealthView />}
+          {(activeTab === 'asesoria-tributaria' || activeTab === 'servicios-tributarios') && <TaxAdvisoryView />}
+          {activeTab === 'asesoria-legal' && <CorporateLegalView />}
           {activeTab === 'contacto' && <ContactView />}
         </Suspense>
       </main>

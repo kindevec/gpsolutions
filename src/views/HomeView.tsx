@@ -380,12 +380,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Encabezado Centrado */}
-          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+          <div className="text-center max-w-4xl mx-auto mb-6 sm:mb-8">
             <h2 className="font-heading text-2xl sm:text-4xl font-black text-[#102547] tracking-tight">
-              Seguridad y Salud, Asesoría Tributaria & Legal Corporativa
+              Seguridad y Salud Ocupacional, Asesoría Tributaria, Asesoría Legal Corporativa
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-2xl mx-auto leading-relaxed">
-              Matrices de riesgo, reglamentos de prevención, declaraciones de impuestos, SAS y marcas SENADI con respaldo profesional en Quito.
+              Matrices de riesgo, reglamentos en el SUT, declaraciones tributarias ante el SRI, constitución de S.A.S. y blindaje de marcas SENADI con respaldo profesional y cobertura nacional.
             </p>
           </div>
 
@@ -416,7 +416,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
                 
                 const shortDescriptions: Record<string, string> = {
                   'sso-1': 'Matrices de riesgo por puesto, planes de emergencia y brigadas conformadas.',
-                  'sso-2': 'Reglamentos de higiene y seguridad aprobados en SUT y comités paritarios.',
+                  'sso-2': 'Reglamentos de higiene y seguridad aprobados en el SUT y comités paritarios.',
                   'sso-3': 'Talleres certificados en ergonomía, prevención de acoso laboral y emergencias.',
                   'trib-1': 'Declaraciones periódicas de IVA, Retenciones en la fuente y Renta sin multas.',
                   'trib-2': 'Recuperación de IVA para tercera edad, exportadores y reclamos por pago indebido.',
@@ -524,7 +524,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
           {/* Botón Ver Más debajo de las tarjetas */}
           <div className="flex items-center justify-center mt-4 sm:mt-5">
             <button
-              onClick={() => onSelectTab('servicios-contables')}
+              onClick={() => onSelectTab('seguridad-salud')}
               className="inline-flex items-center gap-3 text-base sm:text-lg font-black text-[#0284C7] hover:text-white bg-sky-50/90 hover:bg-[#0284C7] border-2 border-sky-300 shadow-md hover:shadow-xl hover:shadow-sky-400/30 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer py-3 sm:py-3.5 px-8 sm:px-10 rounded-full"
             >
               <span>Ver más</span>
@@ -570,7 +570,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
             {/* Botón Ver Catálogo Centrado */}
             <div className="flex items-center justify-center shrink-0">
               <button
-                onClick={() => onSelectTab('servicios-contables')}
+                onClick={() => onSelectTab('asesoria-legal')}
                 className="inline-flex items-center gap-2 py-2.5 px-6 rounded-full font-bold text-xs sm:text-sm bg-gradient-to-r from-[#0284c7] to-[#0369a1] hover:from-[#38bdf8] hover:to-[#0284c7] text-white transition-all shadow-md active:scale-95 cursor-pointer"
               >
                 <span>Ver catálogo</span>

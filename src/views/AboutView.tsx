@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Users,
   Rocket,
@@ -9,6 +9,8 @@ import {
   CheckCircle2,
   ShieldCheck,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   Play,
   Check,
   HardHat,
@@ -22,11 +24,44 @@ import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import type { TabKey } from '../types';
 
+const HISTORY_CAROUSEL_IMAGES = [
+  {
+    src: '/images/reunion-estrategica-equipo.jpg',
+    alt: 'Equipo multidisciplinario reunido en consultoría estratégica y blindaje empresarial',
+    objectPosition: 'object-[65%_30%]',
+  },
+  {
+    src: '/images/reunion-acuerdo-equipo.jpg',
+    alt: 'Alianza estratégica y confianza mutua entre cliente y equipo asesor',
+    objectPosition: 'object-[center_35%]',
+  },
+  {
+    src: '/images/servicios-corporativos/mesas-dialogo-ejecutivo-estrategico.jpg',
+    alt: 'Mesa de diálogo y asesoría ejecutiva en Quito con Álvaro Guerra',
+    objectPosition: 'object-[75%_50%]',
+  },
+  {
+    src: '/images/reunion-directorio.jpg',
+    alt: 'Directorio corporativo y planificación societaria integral',
+    objectPosition: 'object-center',
+  },
+];
+
 interface AboutViewProps {
   onSelectTab: (tab: TabKey) => void;
 }
 
 export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
+  const [historySlide, setHistorySlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setHistorySlide((prev) => (prev + 1) % HISTORY_CAROUSEL_IMAGES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
   return (
     <div className="bg-[#F4F8FC] text-[#102547]">
       
@@ -326,14 +361,77 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
           
           <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-[#0f2445] border border-sky-900/40 text-white flex flex-col md:flex-row items-stretch">
             
-            <div className="relative w-full md:w-1/2 min-h-[320px] md:min-h-[440px] bg-slate-900 overflow-hidden">
-              <img
-                src="/images/heroes/hero-about.jpg"
-                alt="Despacho contable y legal GP Solutions en Quito"
-                className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f2445]/70 via-transparent to-transparent md:hidden" />
+            {/* Contenedor del Carrusel: Ocupa el 100% del tamaño del contenedor izquierdo (edge-to-edge) */}
+            <div
+              className="relative w-full md:w-1/2 min-h-[340px] sm:min-h-[420px] md:min-h-[480px] bg-slate-900 overflow-hidden group/history"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {HISTORY_CAROUSEL_IMAGES.map((img, idx) => (
+                <div
+                  key={img.src}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    idx === historySlide ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                  }`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className={`w-full h-full object-cover ${img.objectPosition} transform hover:scale-105 transition-transform duration-700`}
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                  />
+                </div>
+              ))}
+
+              {/* Degradado sutil en móvil para suavizar la transición hacia el texto inferior */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f2445]/70 via-transparent to-transparent md:hidden pointer-events-none" />
+
+              {/* Botón Flecha Anterior */}
+              <button
+                type="button"
+                onClick={() =>
+                  setHistorySlide(
+                    (prev) =>
+                      (prev - 1 + HISTORY_CAROUSEL_IMAGES.length) %
+                      HISTORY_CAROUSEL_IMAGES.length
+                  )
+                }
+                aria-label="Imagen anterior"
+                className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-slate-950/60 hover:bg-[#0284C7] text-white border border-white/20 flex items-center justify-center transition-all duration-300 opacity-80 sm:opacity-0 sm:group-hover/history:opacity-100 active:scale-95 cursor-pointer shadow-lg backdrop-blur-md"
+              >
+                <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
+              </button>
+
+              {/* Botón Flecha Siguiente */}
+              <button
+                type="button"
+                onClick={() =>
+                  setHistorySlide(
+                    (prev) => (prev + 1) % HISTORY_CAROUSEL_IMAGES.length
+                  )
+                }
+                aria-label="Siguiente imagen"
+                className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-slate-950/60 hover:bg-[#0284C7] text-white border border-white/20 flex items-center justify-center transition-all duration-300 opacity-80 sm:opacity-0 sm:group-hover/history:opacity-100 active:scale-95 cursor-pointer shadow-lg backdrop-blur-md"
+              >
+                <ChevronRight className="w-5 h-5 stroke-[2.5]" />
+              </button>
+
+              {/* Indicadores de Puntos (Dots) Interactivos */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+                {HISTORY_CAROUSEL_IMAGES.map((_, dotIdx) => (
+                  <button
+                    key={`dot-${dotIdx}`}
+                    type="button"
+                    onClick={() => setHistorySlide(dotIdx)}
+                    aria-label={`Ver imagen ${dotIdx + 1}`}
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${
+                      dotIdx === historySlide
+                        ? 'w-7 h-2.5 bg-gradient-to-r from-sky-400 to-amber-300 shadow-[0_0_10px_rgba(56,189,248,0.9)]'
+                        : 'w-2.5 h-2.5 bg-white/50 hover:bg-white/80'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
 
             <div className="w-full md:w-1/2 p-7 sm:p-10 lg:p-12 flex flex-col justify-center bg-[#0f2445] text-white space-y-4">
