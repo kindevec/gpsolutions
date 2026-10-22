@@ -356,7 +356,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                     className="inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all shadow-md cursor-pointer"
                   >
                     <WhatsAppIcon className="w-4 h-4 text-white" />
-                    <span>Contactar con Álvaro Guerra (+593 982577313)</span>
+                    <span>Contactar con Álvaro Guerra</span>
                   </a>
                 </div>
               </div>
@@ -445,7 +445,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                     className="inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white transition-all shadow-md cursor-pointer"
                   >
                     <WhatsAppIcon className="w-4 h-4 text-white" />
-                    <span>Contactar con Asesoría Legal (+593 997650599)</span>
+                    <span>Contactar con Asesoría Legal</span>
                   </a>
                 </div>
               </div>
