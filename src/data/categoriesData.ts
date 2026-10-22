@@ -155,7 +155,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
           'Cambios de administradores y representantes legales.',
           'Cumplimiento de obligaciones ante la Superintendencia de Compañías.',
         ],
-        image: '/images/inicio-tributaria-legal/constitucion-societaria-home.jpg',
+        image: '/images/legal-seccion/asesoria-corporativa-societaria.png',
         authorityBadge: 'Superintendencia de Compañías',
       },
       {
