@@ -25,7 +25,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
     shortTitle: 'Seguridad y Salud',
     generalDescription:
       'Brindamos asesoría integral en Seguridad y Salud en el Trabajo, orientada a prevenir riesgos laborales, proteger a los trabajadores y facilitar el cumplimiento de las obligaciones aplicables a cada organización.',
-    heroImage: '/images/heroes/hero-accounting.jpg',
+    heroImage: '/images/heroes/hero-sso.jpg',
     heroBadge: 'Gestión Laboral & Prevención Integral',
     subsections: [
       {
@@ -139,7 +139,7 @@ export const CATEGORIES_DATA: Record<string, ServiceCategoryDetail> = {
     shortTitle: 'Asesoría Legal',
     generalDescription:
       'Brindamos asesoría legal a empresas y emprendedores durante las distintas etapas de sus negocios, desde su constitución y organización societaria hasta sus relaciones contractuales y protección de activos intangibles.',
-    heroImage: '/images/heroes/hero-accounting.jpg',
+    heroImage: '/images/heroes/hero-legal.jpg',
     heroBadge: 'Blindaje Jurídico Societario & Contractual',
     subsections: [
       {

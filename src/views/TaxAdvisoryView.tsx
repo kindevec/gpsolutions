@@ -26,10 +26,10 @@ export const TaxAdvisoryView: React.FC<TaxAdvisoryViewProps> = () => {
             className="w-full h-full object-cover object-center transform scale-105"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0c1a30]/95 via-[#102547]/88 to-[#0c1a30]/82" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0c1a30]/80 via-transparent to-[#102547]/90" />
-          <div className="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-sky-400/15 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-10 left-10 w-96 h-96 bg-amber-400/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071324]/90 via-[#0c1e38]/78 to-[#071324]/88" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#071324]/85 via-transparent to-[#102547]/95" />
+          <div className="absolute top-1/4 right-1/4 w-[520px] h-[320px] bg-sky-400/20 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute bottom-10 left-10 w-96 h-96 bg-amber-400/15 rounded-full blur-[140px] pointer-events-none" />
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center mt-4 sm:mt-8">
