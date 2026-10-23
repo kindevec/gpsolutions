@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
+  ArrowRight,
   Users,
   Rocket,
   TrendingUp,
@@ -8,7 +9,6 @@ import {
   Award,
   CheckCircle2,
   ShieldCheck,
-  ArrowRight,
   Play,
   Check,
   HardHat,
@@ -26,26 +26,53 @@ import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
 import { CurvedShapeDivider } from '../components/ui/CurvedShapeDivider';
 import type { TabKey } from '../types';
 
-const HISTORY_CAROUSEL_IMAGES = [
+
+interface CorporateValueItem {
+  id: string;
+  title: string;
+  description: string;
+  shortDescription: string;
+  icon: React.ComponentType<{ className?: string }>;
+  image: string;
+  theme: 'celeste' | 'amber';
+}
+
+const CORPORATE_VALUES: CorporateValueItem[] = [
   {
-    src: '/images/reunion-estrategica-equipo.jpg',
-    alt: 'Equipo multidisciplinario reunido en consultoría estratégica y blindaje empresarial',
-    objectPosition: 'object-[center_35%]',
+    id: '01',
+    title: 'Ética y Transparencia',
+    description: 'Manejo íntegro de la información financiera, contable, legal y de salud ocupacional con total pulcritud y trazabilidad.',
+    shortDescription: 'Manejo íntegro y trazabilidad garantizada.',
+    icon: Scale,
+    image: '/images/valores/etica-transparencia.jpg',
+    theme: 'celeste',
   },
   {
-    src: '/images/reunion-acuerdo-equipo.jpg',
-    alt: 'Alianza estratégica y confianza mutua entre cliente y equipo asesor',
-    objectPosition: 'object-[center_38%]',
+    id: '02',
+    title: 'Confidencialidad',
+    description: 'Custodia blindada y protección irrestricta de bases de datos, balances y secretos comerciales de su organización.',
+    shortDescription: 'Custodia blindada y secreto corporativo.',
+    icon: Lock,
+    image: '/images/valores/confidencialidad.jpg',
+    theme: 'amber',
   },
   {
-    src: '/images/servicios-corporativos/mesas-dialogo-ejecutivo-estrategico.jpg',
-    alt: 'Mesa de diálogo y asesoría ejecutiva en Quito con Álvaro Guerra',
-    objectPosition: 'object-[center_45%]',
+    id: '03',
+    title: 'Enfoque Multidisciplinario',
+    description: 'Articulación técnica entre consultores tributarios, peritos jurídicos corporativos y especialistas en seguridad laboral.',
+    shortDescription: 'Sinergia tributaria, legal y laboral.',
+    icon: Users,
+    image: '/images/valores/enfoque-multidisciplinario.jpg',
+    theme: 'celeste',
   },
   {
-    src: '/images/reunion-directorio.jpg',
-    alt: 'Directorio corporativo y planificación societaria integral',
-    objectPosition: 'object-[center_62%]',
+    id: '04',
+    title: 'Compromiso con el Cliente',
+    description: 'Acompañamiento directivo continuo y cercano, enfocado en resultados medibles y en la rentabilidad de su negocio.',
+    shortDescription: 'Acompañamiento cercano y resultados.',
+    icon: Handshake,
+    image: '/images/valores/compromiso-cliente.jpg',
+    theme: 'amber',
   },
 ];
 
@@ -54,16 +81,9 @@ interface AboutViewProps {
 }
 
 export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
-  const [historySlide, setHistorySlide] = useState(0);
   const [showMoreAlvaro, setShowMoreAlvaro] = useState(false);
   const [showMoreLuis, setShowMoreLuis] = useState(false);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHistorySlide((prev) => (prev + 1) % HISTORY_CAROUSEL_IMAGES.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
+  const [activeMobileValue, setActiveMobileValue] = useState<string | null>(null);
   return (
     <div className="bg-[#F4F8FC] text-[#102547]">
       
@@ -120,259 +140,304 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
         {/* Separador Ondulado SVG en la base del Hero en color azul (#071324) */}
         <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none translate-y-px">
-          <CurvedShapeDivider fillColor="#071324" position="bottom" variant="wave1" />
+          <CurvedShapeDivider fillColor="#FFFFFF" position="bottom" variant="wave1" />
         </div>
       </section>
 
 
       {/* =========================================================================
-          BLOQUE 1: MISIÓN, VISIÓN Y VALORES CORPORATIVOS
+          BLOQUE 1: MISIÓN Y VISIÓN (ESTILO EDITORIAL ORGÁNICO)
          ========================================================================= */}
-      <section className="-mt-1 pt-14 sm:pt-20 md:pt-24 pb-14 sm:pb-20 bg-[#071324] relative z-20 overflow-hidden text-white border-b border-sky-900/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-16 sm:py-24 bg-white relative overflow-hidden text-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-20 sm:space-y-28 lg:space-y-32">
           
-          {/* Misión y Visión con tipografía de alto contraste y legibilidad */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-            
-            {/* Tarjeta Misión */}
-            <div className="p-8 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-[#0c1d37] via-[#09172c] to-[#071324] border border-sky-400/40 shadow-2xl relative overflow-hidden group hover:border-[#38BDF8] transition-all duration-300 flex flex-col justify-between">
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-sky-400/10 rounded-full blur-[70px] pointer-events-none" />
-              <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-[#0284C7]/25 border border-sky-400/50 text-[#38BDF8] flex items-center justify-center font-black shadow-lg">
-                    <ShieldCheck className="w-7 h-7 stroke-[2.2]" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold text-sky-400 uppercase tracking-widest block">Propósito Institucional</span>
-                    <h3 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white">Misión</h3>
-                  </div>
-                </div>
-                <p className="text-slate-100 text-sm sm:text-base lg:text-[17px] leading-relaxed lg:leading-[1.8] font-normal text-left sm:text-justify antialiased">
-                  "En GP Solutions brindamos soluciones integrales en seguridad y salud ocupacional, asesoría contable, legal y financiera, optimizando la gestión estratégica y el cumplimiento normativo de nuestros clientes. Protegemos el talento humano, blindamos la estructura legal y maximizamos la salud financiera de las organizaciones a través de un equipo multidisciplinario altamente calificado, garantizando su tranquilidad operativa y su crecimiento sostenible."
-                </p>
+          {/* ================= FILA 1: NUESTRA MISIÓN ================= */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Texto Misión */}
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6">
+              <span className="text-amber-500 font-bold text-xs sm:text-sm tracking-wider uppercase block text-center lg:text-left">
+                Sobre Nosotros
+              </span>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-[#0d1e38] tracking-tight leading-tight text-center lg:text-left">
+                Nuestra Misión
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed text-justify sm:text-left antialiased">
+                En GP Solutions brindamos soluciones integrales en seguridad y salud ocupacional, asesoría contable, legal y financiera, optimizando la gestión estratégica y el cumplimiento normativo de nuestros clientes. Protegemos el talento humano, blindamos la estructura legal y maximizamos la salud financiera de las organizaciones a través de un equipo multidisciplinario altamente calificado, garantizando su tranquilidad operativa y su crecimiento sostenible.
+              </p>
+              <div className="pt-2 flex justify-center w-full">
+                <a
+                  href={COMPANY_DATA.whatsappBaseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 py-3 px-8 rounded-full font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 active:scale-95 transition-all cursor-pointer"
+                >
+                  <span>Conocer Más</span>
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </a>
               </div>
             </div>
 
-            {/* Tarjeta Visión */}
-            <div className="p-8 sm:p-10 md:p-12 rounded-3xl bg-gradient-to-br from-[#0c1d37] via-[#09172c] to-[#071324] border border-amber-400/40 shadow-2xl relative overflow-hidden group hover:border-amber-400 transition-all duration-300 flex flex-col justify-between">
-              <div className="absolute -top-12 -right-12 w-48 h-48 bg-amber-400/10 rounded-full blur-[70px] pointer-events-none" />
-              <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-500/25 border border-amber-400/50 text-[#FCD34D] flex items-center justify-center font-black shadow-lg">
-                    <TrendingUp className="w-7 h-7 stroke-[2.2]" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-bold text-amber-400 uppercase tracking-widest block">Proyección Estratégica</span>
-                    <h3 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white">Visión</h3>
-                  </div>
-                </div>
-                <p className="text-slate-100 text-sm sm:text-base lg:text-[17px] leading-relaxed lg:leading-[1.8] font-normal text-left sm:text-justify antialiased">
-                  "Consolidarnos como la firma aliada líder en asesoría multidisciplinaria, siendo reconocidos por nuestra innovación, ética y excelencia en la gestión del riesgo laboral, legal y financiero. Proyectamos expandir nuestra cobertura a nivel nacional, transformando la complejidad regulatoria en ventajas competitivas y seguridad patrimonial para nuestros socios estratégicos."
-                </p>
+            {/* Imagen Misión (Bordes suaves orgánicos y aura decorativa radial) */}
+            <div className="lg:col-span-6 relative">
+              {/* Líneas decorativas radiales en la esquina derecha */}
+              <div className="absolute -bottom-6 -right-6 w-48 h-48 sm:w-60 sm:h-60 pointer-events-none opacity-40">
+                <svg viewBox="0 0 200 200" className="w-full h-full text-amber-500/40" fill="none" stroke="currentColor">
+                  <circle cx="150" cy="150" r="35" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <circle cx="150" cy="150" r="60" strokeWidth="1.2" />
+                  <circle cx="150" cy="150" r="85" strokeWidth="1.2" strokeDasharray="4 4" />
+                  <circle cx="150" cy="150" r="110" strokeWidth="1.2" />
+                  <line x1="150" y1="150" x2="30" y2="150" strokeWidth="1" strokeDasharray="3 4" />
+                  <line x1="150" y1="150" x2="45" y2="45" strokeWidth="1" strokeDasharray="3 4" />
+                  <line x1="150" y1="150" x2="150" y2="30" strokeWidth="1" strokeDasharray="3 4" />
+                </svg>
+              </div>
+
+              <div className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-100 aspect-[16/11] sm:aspect-[4/3] group">
+                <img
+                  src="/images/reunion-estrategica-equipo.jpg"
+                  alt="Nuestra Misión - Equipo GP Solutions"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
-
           </div>
 
-          {/* =========================================================================
-              VALORES CORPORATIVOS - DISEÑO ARQUITECTÓNICO CON MÁSCARAS
-             ========================================================================= */}
-          <div className="mt-14 sm:mt-20 pt-12 sm:pt-16 border-t border-sky-900/60 relative">
-            
-            {/* Máscara de Luz y Textura Institucional Radial de Fondo */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_75%)]">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-gradient-to-r from-[#0284C7]/20 via-amber-400/15 to-[#0369a1]/20 rounded-full blur-[140px]" />
-              <img
-                src="/images/reunion-estrategica-equipo.jpg"
-                alt="Textura de fondo valores corporativos"
-                className="w-full h-full object-cover opacity-15 mix-blend-luminosity scale-110"
-              />
+          {/* ================= FILA 2: NUESTRA VISIÓN ================= */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Collage Visión (3 imágenes con esquinas arqueadas idénticas a la referencia) */}
+            <div className="lg:col-span-6 order-2 lg:order-1 relative">
+              {/* Líneas decorativas radiales en la esquina superior izquierda */}
+              <div className="absolute -top-6 -left-6 w-48 h-48 sm:w-60 sm:h-60 pointer-events-none opacity-40">
+                <svg viewBox="0 0 200 200" className="w-full h-full text-amber-500/40" fill="none" stroke="currentColor">
+                  <circle cx="50" cy="50" r="35" strokeWidth="1.2" strokeDasharray="3 3" />
+                  <circle cx="50" cy="50" r="60" strokeWidth="1.2" />
+                  <circle cx="50" cy="50" r="85" strokeWidth="1.2" strokeDasharray="4 4" />
+                  <circle cx="50" cy="50" r="110" strokeWidth="1.2" />
+                  <line x1="50" y1="50" x2="170" y2="50" strokeWidth="1" strokeDasharray="3 4" />
+                  <line x1="50" y1="50" x2="155" y2="155" strokeWidth="1" strokeDasharray="3 4" />
+                  <line x1="50" y1="50" x2="50" y2="170" strokeWidth="1" strokeDasharray="3 4" />
+                </svg>
+              </div>
+
+              {/* Grid 2 Columnas para Collage */}
+              <div className="grid grid-cols-2 gap-3.5 sm:gap-4 relative z-10">
+                {/* Imagen 1 (Izquierda grande): Esquina superior izquierda arqueada */}
+                <div className="rounded-tl-[52px] sm:rounded-tl-[64px] rounded-tr-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-slate-100 h-[300px] sm:h-[380px] lg:h-[400px] group">
+                  <img
+                    src="/images/reunion-directorio.jpg"
+                    alt="Directorio y liderazgo GP Solutions"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Columna derecha con 2 imágenes apiladas */}
+                <div className="flex flex-col gap-3.5 sm:gap-4">
+                  {/* Imagen 2 (Superior derecha): Esquina superior derecha arqueada */}
+                  <div className="rounded-tr-[52px] sm:rounded-tr-[64px] rounded-tl-2xl rounded-bl-2xl rounded-br-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-slate-100 h-[143px] sm:h-[182px] lg:h-[192px] group">
+                    <img
+                      src="/images/reunion-acuerdo-equipo.jpg"
+                      alt="Alianza estratégica y asesoría integral"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Imagen 3 (Inferior derecha): Esquina inferior derecha arqueada */}
+                  <div className="rounded-br-[52px] sm:rounded-br-[64px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl overflow-hidden shadow-xl border border-slate-200/80 bg-slate-100 h-[143px] sm:h-[182px] lg:h-[192px] group">
+                    <img
+                      src="/images/servicios-corporativos/mesas-dialogo-ejecutivo-estrategico.jpg"
+                      alt="Consultoría ejecutiva y cumplimiento tributario"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Cabecera Centrada de Valores */}
-            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 relative z-10">
-              <h3 className="font-heading font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight drop-shadow-md">
-                Valores Corporativos
-              </h3>
-              <p className="text-slate-300 text-xs sm:text-sm md:text-base mt-2.5 max-w-2xl mx-auto leading-relaxed">
+            {/* Texto Visión */}
+            <div className="lg:col-span-6 order-1 lg:order-2 space-y-5 sm:space-y-6">
+              <span className="text-amber-500 font-bold text-xs sm:text-sm tracking-wider uppercase block text-center lg:text-left">
+                Proyección Estratégica
+              </span>
+              <h2 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-[#0d1e38] tracking-tight leading-tight text-center lg:text-left">
+                Nuestra Visión
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed text-justify sm:text-left antialiased">
+                Consolidarnos como la firma aliada líder en asesoría multidisciplinaria, siendo reconocidos por nuestra innovación, ética y excelencia en la gestión del riesgo laboral, legal y financiero. Proyectamos expandir nuestra cobertura a nivel nacional, transformando la complejidad regulatoria en ventajas competitivas y seguridad patrimonial para nuestros socios estratégicos.
+              </p>
+              <div className="pt-2 flex justify-center w-full">
+                <a
+                  href={COMPANY_DATA.whatsappBaseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 py-3 px-8 rounded-full font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 active:scale-95 transition-all cursor-pointer"
+                >
+                  <span>Conocer Más</span>
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =========================================================================
+          BLOQUE 2: VALORES CORPORATIVOS (CÍRCULOS UNIDOS CON ESTRELLA AMARILLA CENTRAL)
+         ========================================================================= */}
+      <section className="py-16 sm:py-24 bg-[#071324] relative z-20 overflow-hidden text-white border-t border-sky-900/40">
+        {/* Luces y brillos ambientales de fondo */}
+        <div className="absolute top-0 left-1/4 w-[600px] h-[300px] bg-sky-500/10 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[300px] bg-amber-400/10 rounded-full blur-[160px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* LADO IZQUIERDO: Título y texto en su misma ubicación original, con el título y texto alineados al centro */}
+            <div className="lg:col-span-4 space-y-4 flex flex-col items-center text-center">
+              <div className="space-y-3 flex flex-col items-center text-center">
+                <h3 className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight text-center">
+                  Valores <br className="hidden sm:inline" />
+                  <span className="text-[#38BDF8]">Corporativos</span>
+                </h3>
+                <div className="w-16 h-1 bg-[#38BDF8] rounded-full mx-auto" />
+              </div>
+
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed antialiased text-center max-w-md mx-auto">
                 Directrices fundamentales de integridad técnica, blindaje preventivo y confidencialidad que guían cada actuación de nuestra firma en el Ecuador.
               </p>
             </div>
 
-            {/* Grid 2 + 3 con Máscaras de Diseño y Marca de Agua Numérica */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-7 relative z-10">
-              
-              {/* Valor 1: Ética y Transparencia (Destacado Fila 1 - lg:col-span-3) */}
-              <div className="lg:col-span-3 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/95 via-[#09172c]/98 to-[#071324] border border-sky-400/35 hover:border-[#38BDF8] p-7 sm:p-9 transition-all duration-500 hover:shadow-[0_16px_40px_rgba(56,189,248,0.25)] group flex flex-col justify-between">
-                {/* Máscara Fotográfica Interna en la esquina superior derecha */}
-                <div className="absolute top-0 right-0 w-3/5 h-4/5 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_40%,transparent_80%)] opacity-20 group-hover:opacity-35 transition-opacity duration-500">
-                  <img
-                    src="/images/reunion-directorio.jpg"
-                    alt="Ética y Transparencia"
-                    className="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-sky-900/30 mix-blend-color" />
-                </div>
+            {/* LADO DERECHO: 4 Círculos de tamaño amplio unidos con estrella cóncava amarilla en el centro */}
+            <div className="lg:col-span-8 flex justify-center lg:justify-end">
+              <div className="grid grid-cols-2 gap-0 max-w-[580px] sm:max-w-[620px] md:max-w-[660px] w-full relative">
+                
+                {/* Logo Oficial GP Solutions en el centro de los círculos (siempre al frente z-40) */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 pointer-events-none flex items-center justify-center">
+                  <div className="relative w-36 h-36 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 aspect-square flex items-center justify-center select-none transition-all duration-300">
+                    {/* Anillo perimetral sincronizado idéntico al Hero */}
+                    <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] lg:border-[3px] logo-ring-cycle pointer-events-none z-10" />
 
-                {/* Número de Agua Tipográfico Enmascarado */}
-                <span className="absolute top-1 right-5 font-heading font-black text-7xl sm:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-sky-400/25 via-sky-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
-                  01
-                </span>
+                    {/* Resplandor ambiental suave detrás del logo */}
+                    <div className="absolute -inset-4 rounded-full bg-sky-500/25 blur-2xl pointer-events-none" />
 
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Scale className="w-6 h-6 sm:w-7 sm:h-7 text-[#38BDF8] stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(56,189,248,0.4)]" />
-                    <h4 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
-                      Ética y Transparencia
-                    </h4>
+                    <picture>
+                      <source srcSet="/logo.avif" type="image/avif" />
+                      <source srcSet="/logo.webp" type="image/webp" />
+                      <img
+                        src="/logo.png"
+                        alt="Logo Oficial GP Solutions"
+                        className="w-full h-full object-contain opacity-95 logo-border-glow-cycle drop-shadow-[0_16px_36px_rgba(0,0,0,0.75)]"
+                        width={256}
+                        height={256}
+                        loading="eager"
+                      />
+                    </picture>
                   </div>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl text-left sm:text-justify antialiased">
-                    Manejo íntegro de la información financiera, legal y de salud ocupacional de cada organización.
-                  </p>
                 </div>
 
-                {/* Línea de acento inferior enmascarada */}
-                <div className="relative z-10 mt-6 pt-4 border-t border-sky-900/40 flex items-center gap-2">
-                  <span className="h-1 w-8 rounded-full bg-gradient-to-r from-[#38BDF8] to-transparent" />
-                  <span className="text-[11px] text-sky-300 font-semibold tracking-wide">Rigor profesional irrenunciable</span>
-                </div>
+                {CORPORATE_VALUES.map((val, idx) => {
+                  const IconComp = val.icon;
+                  const isCeleste = val.theme === 'celeste';
+                  const isActive = activeMobileValue === val.id;
+                  
+                  // Desplazamiento simétrico para mantener la convergencia armónica
+                  const unionTranslate = [
+                    'translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3',     // Arriba-izq hacia centro
+                    '-translate-x-2 translate-y-2 sm:-translate-x-3 sm:translate-y-3',   // Arriba-der hacia centro
+                    'translate-x-2 -translate-y-2 sm:translate-x-3 sm:-translate-y-3',   // Abajo-izq hacia centro
+                    '-translate-x-2 -translate-y-2 sm:-translate-x-3 sm:-translate-y-3', // Abajo-der hacia centro
+                  ][idx] || '';
+
+                  // Forma orgánica con esquinas opuestas redondeadas (estilo hoja/pétalo a juego con Misión y Visión)
+                  const leafShape = [
+                    'rounded-tl-[48px] sm:rounded-tl-[64px] rounded-br-[48px] sm:rounded-br-[64px] rounded-tr-2xl rounded-bl-2xl', // Arriba-izq
+                    'rounded-tr-[48px] sm:rounded-tr-[64px] rounded-bl-[48px] sm:rounded-bl-[64px] rounded-tl-2xl rounded-br-2xl', // Arriba-der
+                    'rounded-bl-[48px] sm:rounded-bl-[64px] rounded-tr-[48px] sm:rounded-tr-[64px] rounded-tl-2xl rounded-br-2xl', // Abajo-izq
+                    'rounded-br-[48px] sm:rounded-br-[64px] rounded-tl-[48px] sm:rounded-tl-[64px] rounded-tr-2xl rounded-bl-2xl', // Abajo-der
+                  ][idx] || 'rounded-3xl';
+
+                  return (
+                    <div
+                      key={val.id}
+                      onClick={() => setActiveMobileValue((prev) => (prev === val.id ? null : val.id))}
+                      className={`group relative z-10 aspect-square w-full ${leafShape} overflow-hidden border-2 shadow-2xl flex flex-col items-center justify-center text-center p-4 sm:p-6 cursor-pointer bg-slate-900 transition-all duration-300 hover:z-20 hover:shadow-[0_0_35px_rgba(56,189,248,0.35)] ${unionTranslate} ${
+                        isActive ? 'border-[#38BDF8] z-20 shadow-[0_0_35px_rgba(56,189,248,0.35)]'
+                          : 'border-sky-400/35 hover:border-[#38BDF8]'
+                      }`}
+                    >
+                      {/* Fotografía de fondo: clara en reposo, se atenúa en hover (PC) o al tocar (Móvil) */}
+                      <img
+                        src={val.image}
+                        alt={val.title}
+                        className={`absolute inset-0 w-full h-full object-cover object-center brightness-105 contrast-105 select-none transition-opacity duration-300 group-hover:opacity-35 ${
+                          isActive ? 'opacity-35' : 'opacity-100'
+                        }`}
+                        loading="lazy"
+                      />
+
+                      {/* Velo estético: luminoso en reposo, en hover o al tocar se difumina y atenúa para destacar el texto */}
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-t backdrop-blur-[0.5px] transition-all duration-300 group-hover:from-[#071324]/90 group-hover:via-[#071324]/75 group-hover:to-[#071324]/60 group-hover:backdrop-blur-sm ${
+                          isActive
+                            ? 'from-[#071324]/90 via-[#071324]/75 to-[#071324]/60 backdrop-blur-sm'
+                            : 'from-[#071324]/50 via-[#071324]/15 to-transparent'
+                        }`}
+                      />
+
+                      {/* Resplandor fotográfico sutil en el borde interior */}
+                      <div className="absolute inset-0 rounded-[inherit] shadow-[inset_0_0_15px_rgba(7,19,36,0.25)] pointer-events-none" />
+
+                      {/* Contenido frontal: Icono, Título y Descripción que aparece en hover (PC) o al tocar (Móvil) */}
+                      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-[88%] select-none transition-all duration-300">
+                        
+                        {/* Ícono */}
+                        <div
+                          className={`mb-1.5 sm:mb-2 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] ${
+                            isActive ? 'scale-105' : ''
+                          }`}
+                        >
+                          <IconComp
+                            className={`w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 stroke-[2.2] shrink-0 ${
+                              isCeleste ? 'text-[#38BDF8]' : 'text-[#FCD34D]'
+                            }`}
+                          />
+                        </div>
+
+                        {/* Título del valor */}
+                        <h4
+                          className={`font-heading font-black text-xs sm:text-sm md:text-base lg:text-[17px] text-white tracking-tight leading-snug drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] group-hover:text-[#38BDF8] transition-colors break-words ${
+                            isActive ? 'text-[#38BDF8]' : ''
+                          }`}
+                        >
+                          {val.title}
+                        </h4>
+
+                        {/* Texto descriptivo que aparece al pasar el mouse (PC) o tocar (Móvil) */}
+                        <div
+                          className={`grid transition-all duration-400 ease-out w-full group-hover:grid-rows-[1fr] ${
+                            isActive ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                          }`}
+                        >
+                          <div className="overflow-hidden">
+                            <p className="text-[10px] sm:text-xs text-slate-100 text-center leading-relaxed mt-1 sm:mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)] font-medium antialiased">
+                              <span className="sm:hidden">{val.shortDescription}</span>
+                              <span className="hidden sm:inline">{val.description}</span>
+                            </p>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-
-              {/* Valor 2: Prevención y Rigor (Destacado Fila 1 - lg:col-span-3) */}
-              <div className="lg:col-span-3 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/95 via-[#09172c]/98 to-[#071324] border border-amber-400/35 hover:border-amber-400 p-7 sm:p-9 transition-all duration-500 hover:shadow-[0_16px_40px_rgba(245,158,11,0.25)] group flex flex-col justify-between">
-                {/* Máscara Fotográfica Interna */}
-                <div className="absolute top-0 right-0 w-3/5 h-4/5 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_40%,transparent_80%)] opacity-20 group-hover:opacity-35 transition-opacity duration-500">
-                  <img
-                    src="/images/inicio-tributaria-legal/devoluciones-contingencias-home.jpg"
-                    alt="Prevención y Rigor"
-                    className="w-full h-full object-cover object-top filter grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-amber-900/30 mix-blend-color" />
-                </div>
-
-                {/* Número de Agua Tipográfico Enmascarado */}
-                <span className="absolute top-1 right-5 font-heading font-black text-7xl sm:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-amber-400/25 via-amber-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
-                  02
-                </span>
-
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <ShieldCheck className="w-6 h-6 sm:w-7 sm:h-7 text-[#FCD34D] stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(252,211,77,0.4)]" />
-                    <h4 className="font-heading font-black text-xl sm:text-2xl text-white group-hover:text-amber-300 transition-colors leading-tight">
-                      Prevención y Rigor
-                    </h4>
-                  </div>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl text-left sm:text-justify antialiased">
-                    Anticipación a riesgos laborales, fiscales y jurídicos antes de que se conviertan en contingencias.
-                  </p>
-                </div>
-
-                {/* Línea de acento inferior enmascarada */}
-                <div className="relative z-10 mt-6 pt-4 border-t border-amber-900/40 flex items-center gap-2">
-                  <span className="h-1 w-8 rounded-full bg-gradient-to-r from-amber-400 to-transparent" />
-                  <span className="text-[11px] text-amber-300 font-semibold tracking-wide">Blindaje técnico integral</span>
-                </div>
-              </div>
-
-              {/* Valor 3: Confidencialidad (Fila 2 - lg:col-span-2) */}
-              <div className="lg:col-span-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/90 via-[#09172c]/95 to-[#071324] border border-emerald-400/30 hover:border-emerald-400 p-6 sm:p-7 transition-all duration-400 hover:shadow-[0_12px_32px_rgba(16,185,129,0.2)] group flex flex-col justify-between">
-                {/* Máscara Fotográfica Interna */}
-                <div className="absolute top-0 right-0 w-1/2 h-3/4 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_35%,transparent_75%)] opacity-15 group-hover:opacity-30 transition-opacity duration-500">
-                  <img
-                    src="/images/inicio-tributaria-legal/libros-societarios-home.jpg"
-                    alt="Confidencialidad"
-                    className="w-full h-full object-cover filter grayscale contrast-125"
-                  />
-                </div>
-
-                <span className="absolute top-1 right-4 font-heading font-black text-6xl text-transparent bg-clip-text bg-gradient-to-b from-emerald-400/25 via-emerald-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
-                  03
-                </span>
-
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Lock className="w-6 h-6 text-emerald-400 stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(52,211,153,0.4)]" />
-                    <h4 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-emerald-300 transition-colors leading-tight">
-                      Confidencialidad
-                    </h4>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Protección absoluta de los datos sensibles de la empresa y sus colaboradores.
-                  </p>
-                </div>
-
-                <div className="relative z-10 mt-5 pt-3.5 border-t border-emerald-900/40 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span className="text-[10px] text-emerald-300 font-semibold uppercase tracking-wider">Custodia blindada</span>
-                </div>
-              </div>
-
-              {/* Valor 4: Enfoque Multidisciplinario (Fila 2 - lg:col-span-2) */}
-              <div className="lg:col-span-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/90 via-[#09172c]/95 to-[#071324] border border-sky-400/30 hover:border-[#38BDF8] p-6 sm:p-7 transition-all duration-400 hover:shadow-[0_12px_32px_rgba(56,189,248,0.2)] group flex flex-col justify-between">
-                {/* Máscara Fotográfica Interna */}
-                <div className="absolute top-0 right-0 w-1/2 h-3/4 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_35%,transparent_75%)] opacity-15 group-hover:opacity-30 transition-opacity duration-500">
-                  <img
-                    src="/images/reunion-estrategica-equipo.jpg"
-                    alt="Enfoque Multidisciplinario"
-                    className="w-full h-full object-cover filter grayscale contrast-125"
-                  />
-                </div>
-
-                <span className="absolute top-1 right-4 font-heading font-black text-6xl text-transparent bg-clip-text bg-gradient-to-b from-sky-400/25 via-sky-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
-                  04
-                </span>
-
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Users className="w-6 h-6 text-[#38BDF8] stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(56,189,248,0.4)]" />
-                    <h4 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-[#38BDF8] transition-colors leading-tight">
-                      Enfoque Multidisciplinario
-                    </h4>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Trabajo articulado entre áreas de seguridad, tributaria, contable y corporativa.
-                  </p>
-                </div>
-
-                <div className="relative z-10 mt-5 pt-3.5 border-t border-sky-900/40 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
-                  <span className="text-[10px] text-sky-300 font-semibold uppercase tracking-wider">Sinergia técnica 360°</span>
-                </div>
-              </div>
-
-              {/* Valor 5: Compromiso con el Cliente (Fila 2 - lg:col-span-2) */}
-              <div className="lg:col-span-2 relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0c1d37]/90 via-[#09172c]/95 to-[#071324] border border-amber-400/30 hover:border-amber-400 p-6 sm:p-7 transition-all duration-400 hover:shadow-[0_12px_32px_rgba(245,158,11,0.2)] group flex flex-col justify-between">
-                {/* Máscara Fotográfica Interna */}
-                <div className="absolute top-0 right-0 w-1/2 h-3/4 pointer-events-none overflow-hidden [mask-image:radial-gradient(ellipse_at_top_right,black_35%,transparent_75%)] opacity-15 group-hover:opacity-30 transition-opacity duration-500">
-                  <img
-                    src="/images/reunion-acuerdo-equipo.jpg"
-                    alt="Compromiso con el Cliente"
-                    className="w-full h-full object-cover filter grayscale contrast-125"
-                  />
-                </div>
-
-                <span className="absolute top-1 right-4 font-heading font-black text-6xl text-transparent bg-clip-text bg-gradient-to-b from-amber-400/25 via-amber-400/5 to-transparent select-none pointer-events-none leading-none [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]">
-                  05
-                </span>
-
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Handshake className="w-6 h-6 text-[#FCD34D] stroke-[2.2] shrink-0 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_2px_8px_rgba(252,211,77,0.4)]" />
-                    <h4 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-amber-300 transition-colors leading-tight">
-                      Compromiso con el Cliente
-                    </h4>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Trato personalizado orientado a resultados medibles y sostenibilidad de negocio.
-                  </p>
-                </div>
-
-                <div className="relative z-10 mt-5 pt-3.5 border-t border-amber-900/40 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                  <span className="text-[10px] text-amber-300 font-semibold uppercase tracking-wider">Cercanía y solvencia</span>
-                </div>
-              </div>
-
             </div>
           </div>
 
@@ -610,71 +675,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         </div>
       </section>
 
-
-      {/* =========================================================================
-          BLOQUE 3: NUESTRA HISTORIA Y COMPROMISO (PANORÁMICA)
-         ========================================================================= */}
-      <section className="py-14 sm:py-20 bg-[#F4F8FC] border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-[#0f2445] border border-sky-900/40 text-white flex flex-col md:flex-row items-stretch">
-            
-            {/* Contenedor del Carrusel: Proporción armónica 16:10 / 3:2 que llena el contenedor sin dejar espacios ni recortar sujetos */}
-                        {/* Contenedor del Carrusel: Transición automática continua sin flechas ni puntos */}
-            <div
-              className="relative w-full md:w-[54%] lg:w-[56%] aspect-[16/10] sm:aspect-[16/10] md:aspect-auto md:min-h-[420px] bg-slate-900 overflow-hidden"
-            >
-              {HISTORY_CAROUSEL_IMAGES.map((img, idx) => (
-                <div
-                  key={img.src}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    idx === historySlide ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className={`w-full h-full object-cover ${img.objectPosition} transition-transform duration-700`}
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                  />
-                </div>
-              ))}
-
-              {/* Degradado sutil en móvil para suavizar la transición hacia el texto inferior */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f2445]/70 via-transparent to-transparent md:hidden pointer-events-none" />
-            </div>
-
-            <div className="w-full md:w-[46%] lg:w-[44%] p-6 sm:p-8 lg:p-10 flex flex-col justify-center bg-[#0f2445] text-white space-y-4">
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight text-center">
-                Nuestra Historia y Compromiso
-              </h2>
-
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed text-justify">
-                GP SOLUTIONS nació a partir de un propósito claro: democratizar el acceso a una consultoría contable, tributaria y societaria con la más alta excelencia que tradicionalmente solo disfrutaban las grandes multinacionales.
-              </p>
-
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
-                Con más de 12 años de actividad continua desde nuestro despacho en Quito, nos hemos ganado la confianza de cientos de comerciantes, profesionales y empresas en Pichincha y en todo el país. Creemos que el éxito de un negocio se cimenta en la pulcritud de sus libros y en la tranquilidad de estar 100% al día con el SRI y la Superintendencia de Compañías.
-              </p>
-
-              <div className="pt-2 flex justify-center">
-                <a
-                  href={COMPANY_DATA.whatsappBaseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 py-3 px-6 rounded-full font-bold text-xs sm:text-sm bg-gradient-to-r from-[#0284C7] to-[#0369a1] hover:from-[#38BDF8] hover:to-[#0284C7] text-white transition-all shadow-md shadow-sky-950/40 active:scale-95 cursor-pointer"
-                >
-                  <WhatsAppIcon className="w-4 h-4 text-white" />
-                  <span>Conocer más de nuestros servicios</span>
-                  <ArrowRight className="w-4 h-4 text-[#38BDF8]" />
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
 
 
       {/* =========================================================================
