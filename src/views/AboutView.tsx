@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ArrowRight,
   Users,
@@ -84,6 +84,17 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
   const [showMoreAlvaro, setShowMoreAlvaro] = useState(false);
   const [showMoreLuis, setShowMoreLuis] = useState(false);
   const [activeMobileValue, setActiveMobileValue] = useState<string | null>(null);
+  const corporateGridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      if (corporateGridRef.current && !corporateGridRef.current.contains(e.target as Node)) {
+        setActiveMobileValue(null);
+      }
+    };
+    document.addEventListener('pointerdown', handleOutsideClick);
+    return () => document.removeEventListener('pointerdown', handleOutsideClick);
+  }, []);
   return (
     <div className="bg-[#F4F8FC] text-[#102547]">
       
@@ -316,7 +327,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
             {/* LADO DERECHO: 4 Círculos de tamaño amplio unidos con estrella cóncava amarilla en el centro */}
             <div className="lg:col-span-8 flex justify-center lg:justify-end">
-              <div className="grid grid-cols-2 gap-0 max-w-[580px] sm:max-w-[620px] md:max-w-[660px] w-full relative">
+              <div ref={corporateGridRef} className="grid grid-cols-2 gap-0 max-w-[580px] sm:max-w-[620px] md:max-w-[660px] w-full relative">
                 
                 {/* Logo Oficial GP Solutions en el centro de los círculos (siempre al frente z-40) */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 pointer-events-none flex items-center justify-center">
@@ -355,19 +366,12 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                     '-translate-x-2 -translate-y-2 sm:-translate-x-3 sm:-translate-y-3', // Abajo-der hacia centro
                   ][idx] || '';
 
-                  // Forma orgánica con esquinas opuestas redondeadas (estilo hoja/pétalo a juego con Misión y Visión)
-                  const leafShape = [
-                    'rounded-tl-[48px] sm:rounded-tl-[64px] rounded-br-[48px] sm:rounded-br-[64px] rounded-tr-2xl rounded-bl-2xl', // Arriba-izq
-                    'rounded-tr-[48px] sm:rounded-tr-[64px] rounded-bl-[48px] sm:rounded-bl-[64px] rounded-tl-2xl rounded-br-2xl', // Arriba-der
-                    'rounded-bl-[48px] sm:rounded-bl-[64px] rounded-tr-[48px] sm:rounded-tr-[64px] rounded-tl-2xl rounded-br-2xl', // Abajo-izq
-                    'rounded-br-[48px] sm:rounded-br-[64px] rounded-tl-[48px] sm:rounded-tl-[64px] rounded-tr-2xl rounded-bl-2xl', // Abajo-der
-                  ][idx] || 'rounded-3xl';
-
                   return (
                     <div
                       key={val.id}
                       onClick={() => setActiveMobileValue((prev) => (prev === val.id ? null : val.id))}
-                      className={`group relative z-10 aspect-square w-full ${leafShape} overflow-hidden border-2 shadow-2xl flex flex-col items-center justify-center text-center p-4 sm:p-6 cursor-pointer bg-slate-900 transition-all duration-300 hover:z-20 hover:shadow-[0_0_35px_rgba(56,189,248,0.35)] ${unionTranslate} ${
+                      onMouseLeave={() => setActiveMobileValue(null)}
+                      className={`group relative z-10 aspect-square w-full rounded-2xl sm:rounded-3xl overflow-hidden border-2 shadow-2xl flex flex-col items-center justify-center text-center p-4 sm:p-6 cursor-pointer bg-slate-900 transition-all duration-300 hover:z-20 hover:shadow-[0_0_35px_rgba(56,189,248,0.35)] ${unionTranslate} ${
                         isActive ? 'border-[#38BDF8] z-20 shadow-[0_0_35px_rgba(56,189,248,0.35)]'
                           : 'border-sky-400/35 hover:border-[#38BDF8]'
                       }`}
