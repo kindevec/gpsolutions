@@ -324,7 +324,7 @@ export const TaxServicesView: React.FC = () => {
           </p>
 
           <a
-            href={buildWhatsAppLink('Hola GP SOLUTIONS (+593 982577313), necesito asesoría urgente para regularizar mi situación tributaria o laboral.')}
+            href={buildWhatsAppLink('Hola GP SOLUTIONS, necesito asesoría urgente para regularizar mi situación tributaria o laboral.')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-[#0284C7] hover:bg-[#0369a1] text-white shadow-md shadow-sky-500/20 transition-all cursor-pointer"

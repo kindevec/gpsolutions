@@ -550,7 +550,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
                 <div className="pt-2 flex justify-center">
                   <a
-                    href={buildWhatsAppLink("Hola Álvaro Guerra (+593 982577313), solicito consultoría directa en Seguridad, Salud Ocupacional o Asesoría Tributaria.", "alvaro")}
+                    href={buildWhatsAppLink("Hola Álvaro Guerra, solicito consultoría directa en Seguridad, Salud Ocupacional o Asesoría Tributaria.", "alvaro")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-[#0284C7] hover:bg-[#0369a1] text-white transition-all shadow-md cursor-pointer"
@@ -653,7 +653,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
 
                 <div className="pt-2 flex justify-center">
                   <a
-                    href={buildWhatsAppLink("Hola Luis Fernando Guerra (+593 997650599), solicito consultoría en Asesoría Legal Corporativa.", "luis")}
+                    href={buildWhatsAppLink("Hola Luis Fernando Guerra, solicito consultoría en Asesoría Legal Corporativa.", "luis")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 py-3 px-6 rounded-xl font-bold text-xs sm:text-sm bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white transition-all shadow-md cursor-pointer"

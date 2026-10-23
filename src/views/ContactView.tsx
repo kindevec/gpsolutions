@@ -105,9 +105,8 @@ export const ContactView: React.FC = () => {
 
     const isLegal = formData.servicio === 'Asesoría Legal Corporativa' || formData.servicio === 'Constitución y Liquidación de SAS';
     const target = isLegal ? 'luis' : (formData.servicio === 'Otra consulta integral' ? 'general' : 'alvaro');
-    const phoneFormatted = (target === 'alvaro') ? COMPANY_DATA.phoneFormatted2 : COMPANY_DATA.phoneFormatted1;
 
-    const message = `Hola GP SOLUTIONS (${phoneFormatted}), mi nombre es ${cleanNombre}${cleanEmpresa ? ` de la empresa ${cleanEmpresa}` : ''}.
+    const message = `Hola GP SOLUTIONS, mi nombre es ${cleanNombre}${cleanEmpresa ? ` de la empresa ${cleanEmpresa}` : ''}.
 - Teléfono: ${cleanTelefono}
 - Email: ${cleanEmail}
 - Asunto / Área: ${cleanServicio}

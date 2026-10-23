@@ -58,11 +58,11 @@ export const CorporateLegalView: React.FC<CorporateLegalViewProps> = () => {
           {data.subsections.map((sub, idx) => {
             const isReverse = idx % 2 === 1;
             const whatsappQuoteUrl = buildWhatsAppLink(
-              `Hola GP Solutions (+593 997650599), deseo cotizar el área de: Asesoría Legal Corporativa - ${sub.title}.`,
+              `Hola GP Solutions, deseo cotizar el área de: Asesoría Legal Corporativa - ${sub.title}.`,
               'luis'
             );
             const whatsappMeetingUrl = buildWhatsAppLink(
-              `Hola GP Solutions (+593 997650599), deseo agendar una reunión o asesoría técnica para: Asesoría Legal Corporativa - ${sub.title}.`,
+              `Hola GP Solutions, deseo agendar una reunión o asesoría técnica para: Asesoría Legal Corporativa - ${sub.title}.`,
               'luis'
             );
 

@@ -65,7 +65,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Declaraciones de impuestos periódicas, elaboración y presentación de anexos tributarios y atención de deberes formales ante el SRI.',
     image: '/images/inicio-tributaria-legal/declaraciones-tributarias-home.jpg',
     icon: Receipt,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Cumplimiento y Declaraciones Tributarias.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito información para el servicio de: Cumplimiento y Declaraciones Tributarias.',
   },
   {
     id: 'trib-2',
@@ -73,7 +73,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Asesoría tributaria permanente, planificación fiscal estratégica y acompañamiento técnico en decisiones con efectos fiscales.',
     image: '/images/inicio-tributaria-legal/planificacion-tributaria-home.jpg',
     icon: Sparkles,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Asesoría y Planificación Tributaria.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito información para el servicio de: Asesoría y Planificación Tributaria.',
   },
   {
     id: 'trib-3',
@@ -81,7 +81,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Gestión y trámite de devoluciones de impuestos, diagnósticos de cumplimiento y patrocinio especializado ante requerimientos del SRI.',
     image: '/images/inicio-tributaria-legal/devoluciones-contingencias-home.jpg',
     icon: Clock,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito cotizar: Devoluciones de Impuestos y Prevención de Contingencias Tributarias.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito cotizar: Devoluciones de Impuestos y Prevención de Contingencias Tributarias.',
   },
   {
     id: 'legal-1',
@@ -89,7 +89,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Constitución digital de compañías S.A.S., reformas de estatutos, aumentos de capital y cumplimiento ante la Superintendencia de Compañías.',
     image: '/images/inicio-tributaria-legal/asesoria-corporativa-boardroom.png',
     icon: Building2,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 997650599), solicito asesoría para: Constitución de Compañías y Asesoría Societaria.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito asesoría para: Constitución de Compañías y Asesoría Societaria.',
   },
   {
     id: 'legal-2',
@@ -97,7 +97,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Manejo y actualización de libros societarios, cambios de administradores, nombramientos y representación legal empresarial.',
     image: '/images/inicio-tributaria-legal/libros-societarios-home.jpg',
     icon: Scale,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 997650599), solicito información para: Manejo y Actualización de Libros Societarios.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito información para: Manejo y Actualización de Libros Societarios.',
   },
   {
     id: 'legal-3',
@@ -105,7 +105,7 @@ const TRIB_LEGAL_CAROUSEL_SERVICES = [
     shortText: 'Elaboración y revisión de contratos de trabajo y mercantiles, actas de finiquito, trámites ante el IESS y reglamentos internos.',
     image: '/images/inicio-tributaria-legal/laboral-contratos-home.jpg',
     icon: Users,
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 997650599), solicito asesoría para: Asesoría Laboral Empresarial y Contratos.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito asesoría para: Asesoría Laboral Empresarial y Contratos.',
   },
 ];
 
@@ -115,42 +115,42 @@ const SSO_HOME_CAROUSEL_SERVICES = [
     title: 'Gestión Integral del Riesgo Laboral',
     shortText: 'Acompañamos a su empresa en la implementación y mantenimiento de su gestión de SSO, matrices de riesgo y planes de prevención.',
     image: '/images/sso-home/gestion-riesgo-laboral.jpg',
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Gestión Integral del Riesgo Laboral.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito información para el servicio de: Gestión Integral del Riesgo Laboral.',
   },
   {
     id: 'sso-2',
     title: 'Planes de Emergencia y Evacuación',
     shortText: 'Elaboración de planes de evacuación, contra incendios, manejo de emergencias y continuidad de operaciones para su personal.',
     image: '/images/sso-home/planes-emergencia.jpg',
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Planes de Emergencia y Evacuación.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito información para el servicio de: Planes de Emergencia y Evacuación.',
   },
   {
     id: 'sso-3',
     title: 'Capacitaciones Obligatorias en SSO',
     shortText: 'Talleres formativos certificados en ergonomía laboral, manejo de productos, prevención de acoso laboral y brigadas.',
     image: '/images/sso-home/capacitaciones-sso.jpg',
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito cotizar: Capacitaciones Obligatorias en SSO para mi empresa.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito cotizar: Capacitaciones Obligatorias en SSO para mi empresa.',
   },
   {
     id: 'sso-4',
     title: 'Reglamentos Internos y Comités',
     shortText: 'Elaboración y legalización de reglamentos de higiene y seguridad en el SUT y conformación de organismos paritarios.',
     image: '/images/sso-home/reglamentos-higiene.jpg',
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito asesoría para: Elaboración de Reglamentos Internos de Higiene y Seguridad ante el Ministerio del Trabajo.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito asesoría para: Elaboración de Reglamentos Internos de Higiene y Seguridad ante el Ministerio del Trabajo.',
   },
   {
     id: 'sso-5',
     title: 'Cumplimiento y Acompañamiento MDT',
     shortText: 'Gestión documental, registros ante el Ministerio del Trabajo y preparación técnica para inspecciones laborales y requerimientos.',
     image: '/images/sso-home/cumplimiento-inspecciones-mdt.jpg',
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito acompañamiento técnico para inspecciones del Ministerio del Trabajo.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito acompañamiento técnico para inspecciones del Ministerio del Trabajo.',
   },
   {
     id: 'sso-6',
     title: 'Matrices de Peligros y Evaluación',
     shortText: 'Identificación técnica de factores de riesgo por puesto de trabajo, planes de acción para subsanar hallazgos y control preventivo.',
     image: '/images/sso-home/matrices-evaluacion-riesgos.jpg',
-    whatsappMessage: 'Hola GP SOLUTIONS (+593 982577313), solicito asesoría para: Matrices de identificación de peligros y evaluación de riesgos.',
+    whatsappMessage: 'Hola GP SOLUTIONS, solicito asesoría para: Matrices de identificación de peligros y evaluación de riesgos.',
   },
 ];
 
@@ -205,7 +205,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onSelectTab }) => {
   };
 
   const whatsappHeroUrl = buildWhatsAppLink(
-    'Hola GP SOLUTIONS (+593 997650599), deseo solicitar asesoría y blindaje para mi empresa en Ecuador.',
+    'Hola GP SOLUTIONS, deseo solicitar asesoría y blindaje para mi empresa en Ecuador.',
     'general'
   );
 

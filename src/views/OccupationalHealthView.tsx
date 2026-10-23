@@ -176,10 +176,10 @@ export const OccupationalHealthView: React.FC<OccupationalHealthViewProps> = () 
           {data.subsections.map((sub, idx) => {
             const isReverse = idx % 2 === 1;
             const whatsappQuoteUrl = buildWhatsAppLink(
-              `Hola GP Solutions (+593 982577313), deseo cotizar el área de: Seguridad y Salud Ocupacional - ${sub.title}.`
+              `Hola GP Solutions, deseo cotizar el área de: Seguridad y Salud Ocupacional - ${sub.title}.`
             );
             const whatsappMeetingUrl = buildWhatsAppLink(
-              `Hola GP Solutions (+593 982577313), deseo agendar una reunión o asesoría técnica para: Seguridad y Salud Ocupacional - ${sub.title}.`
+              `Hola GP Solutions, deseo agendar una reunión o asesoría técnica para: Seguridad y Salud Ocupacional - ${sub.title}.`
             );
 
             return (
