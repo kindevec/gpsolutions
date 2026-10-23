@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   ArrowRight,
   Users,
-  Rocket,
-  TrendingUp,
   Building2,
   Scale,
   Award,
@@ -671,77 +669,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
         </div>
       </section>
 
-
-
-      {/* =========================================================================
-          BLOQUE 3: NUESTRA VISIÓN Y PILARES (OUR VISION)
-         ========================================================================= */}
-      {/* =========================================================================
-          BLOQUE 3: NUESTRA VISIÓN Y PILARES (ESTILO ARCOS DECORATIVOS)
-         ========================================================================= */}
-      {/* =========================================================================
-          BLOQUE 3: NUESTRA VISIÓN Y PILARES (FONDO AZUL & ESTILO ARCOS DECORATIVOS)
-         ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-[#0d1e38] relative overflow-hidden text-white border-t border-sky-900/60">
-        {/* Luces y brillos ambientales de fondo */}
-        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#0284C7]/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-amber-400/10 rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-sky-500/10 rounded-full blur-[150px] pointer-events-none" />
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          {/* Encabezado Centrado: Sin texto previo al título */}
-          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <h2 className="font-heading text-2xl sm:text-4xl font-black text-white tracking-tight">
-              Construyendo Seguridad y Claridad Financiera
-            </h2>
-          </div>
-
-          {/* 3 Columnas con Contenedores en Forma de Arco Superior (rounded-t-full) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
-            
-            {/* Contenedor Arco 1: Celeste GP Solutions */}
-            <div className="rounded-t-full rounded-b-3xl bg-[#112646]/90 hover:bg-[#163056] border border-sky-400/30 hover:border-sky-300 pt-14 pb-10 px-7 sm:px-8 text-center flex flex-col items-center group transition-all duration-300 hover:shadow-[0_0_35px_rgba(56,189,248,0.3)] hover:-translate-y-2 backdrop-blur-xl">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#0284C7] to-[#0369a1] text-white shadow-lg border border-sky-300/40 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Users className="w-8 h-8 stroke-[2.2]" />
-              </div>
-              <h3 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-[#38BDF8] transition-colors mb-3">
-                Enfoque en el Cliente
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xs">
-                Diseñamos soluciones personalizadas que se adaptan a la escala y naturaleza de su negocio, sin fórmulas genéricas.
-              </p>
-            </div>
-
-            {/* Contenedor Arco 2: Azul Profundo */}
-            <div className="rounded-t-full rounded-b-3xl bg-[#091526]/90 hover:bg-[#0c1c33] border border-sky-400/25 hover:border-[#0284C7] pt-14 pb-10 px-7 sm:px-8 text-center flex flex-col items-center group transition-all duration-300 hover:shadow-[0_0_35px_rgba(2,132,199,0.3)] hover:-translate-y-2 backdrop-blur-xl">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#38BDF8] to-[#0284C7] text-white shadow-lg border border-white/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Rocket className="w-8 h-8 stroke-[2.2]" />
-              </div>
-              <h3 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-[#38BDF8] transition-colors mb-3">
-                Excelencia Técnica NIIF
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xs">
-                Balances auditables y declaraciones estructuradas con 100% de apego a la normativa legal, evitando multas y glosas del SRI.
-              </p>
-            </div>
-
-            {/* Contenedor Arco 3: Acento Ámbar Dorado GP Solutions */}
-            <div className="rounded-t-full rounded-b-3xl bg-[#112646]/90 hover:bg-[#163056] border border-amber-400/30 hover:border-amber-300 pt-14 pb-10 px-7 sm:px-8 text-center flex flex-col items-center group transition-all duration-300 hover:shadow-[0_0_35px_rgba(252,211,77,0.3)] hover:-translate-y-2 backdrop-blur-xl">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 text-white shadow-lg border border-amber-200/40 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <TrendingUp className="w-8 h-8 stroke-[2.2]" />
-              </div>
-              <h3 className="font-heading font-black text-lg sm:text-xl text-white group-hover:text-amber-300 transition-colors mb-3">
-                Innovación Digital
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xs">
-                Aceleramos sus gestiones mediante canales virtuales, carpetas seguras en la nube y reportes oportunos en todo el Ecuador.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
 
       {/* =========================================================================
