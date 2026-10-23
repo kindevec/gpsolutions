@@ -58,10 +58,10 @@ export const TaxAdvisoryView: React.FC<TaxAdvisoryViewProps> = () => {
           {data.subsections.map((sub, idx) => {
             const isReverse = idx % 2 === 1;
             const whatsappQuoteUrl = buildWhatsAppLink(
-              `Hola GP Solutions (+593 982577313), deseo cotizar el área de: Asesoría Tributaria - ${sub.title}.`
+              `Hola GP Solutions, deseo cotizar el área de: Asesoría Tributaria - ${sub.title}.`
             );
             const whatsappMeetingUrl = buildWhatsAppLink(
-              `Hola GP Solutions (+593 982577313), deseo agendar una reunión o asesoría técnica para: Asesoría Tributaria - ${sub.title}.`
+              `Hola GP Solutions, deseo agendar una reunión o asesoría técnica para: Asesoría Tributaria - ${sub.title}.`
             );
 
             return (

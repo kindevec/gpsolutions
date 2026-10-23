@@ -21,7 +21,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Decisión 584 (Instrumento Andino de SSO), Reglamento 2393 y normativa de Bomberos",
     frequency: "Anual / Actualización continua",
     image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Elaboración de matrices de riesgo y planes de emergencia."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito información para el servicio de: Elaboración de matrices de riesgo y planes de emergencia."
   },
   {
     id: "sso-2",
@@ -40,7 +40,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Código del Trabajo, Acuerdos Ministeriales MDT y Reglamento 2393",
     frequency: "Bianual / Permanente",
     image: "/images/servicios-contables/superintendencia-companias.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría para el servicio de: Gestión de reglamentos y planes de prevención."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito asesoría para el servicio de: Gestión de reglamentos y planes de prevención."
   },
   {
     id: "sso-3",
@@ -59,7 +59,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Resoluciones MDT sobre prevención de riesgos y erradicación del acoso laboral",
     frequency: "Semestral / Plan de capacitación anual",
     image: "/images/servicios-contables/contabilidad-general.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito cotizar: Capacitaciones obligatorias en SSO para mi empresa."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito cotizar: Capacitaciones obligatorias en SSO para mi empresa."
   },
   {
     id: "sso-4",
@@ -78,7 +78,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Código del Trabajo, Ley de Seguridad Social y Normativa Técnica MDT",
     frequency: "Permanente / Por requerimiento",
     image: "/images/servicios-contables/estados-financieros.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), requiero acompañamiento técnico para inspecciones del Ministerio del Trabajo."
+    whatsappMessage: "Hola GP SOLUTIONS, requiero acompañamiento técnico para inspecciones del Ministerio del Trabajo."
   },
 
   // =========================================================================
@@ -101,7 +101,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Ley de Régimen Tributario Interno (LRTI) y Código Tributario",
     frequency: "Mensual / Semestral / Anual",
     image: "/images/servicios-contables/contabilidad-general.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría para el servicio de: Declaraciones de Impuestos ante el SRI."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito asesoría para el servicio de: Declaraciones de Impuestos ante el SRI."
   },
   {
     id: "trib-2",
@@ -120,7 +120,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Art. 73 y 74 LRTI, Resoluciones SRI y Ley del Adulto Mayor",
     frequency: "Mensual / Por trámite puntual",
     image: "/images/servicios-tributarios/devolucion-impuestos.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), deseo tramitar la: Devolución de Impuestos ante el SRI."
+    whatsappMessage: "Hola GP SOLUTIONS, deseo tramitar la: Devolución de Impuestos ante el SRI."
   },
   {
     id: "trib-3",
@@ -139,7 +139,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Código del Trabajo y Ley de Seguridad Social",
     frequency: "Quincenal / Mensual",
     image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito información para el servicio de: Manejo integral de nómina."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito información para el servicio de: Manejo integral de nómina."
   },
   {
     id: "trib-4",
@@ -158,7 +158,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Código Tributario y Resoluciones del Servicio de Rentas Internas",
     frequency: "Mensual / Permanente",
     image: "/images/servicios-tributarios/impuestos-herencias-donaciones.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito una consultoría de: Asesoría y Planificación Tributaria."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito una consultoría de: Asesoría y Planificación Tributaria."
   },
   {
     id: "trib-5",
@@ -177,7 +177,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Código Tributario, Código Orgánico General de Procesos y LRTI",
     frequency: "Por evento / Requerimiento puntual",
     image: "/images/servicios-contables/estados-financieros.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), requiero asesoría para: Atención de contingencias o requerimientos del SRI."
+    whatsappMessage: "Hola GP SOLUTIONS, requiero asesoría para: Atención de contingencias o requerimientos del SRI."
   },
   {
     id: "trib-6",
@@ -196,7 +196,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "NIIF para PYMES, NIIF Completas y Resoluciones SuperCías",
     frequency: "Semestral / Cierre Anual",
     image: "/images/servicios-contables/estados-financieros.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito la elaboración de Estados Financieros bajo normativa NIIF."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito la elaboración de Estados Financieros bajo normativa NIIF."
   },
 
   // =========================================================================
@@ -219,7 +219,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Ley de Modernización a la Ley de Compañías y Reglamento SAS",
     frequency: "Trámite puntual / Creación ágil",
     image: "/images/servicios-contables/constitucion-liquidacion-sas.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría para el servicio de: Creación y liquidación de SAS."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito asesoría para el servicio de: Creación y liquidación de SAS."
   },
   {
     id: "legal-2",
@@ -238,7 +238,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Ley de Compañías y Resoluciones de la Superintendencia de Compañías",
     frequency: "Mensual / Permanente",
     image: "/images/servicios-contables/superintendencia-companias.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), requiero información para el: Manejo y actualización de libros societarios."
+    whatsappMessage: "Hola GP SOLUTIONS, requiero información para el: Manejo y actualización de libros societarios."
   },
   {
     id: "legal-3",
@@ -257,7 +257,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Código Orgánico de la Economía Social de los Conocimientos (COESCI)",
     frequency: "Registro por 10 años renovable",
     image: "/images/servicios-contables/registro-marcas.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría para el: Registro de marcas y signos distintivos ante el SENADI."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito asesoría para el: Registro de marcas y signos distintivos ante el SENADI."
   },
   {
     id: "legal-4",
@@ -276,7 +276,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Código de Comercio, Código Civil y Ley de Arbitraje y Mediación",
     frequency: "Por contrato / Demanda",
     image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría legal para: Contratos y Negocios de mi empresa."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito asesoría legal para: Contratos y Negocios de mi empresa."
   },
   {
     id: "legal-5",
@@ -295,7 +295,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Legislación Mercantil, Civil y Administrativa del Ecuador",
     frequency: "Permanente / Mensual",
     image: "/images/servicios-contables/contabilidad-general.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), deseo cotizar un plan mensual de: Asesoría Legal Empresarial."
+    whatsappMessage: "Hola GP SOLUTIONS, deseo cotizar un plan mensual de: Asesoría Legal Empresarial."
   },
   {
     id: "legal-6",
@@ -314,7 +314,7 @@ export const ALL_SERVICES: ServiceItem[] = [
     legalBasis: "Código del Trabajo, Mandatos Constituyentes y Acuerdos MDT",
     frequency: "Mensual / Por requerimiento",
     image: "/images/servicios-laborales/contratos-trabajo-finiquito.jpg",
-    whatsappMessage: "Hola GP SOLUTIONS (+593 982577313), solicito asesoría jurídica para el área de: Asesoría Laboral Empresarial."
+    whatsappMessage: "Hola GP SOLUTIONS, solicito asesoría jurídica para el área de: Asesoría Laboral Empresarial."
   }
 ];
 

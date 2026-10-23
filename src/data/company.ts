@@ -38,21 +38,40 @@ export function buildWhatsAppLink(
   serviceOrMessage: string,
   targetPhone: 'general' | 'alvaro' | 'luis' | 'sso' | 'tributaria' | 'legal' = 'general'
 ): string {
+  const lowerMsg = serviceOrMessage.toLowerCase();
   const isAlvaro =
     targetPhone === 'alvaro' ||
     targetPhone === 'sso' ||
     targetPhone === 'tributaria' ||
-    serviceOrMessage.includes('982577313') ||
-    serviceOrMessage.includes('Álvaro Guerra') ||
-    serviceOrMessage.includes('Seguridad y Salud') ||
-    serviceOrMessage.includes('Asesoría Tributaria');
+    lowerMsg.includes('seguridad y salud') ||
+    lowerMsg.includes('ocupacional') ||
+    lowerMsg.includes('tributari') ||
+    lowerMsg.includes('impuesto') ||
+    lowerMsg.includes('sri') ||
+    lowerMsg.includes('niif') ||
+    lowerMsg.includes('alvaro') ||
+    lowerMsg.includes('álvaro') ||
+    lowerMsg.includes('982577313');
 
   const phone = isAlvaro ? COMPANY_DATA.secondaryPhoneRaw : COMPANY_DATA.primaryPhoneRaw;
-  const phoneDisplay = isAlvaro ? COMPANY_DATA.phoneFormatted2 : COMPANY_DATA.phoneFormatted1;
 
-  let baseMessage = serviceOrMessage;
-  if (!baseMessage.startsWith("Hola")) {
-    baseMessage = `Hola GP SOLUTIONS (${phoneDisplay}), solicito asesoría directa en el área de: ${serviceOrMessage}`;
+  // Limpiar cualquier número de teléfono o prefijo que se haya pasado en el cuerpo del texto
+  let cleanMsg = serviceOrMessage
+    .replace(/\s*\(\+?593[^\)]*\)/gi, '')
+    .replace(/\s*\+593\s*\d{9}/gi, '')
+    .trim();
+
+  if (!cleanMsg.startsWith("Hola")) {
+    cleanMsg = `Hola GP SOLUTIONS, solicito asesoría directa en el área de: ${cleanMsg}`;
   }
-  return `https://wa.me/${phone}?text=${encodeURIComponent(baseMessage)}`;
+
+  // Corregir puntuaciones o espacios duplicados residuales
+  cleanMsg = cleanMsg
+    .replace(/,\s*,/g, ',')
+    .replace(/Hola GP SOLUTIONS,\s*,/gi, 'Hola GP SOLUTIONS,')
+    .replace(/Hola GP Solutions,\s*,/gi, 'Hola GP Solutions,')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(cleanMsg)}`;
 }
