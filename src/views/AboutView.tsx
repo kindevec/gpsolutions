@@ -325,18 +325,18 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
               </p>
             </div>
 
-            {/* LADO DERECHO: 4 Círculos de tamaño amplio unidos con estrella cóncava amarilla en el centro */}
+            {/* LADO DERECHO: 4 Contenedores cuadrados unidos sin bordes redondeados y sin espacios vacíos */}
             <div className="lg:col-span-8 flex justify-center lg:justify-end">
-              <div ref={corporateGridRef} className="grid grid-cols-2 gap-0 max-w-[580px] sm:max-w-[620px] md:max-w-[660px] w-full relative">
+              <div ref={corporateGridRef} className="grid grid-cols-2 gap-0 max-w-[580px] sm:max-w-[620px] md:max-w-[660px] w-full relative shadow-2xl">
                 
-                {/* Logo Oficial GP Solutions en el centro de los círculos (siempre al frente z-40) */}
+                {/* Logo Oficial GP Solutions en el centro (al frente z-40, tamaño optimizado) */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 pointer-events-none flex items-center justify-center">
-                  <div className="relative w-36 h-36 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 aspect-square flex items-center justify-center select-none transition-all duration-300">
+                  <div className="relative w-30 h-30 xs:w-32 xs:h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 aspect-square flex items-center justify-center select-none transition-all duration-300">
                     {/* Anillo perimetral sincronizado idéntico al Hero */}
-                    <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] lg:border-[3px] logo-ring-cycle pointer-events-none z-10" />
+                    <div className="absolute inset-0 rounded-full border-2 sm:border-[2.5px] logo-ring-cycle pointer-events-none z-10" />
 
                     {/* Resplandor ambiental suave detrás del logo */}
-                    <div className="absolute -inset-4 rounded-full bg-sky-500/25 blur-2xl pointer-events-none" />
+                    <div className="absolute -inset-3 rounded-full bg-sky-500/25 blur-xl pointer-events-none" />
 
                     <picture>
                       <source srcSet="/logo.avif" type="image/avif" />
@@ -344,36 +344,28 @@ export const AboutView: React.FC<AboutViewProps> = ({ onSelectTab }) => {
                       <img
                         src="/logo.png"
                         alt="Logo Oficial GP Solutions"
-                        className="w-full h-full object-contain opacity-95 logo-border-glow-cycle drop-shadow-[0_16px_36px_rgba(0,0,0,0.75)]"
-                        width={256}
-                        height={256}
+                        className="w-full h-full object-contain opacity-95 logo-border-glow-cycle drop-shadow-[0_12px_28px_rgba(0,0,0,0.7)]"
+                        width={176}
+                        height={176}
                         loading="eager"
                       />
                     </picture>
                   </div>
                 </div>
 
-                {CORPORATE_VALUES.map((val, idx) => {
+                {CORPORATE_VALUES.map((val) => {
                   const IconComp = val.icon;
                   const isCeleste = val.theme === 'celeste';
                   const isActive = activeMobileValue === val.id;
-                  
-                  // Desplazamiento simétrico para mantener la convergencia armónica
-                  const unionTranslate = [
-                    'translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3',     // Arriba-izq hacia centro
-                    '-translate-x-2 translate-y-2 sm:-translate-x-3 sm:translate-y-3',   // Arriba-der hacia centro
-                    'translate-x-2 -translate-y-2 sm:translate-x-3 sm:-translate-y-3',   // Abajo-izq hacia centro
-                    '-translate-x-2 -translate-y-2 sm:-translate-x-3 sm:-translate-y-3', // Abajo-der hacia centro
-                  ][idx] || '';
 
                   return (
                     <div
                       key={val.id}
                       onClick={() => setActiveMobileValue((prev) => (prev === val.id ? null : val.id))}
                       onMouseLeave={() => setActiveMobileValue(null)}
-                      className={`group relative z-10 aspect-square w-full rounded-2xl sm:rounded-3xl overflow-hidden border-2 shadow-2xl flex flex-col items-center justify-center text-center p-4 sm:p-6 cursor-pointer bg-slate-900 transition-all duration-300 hover:z-20 hover:shadow-[0_0_35px_rgba(56,189,248,0.35)] ${unionTranslate} ${
+                      className={`group relative z-10 aspect-square w-full rounded-none overflow-hidden border border-sky-400/30 hover:border-[#38BDF8] flex flex-col items-center justify-center text-center p-4 sm:p-6 cursor-pointer bg-slate-900 transition-all duration-300 hover:z-20 hover:shadow-[0_0_35px_rgba(56,189,248,0.35)] ${
                         isActive ? 'border-[#38BDF8] z-20 shadow-[0_0_35px_rgba(56,189,248,0.35)]'
-                          : 'border-sky-400/35 hover:border-[#38BDF8]'
+                          : 'border-sky-400/30 hover:border-[#38BDF8]'
                       }`}
                     >
                       {/* Fotografía de fondo: clara en reposo, se atenúa en hover (PC) o al tocar (Móvil) */}

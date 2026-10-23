@@ -11,9 +11,6 @@ import {
   ShieldCheck,
   Receipt,
   Scale,
-  FileSpreadsheet,
-  Building2,
-  HelpCircle,
 } from 'lucide-react';
 import { WhatsAppIcon, FacebookIcon, InstagramIcon, LinkedInIcon } from '../components/ui/SocialIcons';
 import { COMPANY_DATA, buildWhatsAppLink } from '../data/company';
@@ -57,33 +54,6 @@ const SERVICE_OPTIONS: ServiceOptionItem[] = [
     color: 'text-emerald-600',
     bgColor: 'bg-emerald-50',
     borderColor: 'border-emerald-200/60',
-  },
-  {
-    value: 'Servicios Contables y Balances',
-    label: 'Servicios Contables y Balances NIIF',
-    detail: 'Auditoría contable, estructuración de libros y balances para control',
-    icon: FileSpreadsheet,
-    color: 'text-sky-700',
-    bgColor: 'bg-sky-50',
-    borderColor: 'border-sky-200/60',
-  },
-  {
-    value: 'Constitución y Liquidación de SAS',
-    label: 'Constitución y Liquidación de SAS',
-    detail: 'Estructuración digital, reformas estatutarias y nombramientos',
-    icon: Building2,
-    color: 'text-indigo-600',
-    bgColor: 'bg-indigo-50',
-    borderColor: 'border-indigo-200/60',
-  },
-  {
-    value: 'Otra consulta integral',
-    label: 'Otra consulta integral',
-    detail: 'Diagnóstico empresarial multidisciplinario personalizado',
-    icon: HelpCircle,
-    color: 'text-slate-600',
-    bgColor: 'bg-slate-50',
-    borderColor: 'border-slate-200/60',
   },
 ];
 
